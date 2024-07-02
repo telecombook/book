@@ -1,4 +1,5 @@
-# Telecommunication Theory: An Intuitive Understanding
+# Intro
+**Telecommunication Theory: An Intuitive Understanding**
 
 The objective of this TelecomBook is to facilitate an intuitive understanding of telecommunication systems through mathematical and programming languages. 
 
@@ -10,8 +11,3 @@ For each concept:
 The content of this book will undergo continual revisions and updates.
 
 We look forward to receiving your feedback, including perspectives, comments, corrections, and suggestions, which can be sent to telecombook@outlook.com . Thank you for expressing your interest.
-
-The following is the current content of the book:
-
-```{tableofcontents}
-```
