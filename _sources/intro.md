@@ -1,4 +1,4 @@
-# TelecomBook: Intuitive Understanding of Telecommunications and Wireless Systems
+# Telecom Book
 
 ## Objectives
 
