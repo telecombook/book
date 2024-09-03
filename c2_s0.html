@@ -422,17 +422,38 @@ The goal is to determine which hypothesis is true based on the observation <span
 <section id="decision-outcomes-and-associated-probabilities">
 <h2>Decision Outcomes and Associated Probabilities<a class="headerlink" href="#decision-outcomes-and-associated-probabilities" title="Link to this heading">#</a></h2>
 <p>The effectiveness of the hypothesis test is evaluated by the probabilities of the various outcomes, which are summarized in the following table:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{array}{cccl}
-\hline
-\textbf{True Hypothesis} &amp; \textbf{Decision} &amp; \textbf{Description} &amp; \textbf{Probability} \\ \hline
-H_0 &amp; H_0 &amp; &amp; P_{00}=\int_{R_0}P(y|H_0)dy \\ \hline
-H_0 &amp; H_1 &amp; \text{False alarm (Type I Error)} &amp; P_f=P_{10}=\int_{R_1}P(y|H_0)dy \\ \hline
-H_1 &amp; H_1 &amp; \text{Detection (Correct detection)} &amp; P_d=P_{11}=\int_{R_1}P(y|H_1)dy \\ \hline
-H_1 &amp; H_0 &amp; \text{Miss (Type II Error)} &amp; P_m=P_{01}=\int_{R_0}P(y|H_1)dy \\ \hline
-\end{array}
-\end{split}\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>True Hypothesis</strong></p></th>
+<th class="head"><p><strong>Decision</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Probability</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\( P_{00} = \int_{R_0} P(y \mid H_0) \, dy \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
+<td><p>False alarm (Type I Error)</p></td>
+<td><p><span class="math notranslate nohighlight">\( P_f = P_{10} = \int_{R_1} P(y \mid H_0) \, dy \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
+<td><p>Detection (Correct detection)</p></td>
+<td><p><span class="math notranslate nohighlight">\( P_d = P_{11} = \int_{R_1} P(y \mid H_1) \, dy \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
+<td><p>Miss (Type II Error)</p></td>
+<td><p><span class="math notranslate nohighlight">\( P_m = P_{01} = \int_{R_0} P(y \mid H_1) \, dy \)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(P_{00}\)</span></strong>: The probability of correctly deciding <span class="math notranslate nohighlight">\(H_0\)</span> when <span class="math notranslate nohighlight">\(H_0\)</span> is true.</p></li>
 <li><p><strong><span class="math notranslate nohighlight">\(P_f = P_{10}\)</span></strong>: The probability of deciding <span class="math notranslate nohighlight">\(H_1\)</span> when <span class="math notranslate nohighlight">\(H_0\)</span> is true. This is known as a <strong>false alarm</strong> or <strong>Type I error</strong>.</p></li>
