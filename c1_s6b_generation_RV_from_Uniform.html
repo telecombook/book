@@ -184,20 +184,61 @@
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Generating Random Variables From A Uniform Distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
 
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
 
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -300,11 +341,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-random-variable-generation-from-uniform-distribution">Example: Exponential Random Variable Generation from Uniform Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-random-variable-generation-from-uniform-distribution">Example: Exponential Random Variable Generation from Uniform Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
 </ul>
             </nav>
         </div>
@@ -316,7 +355,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="generating-random-variables-from-a-uniform-distribution">
+  <section id="generating-random-variables-from-a-uniform-distribution">
 <h1>Generating Random Variables From A Uniform Distribution<a class="headerlink" href="#generating-random-variables-from-a-uniform-distribution" title="Link to this heading">#</a></h1>
 <p>The most general technique for generating random variables with a specified distribution involves starting with a uniformly distributed random variable <span class="math notranslate nohighlight">\( \mathbf{u} \)</span> over the interval <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
 <p>Then, you perform the transformation:</p>
@@ -365,8 +404,9 @@ x = -\ln(1 - u)
 <p><strong>Generate the Exponential Random Variable</strong></p>
 <p>To generate a sample <span class="math notranslate nohighlight">\( x \)</span>, we first generate a sample <span class="math notranslate nohighlight">\( u \)</span> from the uniform distribution <span class="math notranslate nohighlight">\( U(0, 1) \)</span>. Then, apply the transformation <span class="math notranslate nohighlight">\( x = -\ln(1 - u) \)</span> to obtain the corresponding value from the exponential distribution.</p>
 <p>This process can be repeated to generate multiple samples from the exponential distribution, each time starting with a new independent uniform random variable <span class="math notranslate nohighlight">\( u \)</span>.</p>
+</section>
 <section id="simulation">
-<h3>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h3>
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -427,7 +467,7 @@ x = -\ln(1 - u)
 </div>
 </section>
 <section id="schonhoff-s-method">
-<h3>Schonhoff’s Method<a class="headerlink" href="#schonhoff-s-method" title="Link to this heading">#</a></h3>
+<h2>Schonhoff’s Method<a class="headerlink" href="#schonhoff-s-method" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -524,7 +564,6 @@ x = -\ln(1 - u)
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -590,11 +629,9 @@ x = -\ln(1 - u)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-random-variable-generation-from-uniform-distribution">Example: Exponential Random Variable Generation from Uniform Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-random-variable-generation-from-uniform-distribution">Example: Exponential Random Variable Generation from Uniform Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
 </ul>
   </nav></div>
 

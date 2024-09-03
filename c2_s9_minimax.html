@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MiniMax Criterion &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c2_s9_minimax';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Neyman-Pearson Criterion" href="c2_s11_Neyman_Pearson.html" />
+    <link rel="prev" title="Bayes Criterion" href="c2_s7_Bayes_criterion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MiniMax Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MiniMax Criterion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk-when-the-a-priori-probability-is-unknown-and-guessed">Actual risk when the a priori probability is unknown and guessed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-the-bayes-risk-and-the-actual-risk">Demonstrate the Bayes risk and the actual risk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-bayes-risk-as-a-function-of-pi-0">Fig. Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-actual-risk-as-a-function-of-pi-0">Fig. Actual risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-actual-and-bayes-risks-as-a-function-of-pi-0">FIGURE. Actual and Bayes risks as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-using-minimax-criterion">Decision using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making">Decision Making</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-minimax-solution">Endpoint Minimax Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiable-interior-minimax-solution">Differentiable Interior Minimax Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-procedure">Decision Making Procedure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nondifferentiable-interior-minimax-solution">Nondifferentiable Interior Minimax Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Making Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion">Example: Antipodal Signal Detection and Decision Using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="minimax-criterion">
+<h1>MiniMax Criterion<a class="headerlink" href="#minimax-criterion" title="Link to this heading">#</a></h1>
+<p><strong>MOTIVATION.</strong> The question is what issues of the Bayes and MAP criteria lead to the need for a new criterion?</p>
+<ul class="simple">
+<li><p>The Bayes criterion requires both costs and <em>a priori</em> probabilities to set the threshold.</p></li>
+<li><p>The MAP criterion needs only the <em>a priori</em> probabilities; it does not require knowledge of the costs.</p></li>
+<li><p>In contradistinction, the minimax criterion does require knowledge of the costs but does not use the <em>a priori</em> probabilities.</p></li>
+</ul>
+<p>To illustrate the need for the minimax criterion, consider an example of the Bayes risk <span class="math notranslate nohighlight">\( r \)</span> as a function of the <em>a priori</em> probability <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<ul>
+<li><p>If <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>, then <span class="math notranslate nohighlight">\( H_1 \)</span> is correct; our decision <span class="math notranslate nohighlight">\( D_1 \)</span> entails a Bayes risk of <span class="math notranslate nohighlight">\( r = C_{11} \)</span>.
+That is, if <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[ r = (P_{01}C_{01} + P_{11}C_{11})\pi_1 \]</div>
+</li>
+<li><p>Since <span class="math notranslate nohighlight">\( \pi_1 = 1 \)</span>, <span class="math notranslate nohighlight">\( P_{01} = 0 \)</span>, and <span class="math notranslate nohighlight">\( P_{11} = 1 \)</span>, then <span class="math notranslate nohighlight">\( r = C_{11} \)</span>.</p></li>
+<li><p>On the other hand, if <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>, a similar argument shows that <span class="math notranslate nohighlight">\( r = C_{00} \)</span>.</p></li>
+</ul>
+<section id="actual-risk-when-the-a-priori-probability-is-unknown-and-guessed">
+<h2>Actual risk when the a priori probability is unknown and guessed<a class="headerlink" href="#actual-risk-when-the-a-priori-probability-is-unknown-and-guessed" title="Link to this heading">#</a></h2>
+<p>Assume that we guess the <em>a priori</em> probability is some value <span class="math notranslate nohighlight">\( \pi_0 = a \)</span>.</p>
+<p>This “freezes” the decision rule <span class="math notranslate nohighlight">\( \delta_B \)</span> with the Bayes threshold, set at</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_B = \frac{a(C_{10} - C_{00})}{(1-a)(C_{01} - C_{11})} 
+\]</div>
+<p><strong>Actual Risk</strong></p>
+<p>If we are wrong about our guess, the actual risk <span class="math notranslate nohighlight">\( r(\pi_0, a) \)</span> we could incur is obtained as</p>
+<div class="math notranslate nohighlight">
+\[
+r(\pi_0, a) = \pi_0 r_0(a) + (1 - \pi_0) r_1(a)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are conditional risks for each hypothesis when the threshold and decision rule are controlled by <span class="math notranslate nohighlight">\( a \)</span>. It is clear that</p>
+<div class="math notranslate nohighlight">
+\[
+r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1 
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are constants for a specific value of <span class="math notranslate nohighlight">\( a \)</span>, the actual risk is linear in <span class="math notranslate nohighlight">\( \pi_0 \)</span>, as shown in Figure 4.5. From this figure, if our guess of <span class="math notranslate nohighlight">\( \pi_0 = a \)</span> is correct, the actual risk is identical to the Bayes risk. On the other hand, if <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span> were the “true” value, the actual risk we would entail in this example would be <span class="math notranslate nohighlight">\( r_0(a) \)</span>.</p>
+</section>
+<section id="demonstrate-the-bayes-risk-and-the-actual-risk">
+<h2>Demonstrate the Bayes risk and the actual risk<a class="headerlink" href="#demonstrate-the-bayes-risk-and-the-actual-risk" title="Link to this heading">#</a></h2>
+<p>We use the setting in the antipodal signal dection example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Given parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># s1 = b, s0 = -b</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">)</span>
+<span class="n">pi_0_fixed</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># given fixed prior probability for H0</span>
+<span class="n">pi_1_fixed</span> <span class="o">=</span> <span class="mf">0.2</span>  <span class="c1"># given fixed prior probability for H1</span>
+
+<span class="c1"># Costs</span>
+<span class="n">C00</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Correct decision, H0</span>
+<span class="n">C11</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Correct decision, H1</span>
+<span class="n">C10</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Incorrect decision, H1|H0</span>
+<span class="n">C01</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Incorrect decision, H0|H1</span>
+
+<span class="c1"># Calculate tau&#39;</span>
+<span class="n">tau_map_fixed</span> <span class="o">=</span> <span class="n">pi_0_fixed</span> <span class="o">/</span> <span class="n">pi_1_fixed</span>
+<span class="n">tau_prime_fixed</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma_squared</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tau_map_fixed</span><span class="p">)</span>
+
+<span class="c1"># Define Pij based on the problem&#39;s conditions</span>
+<span class="k">def</span> <span class="nf">P00</span><span class="p">(</span><span class="n">tau_prime</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">((</span><span class="n">tau_prime</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))))</span>
+
+<span class="k">def</span> <span class="nf">P01</span><span class="p">(</span><span class="n">tau_prime</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">((</span><span class="n">tau_prime</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))))</span>
+
+<span class="k">def</span> <span class="nf">P10</span><span class="p">(</span><span class="n">tau_prime</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erfc</span><span class="p">((</span><span class="n">tau_prime</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">P11</span><span class="p">(</span><span class="n">tau_prime</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erfc</span><span class="p">((</span><span class="n">tau_prime</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="fig-bayes-risk-as-a-function-of-pi-0">
+<h3>Fig. Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span><a class="headerlink" href="#fig-bayes-risk-as-a-function-of-pi-0" title="Link to this heading">#</a></h3>
+<p>The Bayes risk at <span class="math notranslate nohighlight">\( \pi_0 = a \)</span> is shown in the following figure.</p>
+<p>In most cases, <span class="math notranslate nohighlight">\( r \)</span> is larger at intermediate values of <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<p>Indeed, it is straightforward to show that <span class="math notranslate nohighlight">\( r \)</span> is a concave function in <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recalculate the Bayes risk for various values of pi_0</span>
+
+<span class="c1"># Define the range of pi0</span>
+<span class="n">pi0_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">.99</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># The decision threshold tau_B is derived from the Bayes criterion</span>
+<span class="k">def</span> <span class="nf">bayes_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">):</span>
+    <span class="n">pi_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">pi_0</span>
+    <span class="n">tau_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">pi_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">C10</span> <span class="o">-</span> <span class="n">C00</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">pi_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">C01</span> <span class="o">-</span> <span class="n">C11</span><span class="p">))</span>
+    <span class="n">tau_prime_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma_squared</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tau_B</span><span class="p">)</span>
+    <span class="c1"># Calculate Pij values for the current pi_0</span>
+    <span class="n">P00_val</span> <span class="o">=</span> <span class="n">P00</span><span class="p">(</span><span class="n">tau_prime_B</span><span class="p">)</span>
+    <span class="n">P01_val</span> <span class="o">=</span> <span class="n">P01</span><span class="p">(</span><span class="n">tau_prime_B</span><span class="p">)</span>
+    <span class="n">P10_val</span> <span class="o">=</span> <span class="n">P10</span><span class="p">(</span><span class="n">tau_prime_B</span><span class="p">)</span>
+    <span class="n">P11_val</span> <span class="o">=</span> <span class="n">P11</span><span class="p">(</span><span class="n">tau_prime_B</span><span class="p">)</span>
+    <span class="c1"># Calculate r0(a) and r1(a)</span>
+    <span class="n">r0_B</span> <span class="o">=</span> <span class="n">C10</span> <span class="o">*</span> <span class="n">P10_val</span> <span class="o">+</span> <span class="n">C00</span> <span class="o">*</span> <span class="n">P00_val</span>
+    <span class="n">r1_B</span> <span class="o">=</span> <span class="n">C01</span> <span class="o">*</span> <span class="n">P01_val</span> <span class="o">+</span> <span class="n">C11</span> <span class="o">*</span> <span class="n">P11_val</span>
+    <span class="c1"># Calculate the Bayes risk</span>
+    <span class="k">return</span> <span class="n">pi_0</span> <span class="o">*</span> <span class="n">r0_B</span> <span class="o">+</span> <span class="n">pi_1</span> <span class="o">*</span> <span class="n">r1_B</span>
+
+<span class="c1"># Calculate Bayes risk values</span>
+<span class="n">bayes_r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">bayes_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+
+<span class="c1"># Plotting the Bayes risk as a function of pi0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">bayes_r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$Bayes Risk r(pi_0)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bayes Risk $r(pi_0)$ as a function of $pi_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$pi_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85905bb252c6c575235e3c0514ed6233ff426b9370e178a4901c59946a6235a8.png" src="_images/85905bb252c6c575235e3c0514ed6233ff426b9370e178a4901c59946a6235a8.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="fig-actual-risk-as-a-function-of-pi-0">
+<h2>Fig. Actual risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span><a class="headerlink" href="#fig-actual-risk-as-a-function-of-pi-0" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the actual risk function r(pi0, a)</span>
+<span class="k">def</span> <span class="nf">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">):</span>
+    <span class="n">pi_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">pi_0</span>
+    <span class="c1"># Calculate Pij values for the current pi_0</span>
+    <span class="n">P00_val</span> <span class="o">=</span> <span class="n">P00</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+    <span class="n">P01_val</span> <span class="o">=</span> <span class="n">P01</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+    <span class="n">P10_val</span> <span class="o">=</span> <span class="n">P10</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+    <span class="n">P11_val</span> <span class="o">=</span> <span class="n">P11</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+    <span class="c1"># Calculate r0(a) and r1(a)</span>
+    <span class="n">r0</span> <span class="o">=</span> <span class="n">C10</span> <span class="o">*</span> <span class="n">P10_val</span> <span class="o">+</span> <span class="n">C00</span> <span class="o">*</span> <span class="n">P00_val</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">C01</span> <span class="o">*</span> <span class="n">P01_val</span> <span class="o">+</span> <span class="n">C11</span> <span class="o">*</span> <span class="n">P11_val</span>
+    <span class="c1"># Calculate the actual risk</span>
+    <span class="k">return</span> <span class="n">pi_0</span> <span class="o">*</span> <span class="n">r0</span> <span class="o">+</span> <span class="n">pi_1</span> <span class="o">*</span> <span class="n">r1</span>
+
+
+<span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+
+<span class="c1"># Plotting the actual risk as a function of pi0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Actual Risk $r(pi_0)$ as a function of $pi_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$pi_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/052b0d5b39bd6aa09bf0add7143737707f0f9c4879731124c8b105526803c583.png" src="_images/052b0d5b39bd6aa09bf0add7143737707f0f9c4879731124c8b105526803c583.png" />
+</div>
+</div>
+</section>
+<section id="figure-actual-and-bayes-risks-as-a-function-of-pi-0">
+<h2>FIGURE. Actual and Bayes risks as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span><a class="headerlink" href="#figure-actual-and-bayes-risks-as-a-function-of-pi-0" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recalculate r1(a) and r0(a) with a specific value of `a`</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">r1_a</span> <span class="o">=</span> <span class="n">C01</span> <span class="o">*</span> <span class="n">P01</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span> <span class="o">+</span> <span class="n">C11</span> <span class="o">*</span> <span class="n">P11</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+<span class="n">r0_a</span> <span class="o">=</span> <span class="n">C10</span> <span class="o">*</span> <span class="n">P10</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span> <span class="o">+</span> <span class="n">C00</span> <span class="o">*</span> <span class="n">P00</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+
+<span class="c1"># Find the intersection point between actual risk and Bayes risk</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_values</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bayes_r_values</span><span class="p">))</span>
+<span class="n">intersection_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+<span class="n">intersection_pi0</span> <span class="o">=</span> <span class="n">pi0_values</span><span class="p">[</span><span class="n">intersection_index</span><span class="p">]</span>
+<span class="n">intersection_risk</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="n">intersection_index</span><span class="p">]</span>
+
+<span class="c1"># Calculate the endpoints of the actual risk</span>
+<span class="n">r1_0</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Actual risk at pi_0 = 0</span>
+<span class="n">r0_1</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Actual risk at pi_0 = 1</span>
+
+<span class="c1"># Create a plot with additional annotations</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Plotting the actual risk and Bayes risk</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual Risk $r(pi_0)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">bayes_r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bayes Risk $r(pi_0)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Annotating r1(a) and r0(a)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">r1_a</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r_1(a)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">r0_a</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r_0(a)$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Annotating the intersection point</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">intersection_pi0</span><span class="p">,</span> <span class="n">intersection_risk</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>  <span class="c1"># Point</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">intersection_pi0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>  <span class="c1"># Projection on x-axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">intersection_pi0</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;$pi_0 = </span><span class="si">{</span><span class="n">intersection_pi0</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># Annotating the endpoints r1(0) and r0(1)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">r1_0</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r_1(0)$&#39;</span><span class="p">)</span>  <span class="c1"># Endpoint r1(0)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">r0_1</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r_0(1)$&#39;</span><span class="p">)</span>  <span class="c1"># Endpoint r0(1)</span>
+
+<span class="c1"># Adding labels for endpoints</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">r1_0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;$r_1(0)$&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">r0_1</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;$r_0(1)$&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Setting labels and title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Actual Risk and Bayes Risk with $r_0(a)$ and $r_1(a)$ </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$pi_0$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Adding grid, legend, and show plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1057f89d02febe1045157e5063bec2c42bec1fa5c36268bbe5b58e506555e408.png" src="_images/1057f89d02febe1045157e5063bec2c42bec1fa5c36268bbe5b58e506555e408.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="decision-using-minimax-criterion">
+<h1>Decision using MiniMax Criterion<a class="headerlink" href="#decision-using-minimax-criterion" title="Link to this heading">#</a></h1>
+<p><strong>OBJECTIVE.</strong> The minimax criterion <strong>minimizes</strong> the <strong>maximum</strong> risk.</p>
+<p>The maximin criterion also <strong>maximizes</strong> the <strong>minimum</strong> risk.</p>
+<p>In the example above, the minimax criterion would assume the value of <span class="math notranslate nohighlight">\( \pi_0 \)</span> such that the actual risk is a constant represented by the dotted line.</p>
+<section id="decision-making">
+<h2>Decision Making<a class="headerlink" href="#decision-making" title="Link to this heading">#</a></h2>
+<p><strong>METHODOLOGY.</strong> The question is how to use the minimax criterion to make decision <span class="math notranslate nohighlight">\(D_0\)</span> or <span class="math notranslate nohighlight">\(D_1\)</span>.</p>
+<p>Three different situations must be examined in determining the minimax criterion.</p>
+<ol class="arabic simple">
+<li><p>The case where the minimax criterion corresponds to <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>. Figure 4.6 shows an example of the case where <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> corresponds to the maximum risk.</p></li>
+<li><p>The case where the minimax solution corresponds to <span class="math notranslate nohighlight">\( \pi_0 \)</span> interior to the interval <span class="math notranslate nohighlight">\( (0, 1) \)</span> and the Bayes risk is differentiable at this solution. Figure 4.5, already presented, is an example of this case.</p></li>
+<li><p>The case where the minimax solution corresponds to <span class="math notranslate nohighlight">\( \pi_0 \)</span> interior to <span class="math notranslate nohighlight">\( (0, 1) \)</span> but the Bayes risk is not differentiable at this solution. Figure 4.7 shows an example of this case.</p></li>
+</ol>
+<p>Each of these cases is presented in one of the following sections.</p>
+</section>
+<section id="endpoint-minimax-solution">
+<h2>Endpoint Minimax Solution<a class="headerlink" href="#endpoint-minimax-solution" title="Link to this heading">#</a></h2>
+<p>Suppose, as an example, that the Bayes risk is depicted by Figure 4.6. The minimax solution in this case is to always decide <span class="math notranslate nohighlight">\( D_1 \)</span>. Since the minimax risk for an endpoint maximum is always either <span class="math notranslate nohighlight">\( C_{00} \)</span> or <span class="math notranslate nohighlight">\( C_{11} \)</span>, the easiest way to determine this case is to first try to find a minimax solution using the approaches of the following two sections. If this attempt is successful, we simply compare Here is the transcript of the provided image:</p>
+<p>the risk so obtained with <span class="math notranslate nohighlight">\( C_{00} \)</span> and <span class="math notranslate nohighlight">\( C_{11} \)</span> and pick the maximum. If, however, we are unsuccessful in finding an internal minimax using the approaches of the next two sections, then the minimax solution is one of the endpoints. In this case, the risk is the maximum of <span class="math notranslate nohighlight">\( C_{00} \)</span> or <span class="math notranslate nohighlight">\( C_{11} \)</span>.”</p>
+<p><strong>DISCUSSION.</strong> This solution applies when the minimax risk occurs at one of the endpoints of the decision space, meaning <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>.</p>
+<section id="decision-rule">
+<h3>Decision Rule:<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>If the minimax risk corresponds to <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span></strong>: The decision rule would be to always choose <span class="math notranslate nohighlight">\( H_1 \)</span> since the risk associated with <span class="math notranslate nohighlight">\( C_{11} \)</span> (the cost when <span class="math notranslate nohighlight">\( H_1 \)</span> is true and <span class="math notranslate nohighlight">\( H_1 \)</span> is chosen) is considered.</p>
+<ul>
+<li><p><strong>Decision</strong>: Choose <span class="math notranslate nohighlight">\( D_1 \)</span> for any observation <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>If the minimax risk corresponds to <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span></strong>: The decision rule would be to always choose <span class="math notranslate nohighlight">\( H_0 \)</span> since the risk associated with <span class="math notranslate nohighlight">\( C_{00} \)</span> (the cost when <span class="math notranslate nohighlight">\( H_0 \)</span> is true and <span class="math notranslate nohighlight">\( H_0 \)</span> is chosen) is considered.</p>
+<ul>
+<li><p><strong>Decision</strong>: Choose <span class="math notranslate nohighlight">\( D_0 \)</span> for any observation <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="differentiable-interior-minimax-solution">
+<h2>Differentiable Interior Minimax Solution<a class="headerlink" href="#differentiable-interior-minimax-solution" title="Link to this heading">#</a></h2>
+<p>Figure 4.5 shows an example of this situation. Indeed, it is clear from the figure that we want to pick a value of <span class="math notranslate nohighlight">\( \pi_0 \)</span> such that the <em>slope</em> of the risk <span class="math notranslate nohighlight">\( r(\pi_0, a) \)</span> is zero.</p>
+<p>From actual risk definition, differentiating <span class="math notranslate nohighlight">\( r(\pi_0, a) \)</span> by <span class="math notranslate nohighlight">\( \pi_0 \)</span>, we see that the minimax solution corresponds to the point where</p>
+<div class="math notranslate nohighlight">
+\[
+r_0(a) = r_1(a) \quad (4.79)
+\]</div>
+<p>That is, the minimax solution corresponds to the point where the two conditional risks are identical.</p>
+<p>We attempt to find the value of <span class="math notranslate nohighlight">\( a \)</span> and the associated minimax threshold <span class="math notranslate nohighlight">\( \tau_{mm} \)</span>, given by</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{mm} = \frac{a(C_{10} - C_{00})}{(1 - a)(C_{01} - C_{11})}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( r_0(a) = r_1(a) \)</span>.</p>
+<p>In many practical situations, it is easier to find the decision regions <span class="math notranslate nohighlight">\( R_0 \)</span> and <span class="math notranslate nohighlight">\( R_1 \)</span> rather than the <em>a priori</em> probability <span class="math notranslate nohighlight">\( a \)</span>.</p>
+<p>This occurs when the minimax solution lies at an interior point of the decision space, typically where the conditional risks <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are equal.</p>
+<section id="decision-making-procedure">
+<h3>Decision Making Procedure<a class="headerlink" href="#decision-making-procedure" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Calculate the threshold <span class="math notranslate nohighlight">\( \tau_{mm} \)</span></strong> using:</p>
+<div class="math notranslate nohighlight">
+\[
+   \tau_{mm} = \frac{a(C_{10} - C_{00})}{(1 - a)(C_{01} - C_{11})}
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( a \)</span> is the minimax <em>a priori</em> probability.</p>
+</li>
+<li><p><strong>Calculate the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   L(y) = \frac{p(y|H_1)}{p(y|H_0)}
+   \]</div>
+</li>
+<li><p><strong>Make the decision</strong>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( L(y) &gt; \tau_{mm} \)</span>, choose <span class="math notranslate nohighlight">\( D_1 \)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( L(y) \leq \tau_{mm} \)</span>, choose <span class="math notranslate nohighlight">\( D_0 \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="nondifferentiable-interior-minimax-solution">
+<h2>Nondifferentiable Interior Minimax Solution<a class="headerlink" href="#nondifferentiable-interior-minimax-solution" title="Link to this heading">#</a></h2>
+<p>Figure 4.7 shows an example of such a case.</p>
+<p>This case always arises when the underlying conditional probabilities <span class="math notranslate nohighlight">\( p(y|H_0) \)</span> and <span class="math notranslate nohighlight">\( p(y|H_1) \)</span> are discrete or hybrid.</p>
+<p>In such a case, the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> is not differentiable everywhere. To find the minimax solution in this case, we adopt an approach given in [114].</p>
+<p>Consider the case shown by example in Figure 4.7.</p>
+<p>Define two decision rules.</p>
+<p>The first is defined by letting <span class="math notranslate nohighlight">\( \pi_0 \)</span> approach <span class="math notranslate nohighlight">\( a \)</span> from below, that is,</p>
+<div class="math notranslate nohighlight">
+\[
+a^- = \lim_{\epsilon \to 0} (a - \epsilon)
+\]</div>
+<p>and it has an associated decision region for <span class="math notranslate nohighlight">\( H_1 \)</span> of</p>
+<div class="math notranslate nohighlight">
+\[
+R_1^- = \{ y : L(y) &gt; \frac{a^-(C_{10} - C_{00})}{(1 - a^-)(C_{01} - C_{11})} \}
+\]</div>
+<p>The second decision rule is defined by letting <span class="math notranslate nohighlight">\( \pi_0 \)</span> approach <span class="math notranslate nohighlight">\( a \)</span> from above,</p>
+<div class="math notranslate nohighlight">
+\[
+a^+ = \lim_{\epsilon \to 0} (a + \epsilon)
+\]</div>
+<p>Its associated decision region is</p>
+<div class="math notranslate nohighlight">
+\[
+R_1^+ = \{ y : L(y) &gt; \frac{a^+(C_{10} - C_{00})}{(1 - a^+)(C_{01} - C_{11})} \}
+\]</div>
+<p>The critical region occurs when <span class="math notranslate nohighlight">\( L(y) \)</span> equals the threshold.</p>
+<p>The minimax decision rule for this case of a nondifferentiable interior solution, defined around the critical region, can be stated as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{mm}(y) = 
+\begin{cases} 
+1, &amp; L(y) &gt; \tau_{mm} \\
+\eta, &amp; L(y) = \tau_{mm} \\
+0, &amp; L(y) &lt; \tau_{mm}
+\end{cases} 
+\end{split}\]</div>
+<p>and is known as a randomization rule.</p>
+<p>If <span class="math notranslate nohighlight">\( L(y) \)</span> exceeds <span class="math notranslate nohighlight">\( \tau_{mm} \)</span>, decide <span class="math notranslate nohighlight">\( D_1 \)</span>. If <span class="math notranslate nohighlight">\( L(y) &lt; \tau_{mm} \)</span>, decide <span class="math notranslate nohighlight">\( D_0 \)</span>. If <span class="math notranslate nohighlight">\( L(y) = \tau_{mm} \)</span>, decide <span class="math notranslate nohighlight">\( D_1 \)</span> with probability <span class="math notranslate nohighlight">\( \eta \)</span>.</p>
+<p>We want to pick the variable <span class="math notranslate nohighlight">\( \eta \)</span> so that the conditional risk associated with decision <span class="math notranslate nohighlight">\( D_1 \)</span> and the decision rule <span class="math notranslate nohighlight">\( \delta_{mm} \)</span> is the same as the conditional risk associated with decision <span class="math notranslate nohighlight">\( D_0 \)</span> and <span class="math notranslate nohighlight">\( \delta_{mm} \)</span>. For this case, these conditional risks are labeled as <span class="math notranslate nohighlight">\( \delta r_j \)</span>, <span class="math notranslate nohighlight">\( j = 0, 1 \)</span>.</p>
+<p>It is assumed that region <span class="math notranslate nohighlight">\( R_1^- \)</span> occurs with probability <span class="math notranslate nohighlight">\( \eta \)</span> and <span class="math notranslate nohighlight">\( R_1^+ \)</span> with probability <span class="math notranslate nohighlight">\( (1 - \eta) \)</span>. Now, the conditional risks are</p>
+<div class="math notranslate nohighlight">
+\[
+\delta r_j = \eta r_j(a^-) + (1 - \eta) r_j(a^+), \quad j = 0, 1 
+\]</div>
+<p>Our guide of equality for <span class="math notranslate nohighlight">\( j = 0 \)</span> and <span class="math notranslate nohighlight">\( j = 1 \)</span> in the above equation is achieved if</p>
+<div class="math notranslate nohighlight">
+\[
+\eta = \frac{r_0(a^+) - r_1(a^+)}{r_0(a^+) - r_1(a^+) + r_1(a^-) - r_0(a^-)}
+\]</div>
+<p><strong>DISCUSSION.</strong> This case arises when the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> is not differentiable everywhere, often due to discrete or hybrid conditional probabilities.</p>
+<section id="id1">
+<h3>Decision Making Procedure<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Define two critical values <span class="math notranslate nohighlight">\( a^- \)</span> and <span class="math notranslate nohighlight">\( a^+ \)</span></strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( a^- \)</span> approaches <span class="math notranslate nohighlight">\( a \)</span> from below.</p></li>
+<li><p><span class="math notranslate nohighlight">\( a^+ \)</span> approaches <span class="math notranslate nohighlight">\( a \)</span> from above.</p></li>
+</ul>
+</li>
+<li><p><strong>Determine the decision regions</strong>:</p>
+<ul class="simple">
+<li><p><strong>Region <span class="math notranslate nohighlight">\( R_1^- \)</span></strong>: Decision <span class="math notranslate nohighlight">\( D_1 \)</span> is made if <span class="math notranslate nohighlight">\( L(y) &gt; \frac{a^-(C_{10} - C_{00})}{(1 - a^-)(C_{01} - C_{11})} \)</span>.</p></li>
+<li><p><strong>Region <span class="math notranslate nohighlight">\( R_1^+ \)</span></strong>: Decision <span class="math notranslate nohighlight">\( D_1 \)</span> is made if <span class="math notranslate nohighlight">\( L(y) &gt; \frac{a^+(C_{10} - C_{00})}{(1 - a^+)(C_{01} - C_{11})} \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Critical Region and Randomization</strong>:</p>
+<ul>
+<li><p>Define a threshold <span class="math notranslate nohighlight">\( \tau_{mm} \)</span> around which decisions are randomized.</p></li>
+<li><p><strong>Decision Rule <span class="math notranslate nohighlight">\( \delta_{mm}(y) \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \delta_{mm}(y) = 
+     \begin{cases} 
+     1, &amp; L(y) &gt; \tau_{mm} \\
+     \eta, &amp; L(y) = \tau_{mm} \\
+     0, &amp; L(y) &lt; \tau_{mm}
+     \end{cases}
+     \end{split}\]</div>
+</li>
+<li><p>Here, <span class="math notranslate nohighlight">\( \eta \)</span> is a probability chosen such that the conditional risks are balanced.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( L(y) = \tau_{mm} \)</span>, the decision <span class="math notranslate nohighlight">\( D_1 \)</span> is made with probability <span class="math notranslate nohighlight">\( \eta \)</span> and <span class="math notranslate nohighlight">\( D_0 \)</span> with probability <span class="math notranslate nohighlight">\( 1 - \eta \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>DISCUSSION.</strong> <span class="math notranslate nohighlight">\( a \)</span> represents a guessed or estimated value for the <em>a priori</em> probability <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<p>It is not necessarily the true value of <span class="math notranslate nohighlight">\( \pi_0 \)</span>; rather, it is a value that we assume in order to set the decision threshold and determine the Bayes risk <span class="math notranslate nohighlight">\( r(\pi_0, a) \)</span>.</p>
+<p>The actual value of <span class="math notranslate nohighlight">\( \pi_0 \)</span> may differ, leading to a discrepancy between the assumed and actual risks.</p>
+<p>The minimax criterion seeks to minimize the worst-case risk that could arise from incorrect assumptions about <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+</section>
+</section>
+</section>
+<section id="example-antipodal-signal-detection-and-decision-using-minimax-criterion">
+<h1>Example: Antipodal Signal Detection and Decision Using MiniMax Criterion<a class="headerlink" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion" title="Link to this heading">#</a></h1>
+<p>This example [B2, Ex 4.9] continues previous example, we assume that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \pi_0 \)</span> is unknown,</p></li>
+<li><p>the costs given as previously, namely <span class="math notranslate nohighlight">\( C_{00} = C_{11} = 0 \)</span>, <span class="math notranslate nohighlight">\( C_{10} = 1 \)</span>, and <span class="math notranslate nohighlight">\( C_{01} = 2 \)</span>.</p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\( C_{00} \)</span> and <span class="math notranslate nohighlight">\( C_{11} \)</span> are both zero, we know that the minimax solution corresponds to an <em>a priori</em> probability interior to the interval <span class="math notranslate nohighlight">\((0, 1)\)</span>; i.e., it is not an endpoint solution.</p>
+<p>Furthermore, since this example is associated with continuous random variables, we are dealing with <em>a differentiable interior minimax solution</em>.</p>
+<p>In these examples, we have used the log-likelihood ratio, and the results have shown that we decide <span class="math notranslate nohighlight">\( D_1 \)</span> if <span class="math notranslate nohighlight">\( y \geq \tau_{mm}' \)</span> and <span class="math notranslate nohighlight">\( D_0 \)</span> if <span class="math notranslate nohighlight">\( y &lt; \tau_{mm}' \)</span>, where <span class="math notranslate nohighlight">\( \tau_{mm}' \)</span> is the log-likelihood minimax threshold.</p>
+<p>We want to find a threshold <span class="math notranslate nohighlight">\( \tau_{mm}' \)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+C_{10}P_{10} + C_{00}P_{00} = C_{11}P_{11} + C_{01}P_{01}
+\]</div>
+<p>or, in this case,</p>
+<div class="math notranslate nohighlight">
+\[
+P_{10} = 2P_{01}
+\]</div>
+<p>It is easy to show that this can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+2 \int_{-\infty}^{\tau_{mm}'} \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left( -\frac{(y - b)^2}{2\sigma^2} \right) dy = \int_{\tau_{mm}'}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left( -\frac{(y + b)^2}{2\sigma^2} \right) dy
+\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[
+\text{erf} \left( \frac{b - \tau_{mm}'}{\sqrt{2\sigma}} \right) - \frac{1}{2} \text{erf} \left( \frac{\tau_{mm}' + b}{\sqrt{2\sigma}} \right) = \frac{1}{2}
+\]</div>
+<p>A simple way to find the solution to this transcendental equation is to define a function as</p>
+<div class="math notranslate nohighlight">
+\[
+f = \text{erf} \left( \frac{b - \tau_{mm}'}{\sqrt{2\sigma}} \right) - \frac{1}{2} \text{erf} \left( \frac{\tau_{mm}' + b}{\sqrt{2\sigma}} \right) - \frac{1}{2}
+\]</div>
+<p>After some computation, we obtain <span class="math notranslate nohighlight">\( \tau_{mm}' \approx -0.073 \)</span> for <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>.</p>
+<p>Thus, the decision rule is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{mm}(y) = 
+\begin{cases}
+1, &amp; y \geq -0.073 \\
+0, &amp; y &lt; -0.073
+\end{cases}
+\end{split}\]</div>
+<section id="numerical-results">
+<h2>Numerical results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
+<p>Plot <span class="math notranslate nohighlight">\( f \)</span> for <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span> as a function of <span class="math notranslate nohighlight">\( \tau_{mm}' \)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Improved version of the code including the required features</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+
+<span class="c1"># Given values for the example</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">)</span>
+
+<span class="c1"># Define the function f </span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t_mm_prime</span><span class="p">):</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">erf</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">t_mm_prime</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_squared</span><span class="p">))</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erf</span><span class="p">((</span><span class="n">t_mm_prime</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_squared</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">term1</span> <span class="o">-</span> <span class="n">term2</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+<span class="c1"># Define the range of t_mm_prime to evaluate the function f</span>
+<span class="n">t_mm_prime_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_mm_prime_values</span><span class="p">]</span>
+
+<span class="c1"># Solve for tau_mm_prime where the function equals zero</span>
+<span class="n">tau_mm_prime_solution</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate the slope at the solution point</span>
+<span class="n">slope_at_solution</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tau_mm_prime_solution</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+
+<span class="c1"># Plot the function f and notate the solution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mm_prime_values</span><span class="p">,</span> <span class="n">f_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical $f(t_</span><span class="si">{mm}</span><span class="s1">^</span><span class="se">\\</span><span class="s1">prime)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Zero Line&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tau_mm_prime_solution</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">tau_mm_prime_solution</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Solution at $t_</span><span class="se">{{</span><span class="s1">mm</span><span class="se">}}</span><span class="s1">^</span><span class="se">\\</span><span class="s1">prime=</span><span class="si">{</span><span class="n">tau_mm_prime_solution</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tau_mm_prime_solution</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">tau_mm_prime_solution</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">tau_mm_prime_solution</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">tau_mm_prime_solution</span><span class="p">)</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the slope line at the solution</span>
+<span class="n">tangent_line</span> <span class="o">=</span> <span class="n">slope_at_solution</span> <span class="o">*</span> <span class="p">(</span><span class="n">t_mm_prime_values</span> <span class="o">-</span> <span class="n">tau_mm_prime_solution</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">tau_mm_prime_solution</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mm_prime_values</span><span class="p">,</span> <span class="n">tangent_line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Slope at solution&#39;</span><span class="p">)</span>
+
+<span class="c1"># Additional plot settings</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical $f(t_</span><span class="si">{mm}</span><span class="s1">^</span><span class="se">\\</span><span class="s1">prime)$ with Solution and Slope&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t_</span><span class="si">{mm}</span><span class="s1">^</span><span class="se">\\</span><span class="s1">prime$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$f(t_</span><span class="si">{mm}</span><span class="s1">^</span><span class="se">\\</span><span class="s1">prime)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d0cda48104a01af38848998e30dd65c8986fb89fc34966f3cb7febcf0fcb5340.png" src="_images/d0cda48104a01af38848998e30dd65c8986fb89fc34966f3cb7febcf0fcb5340.png" />
+</div>
+</div>
+</section>
+<section id="schonhoff-s-method">
+<h2>Schonhoff’s Method<a class="headerlink" href="#schonhoff-s-method" title="Link to this heading">#</a></h2>
+<p>In the following computation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">erf</span></code> is used to compute the error function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fzero</span></code> is used to find the zeroes of the function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">efund.m</span></code> and <code class="docutils literal notranslate"><span class="pre">edf.m</span></code> is used to find the result</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edif.m</span></code> is for the plot.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Error function difference (EDF) function</span>
+<span class="c1"># Inputs:</span>
+<span class="c1">#   b = the mean for a Gaussian pdf</span>
+<span class="c1">#   sig = standard deviation for a Gaussian pdf</span>
+<span class="c1">#   tmm = log-likelihood minimax threshold</span>
+<span class="c1"># Outputs:</span>
+<span class="c1">#   Error function difference for specified tmm</span>
+<span class="k">def</span> <span class="nf">edf</span><span class="p">(</span><span class="n">tmm</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">tmm</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">tmm</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+<span class="c1"># Estimated Error Probability</span>
+<span class="c1"># Inputs:</span>
+<span class="c1">#   nsam = number of samples</span>
+<span class="c1">#   snrdb = signal-to-noise ratio in dB</span>
+<span class="c1"># Outputs:</span>
+<span class="c1">#   Probability of error displayed for specified snr in dB</span>
+<span class="k">def</span> <span class="nf">err</span><span class="p">(</span><span class="n">nsam</span><span class="p">,</span> <span class="n">snrdb</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">snrdb</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nsam</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">sr</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nsam</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">pe</span> <span class="o">=</span> <span class="n">nerr</span> <span class="o">/</span> <span class="n">nsam</span>
+    <span class="k">return</span> <span class="n">pe</span>
+
+<span class="c1"># Error function difference solution</span>
+<span class="c1"># Inputs:</span>
+<span class="c1">#   b = the mean for a Gaussian pdf</span>
+<span class="c1">#   sig = standard deviation for a Gaussian pdf</span>
+<span class="c1"># Outputs:</span>
+<span class="c1">#   Error function difference solution (threshold)</span>
+<span class="k">def</span> <span class="nf">efund</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+    <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tmm</span><span class="p">:</span> <span class="n">edf</span><span class="p">(</span><span class="n">tmm</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">xtol</span><span class="o">=</span><span class="n">tol</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">threshold</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Error function difference plot</span>
+<span class="c1"># Inputs:</span>
+<span class="c1">#   b = the mean for a Gaussian pdf</span>
+<span class="c1">#   sig = standard deviation for a Gaussian pdf</span>
+<span class="c1"># Outputs:</span>
+<span class="c1">#   Error function difference plotted versus tmm</span>
+<span class="k">def</span> <span class="nf">edif</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+    <span class="n">tmm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">tmm</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">tmm</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig</span><span class="p">)</span>
+    <span class="n">ed_plot</span> <span class="o">=</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tmm</span><span class="p">,</span> <span class="n">ed_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\tau_</span><span class="si">{mm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error function difference&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Example usage</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">nsam</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">snrdb</span> <span class="o">=</span> <span class="mi">10</span>
+    
+    <span class="c1"># Estimated Error Probability</span>
+    <span class="n">pe</span> <span class="o">=</span> <span class="n">err</span><span class="p">(</span><span class="n">nsam</span><span class="p">,</span> <span class="n">snrdb</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Error Probability: </span><span class="si">{</span><span class="n">pe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Error function difference solution</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">efund</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimax Threshold: </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot Error function difference</span>
+    <span class="n">edif</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated Error Probability: 0.0
+Minimax Threshold: -0.07301030447230179
+</pre></div>
+</div>
+<img alt="_images/8c7692452adf2b31ea0439126c82c6997d8a18f9e128b8d7a80b08fe9a0bd2a7.png" src="_images/8c7692452adf2b31ea0439126c82c6997d8a18f9e128b8d7a80b08fe9a0bd2a7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Estimated Error Probability</span>
+<span class="c1"># Inputs:</span>
+<span class="c1">#   nsam = number of samples</span>
+<span class="c1">#   snrdb = signal-to-noise ratio in dB</span>
+<span class="c1"># Outputs:</span>
+<span class="c1">#   Probability of error displayed for specified snr in dB</span>
+<span class="k">def</span> <span class="nf">err</span><span class="p">(</span><span class="n">nsam</span><span class="p">,</span> <span class="n">snrdb</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">snrdb</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nsam</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">sr</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nsam</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">pe</span> <span class="o">=</span> <span class="n">nerr</span> <span class="o">/</span> <span class="n">nsam</span>
+    <span class="k">return</span> <span class="n">pe</span>
+
+<span class="c1"># Function to plot Estimated Error Probability as a function of SNR in dB (log scale)</span>
+<span class="k">def</span> <span class="nf">plot_error_probability_vs_snr_log</span><span class="p">():</span>
+    <span class="n">nsam</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Number of samples</span>
+    <span class="n">snrdb_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># SNR range in dB</span>
+    <span class="n">pe_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">err</span><span class="p">(</span><span class="n">nsam</span><span class="p">,</span> <span class="n">snrdb</span><span class="p">)</span> <span class="k">for</span> <span class="n">snrdb</span> <span class="ow">in</span> <span class="n">snrdb_values</span><span class="p">]</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">snrdb_values</span><span class="p">,</span> <span class="n">pe_values</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SNR (dB)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Error Probability&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated Error Probability vs. SNR (dB) [Log Scale]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Example usage</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">plot_error_probability_vs_snr_log</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/535ac44654a047cc1f87de03d3a0e70cfdcc510d437dade528ab570992de7c19.png" src="_images/535ac44654a047cc1f87de03d3a0e70cfdcc510d437dade528ab570992de7c19.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c2_s7_Bayes_criterion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bayes Criterion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c2_s11_Neyman_Pearson.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Neyman-Pearson Criterion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk-when-the-a-priori-probability-is-unknown-and-guessed">Actual risk when the a priori probability is unknown and guessed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-the-bayes-risk-and-the-actual-risk">Demonstrate the Bayes risk and the actual risk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-bayes-risk-as-a-function-of-pi-0">Fig. Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-actual-risk-as-a-function-of-pi-0">Fig. Actual risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-actual-and-bayes-risks-as-a-function-of-pi-0">FIGURE. Actual and Bayes risks as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-using-minimax-criterion">Decision using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making">Decision Making</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-minimax-solution">Endpoint Minimax Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiable-interior-minimax-solution">Differentiable Interior Minimax Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-procedure">Decision Making Procedure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nondifferentiable-interior-minimax-solution">Nondifferentiable Interior Minimax Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Making Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion">Example: Antipodal Signal Detection and Decision Using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

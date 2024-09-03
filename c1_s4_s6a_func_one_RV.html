@@ -184,20 +184,61 @@
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
 
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
 
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -300,14 +341,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Functions of A Single Random Variable</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-distribution-of-force-derived-from-accelerated-motion">Example: Exponential Distribution of Force Derived from Accelerated Motion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-cdf-of-the-force-mathbf-f">Finding the CDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-pdf-of-the-force-mathbf-f">Finding the PDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insight">Insight</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Functions of A Single Random Variable</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-distribution-of-force-derived-from-accelerated-motion">Example: Exponential Distribution of Force Derived from Accelerated Motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-cdf-of-the-force-mathbf-f">Finding the CDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-pdf-of-the-force-mathbf-f">Finding the PDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight">Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-of-computing-the-pdf-of-a-function-of-a-random-variable">Methods of computing the pdf of a function of a random variable</a><ul class="visible nav section-nav flex-column">
@@ -330,7 +369,6 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 
             </nav>
@@ -343,7 +381,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="functions-of-a-single-random-variable">
+  <section id="functions-of-a-single-random-variable">
 <h1>Functions of A Single Random Variable<a class="headerlink" href="#functions-of-a-single-random-variable" title="Link to this heading">#</a></h1>
 <p>The probability density function (PDF) and cumulative distribution function (CDF) of a transformed random variable can be derived from the PDF or CDF of the original random variable.</p>
 <p>In general, if <span class="math notranslate nohighlight">\( \mathbf{y} = g(\mathbf{x}) \)</span>, the objective is to determine the PDF of <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> given the function <span class="math notranslate nohighlight">\( g(\cdot) \)</span> and the PDF of <span class="math notranslate nohighlight">\( \mathbf{x} \)</span>, or similarly, to determine the CDF of <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> from <span class="math notranslate nohighlight">\( g(\cdot) \)</span> and the CDF of <span class="math notranslate nohighlight">\( \mathbf{x} \)</span>.</p>
@@ -363,8 +401,9 @@ p_{\mathbf{y}}(y) = \frac{p_{\mathbf{x}}(x)}{\left| \frac{dy}{dx} \right|}
 \]</div>
 <p>The absolute value <span class="math notranslate nohighlight">\( \left| \cdot \right| \)</span> is necessary because <span class="math notranslate nohighlight">\( \frac{dy}{dx} \)</span> can be negative.</p>
 <p>In summary, for a monotonic and invertible function, the PDF of <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> can be derived directly from the PDF of <span class="math notranslate nohighlight">\( \mathbf{x} \)</span>.</p>
+</section>
 <section id="example-exponential-distribution-of-force-derived-from-accelerated-motion">
-<h2>Example: Exponential Distribution of Force Derived from Accelerated Motion<a class="headerlink" href="#example-exponential-distribution-of-force-derived-from-accelerated-motion" title="Link to this heading">#</a></h2>
+<h1>Example: Exponential Distribution of Force Derived from Accelerated Motion<a class="headerlink" href="#example-exponential-distribution-of-force-derived-from-accelerated-motion" title="Link to this heading">#</a></h1>
 <p>Suppose the acceleration <span class="math notranslate nohighlight">\( \mathbf{a} \)</span> of an object with mass <span class="math notranslate nohighlight">\( m \)</span> is known to be exponentially distributed with parameter <span class="math notranslate nohighlight">\( \lambda \)</span>. The probability density function (PDF) of <span class="math notranslate nohighlight">\( \mathbf{a} \)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -376,7 +415,7 @@ p_{\mathbf{a}}(a) =
 \end{split}\]</div>
 <p>To estimate the average force produced, we use the relationship <span class="math notranslate nohighlight">\( \mathbf{f} = m \mathbf{a} \)</span>. We seek to find the PDF of the force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span>.</p>
 <section id="finding-the-cdf-of-the-force-mathbf-f">
-<h3>Finding the CDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span><a class="headerlink" href="#finding-the-cdf-of-the-force-mathbf-f" title="Link to this heading">#</a></h3>
+<h2>Finding the CDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span><a class="headerlink" href="#finding-the-cdf-of-the-force-mathbf-f" title="Link to this heading">#</a></h2>
 <p>The cumulative distribution function (CDF) of <span class="math notranslate nohighlight">\( \mathbf{f} \)</span>, <span class="math notranslate nohighlight">\( F_{\mathbf{f}}(f) \)</span>, is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -399,7 +438,7 @@ F_{\mathbf{f}}(f) = 1 - e^{-\lambda f / m}
 \]</div>
 </section>
 <section id="finding-the-pdf-of-the-force-mathbf-f">
-<h3>Finding the PDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span><a class="headerlink" href="#finding-the-pdf-of-the-force-mathbf-f" title="Link to this heading">#</a></h3>
+<h2>Finding the PDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span><a class="headerlink" href="#finding-the-pdf-of-the-force-mathbf-f" title="Link to this heading">#</a></h2>
 <p>To find the PDF <span class="math notranslate nohighlight">\( p_{\mathbf{f}}(f) \)</span>, we differentiate the CDF <span class="math notranslate nohighlight">\( F_{\mathbf{f}}(f) \)</span> with respect to <span class="math notranslate nohighlight">\( f \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -411,11 +450,11 @@ p_{\mathbf{f}}(f) = \frac{dF_{\mathbf{f}}(f)}{df} =
 \end{split}\]</div>
 </section>
 <section id="insight">
-<h3>Insight<a class="headerlink" href="#insight" title="Link to this heading">#</a></h3>
+<h2>Insight<a class="headerlink" href="#insight" title="Link to this heading">#</a></h2>
 <p>The derived PDF <span class="math notranslate nohighlight">\( p_{\mathbf{f}}(f) \)</span> indicates that the force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span> follows an exponential distribution scaled by the mass <span class="math notranslate nohighlight">\( m \)</span> and the parameter <span class="math notranslate nohighlight">\( \lambda \)</span>. This result aligns with the fact that force is linearly related to acceleration by the constant mass <span class="math notranslate nohighlight">\( m \)</span>, and since acceleration <span class="math notranslate nohighlight">\( \mathbf{a} \)</span> is exponentially distributed, so is the force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span>. The exponential decay in the PDF suggests that higher forces are less likely, consistent with the nature of exponential distributions.</p>
 </section>
 <section id="simulation">
-<h3>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h3>
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
 <p>To verify the theoretical result through simulation, we will:</p>
 <ol class="arabic simple">
 <li><p>Generate samples of acceleration <span class="math notranslate nohighlight">\( \mathbf{a} \)</span> from an exponential distribution.</p></li>
@@ -498,7 +537,6 @@ p_{\mathbf{f}}(f) = \frac{dF_{\mathbf{f}}(f)}{df} =
 </div>
 </section>
 </section>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="methods-of-computing-the-pdf-of-a-function-of-a-random-variable">
 <h1>Methods of computing the pdf of a function of a random variable<a class="headerlink" href="#methods-of-computing-the-pdf-of-a-function-of-a-random-variable" title="Link to this heading">#</a></h1>
 <p>Two methods used to compute the pdf of a function of a random variable include:</p>
@@ -509,6 +547,7 @@ p_{\mathbf{f}}(f) = \frac{dF_{\mathbf{f}}(f)}{df} =
 <section id="direct-method">
 <h2>Direct method<a class="headerlink" href="#direct-method" title="Link to this heading">#</a></h2>
 <p>The direct method involves using the known function and the pdf (probability density function) of the original random variable to derive the pdf of the transformed random variable.</p>
+<p><strong>APPLICATION.</strong> for backpropagation derivation in the training of a neural network.</p>
 <section id="example-linear-transformation">
 <h3>Example: Linear Transformation<a class="headerlink" href="#example-linear-transformation" title="Link to this heading">#</a></h3>
 <p>Consider the linear transformation <span class="math notranslate nohighlight">\( \mathbf{y} = a\mathbf{x} + b \)</span> with <span class="math notranslate nohighlight">\( a &gt; 0 \)</span>. Our objective is to determine the CDF and PDF of <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> given the CDF and PDF of <span class="math notranslate nohighlight">\( \mathbf{x} \)</span> using the direct method.</p>
@@ -783,12 +822,6 @@ p_{\mathbf{y}}(y) =
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>T. Schonhoff and A. Giordano, <em>Detection and Estimation Theory and its Applications</em>. Prentice Hall, 2006 , Chapter 1</p></li>
-</ul>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -854,14 +887,12 @@ p_{\mathbf{y}}(y) =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Functions of A Single Random Variable</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-distribution-of-force-derived-from-accelerated-motion">Example: Exponential Distribution of Force Derived from Accelerated Motion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-cdf-of-the-force-mathbf-f">Finding the CDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-pdf-of-the-force-mathbf-f">Finding the PDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insight">Insight</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Functions of A Single Random Variable</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-distribution-of-force-derived-from-accelerated-motion">Example: Exponential Distribution of Force Derived from Accelerated Motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-cdf-of-the-force-mathbf-f">Finding the CDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-pdf-of-the-force-mathbf-f">Finding the PDF of the Force <span class="math notranslate nohighlight">\( \mathbf{f} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight">Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-of-computing-the-pdf-of-a-function-of-a-random-variable">Methods of computing the pdf of a function of a random variable</a><ul class="visible nav section-nav flex-column">
@@ -884,7 +915,6 @@ p_{\mathbf{y}}(y) =
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 
   </nav></div>

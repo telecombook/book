@@ -184,20 +184,61 @@
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Standard Complex Gaussian Vector</a></li>
+
+
+
 
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
 
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -300,15 +341,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">Derivation for the Marginal PDF of Real and Imaginary Parts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-complex-gaussian-vector-pdf">Standard Complex Gaussian Vector PDF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-distribution-of-real-and-imaginary-parts">Marginal Distribution of Real and Imaginary Parts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-of-a-single-real-or-imaginary-part">Marginal PDF of a Single Real or Imaginary Part</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard Complex Gaussian Vector</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">Derivation for the Marginal PDF of Real and Imaginary Parts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-complex-gaussian-vector-pdf">Standard Complex Gaussian Vector PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-distribution-of-real-and-imaginary-parts">Marginal Distribution of Real and Imaginary Parts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-of-a-single-real-or-imaginary-part">Marginal PDF of a Single Real or Imaginary Part</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation-of-a-complex-gaussian-vector">Linear Transformation of a Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
@@ -340,7 +379,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="standard-complex-gaussian-vector">
+  <section id="standard-complex-gaussian-vector">
 <h1>Standard Complex Gaussian Vector<a class="headerlink" href="#standard-complex-gaussian-vector" title="Link to this heading">#</a></h1>
 <p>A <strong>complex Gaussian vector</strong> is a vector whose elements are complex-valued random variables, each following a Gaussian (normal) distribution. For a standard complex Gaussian vector, denoted as <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>:</p>
 <ul class="simple">
@@ -348,8 +387,9 @@ document.write(`
 <li><p>Each element follows a complex normal distribution with mean 0 and variance 1, denoted by <span class="math notranslate nohighlight">\(\mathcal{CN}(0, 1)\)</span>.</p></li>
 </ul>
 <p>The notation <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I})\)</span> indicates that <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is distributed according to a complex normal distribution with a mean vector of zeros and a covariance matrix equal to the identity matrix <span class="math notranslate nohighlight">\(\vec{I}\)</span>.</p>
+</section>
 <section id="probability-density-function-pdf">
-<h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h2>
+<h1>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h1>
 <p>The (joint) probability density function (PDF) of a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -363,7 +403,7 @@ f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{\pi^n} e^{-||\vec{w}||^2}, \quad \vec{w
 <p>This PDF describes the likelihood of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> taking on a particular value <span class="math notranslate nohighlight">\(\vec{w}\)</span> in the <span class="math notranslate nohighlight">\(n\)</span>-dimensional complex space.</p>
 </section>
 <section id="simulation">
-<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<h1>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -418,10 +458,10 @@ f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{\pi^n} e^{-||\vec{w}||^2}, \quad \vec{w
 </div>
 </section>
 <section id="derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">
-<h2>Derivation for the Marginal PDF of Real and Imaginary Parts<a class="headerlink" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts" title="Link to this heading">#</a></h2>
+<h1>Derivation for the Marginal PDF of Real and Imaginary Parts<a class="headerlink" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts" title="Link to this heading">#</a></h1>
 <p>The PDF <span class="math notranslate nohighlight">\(\frac{1}{\pi^n} e^{-||\vec{w}||^2}\)</span> describes the distribution of the <span class="math notranslate nohighlight">\(n\)</span>-dimensional standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>. To derive the marginal PDF of the real or imaginary parts of the components of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>, we can look at the properties of the complex normal distribution.</p>
 <section id="standard-complex-gaussian-vector-pdf">
-<h3>Standard Complex Gaussian Vector PDF<a class="headerlink" href="#standard-complex-gaussian-vector-pdf" title="Link to this heading">#</a></h3>
+<h2>Standard Complex Gaussian Vector PDF<a class="headerlink" href="#standard-complex-gaussian-vector-pdf" title="Link to this heading">#</a></h2>
 <p>For a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I})\)</span>, the PDF is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -430,14 +470,14 @@ f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{\pi^n} e^{-||\vec{w}||^2}
 <p>where <span class="math notranslate nohighlight">\(||\vec{w}||^2 = \sum_{i=1}^{n} |w_i|^2 = \sum_{i=1}^{n} (x_i^2 + y_i^2)\)</span>.</p>
 </section>
 <section id="marginal-distribution-of-real-and-imaginary-parts">
-<h3>Marginal Distribution of Real and Imaginary Parts<a class="headerlink" href="#marginal-distribution-of-real-and-imaginary-parts" title="Link to this heading">#</a></h3>
+<h2>Marginal Distribution of Real and Imaginary Parts<a class="headerlink" href="#marginal-distribution-of-real-and-imaginary-parts" title="Link to this heading">#</a></h2>
 <p>Each component <span class="math notranslate nohighlight">\(w_i = x_i + i y_i\)</span> is a complex Gaussian random variable, where <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are real-valued normal random variables. Specifically, for each <span class="math notranslate nohighlight">\(i\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are independent and normally distributed with mean 0 and variance 1/2.</p></li>
 </ul>
 </section>
 <section id="marginal-pdf-of-a-single-real-or-imaginary-part">
-<h3>Marginal PDF of a Single Real or Imaginary Part<a class="headerlink" href="#marginal-pdf-of-a-single-real-or-imaginary-part" title="Link to this heading">#</a></h3>
+<h2>Marginal PDF of a Single Real or Imaginary Part<a class="headerlink" href="#marginal-pdf-of-a-single-real-or-imaginary-part" title="Link to this heading">#</a></h2>
 <p>The marginal PDF for a real or imaginary part of a single component <span class="math notranslate nohighlight">\(w_i\)</span> (say <span class="math notranslate nohighlight">\(x_i\)</span>) is given by the normal distribution with mean 0 and variance 1/2:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -492,7 +532,6 @@ f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}
 <img alt="_images/ab43c3f76fa95d2904f7556672623b9c4ca5c0bf5077b18d4b13c812c385e80a.png" src="_images/ab43c3f76fa95d2904f7556672623b9c4ca5c0bf5077b18d4b13c812c385e80a.png" />
 </div>
 </div>
-</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="linear-transformation-of-a-complex-gaussian-vector">
@@ -964,15 +1003,13 @@ Is the matrix U unitary? True
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">Derivation for the Marginal PDF of Real and Imaginary Parts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-complex-gaussian-vector-pdf">Standard Complex Gaussian Vector PDF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-distribution-of-real-and-imaginary-parts">Marginal Distribution of Real and Imaginary Parts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-of-a-single-real-or-imaginary-part">Marginal PDF of a Single Real or Imaginary Part</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard Complex Gaussian Vector</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">Derivation for the Marginal PDF of Real and Imaginary Parts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-complex-gaussian-vector-pdf">Standard Complex Gaussian Vector PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-distribution-of-real-and-imaginary-parts">Marginal Distribution of Real and Imaginary Parts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-of-a-single-real-or-imaginary-part">Marginal PDF of a Single Real or Imaginary Part</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation-of-a-complex-gaussian-vector">Linear Transformation of a Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">

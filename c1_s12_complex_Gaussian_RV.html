@@ -184,20 +184,61 @@
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Complex Random Vector</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
 
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
 
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -326,7 +367,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complex-random-vector">
+  <section id="complex-random-vector">
 <h1>Complex Random Vector<a class="headerlink" href="#complex-random-vector" title="Link to this heading">#</a></h1>
 <p>In communication systems, baseband representation is a fundamental concept, allowing the simplification of signal processing tasks by focusing on the frequency components near zero frequency. This approach often involves the use of complex random vectors to model and analyze the behavior of signals.</p>
 <section id="definition-of-a-complex-random-vector">
@@ -357,25 +398,21 @@ e^{j\theta}\vec{\mathbf{x}} \sim \vec{\mathbf{x}}, \quad \forall \theta
 <section id="statistical-characterization">
 <h2>Statistical Characterization<a class="headerlink" href="#statistical-characterization" title="Link to this heading">#</a></h2>
 <p>The first and second-order statistics of a circularly symmetric complex random vector can provide comprehensive information about the vector. Specifically, these statistics are characterized by the expected value and the covariance matrix.</p>
-<ol class="arabic">
-<li><p><strong>Mean (First-Order Statistics):</strong></p>
+<p><strong>Mean (First-Order Statistics):</strong></p>
 <p>The mean of <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[ E[\vec{\mathbf{x}}] \]</div>
 <p>For a circularly symmetric vector, the mean is often zero (i.e., <span class="math notranslate nohighlight">\( E[\vec{\mathbf{x}}] = \vec{0} \)</span>).</p>
-</li>
-<li><p><strong>Covariance Matrix (Second-Order Statistics):</strong></p>
+<p><strong>Covariance Matrix (Second-Order Statistics):</strong></p>
 <p>The second-order statistics are encapsulated in the covariance matrix, given by:</p>
 <div class="math notranslate nohighlight">
-\[ E[\vec{\mathbf{x}}\vec{\mathbf{x}}^H] \]</div>
+\[ E[\vec{\mathbf{x}}\vec{\mathbf{x}}^{\mathsf{H}}] \]</div>
 <p>Here:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E[\cdot]\)</span> denotes the expectation operator.</p></li>
-<li><p><span class="math notranslate nohighlight">\((\cdot)^H\)</span> denotes the Hermitian transpose (conjugate transpose).</p></li>
+<li><p><span class="math notranslate nohighlight">\((\cdot)^{\mathsf{H}}\)</span> denotes the Hermitian transpose (conjugate transpose).</p></li>
 </ul>
 <p>The covariance matrix provides information about the power and correlation of the components of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span>.</p>
-</li>
-</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -465,7 +502,7 @@ Difference in Variance: 0.0
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="discussion-on-circularly-symmetric-property">
+<section id="discussion-on-circularly-symmetric-property">
 <h1>Discussion on Circularly Symmetric Property<a class="headerlink" href="#discussion-on-circularly-symmetric-property" title="Link to this heading">#</a></h1>
 <p>A random vector <span class="math notranslate nohighlight">\( \vec{\mathbf{x}} \)</span> is said to be circularly symmetric if its distribution remains unchanged under multiplication by <span class="math notranslate nohighlight">\( e^{j\theta} \)</span> for any real <span class="math notranslate nohighlight">\( \theta \)</span>. Mathematically, this can be expressed as:</p>
 <div class="math notranslate nohighlight">

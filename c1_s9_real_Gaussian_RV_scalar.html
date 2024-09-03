@@ -184,20 +184,61 @@
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Real Scalar Gaussian Random Variable</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
 
 
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
 
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -300,18 +341,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Real Scalar Gaussian Random Variable</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complementary-cumulative-distribution-function-cdf">Complementary Cumulative Distribution Function (CDF)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds-for-q-a">Bounds for <span class="math notranslate nohighlight">\( Q(a) \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complementary-cumulative-distribution-function-ccdf">Complementary Cumulative Distribution Function (CCDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds-for-q-a">Bounds for <span class="math notranslate nohighlight">\( Q(a) \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-cdf-in-terms-of-error-function">Theoretical CDF in Terms of Error Function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-function">Error Function</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-cdf-in-terms-of-error-function">Theoretical CDF in Terms of Error Function:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-empirical-cdf-and-pdf">Simulation: Empirical CDF and PDF</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-empirical-cdf-and-pdf">Simulation: Empirical CDF and PDF</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-on-the-bounds">Discussions on the bounds</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -322,7 +364,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="real-scalar-gaussian-random-variable">
+  <section id="real-scalar-gaussian-random-variable">
 <h1>Real Scalar Gaussian Random Variable<a class="headerlink" href="#real-scalar-gaussian-random-variable" title="Link to this heading">#</a></h1>
 <section id="probability-density-function-pdf">
 <h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h2>
@@ -340,18 +382,82 @@ f_{\mathbf{x}}(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x-\mu)^2}{2\si
 </ul>
 <p><strong>Notation</strong></p>
 <p>The notation <span class="math notranslate nohighlight">\( \mathbf{x} \sim \mathcal{N}(\mu, \sigma^2) \)</span> indicates that the random variable <span class="math notranslate nohighlight">\( \mathbf{x} \)</span> follows a Gaussian distribution with mean <span class="math notranslate nohighlight">\( \mu \)</span> and variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
-<p>Similarly, <span class="math notranslate nohighlight">\( w \sim \mathcal{N}(0, 1) \)</span> denotes a standard Gaussian random variable with mean 0 and variance 1.</p>
+<p>Similarly, <span class="math notranslate nohighlight">\( \mathbf{w} \sim \mathcal{N}(0, 1) \)</span> denotes a standard Gaussian (or normal) random variable with mean 0 and variance 1.</p>
 </section>
-<section id="complementary-cumulative-distribution-function-cdf">
-<h2>Complementary Cumulative Distribution Function (CDF)<a class="headerlink" href="#complementary-cumulative-distribution-function-cdf" title="Link to this heading">#</a></h2>
-<p>The complementary CDF of the standard Gaussian, denoted as <span class="math notranslate nohighlight">\( Q(a) \)</span>, represents the probability that the standard Gaussian random variable <span class="math notranslate nohighlight">\( w \)</span> exceeds the value <span class="math notranslate nohighlight">\( a \)</span>. It is defined as:</p>
+<section id="complementary-cumulative-distribution-function-ccdf">
+<h2>Complementary Cumulative Distribution Function (CCDF)<a class="headerlink" href="#complementary-cumulative-distribution-function-ccdf" title="Link to this heading">#</a></h2>
+<p>The complementary cumulative distribution function (CCDF) of the standard Gaussian distribution, denoted as <span class="math notranslate nohighlight">\( Q(a) \)</span>, represents the probability that the standard Gaussian random variable <span class="math notranslate nohighlight">\( \mathbf{w} \)</span> exceeds the value <span class="math notranslate nohighlight">\( a \)</span>. It is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-Q(a) = P(w &gt; a) = \int_a^\infty \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{2}\right) \, dx
+Q(a) = P(\mathbf{w} &gt; a) = \int_a^\infty \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{w^2}{2}\right) \, dw
 \]</div>
-<p>The function <span class="math notranslate nohighlight">\( Q(a) \)</span> is derived from the tail probability of the standard Gaussian distribution, integrating the PDF from <span class="math notranslate nohighlight">\( a \)</span> to infinity. As <span class="math notranslate nohighlight">\( a \)</span> increases, <span class="math notranslate nohighlight">\( Q(a) \)</span> decreases exponentially, indicating that the probability of <span class="math notranslate nohighlight">\( w \)</span> being much larger than the mean is very small.</p>
+<p>This function <span class="math notranslate nohighlight">\( Q(a) \)</span> is often referred to as the <strong>Q-function</strong>.</p>
+<p>It is derived from the tail probability of the standard Gaussian distribution, which is the integral of the probability density function (PDF) from <span class="math notranslate nohighlight">\( a \)</span> to infinity.</p>
+<p><strong>DISCUSSION.</strong> <strong>Behavior of <span class="math notranslate nohighlight">\( Q(a) \)</span> as <span class="math notranslate nohighlight">\( a \)</span> Increases</strong>:</p>
+<ul>
+<li><p>When <span class="math notranslate nohighlight">\( a \)</span> is small (close to 0), <span class="math notranslate nohighlight">\( Q(a) \)</span> is relatively large because the probability that <span class="math notranslate nohighlight">\( \mathbf{w} \)</span> exceeds a small number is not negligible.</p></li>
+<li><p>As <span class="math notranslate nohighlight">\( a \)</span> increases, the area under the curve (from <span class="math notranslate nohighlight">\( a \)</span> to infinity) gets smaller, and so <span class="math notranslate nohighlight">\( Q(a) \)</span> decreases.</p></li>
+<li><p>The rate at which <span class="math notranslate nohighlight">\( Q(a) \)</span> decreases as <span class="math notranslate nohighlight">\( a \)</span> increases is very rapid. Specifically, for large values of <span class="math notranslate nohighlight">\( a \)</span>, the Q-function behaves approximately as:</p>
+<div class="math notranslate nohighlight">
+\[
+     Q(a) \approx \frac{1}{a\sqrt{2\pi}} \exp\left(-\frac{a^2}{2}\right)
+     \]</div>
+<p>This expression shows that <span class="math notranslate nohighlight">\( Q(a) \)</span> decreases much faster than a simple exponential function as <span class="math notranslate nohighlight">\( a \)</span> increases. The leading factor <span class="math notranslate nohighlight">\( \frac{1}{a\sqrt{2\pi}} \)</span> is relatively small compared to the rapid decay caused by the exponential term <span class="math notranslate nohighlight">\( \exp\left(-\frac{a^2}{2}\right) \)</span>.</p>
+</li>
+</ul>
+<p><strong>Gaussian decay.</strong> When people say “decreases exponentially,” they often refer to functions that decrease like <span class="math notranslate nohighlight">\( e^{-ka} \)</span> for some constant <span class="math notranslate nohighlight">\( k &gt; 0 \)</span>. However, <span class="math notranslate nohighlight">\( Q(a) \)</span> decreases even faster because it has a <span class="math notranslate nohighlight">\( -a^2 \)</span> in the exponent. This is known as “Gaussian decay,” which is faster than exponential decay.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfc</span>
+
+<span class="c1"># Define the Q-function using the complementary error function</span>
+<span class="k">def</span> <span class="nf">Q_function</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erfc</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Generate a range of &quot;a&quot; values</span>
+<span class="n">a_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Compute the Q-function for each &quot;a&quot;</span>
+<span class="n">Q_values</span> <span class="o">=</span> <span class="n">Q_function</span><span class="p">(</span><span class="n">a_values</span><span class="p">)</span>
+
+<span class="c1"># Define the asymptotic approximation of the Q-function for large &quot;a&quot;</span>
+<span class="k">def</span> <span class="nf">Q_function_asymptotic</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Compute the asymptotic approximation for each &quot;a&quot;</span>
+<span class="n">Q_asymptotic_values</span> <span class="o">=</span> <span class="n">Q_function_asymptotic</span><span class="p">(</span><span class="n">a_values</span><span class="p">)</span>
+
+<span class="c1"># Plot both the Q-function and its asymptotic approximation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a_values</span><span class="p">,</span> <span class="n">Q_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$Q(a)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a_values</span><span class="p">,</span> <span class="n">Q_asymptotic_values</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$Q(a)$ Asymptotic&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Logarithmic scale to emphasize the rapid decrease</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Q(a)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Q-function vs. a with Asymptotic Approximation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5aa65549e7912a1a8f93b298bb405126d670a23e1ecf225a4a0e146164161ab7.png" src="_images/5aa65549e7912a1a8f93b298bb405126d670a23e1ecf225a4a0e146164161ab7.png" />
+</div>
+</div>
+</section>
 <section id="bounds-for-q-a">
-<h3>Bounds for <span class="math notranslate nohighlight">\( Q(a) \)</span><a class="headerlink" href="#bounds-for-q-a" title="Link to this heading">#</a></h3>
+<h2>Bounds for <span class="math notranslate nohighlight">\( Q(a) \)</span><a class="headerlink" href="#bounds-for-q-a" title="Link to this heading">#</a></h2>
 <p>For large values of <span class="math notranslate nohighlight">\( a \)</span>, the function <span class="math notranslate nohighlight">\( Q(a) \)</span> can be approximated by the following inequalities:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -363,9 +469,8 @@ Q(a) = P(w &gt; a) = \int_a^\infty \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{2
 </ul>
 <p>These bounds are useful for estimating probabilities and simplifying calculations involving the tail of the Gaussian distribution, particularly in high-precision contexts such as error rate calculations in communication systems.</p>
 </section>
-</section>
-<section id="error-function">
-<h2>Error Function<a class="headerlink" href="#error-function" title="Link to this heading">#</a></h2>
+<section id="theoretical-cdf-in-terms-of-error-function">
+<h2>Theoretical CDF in Terms of Error Function<a class="headerlink" href="#theoretical-cdf-in-terms-of-error-function" title="Link to this heading">#</a></h2>
 <p>The CDF of a Gaussian (normal) random variable <span class="math notranslate nohighlight">\( \mathbf{x} \sim \mathcal{N}(\mu, \sigma^2) \)</span> can be expressed using the error function (erf).</p>
 <p>The error function is defined as:</p>
 <div class="math notranslate nohighlight">
@@ -383,22 +488,15 @@ F_{\mathbf{x}}(x) = P(\mathbf{x} \leq x)
 F_{\mathbf{x}}(x) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{x - \mu}{\sigma \sqrt{2}} \right) \right)
 \]</div>
 <p><strong>Insights:</strong></p>
-<ol class="arabic simple">
+<ul class="simple">
 <li><p><strong>Normalization</strong>: The argument of the error function <span class="math notranslate nohighlight">\( \frac{x - \mu}{\sigma \sqrt{2}} \)</span> standardizes the variable <span class="math notranslate nohighlight">\( x \)</span> to have a mean of 0 and a variance of 1, aligning it with the standard normal distribution.</p></li>
 <li><p><strong>Scaling</strong>: The factor <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span> scales the range of the error function from <span class="math notranslate nohighlight">\([-1, 1]\)</span> to <span class="math notranslate nohighlight">\([0, 1]\)</span>, matching the range of the CDF.</p></li>
 <li><p><strong>Translation</strong>: The <span class="math notranslate nohighlight">\( +1 \)</span> inside the parentheses shifts the result to fit the <span class="math notranslate nohighlight">\([0, 1]\)</span> interval required for the CDF.</p></li>
-</ol>
-<section id="theoretical-cdf-in-terms-of-error-function">
-<h3>Theoretical CDF in Terms of Error Function:<a class="headerlink" href="#theoretical-cdf-in-terms-of-error-function" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[
-F_{\mathbf{x}}(x) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{x - \mu}{\sigma \sqrt{2}} \right) \right)
-\]</div>
-<p>This expression provides a way to calculate the cumulative probability up to a certain value <span class="math notranslate nohighlight">\( x \)</span> for a Gaussian random variable with mean <span class="math notranslate nohighlight">\( \mu \)</span> and standard deviation <span class="math notranslate nohighlight">\( \sigma \)</span>.</p>
+</ul>
 </section>
 </section>
 <section id="simulation-empirical-cdf-and-pdf">
-<h2>Simulation: Empirical CDF and PDF<a class="headerlink" href="#simulation-empirical-cdf-and-pdf" title="Link to this heading">#</a></h2>
+<h1>Simulation: Empirical CDF and PDF<a class="headerlink" href="#simulation-empirical-cdf-and-pdf" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -477,20 +575,19 @@ F_{\mathbf{x}}(x) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{x - \mu}{\sig
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abbf8ab0407592e7759654bb9c440f79f43b0dc500fbc2607f4cf1250a20be42.png" src="_images/abbf8ab0407592e7759654bb9c440f79f43b0dc500fbc2607f4cf1250a20be42.png" />
+<img alt="_images/50abf7fd47618b8ca2662acf1860772a1e6c17feca62c022be57106612221369.png" src="_images/50abf7fd47618b8ca2662acf1860772a1e6c17feca62c022be57106612221369.png" />
 </div>
 </div>
-</section>
 <section id="discussions-on-the-bounds">
 <h2>Discussions on the bounds<a class="headerlink" href="#discussions-on-the-bounds" title="Link to this heading">#</a></h2>
 <p>The bounds of <span class="math notranslate nohighlight">\( Q(a) \)</span>, the complementary CDF of the standard Gaussian distribution, are derived using asymptotic approximations and properties of the Gaussian distribution.</p>
 <p>The complementary CDF <span class="math notranslate nohighlight">\( Q(a) \)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
-\[ Q(a) = P(w &gt; a) = \int_a^\infty \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{2}\right) \, dx \]</div>
+\[ Q(a) = P(\mathbf{w} &gt; a) = \int_a^\infty \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{w^2}{2}\right) \, dw \]</div>
 <p><strong>Asymptotic Approximation for Large <span class="math notranslate nohighlight">\( a \)</span></strong></p>
-<p>For large values of <span class="math notranslate nohighlight">\( a \)</span>, the value of <span class="math notranslate nohighlight">\( Q(a) \)</span> can be approximated by examining the behavior of the integrand <span class="math notranslate nohighlight">\( \exp\left(-\frac{x^2}{2}\right) \)</span>. The idea is to find simpler expressions that approximate the integral accurately.</p>
+<p>For large values of <span class="math notranslate nohighlight">\( a \)</span>, the value of <span class="math notranslate nohighlight">\( Q(a) \)</span> can be approximated by examining the behavior of the integrand <span class="math notranslate nohighlight">\( \exp\left(-\frac{w^2}{2}\right) \)</span>. The idea is to find simpler expressions that approximate the integral accurately.</p>
 <p><strong>Using the Tail Probability Approximation</strong></p>
-<p>For large <span class="math notranslate nohighlight">\( a \)</span>, the value of the integral <span class="math notranslate nohighlight">\( Q(a) \)</span> is dominated by the values of <span class="math notranslate nohighlight">\( x \)</span> close to <span class="math notranslate nohighlight">\( a \)</span>. Therefore, we can approximate the tail probability by considering the leading terms of the integrand’s expansion.</p>
+<p>For large <span class="math notranslate nohighlight">\( a \)</span>, the value of the integral <span class="math notranslate nohighlight">\( Q(a) \)</span> is dominated by the values of <span class="math notranslate nohighlight">\( \mathbf{w} \)</span> close to <span class="math notranslate nohighlight">\( a \)</span>. Therefore, we can approximate the tail probability by considering the leading terms of the integrand’s expansion.</p>
 <p><strong>Applying the Change of Variable Technique</strong></p>
 <p>One common approach is to perform a change of variables to simplify the integration. Let’s use the complementary error function, denoted as <span class="math notranslate nohighlight">\( \text{erfc}(a) \)</span>, which is related to <span class="math notranslate nohighlight">\( Q(a) \)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -512,9 +609,9 @@ F_{\mathbf{x}}(x) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{x - \mu}{\sig
 <div class="math notranslate nohighlight">
 \[ \frac{1}{\sqrt{2\pi} a} \left( 1 - \frac{1}{a^2} \right) e^{-\frac{a^2}{2}} &lt; Q(a) \]</div>
 <p><strong>Upper Bound Derivation</strong></p>
-<p>The upper bound can be found by recognizing that <span class="math notranslate nohighlight">\( Q(a) \)</span> is always less than the simple exponential term because the integrand <span class="math notranslate nohighlight">\( \exp\left(-\frac{x^2}{2}\right) \)</span> decreases rapidly:</p>
+<p>The upper bound can be found by recognizing that <span class="math notranslate nohighlight">\( Q(a) \)</span> is always less than the simple exponential term because the integrand <span class="math notranslate nohighlight">\( \exp\left(-\frac{w^2}{2}\right) \)</span> decreases rapidly:</p>
 <div class="math notranslate nohighlight">
-\[ Q(a) &lt; \int_a^\infty \exp\left(-\frac{x^2}{2}\right) \, dx \]</div>
+\[ Q(a) &lt; \int_a^\infty \exp\left(-\frac{w^2}{2}\right) \, dw \]</div>
 <p>For large <span class="math notranslate nohighlight">\( a \)</span>, the upper bound is dominated by the leading exponential term without the need for additional terms:</p>
 <div class="math notranslate nohighlight">
 \[ Q(a) &lt; e^{-\frac{a^2}{2}} \]</div>
@@ -530,7 +627,7 @@ F_{\mathbf{x}}(x) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{x - \mu}{\sig
 
 <span class="c1"># Define the Q-function using the integral form</span>
 <span class="k">def</span> <span class="nf">Q_function_integral</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="n">integrand</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">integrand</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">result</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 
@@ -636,18 +733,19 @@ F_{\mathbf{x}}(x) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{x - \mu}{\sig
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Real Scalar Gaussian Random Variable</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complementary-cumulative-distribution-function-cdf">Complementary Cumulative Distribution Function (CDF)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds-for-q-a">Bounds for <span class="math notranslate nohighlight">\( Q(a) \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complementary-cumulative-distribution-function-ccdf">Complementary Cumulative Distribution Function (CCDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds-for-q-a">Bounds for <span class="math notranslate nohighlight">\( Q(a) \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-cdf-in-terms-of-error-function">Theoretical CDF in Terms of Error Function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-function">Error Function</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-cdf-in-terms-of-error-function">Theoretical CDF in Terms of Error Function:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-empirical-cdf-and-pdf">Simulation: Empirical CDF and PDF</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-empirical-cdf-and-pdf">Simulation: Empirical CDF and PDF</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-on-the-bounds">Discussions on the bounds</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
