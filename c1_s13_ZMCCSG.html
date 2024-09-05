@@ -224,13 +224,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
-
-
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
 
 
@@ -619,7 +613,7 @@ f(r; \sigma') = \frac{r}{(\sigma')^2} e^{-\frac{r^2}{2(\sigma')^2}}
 <p>This can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-|\mathbf{x}|^2 = \left( \frac{\sigma^2}{2} \right) Z
+|\mathbf{x}|^2 = \left( \frac{\sigma^2}{2} \right) \mathbf{z}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\( \mathbf{z} \sim \chi^2_2 \)</span>, a chi-squared distribution with 2 degrees of freedom. The chi-squared distribution with 2 degrees of freedom is equivalent to a gamma distribution with shape parameter <span class="math notranslate nohighlight">\( k = 1 \)</span> and scale parameter <span class="math notranslate nohighlight">\( \theta = 2 \)</span>, denoted as <span class="math notranslate nohighlight">\( \Gamma(k=1, \theta=2) \)</span>. This gamma distribution is also equivalent to an exponential distribution with rate parameter <span class="math notranslate nohighlight">\( \lambda = \frac{1}{2} \)</span>.</p>
 <p>Thus, <span class="math notranslate nohighlight">\( \mathbf{z} \)</span> can be represented as an exponential random variable:</p>
@@ -635,7 +629,7 @@ f_{\mathbf{z}}(z) = \frac{1}{2} \exp\left(-\frac{z}{2}\right), \quad \text{for }
 <p>To find the PDF of <span class="math notranslate nohighlight">\( \mathbf{y} = |\mathbf{x}|^2 = \frac{\sigma^2}{2} \mathbf{z} \)</span>, we use the transformation technique. The relationship between <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> and <span class="math notranslate nohighlight">\( \mathbf{z} \)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{y} = \frac{\sigma^2}{2} Z
+\mathbf{y} = \frac{\sigma^2}{2} \mathbf{z}
 \]</div>
 <p>To find the PDF of <span class="math notranslate nohighlight">\( \mathbf{y} \)</span>, we use the formula for transforming the PDF under a change of variables:</p>
 <div class="math notranslate nohighlight">
@@ -645,7 +639,7 @@ f_{\mathbf{y}}(y) = f_{\mathbf{z}}\left(\frac{2y}{\sigma^2}\right) \left| \frac{
 <p>Substituting <span class="math notranslate nohighlight">\( f_{\mathbf{z}}(z) \)</span> and calculating the derivative, we obtain:</p>
 <div class="math notranslate nohighlight">
 \[
-f_{\mathbf{y}}(y) = \frac{1}{2} \exp\left(-\frac{\frac{2y}{\sigma^2}}{2}\right)  \frac{2}{\sigma^2} = \frac{1}{\sigma^2} \exp\left(-\frac{y}{\sigma^2}\right)
+f_{\mathbf{y}}(y) = \frac{1}{\sigma^2} \exp\left(-\frac{y}{\sigma^2}\right)
 \]</div>
 <p>Thus, the magnitude squared <span class="math notranslate nohighlight">\( |\mathbf{x}|^2 \)</span> follows an exponential distribution with the PDF:</p>
 <div class="math notranslate nohighlight">

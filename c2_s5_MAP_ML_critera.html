@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hypothesis Testing &#8212; Telecom Book</title>
+    <title>MAP and ML Criteria &#8212; Telecom Book</title>
   
   
   
@@ -224,13 +224,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Hypothesis Testing</a></li>
-
-
-
-
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
 
 
@@ -331,7 +325,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Hypothesis Testing</h1>
+    <h1>MAP and ML Criteria</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -341,35 +335,34 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hypothesis Testing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-criterion">Maximum-Likelihood Criterion</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exmaple-antipodal-signal-detection-and-decision-process">Exmaple: Antipodal Signal Detection and Decision Process</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-functions">Likelihood Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-using-map-criterion">Detection using MAP Criterion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-criterion">Maximum-Likelihood Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exmaple-antipodal-signal-detection-and-decision-process">Exmaple: Antipodal Signal Detection and Decision Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-functions">Likelihood Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-using-map-criterion">Detection using MAP Criterion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-decision-rules">Summary of Decision Rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Rule</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">Types of Errors</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold">Example: Types of Errors when using MAP decision rule with log-likelihood threshold</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-types-for-a-general-decision-threshold">Error Types for a general decision threshold</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-decision-rules">Summary of Decision Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">Types of Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold">Example: Types of Errors when using MAP decision rule with log-likelihood threshold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-types-for-a-general-decision-threshold">Error Types for a general decision threshold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -380,8 +373,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hypothesis-testing">
-<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="map-and-ml-criteria">
+<h1>MAP and ML Criteria<a class="headerlink" href="#map-and-ml-criteria" title="Link to this heading">#</a></h1>
+<section id="hypothesis-testing">
+<h2>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
 <p>Consider two possible values <span class="math notranslate nohighlight">\( s_0 \)</span> and <span class="math notranslate nohighlight">\( s_1 \)</span>. We wish to decide between these two alternatives when we observe a measurement <span class="math notranslate nohighlight">\( y \)</span> corrupted by noise <span class="math notranslate nohighlight">\( n \)</span>. That is, we observe</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{y} = s_i + \mathbf{n}, \quad i = 0, 1 \]</div>
@@ -391,7 +386,7 @@ document.write(`
 Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> corresponds to the value <span class="math notranslate nohighlight">\( s_0 \)</span> being present and hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> corresponds to <span class="math notranslate nohighlight">\( s_1 \)</span>.</p>
 </section>
 <section id="map-criterion">
-<h1>MAP Criterion<a class="headerlink" href="#map-criterion" title="Link to this heading">#</a></h1>
+<h2>MAP Criterion<a class="headerlink" href="#map-criterion" title="Link to this heading">#</a></h2>
 <p>Thus, we wish to determine <span class="math notranslate nohighlight">\( P(H_i|y) \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>, the probability of each of the hypotheses, given the observation <span class="math notranslate nohighlight">\( y \)</span>. If</p>
 <div class="math notranslate nohighlight">
 \[ P(H_0|y) &gt; P(H_1|y) \]</div>
@@ -419,7 +414,7 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 \[ p(y|H_0)\pi_0 &gt; p(y|H_1)\pi_1 \]</div>
 <p>If the inequality is reversed, we decide <span class="math notranslate nohighlight">\( H_1 \)</span> is correct. We will let <span class="math notranslate nohighlight">\( D_0 \)</span> be the event associated with the “decision” of choosing <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( D_1 \)</span> be the corresponding event associated with <span class="math notranslate nohighlight">\( H_1 \)</span>. Throughout the text, we will combine both inequalities in a simple expression for deciding between <span class="math notranslate nohighlight">\( D_0 \)</span> or <span class="math notranslate nohighlight">\( D_1 \)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \frac{p(y|H_1)}{p(y|H_0)} \begin{array}{c} D_1 \\ \geq \\ D_0 \end{array} \frac{\pi_0}{\pi_1} \end{split}\]</div>
+\[\begin{split} \frac{p(y|H_1)}{p(y|H_0)} \begin{array}{c} D_1 \\ \gtrless \\ D_0 \end{array} \frac{\pi_0}{\pi_1} \end{split}\]</div>
 <p>We define the likelihood ratio as</p>
 <div class="math notranslate nohighlight">
 \[ L(y) = \frac{p(y|H_1)}{p(y|H_0)} \]</div>
@@ -429,29 +424,41 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 <p>Since engineers abhor a “hang-up” condition where no decision is made, we shall adopt the convention of deciding <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( L(y) \geq \tau_{MAP} \)</span>.</p>
 </section>
 <section id="maximum-likelihood-criterion">
-<h1>Maximum-Likelihood Criterion<a class="headerlink" href="#maximum-likelihood-criterion" title="Link to this heading">#</a></h1>
-<p>If the two hypotheses are equally likely a priori, then <span class="math notranslate nohighlight">\( \pi_0 = \pi_1 \)</span> and <span class="math notranslate nohighlight">\( \tau_{MAP} = 1 \)</span>. This special case is known as the maximum-likelihood (ML) criterion with a threshold <span class="math notranslate nohighlight">\( \tau_{ML} = 1 \)</span>.</p>
-<p>It is often used in detection problems when there is no knowledge of the a priori probabilities, although in this case the analyst would best be served by first examining the minimax criterion explained in Section 4.4. It is also a powerful criterion in estimation theory, as Chapter 10 attests.</p>
+<h2>Maximum-Likelihood Criterion<a class="headerlink" href="#maximum-likelihood-criterion" title="Link to this heading">#</a></h2>
+<p>In detection theory, when the two hypotheses (<span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>) are equally likely a priori, it means that the prior probabilities are the same:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \pi_0 = \pi_1 \)</span>, where <span class="math notranslate nohighlight">\( \pi_0 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 \)</span> represent the prior probabilities of hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p></li>
+</ul>
+<p>Under this condition, the decision threshold for the maximum a posteriori (MAP) criterion, denoted as <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span>, simplifies to:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \tau_{MAP} = 1 \)</span>.</p></li>
+</ul>
+<p>This leads to a special case known as the <strong>maximum-likelihood (ML) criterion</strong>, where the threshold for deciding between the two hypotheses is:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \tau_{ML} = 1 \)</span>.</p></li>
+</ul>
+<p>The ML criterion is frequently used when there is no information available about the a priori probabilities. However, in such cases, analysts are often advised to consider the <strong>minimax criterion</strong>, which minimizes the maximum risk across different decisions.</p>
+<p>Despite this, the ML criterion remains highly valuable in <strong>estimation theory</strong>, as it is effective when the goal is to estimate parameters based on observed data without relying on prior knowledge.</p>
 </section>
 <section id="exmaple-antipodal-signal-detection-and-decision-process">
-<h1>Exmaple: Antipodal Signal Detection and Decision Process<a class="headerlink" href="#exmaple-antipodal-signal-detection-and-decision-process" title="Link to this heading">#</a></h1>
+<h2>Exmaple: Antipodal Signal Detection and Decision Process<a class="headerlink" href="#exmaple-antipodal-signal-detection-and-decision-process" title="Link to this heading">#</a></h2>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h3>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
 <p>In this example [B2, Ex 4.1], we consider antipodal signals where <span class="math notranslate nohighlight">\( s_0 = -b \)</span> and <span class="math notranslate nohighlight">\( s_1 = b \)</span>, with the a priori probabilities <span class="math notranslate nohighlight">\( \pi_0 = 0.8 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 = 0.2 \)</span>, respectively. We assume <span class="math notranslate nohighlight">\( b &gt; 0 \)</span>.</p>
 <p>The noise <span class="math notranslate nohighlight">\( n \)</span> is modeled as a zero-mean Gaussian random variable with variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>. The probability density function (pdf) of the noise is:</p>
 <div class="math notranslate nohighlight">
-\[ p_n(n) = \frac{1}{\sqrt{2\pi\sigma}} \exp\left( -\frac{n^2}{2\sigma^2} \right) \]</div>
+\[ p_n(n) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{n^2}{2\sigma^2} \right) \]</div>
 </section>
 <section id="likelihood-functions">
-<h2>Likelihood Functions<a class="headerlink" href="#likelihood-functions" title="Link to this heading">#</a></h2>
+<h3>Likelihood Functions<a class="headerlink" href="#likelihood-functions" title="Link to this heading">#</a></h3>
 <p>Given the observation <span class="math notranslate nohighlight">\( y \)</span>, the likelihood functions under the two hypotheses are:</p>
 <div class="math notranslate nohighlight">
-\[ p(y|H_1) = \frac{1}{\sqrt{2\pi\sigma}} \exp\left( -\frac{(y - b)^2}{2\sigma^2} \right) \]</div>
+\[ p(y|H_1) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y - b)^2}{2\sigma^2} \right) \]</div>
 <div class="math notranslate nohighlight">
-\[ p(y|H_0) = \frac{1}{\sqrt{2\pi\sigma}} \exp\left( -\frac{(y + b)^2}{2\sigma^2} \right) \]</div>
+\[ p(y|H_0) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y + b)^2}{2\sigma^2} \right) \]</div>
 </section>
 <section id="detection-using-map-criterion">
-<h2>Detection using MAP Criterion<a class="headerlink" href="#detection-using-map-criterion" title="Link to this heading">#</a></h2>
+<h3>Detection using MAP Criterion<a class="headerlink" href="#detection-using-map-criterion" title="Link to this heading">#</a></h3>
 <p>To apply the Maximum A Posteriori (MAP) criterion, we need to compare the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> to the threshold <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \tau_{MAP} = \frac{\pi_0}{\pi_1} = \frac{0.8}{0.2} = 4 \]</div>
@@ -460,7 +467,7 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 \[ L(y) = \frac{p(y|H_1)}{p(y|H_0)} = \exp\left[ \frac{(y + b)^2 - (y - b)^2}{2\sigma^2} \right] = \exp\left( \frac{2yb}{\sigma^2} \right) \]</div>
 </section>
 <section id="decision-rule">
-<h2>Decision Rule<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h2>
+<h3>Decision Rule<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h3>
 <p>We decide <span class="math notranslate nohighlight">\( H_1 \)</span> if:</p>
 <div class="math notranslate nohighlight">
 \[ \exp\left( \frac{2yb}{\sigma^2} \right) \geq 4 \]</div>
@@ -471,24 +478,24 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 \[ y \geq \frac{\sigma^2 \ln 4}{2b} \]</div>
 </section>
 <section id="numerical-example">
-<h2>Numerical Example<a class="headerlink" href="#numerical-example" title="Link to this heading">#</a></h2>
+<h3>Numerical Example<a class="headerlink" href="#numerical-example" title="Link to this heading">#</a></h3>
 <p>For example, if <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>, the decision rule becomes:</p>
 <div class="math notranslate nohighlight">
 \[ y \geq \frac{0.25 \ln 4}{2 \cdot 1} = 0.173287 \]</div>
 <section id="interpretation">
-<h3>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
+<h4>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h4>
 <p>If the a priori probabilities were equal (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = 0.5 \)</span>), then <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span> would be 1, and the decision rule would be based purely on the likelihood ratio, i.e., <span class="math notranslate nohighlight">\( y \geq 0 \)</span>.</p>
 </section>
 </section>
 <section id="summary-of-decision-rules">
-<h2>Summary of Decision Rules<a class="headerlink" href="#summary-of-decision-rules" title="Link to this heading">#</a></h2>
+<h3>Summary of Decision Rules<a class="headerlink" href="#summary-of-decision-rules" title="Link to this heading">#</a></h3>
 <ul>
-<li><p><strong>With unequal priors (<span class="math notranslate nohighlight">\( \pi_0 = 0.8 \)</span>, <span class="math notranslate nohighlight">\( \pi_1 = 0.2 \)</span>)</strong>:</p>
+<li><p>With unequal priors (<span class="math notranslate nohighlight">\( \pi_0 = 0.8 \)</span>, <span class="math notranslate nohighlight">\( \pi_1 = 0.2 \)</span>):</p>
 <div class="math notranslate nohighlight">
 \[ y \geq 0.173287 \]</div>
 <p>We decide <span class="math notranslate nohighlight">\( H_1 \)</span> if the observation <span class="math notranslate nohighlight">\( y \)</span> is greater than or equal to 0.173287.</p>
 </li>
-<li><p><strong>With equal priors (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = 0.5 \)</span>)</strong>:</p>
+<li><p>With equal priors (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = 0.5 \)</span>):</p>
 <div class="math notranslate nohighlight">
 \[ y \geq 0 \]</div>
 <p>We decide <span class="math notranslate nohighlight">\( H_1 \)</span> if the observation <span class="math notranslate nohighlight">\( y \)</span> is greater than or equal to 0.</p>
@@ -497,14 +504,14 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 <p>This example demonstrates the application of the MAP criterion to decide between two hypotheses based on observed data, incorporating both the likelihood functions and the a priori probabilities.</p>
 </section>
 <section id="numerical-results">
-<h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
+<h3>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Given parameters</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">sigma2</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># std, thus, variance sigma^2 = 0.25</span>
 <span class="n">pi0</span> <span class="o">=</span> <span class="mf">0.8</span>
 <span class="n">pi1</span> <span class="o">=</span> <span class="mf">0.2</span>
 
@@ -516,7 +523,7 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 <span class="n">s1</span> <span class="o">=</span> <span class="n">b</span>
 
 <span class="c1"># Generating noise</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
 
 <span class="c1"># Simulating received y under each hypothesis</span>
 <span class="n">y_given_s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise</span>
@@ -526,10 +533,10 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 <span class="n">tau_MAP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pi0</span> <span class="o">/</span> <span class="n">pi1</span><span class="p">)</span>
 
 <span class="c1"># Decision rule based on MAP criterion</span>
-<span class="c1"># Likelihood ratio test: exp(2yb / sigma2) &gt;= pi0 / pi1</span>
-<span class="c1"># Taking log: 2yb / sigma2 &gt;= log(pi0 / pi1)</span>
-<span class="c1"># Decision threshold: y &gt;= (sigma2 / (2b)) * log(pi0 / pi1)</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">tau_MAP</span>
+<span class="c1"># Likelihood ratio test: exp(2yb / sigma**2) &gt;= pi0 / pi1</span>
+<span class="c1"># Taking log: 2yb / sigma**2 &gt;= log(pi0 / pi1)</span>
+<span class="c1"># Decision threshold: y &gt;= (sigma**2 / (2b)) * log(pi0 / pi1)</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">tau_MAP</span>
 
 <span class="c1"># Decisions</span>
 <span class="n">decisions_s0</span> <span class="o">=</span> <span class="n">y_given_s0</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
@@ -548,38 +555,44 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0308, 0.21)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0448, 0.1956)
 </pre></div>
 </div>
 </div>
 </div>
 <section id="plot-theoretical-and-empirical-pdfs">
-<h3>Plot theoretical and empirical PDFs<a class="headerlink" href="#plot-theoretical-and-empirical-pdfs" title="Link to this heading">#</a></h3>
+<h4>Plot theoretical and empirical PDFs<a class="headerlink" href="#plot-theoretical-and-empirical-pdfs" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-importing necessary libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-
-<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>
 
 <span class="c1"># Empirical PDFs</span>
-<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">empirical_pdf_H0</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y_given_s0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">empirical_pdf_H1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y_given_s1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">y_values_mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Adjust this range based on your data range</span>
+<span class="n">empirical_pdf_H0</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y_given_s0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Histogram for H0</span>
+<span class="n">empirical_pdf_H1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y_given_s1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Histogram for H1</span>
+<span class="n">y_values_mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Midpoints of bins for plotting</span>
 
-<span class="c1"># Theoretical PDFs</span>
-<span class="n">theoretical_pdf_H0</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">s0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
-<span class="n">theoretical_pdf_H1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="c1"># Manual calculation of Theoretical PDFs</span>
+<span class="k">def</span> <span class="nf">gaussian_pdf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the Gaussian PDF.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Theoretical PDFs for H0 and H1 using the manual Gaussian formula</span>
+<span class="n">theoretical_pdf_H0</span> <span class="o">=</span> <span class="n">gaussian_pdf</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">s0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>  <span class="c1"># for H0 hypothesis</span>
+<span class="n">theoretical_pdf_H1</span> <span class="o">=</span> <span class="n">gaussian_pdf</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>  <span class="c1"># for H1 hypothesis</span>
 
 <span class="c1"># Plotting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">empirical_pdf_H0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical p(y|H0)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">empirical_pdf_H1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical p(y|H1)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">theoretical_pdf_H0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical p(y|H0)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">theoretical_pdf_H1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical p(y|H1)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plotting Empirical PDFs as histograms</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_given_s0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical p(y|H0)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_given_s1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical p(y|H1)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="c1"># Theoretical PDFs with solid lines (manually computed using the Gaussian formula)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">theoretical_pdf_H0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical p(y|H0)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">theoretical_pdf_H1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical p(y|H1)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
 
 <span class="c1"># Decision threshold line</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Threshold&#39;</span><span class="p">)</span>
@@ -595,12 +608,12 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/018ea864e81bd10dd8669784f3af3d50ccdd61301804db2047d3389780304384.png" src="_images/018ea864e81bd10dd8669784f3af3d50ccdd61301804db2047d3389780304384.png" />
+<img alt="_images/054bd4a91dcd7a2b16328de650fe57a33539719e5f61de1939977e1ffbae6fdc.png" src="_images/054bd4a91dcd7a2b16328de650fe57a33539719e5f61de1939977e1ffbae6fdc.png" />
 </div>
 </div>
 </section>
 <section id="plot-decision-regions">
-<h3>Plot decision regions<a class="headerlink" href="#plot-decision-regions" title="Link to this heading">#</a></h3>
+<h4>Plot decision regions<a class="headerlink" href="#plot-decision-regions" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -633,14 +646,14 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa0ba251799e0685d41b0c6a8f9df9d4b351fff1aa6ab8c3be4604569615a3e4.png" src="_images/aa0ba251799e0685d41b0c6a8f9df9d4b351fff1aa6ab8c3be4604569615a3e4.png" />
+<img alt="_images/45b01312e061730c4a3c47264ca229bd5c60ac7f6b50841c1b66e2302176715a.png" src="_images/45b01312e061730c4a3c47264ca229bd5c60ac7f6b50841c1b66e2302176715a.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="id1">
-<h1>Decision Rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h2>Decision Rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>By definition,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( D_0 \)</span> is associated with the range of the observation <span class="math notranslate nohighlight">\( y \)</span> such that <span class="math notranslate nohighlight">\( L(y) &lt; \tau_{MAP} \)</span>.</p></li>
@@ -677,7 +690,7 @@ y \in R_0 \implies L(y) &lt; \frac{\pi_0}{\pi_1}
 \end{split}\]</div>
 </section>
 <section id="types-of-errors">
-<h1>Types of Errors<a class="headerlink" href="#types-of-errors" title="Link to this heading">#</a></h1>
+<h2>Types of Errors<a class="headerlink" href="#types-of-errors" title="Link to this heading">#</a></h2>
 <p>Consider the case where, under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>, <span class="math notranslate nohighlight">\( s_0 = 0 \)</span>. This situation is closely related to the classical radar case. A radar illuminates a specific volume of space.</p>
 <p>The return signal can be modeled in terms of two hypotheses:</p>
 <ul class="simple">
@@ -707,7 +720,7 @@ P_E = \pi_0 P_{10} + \pi_1 P_{01}
 \]</div>
 </section>
 <section id="example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold">
-<h1>Example: Types of Errors when using MAP decision rule with log-likelihood threshold<a class="headerlink" href="#example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold" title="Link to this heading">#</a></h1>
+<h2>Example: Types of Errors when using MAP decision rule with log-likelihood threshold<a class="headerlink" href="#example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold" title="Link to this heading">#</a></h2>
 <p>This example [B2, Ex 4.3] is an extension of the previous example, i.e., antipodal signal detection example.</p>
 <p>We define some additional terminology and observe the various decision regions for this example.</p>
 <p>If we define a <strong>log-likelihood threshold</strong> as <span class="math notranslate nohighlight">\( \tau' \)</span>, then the four terms <span class="math notranslate nohighlight">\( P_{ij}, i = 0, 1, j = 0, 1 \)</span>, can be written as</p>
@@ -740,19 +753,19 @@ P_{11} = \int_{\tau'}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y
 <p>and making the appropriate changes of variables, we can write</p>
 <div class="math notranslate nohighlight">
 \[
-P_{00} = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{\tau' + b}{\sqrt{2\sigma}} \right) \right]
+P_{00} = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{\tau' + b}{\sqrt{2\sigma^2}} \right) \right]
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-P_{01} = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{\tau' - b}{\sqrt{2\sigma}} \right) \right]
+P_{01} = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{\tau' - b}{\sqrt{2\sigma^2}} \right) \right]
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-P_{10} = \frac{1}{2} \text{erfc} \left( \frac{\tau' + b}{\sqrt{2\sigma}} \right)
+P_{10} = \frac{1}{2} \text{erfc} \left( \frac{\tau' + b}{\sqrt{2\sigma^2}} \right)
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-P_{11} = \frac{1}{2} \text{erfc} \left( \frac{\tau' - b}{\sqrt{2\sigma}} \right)
+P_{11} = \frac{1}{2} \text{erfc} \left( \frac{\tau' - b}{\sqrt{2\sigma^2}} \right)
 \]</div>
 <p>We can see that the MAP decision rule is</p>
 <div class="math notranslate nohighlight">
@@ -807,10 +820,10 @@ P_{11} \approx 0.950878
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9923
-P01 (Decide H0 | H1 true): 0.0077
-P10 (Decide H1 | H0 true): 0.0525
-P11 (Decide H1 | H1 true): 0.9475
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9909
+P01 (Decide H0 | H1 true): 0.0091
+P10 (Decide H1 | H0 true): 0.0524
+P11 (Decide H1 | H1 true): 0.9476
 </pre></div>
 </div>
 </div>
@@ -867,11 +880,11 @@ P11 (Decide H1 | H1 true): 0.9475
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4dfed3d302155676677fb52701af5d15d23de8208c9bcee66ee4577820986a35.png" src="_images/4dfed3d302155676677fb52701af5d15d23de8208c9bcee66ee4577820986a35.png" />
+<img alt="_images/28df26c103ba20118e16e147e47982a693b34728a22e5c42ca8e502ff7454fb2.png" src="_images/28df26c103ba20118e16e147e47982a693b34728a22e5c42ca8e502ff7454fb2.png" />
 </div>
 </div>
 <section id="error-types-for-a-general-decision-threshold">
-<h2>Error Types for a general decision threshold<a class="headerlink" href="#error-types-for-a-general-decision-threshold" title="Link to this heading">#</a></h2>
+<h3>Error Types for a general decision threshold<a class="headerlink" href="#error-types-for-a-general-decision-threshold" title="Link to this heading">#</a></h3>
 <p>The threshold <span class="math notranslate nohighlight">\(\tau\)</span> can represent any decision threshold, not necessarily the one specific to the MAP criterion. Here are the revised expressions with <span class="math notranslate nohighlight">\(\tau\)</span> as the general threshold:</p>
 <p><span class="math notranslate nohighlight">\( P_{00} \)</span>: Probability of deciding <span class="math notranslate nohighlight">\( H_0 \)</span> when <span class="math notranslate nohighlight">\( H_0 \)</span> is true</p>
 <div class="math notranslate nohighlight">
@@ -896,7 +909,7 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <p>In these expressions, <span class="math notranslate nohighlight">\(\tau\)</span> represents the decision threshold that determines the decision rule for deciding between <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>. This threshold can vary depending on the criteria used (such as MAP, ML, Neyman-Pearson, etc.).</p>
 </section>
 <section id="confusion-matrix">
-<h2>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h2>
+<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
 <p>The confusion matrix provides a summary of prediction results, and these elements can be used to compute various performance metrics, such as accuracy, precision, recall, and F1 score.</p>
 <p>In the context of decision-making, particularly in binary classification, the terms <span class="math notranslate nohighlight">\( P_{00} \)</span>, <span class="math notranslate nohighlight">\( P_{01} \)</span>, <span class="math notranslate nohighlight">\( P_{10} \)</span>, and <span class="math notranslate nohighlight">\( P_{11} \)</span> correspond to components in a confusion matrix. The confusion matrix consists of True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN). Here’s how they correspond:</p>
 <ul class="simple">
@@ -921,6 +934,94 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 </ul>
 </li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the confusion matrix</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="n">P00_empirical</span><span class="p">,</span> <span class="n">P01_empirical</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">P10_empirical</span><span class="p">,</span> <span class="n">P11_empirical</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># Round the values to four decimal places</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Display the confusion matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix:
+[[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
+ [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
+[[0.9909 0.0091]
+ [0.0524 0.9476]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="c1"># Combine the original transmitted signals and the estimated signals</span>
+<span class="n">original_signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">s0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">s1</span><span class="p">)))</span>
+<span class="n">decided_signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">s0_hat</span><span class="p">,</span> <span class="n">s1_hat</span><span class="p">))</span>
+
+<span class="c1"># Create the confusion matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">original_signals</span><span class="p">,</span> <span class="n">decided_signals</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">s0</span><span class="p">,</span> <span class="n">s1</span><span class="p">])</span>
+
+<span class="c1"># Normalize the confusion matrix to get probabilities</span>
+<span class="n">cm_normalized</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+<span class="c1"># Round the values to four decimal places</span>
+<span class="n">cm_normalized</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cm_normalized</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Print the confusion matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix (using sklearn):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm_normalized</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix (using sklearn):
+[[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
+ [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
+[[0.9909 0.0091]
+ [0.0524 0.9476]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Plot the confusion matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_normalized</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Decide H0 (</span><span class="si">{</span><span class="n">s0</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Decide H1 (</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;H0 true (</span><span class="si">{</span><span class="n">s0</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;H1 true (</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">])</span>
+
+<span class="c1"># Labels and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Labels&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Labels&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6ce715d2b54d157bc4d824ee3aaa2fe01a06cc916b19fd40be14c221cfbcd00d.png" src="_images/6ce715d2b54d157bc4d824ee3aaa2fe01a06cc916b19fd40be14c221cfbcd00d.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -988,35 +1089,34 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hypothesis Testing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-criterion">Maximum-Likelihood Criterion</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exmaple-antipodal-signal-detection-and-decision-process">Exmaple: Antipodal Signal Detection and Decision Process</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-functions">Likelihood Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-using-map-criterion">Detection using MAP Criterion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-criterion">Maximum-Likelihood Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exmaple-antipodal-signal-detection-and-decision-process">Exmaple: Antipodal Signal Detection and Decision Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-functions">Likelihood Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-using-map-criterion">Detection using MAP Criterion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-decision-rules">Summary of Decision Rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Rule</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">Types of Errors</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold">Example: Types of Errors when using MAP decision rule with log-likelihood threshold</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-types-for-a-general-decision-threshold">Error Types for a general decision threshold</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-decision-rules">Summary of Decision Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">Types of Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-types-of-errors-when-using-map-decision-rule-with-log-likelihood-threshold">Example: Types of Errors when using MAP decision rule with log-likelihood threshold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-types-for-a-general-decision-threshold">Error Types for a general decision threshold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>

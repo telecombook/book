@@ -223,13 +223,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
-
-
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
 
 
@@ -348,7 +342,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-np-criterion">Example: Antipodal Signal Detection and Decision using NP Criterion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-p-f-and-p-d-as-a-function-of-the-decision-threshold">Plot <span class="math notranslate nohighlight">\(P_f\)</span> and <span class="math notranslate nohighlight">\(P_d\)</span> as a function of the decision threshold</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerically-error-in-the-simulation">Numerically Error in the simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerically-error-in-the-simulation">Numerically Error in the Simulation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-d-as-a-function-of-p-f"><span class="math notranslate nohighlight">\(P_d\)</span> as a function of <span class="math notranslate nohighlight">\(P_f\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-of-distributions">Overlap of Distributions</a></li>
 </ul>
@@ -376,7 +370,6 @@ Note that the ML criterion is not listed in the table, since it is more commonly
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Criterion</strong></p></th>
-<th class="head"><p><strong>Required</strong></p></th>
 <th class="head"><p><strong>A Priori Probabilities</strong></p></th>
 <th class="head"><p><strong>Costs</strong></p></th>
 </tr>
@@ -385,20 +378,16 @@ Note that the ML criterion is not listed in the table, since it is more commonly
 <tr class="row-even"><td><p><strong>Bayes</strong></p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>MAP</strong></p></td>
-<td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Minimax</strong></p></td>
 <td><p>No</p></td>
-<td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Neyman-Pearson</strong></p></td>
-<td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 </tr>
@@ -630,8 +619,10 @@ P_d(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \l
 </div>
 </section>
 <section id="numerically-error-in-the-simulation">
-<h3>Numerically Error in the simulation<a class="headerlink" href="#numerically-error-in-the-simulation" title="Link to this heading">#</a></h3>
-<p>To ensure that the false alarm probability <span class="math notranslate nohighlight">\( P_f \)</span> does not exceed the specified threshold <span class="math notranslate nohighlight">\( \alpha_f \)</span>, you need to iteratively adjust the decision threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> until the condition <span class="math notranslate nohighlight">\( P_f \leq \alpha_f \)</span> is met accurately. Here’s a method to achieve this:</p>
+<h3>Numerically Error in the Simulation<a class="headerlink" href="#numerically-error-in-the-simulation" title="Link to this heading">#</a></h3>
+<p>Note that <span class="math notranslate nohighlight">\( \alpha_f \)</span> is predefined (a given value), and <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> is computed based on <span class="math notranslate nohighlight">\( \alpha_f \)</span>. However, <span class="math notranslate nohighlight">\( P_f \)</span> in this case is a theoretical value calculated using the resulting <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span>. Due to numerical error, there is a chance that <span class="math notranslate nohighlight">\( P_f \)</span> could be greater than <span class="math notranslate nohighlight">\( \alpha_f \)</span>. This is not a technical error.</p>
+<p>The following is a correction method to address this numerical error.</p>
+<p>To ensure that the false alarm probability <span class="math notranslate nohighlight">\( P_f \)</span> does not exceed the specified threshold <span class="math notranslate nohighlight">\( \alpha_f \)</span>, we need to iteratively adjust the decision threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> until the condition <span class="math notranslate nohighlight">\( P_f \leq \alpha_f \)</span> is met accurately. Here’s a method to achieve this:</p>
 <ul class="simple">
 <li><p><strong>Initial Estimate</strong>: Start with an initial estimate of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> using the standard normal distribution properties.</p></li>
 <li><p><strong>Iterative Adjustment</strong>:</p>
@@ -643,7 +634,7 @@ P_d(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \l
 </li>
 <li><p><strong>Convergence Criteria</strong>: Stop the iteration when <span class="math notranslate nohighlight">\( P_f \)</span> is sufficiently close to <span class="math notranslate nohighlight">\( \alpha_f \)</span> within an acceptable tolerance.</p></li>
 </ul>
-<p>Let’s implement this iterative process to refine the value of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> so that <span class="math notranslate nohighlight">\( P_f \)</span> is as close as possible to <span class="math notranslate nohighlight">\( \alpha_f = 0.1 \)</span>. We will use a simple numerical approach to adjust <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span>.</p>
+<p>We implement this iterative process to refine the value of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> so that <span class="math notranslate nohighlight">\( P_f \)</span> is as close as possible to <span class="math notranslate nohighlight">\( \alpha_f = 0.1 \)</span>. We will use a simple numerical approach to adjust <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span>.</p>
 <p>After refining the threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> iteratively, we find that:</p>
 <ul class="simple">
 <li><p>The refined <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> value is approximately <strong>-0.3592</strong>.</p></li>
@@ -922,7 +913,7 @@ P_d(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \l
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-np-criterion">Example: Antipodal Signal Detection and Decision using NP Criterion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-p-f-and-p-d-as-a-function-of-the-decision-threshold">Plot <span class="math notranslate nohighlight">\(P_f\)</span> and <span class="math notranslate nohighlight">\(P_d\)</span> as a function of the decision threshold</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerically-error-in-the-simulation">Numerically Error in the simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerically-error-in-the-simulation">Numerically Error in the Simulation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-d-as-a-function-of-p-f"><span class="math notranslate nohighlight">\(P_d\)</span> as a function of <span class="math notranslate nohighlight">\(P_f\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-of-distributions">Overlap of Distributions</a></li>
 </ul>

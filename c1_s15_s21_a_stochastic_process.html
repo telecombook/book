@@ -224,13 +224,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
-
-
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
 
 
@@ -547,7 +541,7 @@ Consider an electrical signal with a periodic component superimposed on a statio
 </section>
 <section id="example-random-square-wave">
 <h1>Example: Random Square Wave<a class="headerlink" href="#example-random-square-wave" title="Link to this heading">#</a></h1>
-<p>Consider a stationary and ergodic random process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> defined by the waveform shown below. The key characteristics of this process are:</p>
+<p>In this example, based on [B2, Ex 2.1], we consider a stationary and ergodic random process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> defined by the waveform shown below. The key characteristics of this process are:</p>
 <ul class="simple">
 <li><p>The process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is real.</p></li>
 <li><p>During each time interval <span class="math notranslate nohighlight">\(T_c\)</span>, the process takes a value of <span class="math notranslate nohighlight">\(+1\)</span> with probability <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> with probability <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>.</p></li>
@@ -590,7 +584,7 @@ Consider an electrical signal with a periodic component superimposed on a statio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e13053434caad65f3c8fbf78d8c92b7f5a074b809aa6b479cd0e9be7563c8c69.png" src="_images/e13053434caad65f3c8fbf78d8c92b7f5a074b809aa6b479cd0e9be7563c8c69.png" />
+<img alt="_images/5ef72b3387ac759b3743e3d477a1a40457c9b4c3b2db623c80df222415006627.png" src="_images/5ef72b3387ac759b3743e3d477a1a40457c9b4c3b2db623c80df222415006627.png" />
 </div>
 </div>
 <section id="autocorrelation-function-for-real-and-stationary-processes">
@@ -680,7 +674,7 @@ R_{\mathbf{x}}(\tau) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae9712ab12307895955df3c44ad25502f3b0b0b7a287c6b7e6b10ad5a1fc9979.png" src="_images/ae9712ab12307895955df3c44ad25502f3b0b0b7a287c6b7e6b10ad5a1fc9979.png" />
+<img alt="_images/055c63bdf6bb38200a3054671de2448156105a056bea03f42d704bfdd1046f76.png" src="_images/055c63bdf6bb38200a3054671de2448156105a056bea03f42d704bfdd1046f76.png" />
 </div>
 </div>
 </section>
@@ -781,7 +775,7 @@ The autocorrelation function <span class="math notranslate nohighlight">\( R(n) 
 </section>
 <section id="example-psd-of-a-random-square-wave">
 <h1>Example: PSD of a Random Square Wave<a class="headerlink" href="#example-psd-of-a-random-square-wave" title="Link to this heading">#</a></h1>
-<p>Continuing from the previous example, we will now derive and understand the power spectral density (PSD) of the random square wave process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>.</p>
+<p>In this example, based on [B2, Ex 2.3], continuing from the previous example, we will now derive and understand the power spectral density (PSD) of the random square wave process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>.</p>
 <p>We previously derived the autocorrelation function for the random square wave process as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -801,18 +795,21 @@ S_{\mathbf{x}}(f) = \int_{-\infty}^{\infty} R_{\mathbf{x}}(\tau) e^{-j2\pi f \ta
 \[
 S_{\mathbf{x}}(f) = 2 \int_{0}^{T_c} \left(1 - \frac{\tau}{T_c}\right) \cos(2\pi f \tau) \, d\tau 
 \]</div>
-<p>Using the given integral, we have
-$<span class="math notranslate nohighlight">\(
-   S_{\mathbf{x}}(f) = 2 \int_{0}^{T_c} \left(1 - \frac{\tau}{T_c}\right) \cos(2\pi f \tau) \, d\tau
-   \)</span>$</p>
-<p>Using integration by parts and properties of trigonometric integrals, we have
-$<span class="math notranslate nohighlight">\(
-   S_{\mathbf{x}}(f) = \frac{2}{(2\pi f)^2 T_c} \left(1 - \cos(2\pi f T_c)\right)
-   \)</span>$</p>
-<p>Using trigonometric identities, the expression can be further simplified to:
-$<span class="math notranslate nohighlight">\(
-   S_{\mathbf{x}}(f) = T_c \left(\frac{\sin(\pi f T_c)}{\pi f T_c}\right)^2 
-   \)</span>$</p>
+<p>Using the given integral, we have</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\mathbf{x}}(f) = 2 \int_{0}^{T_c} \left(1 - \frac{\tau}{T_c}\right) \cos(2\pi f \tau) \, d\tau
+\]</div>
+<p>Using integration by parts and properties of trigonometric integrals, we have</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\mathbf{x}}(f) = \frac{2}{(2\pi f)^2 T_c} \left(1 - \cos(2\pi f T_c)\right)
+\]</div>
+<p>Using trigonometric identities, the expression can be further simplified to:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\mathbf{x}}(f) = T_c \left(\frac{\sin(\pi f T_c)}{\pi f T_c}\right)^2 
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -844,7 +841,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;S_x(f)&#39;)
 </pre></div>
 </div>
-<img alt="_images/12324e715711f3bcc5cb515014079b0d5230da851bef5318a228310358546e95.png" src="_images/12324e715711f3bcc5cb515014079b0d5230da851bef5318a228310358546e95.png" />
+<img alt="_images/404e20f35cc1306ce42d559a0247ba18273141ab71197bd7a4b060e196dc9b58.png" src="_images/404e20f35cc1306ce42d559a0247ba18273141ab71197bd7a4b060e196dc9b58.png" />
 </div>
 </div>
 <p>Note: this simulation is not 100% correct, there is still a small misalligment between empirical and theoretical PSD.</p>
@@ -953,9 +950,9 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/936da63019dea82019e44dc04f01bc7f7652ec8f8ba61a1ceef5f6dc78f29935.png" src="_images/936da63019dea82019e44dc04f01bc7f7652ec8f8ba61a1ceef5f6dc78f29935.png" />
-<img alt="_images/400fbe256c91e3d4c12ad4b239279d17bf4b3d8f7e03acee0e9a674d987fe604.png" src="_images/400fbe256c91e3d4c12ad4b239279d17bf4b3d8f7e03acee0e9a674d987fe604.png" />
-<img alt="_images/b88f4dc74c6dd4e3145fe8e2edb4bc1e5de665bbc7832b910435d19df16b8f98.png" src="_images/b88f4dc74c6dd4e3145fe8e2edb4bc1e5de665bbc7832b910435d19df16b8f98.png" />
+<img alt="_images/98325e9f92dbc41297f560912d615c3717789dfb195b76573a9cd02c9d937b08.png" src="_images/98325e9f92dbc41297f560912d615c3717789dfb195b76573a9cd02c9d937b08.png" />
+<img alt="_images/7df5f49fe21593a5365de4d4f6392b6dd824c74cf84cca1f3841c12df2fe06af.png" src="_images/7df5f49fe21593a5365de4d4f6392b6dd824c74cf84cca1f3841c12df2fe06af.png" />
+<img alt="_images/a2110b88e7978e45f168ada362ee885cd79ff89721b84e805e3acf614316cdcc.png" src="_images/a2110b88e7978e45f168ada362ee885cd79ff89721b84e805e3acf614316cdcc.png" />
 </div>
 </div>
 <p>Note: we must use <code class="docutils literal notranslate"><span class="pre">fftshift</span></code> to obtain correct PSD in dB scale.</p>

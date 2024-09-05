@@ -224,13 +224,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
-
-
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
 
 
@@ -357,7 +351,7 @@ document.write(`
                   
   <section id="example-white-noise-process">
 <h1>Example: White Noise Process<a class="headerlink" href="#example-white-noise-process" title="Link to this heading">#</a></h1>
-<p>A white noise process is often defined by its spectral properties, but here we will start by defining it using its autocorrelation function.</p>
+<p>In this example, based on [B2, Ex 2.2], a white noise process is often defined by its spectral properties, but here we will start by defining it using its <em>autocorrelation function</em>.</p>
 <p>Consider a zero-mean complex white noise process <span class="math notranslate nohighlight">\(\mathbf{z}(t)\)</span>, which has an autocorrelation function given by:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -366,13 +360,13 @@ R_{\mathbf{z}}(\tau) = E\{\mathbf{z}^*(t)\mathbf{z}(t+\tau)\} = 2N_0\delta(\tau)
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N_0\)</span> is a constant representing the noise power spectral density.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\delta(\tau)\)</span> is the Dirac delta function, defined by the integral property:</p></li>
+<li><p>For any finite and continuous signal <span class="math notranslate nohighlight">\(s(t)\)</span>, <span class="math notranslate nohighlight">\(\delta(\tau)\)</span> is the Dirac delta function, defined by the integral property:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \int_{-\infty}^{\infty} s(t)\delta(t-t_0) \, dt = s(t_0)
 \]</div>
-<p>for any finite and continuous signal <span class="math notranslate nohighlight">\(s(t)\)</span>. The term “white” indicates that the process has a constant power spectral density across all frequencies, analogous to white light containing all colors.</p>
+<p>The term “white” indicates that the process has a constant power spectral density across all frequencies, analogous to white light containing all colors.</p>
 <p>In theory, no finite energy process can be perfectly white, as such a process would require infinite power. However, in practice, many processes can be well-modeled as white noise because their impact on system modeling, design, and performance is indistinguishable from that of an ideal white noise process. For instance, consider a random square-wave process. If this process is an input to a sampled system with sampling intervals much greater than the random square-wave “chip” time <span class="math notranslate nohighlight">\(T_c\)</span>, then the samples of the output would be statistically independent.</p>
 <p>This statistical independence would make the samples functionally indistinguishable from those of an ideal white noise process, thus allowing the random square-wave process to be treated as a white process in practical scenarios.</p>
 <div class="cell docutils container">

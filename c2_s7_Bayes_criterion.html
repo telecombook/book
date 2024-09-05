@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="MiniMax Criterion" href="c2_s9_minimax.html" />
-    <link rel="prev" title="Hypothesis Testing" href="c2_s5_MAP_ML_critera.html" />
+    <link rel="prev" title="MAP and ML Criteria" href="c2_s5_MAP_ML_critera.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -224,13 +224,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">Hypothesis Testing</a></li>
-
-
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Bayes Criterion</a></li>
 
 
@@ -348,8 +342,7 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-using-bayes-criterion">Example: Antipodal Signal Detection using Bayes Criterion</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-map-vs-bayes-criteria">Compare MAP vs. Bayes Criteria</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-of-noise-power">Unit of Noise Power</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-of-signal-to-noise-ratio-snr">Unit of Signal-to-Noise Ratio (SNR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
 </ul>
 </li>
@@ -455,9 +448,9 @@ L(y) \geq \tau_B
 \]</div>
 <p>or, in terms of our combined notation,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-D_1 \begin{array}{c} \geq \\ \leq \end{array} \tau_B D_0 
-\end{split}\]</div>
+\[
+L(y) \underset{D_0}{\overset{D_1}{\gtrless}} \tau_B
+\]</div>
 <p>Thus, the Bayes test also requires using the observation <span class="math notranslate nohighlight">\( y \)</span> to form the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> and comparing it with a threshold <span class="math notranslate nohighlight">\( \tau_B \)</span>.</p>
 <p>The design rule for the Bayes’ test is</p>
 <div class="math notranslate nohighlight">
@@ -572,10 +565,10 @@ D_0, &amp; \text{if } y &lt; \tau'
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9852
-P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0148
-P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0343
-P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9657
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9858
+P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0142
+P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0321
+P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9679
 </pre></div>
 </div>
 </div>
@@ -596,25 +589,20 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9657
 <li><p>Noise <span class="math notranslate nohighlight">\( n \)</span> is Gaussian with fixed variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span></p></li>
 </ul>
 <p>In the simulation, <span class="math notranslate nohighlight">\( \rho \)</span> represents the transmit power of the signal <span class="math notranslate nohighlight">\( s \)</span>. Since <span class="math notranslate nohighlight">\( \rho \)</span> is multiplied by the signal <span class="math notranslate nohighlight">\( s \)</span> to form the received signal <span class="math notranslate nohighlight">\( y = \sqrt{\rho} s + n \)</span>, it effectively scales the amplitude of the signal.</p>
-<p>The unit of <span class="math notranslate nohighlight">\( \rho \)</span> depends on the context of the signal <span class="math notranslate nohighlight">\( s \)</span>. If we consider <span class="math notranslate nohighlight">\( s \)</span> as having a unit of voltage, then <span class="math notranslate nohighlight">\( \sqrt{\rho} \)</span> would have the unit of volts, and <span class="math notranslate nohighlight">\( \rho \)</span> itself would have the unit of volts squared (<span class="math notranslate nohighlight">\( \text{V}^2 \)</span>). This is because the power associated with a signal in an electrical context is proportional to the square of the voltage.</p>
-<p>Thus, in the context of the simulation, <strong>the unit of <span class="math notranslate nohighlight">\( \rho \)</span> is <span class="math notranslate nohighlight">\( \text{V}^2 \)</span></strong> (volts squared). This corresponds to the signal power measured in terms of the square of the voltage amplitude.</p>
-<section id="unit-of-noise-power">
-<h2>Unit of Noise Power<a class="headerlink" href="#unit-of-noise-power" title="Link to this heading">#</a></h2>
-<p>The noise power, represented by the variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span> of the noise <span class="math notranslate nohighlight">\( n \)</span>, is typically measured in terms of power units. In the context where the signal <span class="math notranslate nohighlight">\( s \)</span> and noise <span class="math notranslate nohighlight">\( n \)</span> are considered to have units of voltage, the noise power also has the unit of volts squared (<span class="math notranslate nohighlight">\( \text{V}^2 \)</span>).</p>
-</section>
-<section id="unit-of-signal-to-noise-ratio-snr">
-<h2>Unit of Signal-to-Noise Ratio (SNR)<a class="headerlink" href="#unit-of-signal-to-noise-ratio-snr" title="Link to this heading">#</a></h2>
+<section id="signal-to-noise-ratio-snr">
+<h2>Signal-to-Noise Ratio (SNR)<a class="headerlink" href="#signal-to-noise-ratio-snr" title="Link to this heading">#</a></h2>
 <p>The Signal-to-Noise Ratio (SNR) is defined as the ratio of the signal power to the noise power. In this context:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{SNR} = \frac{\text{Signal Power}}{\text{Noise Power}}
 \]</div>
-<p>Given that both the signal power and the noise power are expressed in volts squared (<span class="math notranslate nohighlight">\( \text{V}^2 \)</span>), the units cancel out, making the SNR a dimensionless quantity. It represents the relative strength of the signal compared to the noise, typically expressed in decibels (dB) when calculated as:</p>
+<p>Given that both the signal power and the noise power are expressed in Watt, the units cancel out, making the SNR a dimensionless quantity.</p>
+<p>It represents the relative strength of the signal compared to the noise, typically expressed in decibels (dB) when calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{SNR (dB)} = 10 \log_{10} \left( \frac{\text{Signal Power}}{\text{Noise Power}} \right)
 \]</div>
-<p>Thus, the <strong>unit of noise power</strong> is <span class="math notranslate nohighlight">\( \text{V}^2 \)</span>, and the <strong>SNR is a dimensionless ratio</strong> that quantifies the relative power level of the signal to the noise.</p>
+<p>Typically, SNR is measured at the receiver side. When considering the power of the transmitted signal relative to noise, it is referred to as the <strong>transmit SNR</strong>.</p>
 </section>
 <section id="numerical-results">
 <h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
@@ -702,21 +690,28 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9657
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P01_bayes</span><span class="p">)</span>
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P10_bayes</span><span class="p">)</span>
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P11_bayes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Plotting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Plot P00, P01, P10, P11 for MAP criterion</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot P00, P01, P10, P11 for Bayes criterion</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add labels and title</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SNR (dB)&#39;</span><span class="p">)</span>
@@ -731,7 +726,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9657
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c25992366e8311e0043ec0995835acae2f73ef60b202e6f3f4236f68dfbdb2e3.png" src="_images/c25992366e8311e0043ec0995835acae2f73ef60b202e6f3f4236f68dfbdb2e3.png" />
+<img alt="_images/8205259c619e278076b5a19c07fad11ddb4135e0138087f43e52323f40afa342.png" src="_images/8205259c619e278076b5a19c07fad11ddb4135e0138087f43e52323f40afa342.png" />
 </div>
 </div>
 <p><strong>DISCUSSION.</strong> This comparison may not be entirely fair because the Bayes criterion requires knowledge of both the costs associated with different types of errors and the a priori probabilities of the hypotheses.</p>
@@ -776,7 +771,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9657
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Hypothesis Testing</p>
+        <p class="prev-next-title">MAP and ML Criteria</p>
       </div>
     </a>
     <a class="right-next"
@@ -811,8 +806,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9657
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-using-bayes-criterion">Example: Antipodal Signal Detection using Bayes Criterion</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-map-vs-bayes-criteria">Compare MAP vs. Bayes Criteria</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-of-noise-power">Unit of Noise Power</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-of-signal-to-noise-ratio-snr">Unit of Signal-to-Noise Ratio (SNR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
 </ul>
 </li>
