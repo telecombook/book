@@ -233,6 +233,8 @@
 
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -340,7 +342,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making">Decision Making</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-using-bayes-criterion">Example: Antipodal Signal Detection using Bayes Criterion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-using-bayes-criterion">Example: Antipodal Signal Detection using Bayes Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-map-vs-bayes-criteria">Compare MAP vs. Bayes Criteria</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
@@ -360,7 +365,11 @@ document.write(`
                   
   <section id="bayes-criterion">
 <h1>Bayes Criterion<a class="headerlink" href="#bayes-criterion" title="Link to this heading">#</a></h1>
-<p><strong>MOTIVATION.</strong> The question is why we need another criterion, such as Bayes criterion. There is a fact that some decisions might be more important than others and some errors might be more costly than others. The MAP criterion of the previous section ignores the fact.</p>
+<p><strong>MOTIVATION.</strong> The question is why we need another criterion, such as Bayes criterion.</p>
+<ul class="simple">
+<li><p>There is a fact that some decisions might be more important than others and some errors might be more costly than others.</p></li>
+<li><p>The MAP criterion of the previous section ignores the fact.</p></li>
+</ul>
 <p>For example, consider a hypothetical situation where you are suspected of having a fatal, yet curable, disease. If <span class="math notranslate nohighlight">\( H_0 \)</span> corresponds to the hypothesis of no disease, then the following “costs” are associated with each of the four possibilities:</p>
 <ul class="simple">
 <li><p>With probability <span class="math notranslate nohighlight">\( P_{00} \)</span> a correct decision is made that there is no disease. In this case, the only cost is that of the initial medical test.</p></li>
@@ -375,7 +384,7 @@ document.write(`
 <li><p>Bayes risk, <span class="math notranslate nohighlight">\(r\)</span></p></li>
 <li><p>Bayes decision theshold</p></li>
 </ul>
-<p>The Bayes criterion addresses this issue by introducing the concept of cost.</p>
+<p>The Bayes criterion addresses this issue by introducing the concept of <em>cost</em>.</p>
 <p><strong>Cost <span class="math notranslate nohighlight">\( C_{ij} \)</span></strong></p>
 <p>Let <span class="math notranslate nohighlight">\( C_{ij} \)</span> be the cost of deciding <span class="math notranslate nohighlight">\( D_i \)</span> when hypotheses <span class="math notranslate nohighlight">\( H_j \)</span> is correct.</p>
 <p><strong>Bayes risk, <span class="math notranslate nohighlight">\(r\)</span></strong></p>
@@ -479,11 +488,12 @@ L(y) \underset{D_0}{\overset{D_1}{\gtrless}} \tau_B
 \[
 \tau_B = \frac{\pi_0 (C_{10} - C_{00})}{\pi_1 (C_{01} - C_{11})} = 2 
 \]</div>
-<p>Using the log-likelihood ratio, the log-likelihood threshold <span class="math notranslate nohighlight">\( \tau' \)</span> is calculated as:</p>
+<p>Recall the concept of using <span class="math notranslate nohighlight">\(\mathrm{func}^{-1}(\cdot)\)</span>, herein, using the log-likelihood ratio, the log-likelihood threshold <span class="math notranslate nohighlight">\( \tau' \)</span> is calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
 \tau' = \ln 2 \frac{\sigma^2}{2b}
 \]</div>
+<p>recall that <span class="math notranslate nohighlight">\( s_0 = -b \)</span> and <span class="math notranslate nohighlight">\( s_1 = b \)</span>, and <span class="math notranslate nohighlight">\(b&gt;0\)</span>.</p>
 <p>The decision rule based on this threshold is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -504,6 +514,8 @@ D_0, &amp; \text{if } y &lt; \tau'
 <li><p><span class="math notranslate nohighlight">\( P_{10} \approx 0.015 \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\( P_{11} \approx 0.966 \)</span></p></li>
 </ul>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -565,14 +577,15 @@ D_0, &amp; \text{if } y &lt; \tau'
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9858
-P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0142
-P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0321
-P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9679
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9864
+P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0136
+P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0368
+P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9632
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="compare-map-vs-bayes-criteria">
 <h1>Compare MAP vs. Bayes Criteria<a class="headerlink" href="#compare-map-vs-bayes-criteria" title="Link to this heading">#</a></h1>
@@ -726,7 +739,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9679
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8205259c619e278076b5a19c07fad11ddb4135e0138087f43e52323f40afa342.png" src="_images/8205259c619e278076b5a19c07fad11ddb4135e0138087f43e52323f40afa342.png" />
+<img alt="_images/0f2e66c70fce722713b34ff5ad8abc49d742376bbaf0eb82dfd2f8ed05e2b049.png" src="_images/0f2e66c70fce722713b34ff5ad8abc49d742376bbaf0eb82dfd2f8ed05e2b049.png" />
 </div>
 </div>
 <p><strong>DISCUSSION.</strong> This comparison may not be entirely fair because the Bayes criterion requires knowledge of both the costs associated with different types of errors and the a priori probabilities of the hypotheses.</p>
@@ -804,7 +817,10 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9679
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making">Decision Making</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-using-bayes-criterion">Example: Antipodal Signal Detection using Bayes Criterion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-using-bayes-criterion">Example: Antipodal Signal Detection using Bayes Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-map-vs-bayes-criteria">Compare MAP vs. Bayes Criteria</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>

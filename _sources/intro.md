@@ -4,7 +4,7 @@
 
 The long-term objective of this TelecomBook is to provide an intuitive understanding of telecommunication systems through mathematical expressions and simulations. The book will cover three main topics:
 - Probability theory
-- Signal detection, decision, and estimation
+- Signal detection, decision, and estimation theory
 - Telecommunications theory
 
 

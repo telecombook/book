@@ -233,6 +233,8 @@
 
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -336,23 +338,24 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-threshold">MAP Threshold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-decision-procedure">MAP Decision Procedure</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-criterion">Maximum-Likelihood Criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exmaple-antipodal-signal-detection-and-decision-process">Exmaple: Antipodal Signal Detection and Decision Process</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-functions">Likelihood Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-using-map-criterion">Detection using MAP Criterion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-decision-rules">Summary of Decision Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Rule</a></li>
@@ -377,77 +380,155 @@ document.write(`
 <h1>MAP and ML Criteria<a class="headerlink" href="#map-and-ml-criteria" title="Link to this heading">#</a></h1>
 <section id="hypothesis-testing">
 <h2>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
-<p>Consider two possible values <span class="math notranslate nohighlight">\( s_0 \)</span> and <span class="math notranslate nohighlight">\( s_1 \)</span>. We wish to decide between these two alternatives when we observe a measurement <span class="math notranslate nohighlight">\( y \)</span> corrupted by noise <span class="math notranslate nohighlight">\( n \)</span>. That is, we observe</p>
+<p>Consider two possible values <span class="math notranslate nohighlight">\( s_0 \)</span> and <span class="math notranslate nohighlight">\( s_1 \)</span>.</p>
+<p>We aim to decide between these two alternatives when we observe a measurement <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> corrupted by noise <span class="math notranslate nohighlight">\( \mathbf{n} \)</span>.</p>
+<p>That is, we observe</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{y} = s_i + \mathbf{n}, \quad i = 0, 1 \]</div>
-<p>and decide which <span class="math notranslate nohighlight">\( s_i \)</span> is the most likely value.</p>
+<p>and decide which <span class="math notranslate nohighlight">\( s_i \)</span> is the most <em>likely</em> value.</p>
 <p>Most of the development of this section presumes a continuous measurement <span class="math notranslate nohighlight">\( y \)</span>. This is merely a convenience, because <span class="math notranslate nohighlight">\( y \)</span> can just as easily represent discrete measurements. The theory is entirely consistent.</p>
-<p>In this binary case, there are two alternative hypotheses.
-Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> corresponds to the value <span class="math notranslate nohighlight">\( s_0 \)</span> being present and hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> corresponds to <span class="math notranslate nohighlight">\( s_1 \)</span>.</p>
+<p>In this binary case, there are two alternative hypotheses.</p>
+<ul class="simple">
+<li><p>Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> corresponds to <span class="math notranslate nohighlight">\( s_0 \)</span> is transmitted</p></li>
+<li><p>Hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> corresponds to <span class="math notranslate nohighlight">\( s_1 \)</span> is transmitted</p></li>
+</ul>
 </section>
 <section id="map-criterion">
 <h2>MAP Criterion<a class="headerlink" href="#map-criterion" title="Link to this heading">#</a></h2>
-<p>Thus, we wish to determine <span class="math notranslate nohighlight">\( P(H_i|y) \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>, the probability of each of the hypotheses, given the observation <span class="math notranslate nohighlight">\( y \)</span>. If</p>
+<p>We aim to determine <span class="math notranslate nohighlight">\( P(H_i | y) \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>, which represents the posterior probability of each hypothesis given the observation <span class="math notranslate nohighlight">\( y \)</span>.</p>
+<p>Specifically, if</p>
 <div class="math notranslate nohighlight">
-\[ P(H_0|y) &gt; P(H_1|y) \]</div>
-<p>we “decide” <span class="math notranslate nohighlight">\( s_0 \)</span> was present, and conversely we decide <span class="math notranslate nohighlight">\( s_1 \)</span> if</p>
+\[
+P(H_0 | y) &gt; P(H_1 | y)
+\]</div>
+<p>we decide that hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> (corresponding to signal <span class="math notranslate nohighlight">\( s_0 \)</span>) is true.</p>
+<p>Conversely, if</p>
 <div class="math notranslate nohighlight">
-\[ P(H_1|y) &gt; P(H_0|y) \]</div>
-<p>Using Bayes’ theorem, we can write</p>
+\[
+P(H_1 | y) &gt; P(H_0 | y)
+\]</div>
+<p>we decide that hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> (corresponding to signal <span class="math notranslate nohighlight">\( s_1 \)</span>) is true.</p>
+<p>Using Bayes’ theorem, the posterior probabilities can be expressed as:</p>
 <div class="math notranslate nohighlight">
-\[ P(H_0|y) = \frac{p(y|H_0)P(H_0)}{p(y)} \]</div>
-<p>where <span class="math notranslate nohighlight">\( P(H_i) \)</span> is the probability of hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> and <span class="math notranslate nohighlight">\( p(y) \)</span> is the pdf of <span class="math notranslate nohighlight">\( y \)</span>; by the theorem of total probability, <span class="math notranslate nohighlight">\( p(y) \)</span> can be written as</p>
+\[
+P(H_0 | y) = \frac{p(y | H_0) P(H_0)}{p(y)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( P(H_i) \)</span> is the prior probability of hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>, and <span class="math notranslate nohighlight">\( p(y) \)</span> is the total probability of observation <span class="math notranslate nohighlight">\( y \)</span>. By the law of total probability, <span class="math notranslate nohighlight">\( p(y) \)</span> can be written as</p>
 <div class="math notranslate nohighlight">
-\[ p(y) = p(y|H_0)P(H_0) + p(y|H_1)P(H_1) \]</div>
-<p>Similarly,</p>
+\[
+p(y) = p(y | H_0) P(H_0) + p(y | H_1) P(H_1)
+\]</div>
+<p>Similarly, the posterior for <span class="math notranslate nohighlight">\( H_1 \)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[ P(H_1|y) = \frac{p(y|H_1)P(H_1)}{p(y)} \]</div>
-<p>It can be seen that</p>
+\[
+P(H_1 | y) = \frac{p(y | H_1) P(H_1)}{p(y)}
+\]</div>
+<p>The likelihood functions <span class="math notranslate nohighlight">\( p(y | H_0) \)</span> and <span class="math notranslate nohighlight">\( p(y | H_1) \)</span> represent the probability density of <span class="math notranslate nohighlight">\( y \)</span> given each hypothesis. Specifically,</p>
 <div class="math notranslate nohighlight">
-\[ p(y|H_0) = p_{\mathbf{n}}(y - s_0) \]</div>
-<p>where <span class="math notranslate nohighlight">\( p_{\mathbf{n}}(\cdot) \)</span> is the noise probability density function and</p>
+\[
+p(y | H_0) = p_{\mathbf{n}}(y - s_0)
+\]</div>
+<p>and</p>
 <div class="math notranslate nohighlight">
-\[ p(y|H_1) = p_{\mathbf{n}}(y - s_1) \]</div>
-<p>Thus, in order to calculate the a posteriori probabilities <span class="math notranslate nohighlight">\( P(H_i|y) \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>, it is necessary to know the a priori probabilities <span class="math notranslate nohighlight">\( P(H_0) \)</span> and <span class="math notranslate nohighlight">\( P(H_1) \)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\( P(H_0) = \pi_0 \)</span> and <span class="math notranslate nohighlight">\( P(H_1) = \pi_1 \)</span>. From the a priori probabilities, we decide hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> is correct if</p>
+\[
+p(y | H_1) = p_{\mathbf{n}}(y - s_1)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( p_{\mathbf{n}}(\cdot) \)</span> denotes the probability density function of the noise.</p>
+<p>Thus, to compute the posterior probabilities <span class="math notranslate nohighlight">\( P(H_i | y) \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>, we need to know the prior probabilities <span class="math notranslate nohighlight">\( P(H_0) \)</span> and <span class="math notranslate nohighlight">\( P(H_1) \)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\( P(H_0) = \pi_0 \)</span> and <span class="math notranslate nohighlight">\( P(H_1) = \pi_1 \)</span>. Based on these prior probabilities, we decide that hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> is correct if</p>
 <div class="math notranslate nohighlight">
-\[ p(y|H_0)\pi_0 &gt; p(y|H_1)\pi_1 \]</div>
-<p>If the inequality is reversed, we decide <span class="math notranslate nohighlight">\( H_1 \)</span> is correct. We will let <span class="math notranslate nohighlight">\( D_0 \)</span> be the event associated with the “decision” of choosing <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( D_1 \)</span> be the corresponding event associated with <span class="math notranslate nohighlight">\( H_1 \)</span>. Throughout the text, we will combine both inequalities in a simple expression for deciding between <span class="math notranslate nohighlight">\( D_0 \)</span> or <span class="math notranslate nohighlight">\( D_1 \)</span>, i.e.,</p>
+\[
+p(y | H_0) \pi_0 &gt; p(y | H_1) \pi_1
+\]</div>
+<p>Otherwise, we decide that hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> is correct.</p>
+<p>Define:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( D_0 \)</span> as the decision to select <span class="math notranslate nohighlight">\( H_0 \)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( D_1 \)</span> as the decision to select <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+</ul>
+<p>Throughout this chapter, we will express the decision rule for choosing between <span class="math notranslate nohighlight">\( D_0 \)</span> and <span class="math notranslate nohighlight">\( D_1 \)</span> as:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \frac{p(y|H_1)}{p(y|H_0)} \begin{array}{c} D_1 \\ \gtrless \\ D_0 \end{array} \frac{\pi_0}{\pi_1} \end{split}\]</div>
-<p>We define the likelihood ratio as</p>
+\[\begin{split}
+\frac{p(y | H_1)}{p(y | H_0)} \begin{array}{c} D_1 \\ \gtrless \\ D_0 \end{array} \frac{\pi_0}{\pi_1}
+\end{split}\]</div>
+<section id="likelihood-ratio">
+<h3>Likelihood Ratio<a class="headerlink" href="#likelihood-ratio" title="Link to this heading">#</a></h3>
+<p>The likelihood ratio, which simplifies the decision-making process, is defined as:</p>
 <div class="math notranslate nohighlight">
-\[ L(y) = \frac{p(y|H_1)}{p(y|H_0)} \]</div>
-<p>The ratio <span class="math notranslate nohighlight">\( \frac{\pi_0}{\pi_1} \)</span> is a fixed value <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span> and is associated with MAP detection.</p>
-<p>Therefore, a MAP criterion uses the observation <span class="math notranslate nohighlight">\( y \)</span> to produce the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span>, which is then compared to a threshold <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span>.</p>
-<p>In the case where <span class="math notranslate nohighlight">\( L(y) = \tau_{MAP} \)</span>, the MAP criterion offers no judgment as to which hypothesis should be chosen. Some of the other criteria presented in this chapter do address this issue.</p>
-<p>Since engineers abhor a “hang-up” condition where no decision is made, we shall adopt the convention of deciding <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( L(y) \geq \tau_{MAP} \)</span>.</p>
+\[
+L(y) = \frac{p(y | H_1)}{p(y | H_0)}
+\]</div>
+</section>
+<section id="map-threshold">
+<h3>MAP Threshold<a class="headerlink" href="#map-threshold" title="Link to this heading">#</a></h3>
+<p>The <strong>MAP threshold</strong> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{MAP} \triangleq \frac{\pi_0}{\pi_1}
+\]</div>
+<p>For a given detection experiment, the ratio <span class="math notranslate nohighlight">\( \frac{\pi_0}{\pi_1} \)</span> represents a fixed value determined by the prior probabilities <span class="math notranslate nohighlight">\( \pi_0 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 \)</span>.</p>
+<p>Consequently, the threshold <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span> is also fixed and is specifically associated with this MAP detection experiment.</p>
+</section>
+<section id="map-decision-procedure">
+<h3>MAP Decision Procedure<a class="headerlink" href="#map-decision-procedure" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Compute the threshold</strong> <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span> based on the given prior probabilities <span class="math notranslate nohighlight">\( \pi_0 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 \)</span>:
+$<span class="math notranslate nohighlight">\(
+\tau_{MAP} = \frac{\pi_0}{\pi_1}
+\)</span>$</p></li>
+<li><p><strong>Compute the likelihood ratio expression</strong> <span class="math notranslate nohighlight">\( L(y) = \frac{p(y|H_1)}{p(y|H_0)} \)</span>, either</p></li>
+</ol>
+<ul class="simple">
+<li><p>directly from the distribution of <span class="math notranslate nohighlight">\( \mathbf{y} \)</span>, or</p></li>
+<li><p>indirectly from the distribution of the noise <span class="math notranslate nohighlight">\( \mathbf{n} \)</span> (if <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> is a function of the noise and the signal).
+This step involves using the known probability density functions for <span class="math notranslate nohighlight">\( p(y|H_0) \)</span> and <span class="math notranslate nohighlight">\( p(y|H_1) \)</span> based on the system model.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>For a specific value of the observation <span class="math notranslate nohighlight">\( y \)</span>:</p></li>
+</ol>
+<ul>
+<li><p><strong>Compare</strong> <span class="math notranslate nohighlight">\( L(y) \)</span> with <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span>.</p></li>
+<li><p>If it’s easier to work directly with <span class="math notranslate nohighlight">\( y \)</span>, we can transform the comparison into an equivalent one between <span class="math notranslate nohighlight">\( y \)</span> and some function of <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span>, i.e., solve <span class="math notranslate nohighlight">\( L(y) = \tau_{MAP} \)</span> for <span class="math notranslate nohighlight">\( y \)</span>, yielding a decision threshold <span class="math notranslate nohighlight">\( y_{th} \)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   y \begin{array}{c} H_1 \\ \gtrless \\ H_0 \end{array} y_{th}
+   \end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( y_{th} = \mathrm{func}^{-1}(\tau_{MAP}) \)</span>, where <span class="math notranslate nohighlight">\( \mathrm{func}^{-1}(\cdot) \)</span> represents the inverse of the likelihood ratio function.</p>
+</li>
+</ul>
+<p>This final step allows us to directly compare the observation <span class="math notranslate nohighlight">\( y \)</span> with the transformed threshold <span class="math notranslate nohighlight">\( y_{th} \)</span>, simplifying the decision process.</p>
+<p><strong>Discussion.</strong></p>
+<ul class="simple">
+<li><p>To obtain <span class="math notranslate nohighlight">\( \mathrm{func}^{-1} \)</span>, the likelihood ratio function <span class="math notranslate nohighlight">\( L(y) = \frac{p(y|H_1)}{p(y|H_0)} \)</span> needs to be invertible, but <em>differentiability is not strictly required</em>. The key requirement is that the likelihood ratio function should be <em>monotonic</em> over the range of interest so that it can be inverted.</p></li>
+<li><p>In cases where <span class="math notranslate nohighlight">\( L(y) = \tau_{MAP} \)</span>, the MAP criterion does not specify which hypothesis to choose. Other detection criteria, discussed later in the chapter, address this ambiguity.</p></li>
+<li><p>When <span class="math notranslate nohighlight">\( L(y) = \tau_{MAP} \)</span>, no decision is made. However, by convention, we will choose hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( L(y) \geq \tau_{MAP} \)</span>.</p></li>
+</ul>
+</section>
 </section>
 <section id="maximum-likelihood-criterion">
 <h2>Maximum-Likelihood Criterion<a class="headerlink" href="#maximum-likelihood-criterion" title="Link to this heading">#</a></h2>
-<p>In detection theory, when the two hypotheses (<span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>) are equally likely a priori, it means that the prior probabilities are the same:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \pi_0 = \pi_1 \)</span>, where <span class="math notranslate nohighlight">\( \pi_0 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 \)</span> represent the prior probabilities of hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p></li>
-</ul>
+<p>In detection theory, when the two hypotheses (<span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>) are equally likely a priori, it means that the prior probabilities are the same, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \pi_0 = \pi_1 \]</div>
+<p>recall that <span class="math notranslate nohighlight">\( \pi_0 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 \)</span> represent the prior probabilities of hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p>
 <p>Under this condition, the decision threshold for the maximum a posteriori (MAP) criterion, denoted as <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span>, simplifies to:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \tau_{MAP} = 1 \)</span>.</p></li>
-</ul>
+<div class="math notranslate nohighlight">
+\[ \tau_{MAP} = 1 \]</div>
 <p>This leads to a special case known as the <strong>maximum-likelihood (ML) criterion</strong>, where the threshold for deciding between the two hypotheses is:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \tau_{ML} = 1 \)</span>.</p></li>
-</ul>
-<p>The ML criterion is frequently used when there is no information available about the a priori probabilities. However, in such cases, analysts are often advised to consider the <strong>minimax criterion</strong>, which minimizes the maximum risk across different decisions.</p>
-<p>Despite this, the ML criterion remains highly valuable in <strong>estimation theory</strong>, as it is effective when the goal is to estimate parameters based on observed data without relying on prior knowledge.</p>
+<div class="math notranslate nohighlight">
+\[ \tau_{ML} = 1 \]</div>
+<p>The ML criterion is frequently used when there is <em>no</em> information available about the a priori probabilities. However, in such cases, analysts are often advised to consider the <strong>minimax criterion</strong>, which minimizes the maximum risk across different decisions.</p>
+<p>Despite this, the ML criterion remains highly valuable in <strong>estimation theory</strong>, as it is effective when the goal is to estimate parameters based on observed data without relying on <em>prior knowledge</em>.</p>
 </section>
 <section id="exmaple-antipodal-signal-detection-and-decision-process">
 <h2>Exmaple: Antipodal Signal Detection and Decision Process<a class="headerlink" href="#exmaple-antipodal-signal-detection-and-decision-process" title="Link to this heading">#</a></h2>
-<section id="setup">
-<h3>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
+<section id="problem-statement">
+<h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h3>
 <p>In this example [B2, Ex 4.1], we consider antipodal signals where <span class="math notranslate nohighlight">\( s_0 = -b \)</span> and <span class="math notranslate nohighlight">\( s_1 = b \)</span>, with the a priori probabilities <span class="math notranslate nohighlight">\( \pi_0 = 0.8 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 = 0.2 \)</span>, respectively. We assume <span class="math notranslate nohighlight">\( b &gt; 0 \)</span>.</p>
-<p>The noise <span class="math notranslate nohighlight">\( n \)</span> is modeled as a zero-mean Gaussian random variable with variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>. The probability density function (pdf) of the noise is:</p>
+<p>The noise <span class="math notranslate nohighlight">\( \mathbf{n} \)</span> is modeled as a zero-mean Gaussian random variable with variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p>The probability density function (pdf) of the noise is:</p>
 <div class="math notranslate nohighlight">
-\[ p_n(n) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{n^2}{2\sigma^2} \right) \]</div>
+\[ p_{\mathbf{n}}(n) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{n^2}{2\sigma^2} \right) \]</div>
 </section>
 <section id="likelihood-functions">
 <h3>Likelihood Functions<a class="headerlink" href="#likelihood-functions" title="Link to this heading">#</a></h3>
@@ -470,7 +551,7 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 <h3>Decision Rule<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h3>
 <p>We decide <span class="math notranslate nohighlight">\( H_1 \)</span> if:</p>
 <div class="math notranslate nohighlight">
-\[ \exp\left( \frac{2yb}{\sigma^2} \right) \geq 4 \]</div>
+\[ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 4 \]</div>
 <p>Taking the natural logarithm of both sides, we get:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{2yb}{\sigma^2} \geq \ln 4 \]</div>
@@ -482,29 +563,19 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 <p>For example, if <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>, the decision rule becomes:</p>
 <div class="math notranslate nohighlight">
 \[ y \geq \frac{0.25 \ln 4}{2 \cdot 1} = 0.173287 \]</div>
-<section id="interpretation">
-<h4>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h4>
-<p>If the a priori probabilities were equal (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = 0.5 \)</span>), then <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span> would be 1, and the decision rule would be based purely on the likelihood ratio, i.e., <span class="math notranslate nohighlight">\( y \geq 0 \)</span>.</p>
-</section>
-</section>
-<section id="summary-of-decision-rules">
-<h3>Summary of Decision Rules<a class="headerlink" href="#summary-of-decision-rules" title="Link to this heading">#</a></h3>
-<ul>
-<li><p>With unequal priors (<span class="math notranslate nohighlight">\( \pi_0 = 0.8 \)</span>, <span class="math notranslate nohighlight">\( \pi_1 = 0.2 \)</span>):</p>
+<p><strong>Discussion.</strong></p>
+<p>Here’s the corrected version of your statement:</p>
+<p>If the a priori probabilities are equal (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = 0.5 \)</span>), then the MAP threshold <span class="math notranslate nohighlight">\( \tau_{MAP} \)</span> becomes 1. In this case, we decide <span class="math notranslate nohighlight">\( H_1 \)</span> if:</p>
 <div class="math notranslate nohighlight">
-\[ y \geq 0.173287 \]</div>
-<p>We decide <span class="math notranslate nohighlight">\( H_1 \)</span> if the observation <span class="math notranslate nohighlight">\( y \)</span> is greater than or equal to 0.173287.</p>
-</li>
-<li><p>With equal priors (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = 0.5 \)</span>):</p>
-<div class="math notranslate nohighlight">
-\[ y \geq 0 \]</div>
-<p>We decide <span class="math notranslate nohighlight">\( H_1 \)</span> if the observation <span class="math notranslate nohighlight">\( y \)</span> is greater than or equal to 0.</p>
-</li>
-</ul>
-<p>This example demonstrates the application of the MAP criterion to decide between two hypotheses based on observed data, incorporating both the likelihood functions and the a priori probabilities.</p>
+\[
+L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
+\]</div>
+<p>This simplifies to a decision rule based purely on the likelihood ratio, i.e., <span class="math notranslate nohighlight">\( y \geq 0 \)</span>, since <span class="math notranslate nohighlight">\( \ln 1 = 0 \)</span>.</p>
+<p>This is why the ML (Maximum Likelihood) criterion is effective when we do not have <em>prior knowledge</em> of the probabilities, as it relies solely on the likelihood of the observation without incorporating prior probabilities.</p>
+</section>
 </section>
 <section id="numerical-results">
-<h3>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h3>
+<h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -555,13 +626,13 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0448, 0.1956)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0384, 0.2068)
 </pre></div>
 </div>
 </div>
 </div>
 <section id="plot-theoretical-and-empirical-pdfs">
-<h4>Plot theoretical and empirical PDFs<a class="headerlink" href="#plot-theoretical-and-empirical-pdfs" title="Link to this heading">#</a></h4>
+<h3>Plot theoretical and empirical PDFs<a class="headerlink" href="#plot-theoretical-and-empirical-pdfs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-importing necessary libraries</span>
@@ -608,12 +679,12 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/054bd4a91dcd7a2b16328de650fe57a33539719e5f61de1939977e1ffbae6fdc.png" src="_images/054bd4a91dcd7a2b16328de650fe57a33539719e5f61de1939977e1ffbae6fdc.png" />
+<img alt="_images/767c8488c1ef631c94ea46f53c69fcc6e6e4043da375d4017edb4f64d35a4390.png" src="_images/767c8488c1ef631c94ea46f53c69fcc6e6e4043da375d4017edb4f64d35a4390.png" />
 </div>
 </div>
 </section>
 <section id="plot-decision-regions">
-<h4>Plot decision regions<a class="headerlink" href="#plot-decision-regions" title="Link to this heading">#</a></h4>
+<h3>Plot decision regions<a class="headerlink" href="#plot-decision-regions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -646,10 +717,9 @@ Hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> correspon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/45b01312e061730c4a3c47264ca229bd5c60ac7f6b50841c1b66e2302176715a.png" src="_images/45b01312e061730c4a3c47264ca229bd5c60ac7f6b50841c1b66e2302176715a.png" />
+<img alt="_images/3ca104458fe0e56ff0055903d949c707833c71aeb39c557a210ac3fc19a7ba5e.png" src="_images/3ca104458fe0e56ff0055903d949c707833c71aeb39c557a210ac3fc19a7ba5e.png" />
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="id1">
@@ -820,10 +890,10 @@ P_{11} \approx 0.950878
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9909
-P01 (Decide H0 | H1 true): 0.0091
-P10 (Decide H1 | H0 true): 0.0524
-P11 (Decide H1 | H1 true): 0.9476
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9904
+P01 (Decide H0 | H1 true): 0.0096
+P10 (Decide H1 | H0 true): 0.0517
+P11 (Decide H1 | H1 true): 0.9483
 </pre></div>
 </div>
 </div>
@@ -880,7 +950,7 @@ P11 (Decide H1 | H1 true): 0.9476
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/28df26c103ba20118e16e147e47982a693b34728a22e5c42ca8e502ff7454fb2.png" src="_images/28df26c103ba20118e16e147e47982a693b34728a22e5c42ca8e502ff7454fb2.png" />
+<img alt="_images/ef2101170a181e2557931e5062d0c3b9578c6d3092ed5964e9665194b65d9f1c.png" src="_images/ef2101170a181e2557931e5062d0c3b9578c6d3092ed5964e9665194b65d9f1c.png" />
 </div>
 </div>
 <section id="error-types-for-a-general-decision-threshold">
@@ -957,8 +1027,8 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix:
 [[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
  [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
-[[0.9909 0.0091]
- [0.0524 0.9476]]
+[[0.9904 0.0096]
+ [0.0517 0.9483]]
 </pre></div>
 </div>
 </div>
@@ -992,8 +1062,8 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix (using sklearn):
 [[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
  [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
-[[0.9909 0.0091]
- [0.0524 0.9476]]
+[[0.9904 0.0096]
+ [0.0517 0.9483]]
 </pre></div>
 </div>
 </div>
@@ -1018,7 +1088,7 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ce715d2b54d157bc4d824ee3aaa2fe01a06cc916b19fd40be14c221cfbcd00d.png" src="_images/6ce715d2b54d157bc4d824ee3aaa2fe01a06cc916b19fd40be14c221cfbcd00d.png" />
+<img alt="_images/7ec7b103b6a6e834d989d248cb5c21c84d34abba8f6694f41cce283c355307bd.png" src="_images/7ec7b103b6a6e834d989d248cb5c21c84d34abba8f6694f41cce283c355307bd.png" />
 </div>
 </div>
 </section>
@@ -1090,23 +1160,24 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-threshold">MAP Threshold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-decision-procedure">MAP Decision Procedure</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-criterion">Maximum-Likelihood Criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exmaple-antipodal-signal-detection-and-decision-process">Exmaple: Antipodal Signal Detection and Decision Process</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-functions">Likelihood Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-using-map-criterion">Detection using MAP Criterion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical Example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-decision-rules">Summary of Decision Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-theoretical-and-empirical-pdfs">Plot theoretical and empirical PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-decision-regions">Plot decision regions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Rule</a></li>
