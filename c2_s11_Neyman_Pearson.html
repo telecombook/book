@@ -543,17 +543,20 @@ P_d = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(
 <li><p><strong>Demonstrate the optimization of <span class="math notranslate nohighlight">\( P_d \)</span> subject to <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span></strong>: We show that maximizing <span class="math notranslate nohighlight">\( P_d \)</span> is achieved by selecting the threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> such that <span class="math notranslate nohighlight">\( P_f = \alpha_f = 0.1 \)</span>.</p></li>
 <li><p><strong>Solve the <span class="math notranslate nohighlight">\(P_f\)</span>’s constraint equation.</strong> We find the value of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> that satisfies the false alarm rate constraint <span class="math notranslate nohighlight">\( P_f = 0.1 \)</span>.</p></li>
 </ul>
-<p>We assume the setting as in previous examples, i.e., <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>, which implies <span class="math notranslate nohighlight">\( \sigma = 0.5 \)</span>.</p>
-<p>The formulas we will use are:</p>
-<ul class="simple">
-<li><p>For <span class="math notranslate nohighlight">\( P_f \)</span>:
-$<span class="math notranslate nohighlight">\(
-P_f(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y+b)^2}{2\sigma^2}\right) dy
-\)</span>$</p></li>
-<li><p>For <span class="math notranslate nohighlight">\( P_d \)</span>:
-$<span class="math notranslate nohighlight">\(
-P_d(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y-b)^2}{2\sigma^2}\right) dy
-\)</span>$</p></li>
+<p>We assume the setting as in previous examples, i.e., <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>.</p>
+<ul>
+<li><p>For <span class="math notranslate nohighlight">\( P_f \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  P_f(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y+b)^2}{2\sigma^2}\right) dy
+  \]</div>
+</li>
+<li><p>For <span class="math notranslate nohighlight">\( P_d \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  P_d(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y-b)^2}{2\sigma^2}\right) dy
+  \]</div>
+</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
