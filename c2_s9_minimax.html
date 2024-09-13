@@ -229,10 +229,7 @@
 
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">MiniMax Criterion</a></li>
-
-
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
 
 </ul>
@@ -337,17 +334,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk-when-the-a-priori-probability-is-unknown-and-guessed">Actual risk when the a priori probability is unknown and guessed</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-the-bayes-risk-and-the-actual-risk">Demonstrate the Bayes risk and the actual risk</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-bayes-risk-as-a-function-of-pi-0">Fig. Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-risk-review">Bayes risk review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-risk-as-a-function-of-pi-0">Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk">Actual risk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk-as-a-function-of-pi-0">Actual risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-and-bayes-risks-as-a-function-of-pi-0">Actual and Bayes risks as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-using-minimax-criterion">Decision using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-using-minimax-criterion">Decision using MiniMax Criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making">Decision Making</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-minimax-solution">Endpoint Minimax Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule:</a></li>
@@ -361,15 +355,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Making Procedure</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion">Example: Antipodal Signal Detection and Decision Using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion">Example: Antipodal Signal Detection and Decision Using MiniMax Criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -388,51 +377,15 @@ document.write(`
 <li><p>The MAP criterion needs only the <em>a priori</em> probabilities; it does not require knowledge of the costs.</p></li>
 <li><p>In contradistinction, the minimax criterion does require knowledge of the costs but does not use the <em>a priori</em> probabilities.</p></li>
 </ul>
-<p>To illustrate the need for the minimax criterion, consider an example of the Bayes risk <span class="math notranslate nohighlight">\( r \)</span> as a function of the <em>a priori</em> probability <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
-<ul>
-<li><p>If <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>, then <span class="math notranslate nohighlight">\( H_1 \)</span> is correct; our decision <span class="math notranslate nohighlight">\( D_1 \)</span> entails a Bayes risk of <span class="math notranslate nohighlight">\( r = C_{11} \)</span>.
-That is, if <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>, then</p>
-<div class="math notranslate nohighlight">
-\[ r = (P_{01}C_{01} + P_{11}C_{11})\pi_1 \]</div>
-</li>
-<li><p>Since <span class="math notranslate nohighlight">\( \pi_1 = 1 \)</span>, <span class="math notranslate nohighlight">\( P_{01} = 0 \)</span>, and <span class="math notranslate nohighlight">\( P_{11} = 1 \)</span>, then <span class="math notranslate nohighlight">\( r = C_{11} \)</span>.</p></li>
-<li><p>On the other hand, if <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>, a similar argument shows that <span class="math notranslate nohighlight">\( r = C_{00} \)</span>.</p></li>
-</ul>
-<section id="actual-risk-when-the-a-priori-probability-is-unknown-and-guessed">
-<h2>Actual risk when the a priori probability is unknown and guessed<a class="headerlink" href="#actual-risk-when-the-a-priori-probability-is-unknown-and-guessed" title="Link to this heading">#</a></h2>
-<p>Assume that we guess the <em>a priori</em> probability is some value <span class="math notranslate nohighlight">\( \pi_0 = a \)</span>.</p>
-<p>This “freezes” the decision rule <span class="math notranslate nohighlight">\( \delta_B \)</span> with the Bayes threshold, set at</p>
-<div class="math notranslate nohighlight">
-\[
-\tau_B = \frac{a(C_{10} - C_{00})}{(1-a)(C_{01} - C_{11})} 
-\]</div>
-<p><strong>Actual Risk</strong></p>
-<p>If we are wrong about our guess, the actual risk <span class="math notranslate nohighlight">\( r(\pi_0, a) \)</span> we could incur is obtained as</p>
-<div class="math notranslate nohighlight">
-\[
-r(\pi_0, a) = \pi_0 r_0(a) + (1 - \pi_0) r_1(a)
-\]</div>
-<p>where <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are conditional risks for each hypothesis when the threshold and decision rule are controlled by <span class="math notranslate nohighlight">\( a \)</span>. It is clear that</p>
-<div class="math notranslate nohighlight">
-\[
-r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1 
-\]</div>
-<p>Since <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are constants for a specific value of <span class="math notranslate nohighlight">\( a \)</span>, the actual risk is linear in <span class="math notranslate nohighlight">\( \pi_0 \)</span>. If our guess of <span class="math notranslate nohighlight">\( \pi_0 = a \)</span> is correct, the actual risk is identical to the Bayes risk. On the other hand, if <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span> were the “true” value, the actual risk we would entail in this example would be <span class="math notranslate nohighlight">\( r_0(a) \)</span>.</p>
-</section>
-<section id="demonstrate-the-bayes-risk-and-the-actual-risk">
-<h2>Demonstrate the Bayes risk and the actual risk<a class="headerlink" href="#demonstrate-the-bayes-risk-and-the-actual-risk" title="Link to this heading">#</a></h2>
+<section id="bayes-risk-review">
+<h2>Bayes risk review<a class="headerlink" href="#bayes-risk-review" title="Link to this heading">#</a></h2>
 <p>We use the setting in the antipodal signal dection example.</p>
+<p>Previous problem setting with given fixed prior probabilities <span class="math notranslate nohighlight">\(\pi_0\)</span> and <span class="math notranslate nohighlight">\(\pi_1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -469,19 +422,17 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
 </div>
 </div>
 </div>
-<section id="fig-bayes-risk-as-a-function-of-pi-0">
-<h3>Fig. Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span><a class="headerlink" href="#fig-bayes-risk-as-a-function-of-pi-0" title="Link to this heading">#</a></h3>
-<p>The Bayes risk at <span class="math notranslate nohighlight">\( \pi_0 = a \)</span> is shown in the following figure.</p>
-<p>In most cases, <span class="math notranslate nohighlight">\( r \)</span> is larger at intermediate values of <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
-<p>Indeed, it is straightforward to show that <span class="math notranslate nohighlight">\( r \)</span> is a concave function in <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<section id="bayes-risk-as-a-function-of-pi-0">
+<h3>Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span><a class="headerlink" href="#bayes-risk-as-a-function-of-pi-0" title="Link to this heading">#</a></h3>
+<p>Then the Bayes risk (average risk) <span class="math notranslate nohighlight">\( r \)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+r = [P_{00}C_{00} + P_{10}C_{10}]\pi_0 + [P_{01}C_{01} + P_{11}C_{11}]\pi_1
+\]</div>
+<p>The Bayes risk at <span class="math notranslate nohighlight">\( \pi_0 = a \)</span>, where <span class="math notranslate nohighlight">\(a\)</span> is a specific value of <span class="math notranslate nohighlight">\(\pi_0\)</span>, is shown in the following figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recalculate the Bayes risk for various values of pi_0</span>
-
-<span class="c1"># Define the range of pi0</span>
-<span class="n">pi0_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">.99</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-
-<span class="c1"># The decision threshold tau_B is derived from the Bayes criterion</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The decision threshold tau_B is derived from the Bayes criterion</span>
 <span class="k">def</span> <span class="nf">bayes_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">):</span>
     <span class="n">pi_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">pi_0</span>
     <span class="n">tau_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">pi_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">C10</span> <span class="o">-</span> <span class="n">C00</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">pi_1</span> <span class="o">*</span> <span class="p">(</span><span class="n">C01</span> <span class="o">-</span> <span class="n">C11</span><span class="p">))</span>
@@ -497,31 +448,133 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
     <span class="c1"># Calculate the Bayes risk</span>
     <span class="k">return</span> <span class="n">pi_0</span> <span class="o">*</span> <span class="n">r0_B</span> <span class="o">+</span> <span class="n">pi_1</span> <span class="o">*</span> <span class="n">r1_B</span>
 
-<span class="c1"># Calculate Bayes risk values</span>
-<span class="n">bayes_r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">bayes_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+<span class="c1"># Define the range of pi0 and the value of &#39;a&#39;</span>
+<span class="n">pi0_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.6</span>  <span class="c1"># Specific value of pi_0 for the stem plot</span>
 
-<span class="c1"># Plotting the Bayes risk as a function of pi0</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">bayes_r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$Bayes Risk r(pi_0)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bayes Risk $r(pi_0)$ as a function of $pi_0$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$pi_0$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+<span class="c1"># Calculate Bayes risk for each value of pi_0</span>
+<span class="n">bayes_r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">bayes_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+<span class="n">bayes_r_at_a</span> <span class="o">=</span> <span class="n">bayes_risk</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Plotting the Bayes risk function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">bayes_r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bayes Risk $r(\pi_0)$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add the stem plot for the specific value a</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">([</span><span class="n">a</span><span class="p">],</span> <span class="p">[</span><span class="n">bayes_r_at_a</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="c1"># Annotate the point a</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">bayes_r_at_a</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;($\pi_0 = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">$, $r(a) = </span><span class="si">{</span><span class="n">bayes_r_at_a</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define the constants again for the boundaries</span>
+<span class="n">C_00_value</span> <span class="o">=</span> <span class="n">C00</span> <span class="c1"># previously defined as 0</span>
+<span class="n">C_11_value</span> <span class="o">=</span> <span class="n">C11</span> <span class="c1"># previously defined as 0</span>
+
+<span class="c1"># Calculate Bayes risk values at pi0 = 0 and pi0 = 1</span>
+<span class="n">pi0_0_r</span> <span class="o">=</span> <span class="n">C_11_value</span>
+<span class="n">pi0_1_r</span> <span class="o">=</span> <span class="n">C_00_value</span>
+
+<span class="c1"># Add the points for pi0 = 0 and pi0 = 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi0_0_r</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">)</span>  <span class="c1"># Point at pi0 = 0, r = C_11</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi0_0_r</span><span class="p">,</span> <span class="s1">&#39;$C_</span><span class="si">{11}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pi0_1_r</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">)</span>  <span class="c1"># Point at pi0 = 1, r = C_00</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pi0_1_r</span><span class="p">,</span> <span class="s1">&#39;$C_</span><span class="si">{00}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot settings</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bayes Risk $r(\pi_0)$ as a Function of $</span><span class="se">\\</span><span class="s1">pi_0$ with Highlighted Value at $a$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\pi_0$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bayes Risk $r$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/873b1c00dab2c95b9e296ae6f242157bdd17f8fa3eaf58eb731121515f5f7575.png" src="_images/873b1c00dab2c95b9e296ae6f242157bdd17f8fa3eaf58eb731121515f5f7575.png" />
+<img alt="_images/02c1f84219572a1953aebbfc6f95931f2ed9578c3297c51b6f9999822ce618df.png" src="_images/02c1f84219572a1953aebbfc6f95931f2ed9578c3297c51b6f9999822ce618df.png" />
 </div>
 </div>
+<p>In most cases, <span class="math notranslate nohighlight">\( r \)</span> is larger at intermediate values of <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<p>Indeed, it is straightforward to show that <span class="math notranslate nohighlight">\( r \)</span> is a concave function in <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<p><strong>DISCUSSION.</strong>
+To illustrate the need for the minimax criterion, consider an example of <strong>the Bayes risk <span class="math notranslate nohighlight">\( r \)</span> as a function of the <em>a priori</em> probability <span class="math notranslate nohighlight">\( \pi_0 \)</span></strong></p>
+<p>Assuming <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>.</p>
+<p>Recall that the variable <span class="math notranslate nohighlight">\( \pi_0 \)</span> represents the prior probability of hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> being true.</p>
+<p>If <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>, this means that we are certain that <span class="math notranslate nohighlight">\( H_0 \)</span> is false, and thus, <span class="math notranslate nohighlight">\( H_1 \)</span> is true.</p>
+<p>Consequently, we have the complementary probability <span class="math notranslate nohighlight">\( \pi_1 = 1 \)</span>, since <span class="math notranslate nohighlight">\( \pi_1 = 1 - \pi_0 \)</span>.</p>
+<p>Bayes risk for <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span>:</p>
+<p>The Bayes risk is given by the general formula:</p>
+<div class="math notranslate nohighlight">
+\[
+r = [P_{00}C_{00} + P_{10}C_{10}]\pi_0 + [P_{01}C_{01} + P_{11}C_{11}]\pi_1
+\]</div>
+<p>since <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span></p>
+<div class="math notranslate nohighlight">
+\[
+r = [P_{01}C_{01} + P_{11}C_{11}]\pi_1
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \pi_1 = 1 \)</span>, the equation simplifies further:</p>
+<div class="math notranslate nohighlight">
+\[
+  r = P_{01}C_{01} + P_{11}C_{11}
+  \]</div>
+<ul class="simple">
+<li><p>Additionally, for the assumption of <span class="math notranslate nohighlight">\(\pi_0=0\)</span>, we have that:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( P_{01} = 0 \)</span>, which means there is no chance of making an error by deciding <span class="math notranslate nohighlight">\( D_0 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true.</p></li>
+<li><p><span class="math notranslate nohighlight">\( P_{11} = 1 \)</span>, which means we always decide <span class="math notranslate nohighlight">\( D_1 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true.</p></li>
+</ul>
+</li>
+</ul>
+<p>Substituting these values into the equation, we have</p>
+<div class="math notranslate nohighlight">
+\[
+r = 0 \cdot C_{01} + 1 \cdot C_{11} = C_{11}
+\]</div>
+<p>Thus, assuming <span class="math notranslate nohighlight">\(\pi_0=0\)</span>, when <span class="math notranslate nohighlight">\( H_1 \)</span> is true and we decide <span class="math notranslate nohighlight">\( D_1 \)</span> (correctly), the Bayes risk equals <span class="math notranslate nohighlight">\( C_{11} \)</span>, the cost of making that decision.</p>
+<p>This means the decision incurs the cost <span class="math notranslate nohighlight">\( C_{11} \)</span>, even though it’s correct, reflecting the inherent cost of acting on the decision.</p>
+<p>On the other hand, if <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>, a similar argument shows that <span class="math notranslate nohighlight">\( r = C_{00} \)</span>.</p>
+<p>This example leads to the need for minimax because it highlights how the Bayes risk depends on prior probabilities, which may not always be known or reliable.</p>
+<p>The minimax criterion provides a way to safeguard against the worst-case scenario, ensuring that the decision-maker minimizes the maximum potential loss, regardless of the true value of <span class="math notranslate nohighlight">\( \pi_0 \)</span> or <span class="math notranslate nohighlight">\( \pi_1 \)</span>.</p>
 </section>
+</section>
+<section id="actual-risk">
+<h2>Actual risk<a class="headerlink" href="#actual-risk" title="Link to this heading">#</a></h2>
+<p>Actual risk is defined when the a priori probability is unknown and <em>guessed</em>.</p>
+<p>Assume that we guess the <em>a priori</em> probability is some specific value <span class="math notranslate nohighlight">\( \pi_0 = a \)</span>.</p>
+<p>This returns a specific decision rule <span class="math notranslate nohighlight">\( \delta_B \)</span> with a specific Bayes threshold, set at</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_B = \frac{a(C_{10} - C_{00})}{(1-a)(C_{01} - C_{11})} 
+\]</div>
+<p>For a given guess of the prior probability <span class="math notranslate nohighlight">\(\pi_0\)</span>, the <strong>actual risk <span class="math notranslate nohighlight">\( r(\pi_0, a) \)</span></strong> for that guess is obtained as</p>
+<div class="math notranslate nohighlight">
+\[
+r(\pi_0, a) = \pi_0 r_0(a) + (1 - \pi_0) r_1(a)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are <strong>conditional risks</strong> for each hypothesis when the threshold and decision rule are controlled by <span class="math notranslate nohighlight">\( a \)</span>.</p>
+<p>The conditional risk is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1 
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( r_0(a) \)</span> and <span class="math notranslate nohighlight">\( r_1(a) \)</span> are <em>constants</em> for a specific value of <span class="math notranslate nohighlight">\( a \)</span>, the actual risk is <em>linear</em> in <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
+<p>If our guess of <span class="math notranslate nohighlight">\( \pi_0 = a \)</span> is correct, the actual risk is <em>identical</em> to the Bayes risk.</p>
+<p>On the other hand, if <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span> were the “true” value, the actual risk we would entail in this example would be <span class="math notranslate nohighlight">\( r_0(a) \)</span>.</p>
 </section>
 <section id="actual-risk-as-a-function-of-pi-0">
 <h2>Actual risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span><a class="headerlink" href="#actual-risk-as-a-function-of-pi-0" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the actual risk function r(pi0, a)</span>
-<span class="k">def</span> <span class="nf">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+
+    <span class="n">pi_0_fixed</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># given fixed prior probability for H0</span>
+    <span class="n">pi_1_fixed</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">a</span>  <span class="c1"># given fixed prior probability for H1</span>
+    <span class="c1"># Calculate tau&#39;</span>
+    <span class="n">tau_map_fixed</span> <span class="o">=</span> <span class="n">pi_0_fixed</span> <span class="o">/</span> <span class="n">pi_1_fixed</span>
+    <span class="n">tau_prime_fixed</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma_squared</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tau_map_fixed</span><span class="p">)</span>
     <span class="n">pi_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">pi_0</span>
     <span class="c1"># Calculate Pij values for the current pi_0</span>
     <span class="n">P00_val</span> <span class="o">=</span> <span class="n">P00</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
@@ -534,8 +587,8 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
     <span class="c1"># Calculate the actual risk</span>
     <span class="k">return</span> <span class="n">pi_0</span> <span class="o">*</span> <span class="n">r0</span> <span class="o">+</span> <span class="n">pi_1</span> <span class="o">*</span> <span class="n">r1</span>
 
-
-<span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># we guess that the prior probability of H0 is 0.1</span>
+<span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
 
 <span class="c1"># Plotting the actual risk as a function of pi0</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
@@ -548,7 +601,26 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f296680d4f9fa80ca6cb6995a9cc872faa422ba1d357518062048c8c97e58fb0.png" src="_images/f296680d4f9fa80ca6cb6995a9cc872faa422ba1d357518062048c8c97e58fb0.png" />
+<img alt="_images/e6b766d080ff34e5049680aa159608db856519e1d335feded2c18abfceceed4d.png" src="_images/e6b766d080ff34e5049680aa159608db856519e1d335feded2c18abfceceed4d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># we guess that the prior probability of H0 is 0.7</span>
+<span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+
+<span class="c1"># Plotting the actual risk as a function of pi0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pi0_values</span><span class="p">,</span> <span class="n">r_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Actual Risk $r(pi_0)$ as a function of $pi_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$pi_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$r(pi_0)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f75dc4e06a80b056a32e3982392798edc558c473b7f83951c3d93d6a4b700444.png" src="_images/f75dc4e06a80b056a32e3982392798edc558c473b7f83951c3d93d6a4b700444.png" />
 </div>
 </div>
 </section>
@@ -557,9 +629,21 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recalculate r1(a) and r0(a) with a specific value of `a`</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">pi_0_fixed</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># given fixed prior probability for H0</span>
+<span class="n">pi_1_fixed</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">a</span>  <span class="c1"># given fixed prior probability for H1</span>
+
+
+<span class="c1"># Calculate tau&#39;</span>
+<span class="n">tau_map_fixed</span> <span class="o">=</span> <span class="n">pi_0_fixed</span> <span class="o">/</span> <span class="n">pi_1_fixed</span>
+<span class="n">tau_prime_fixed</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma_squared</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tau_map_fixed</span><span class="p">)</span>
 <span class="n">r1_a</span> <span class="o">=</span> <span class="n">C01</span> <span class="o">*</span> <span class="n">P01</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span> <span class="o">+</span> <span class="n">C11</span> <span class="o">*</span> <span class="n">P11</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
 <span class="n">r0_a</span> <span class="o">=</span> <span class="n">C10</span> <span class="o">*</span> <span class="n">P10</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span> <span class="o">+</span> <span class="n">C00</span> <span class="o">*</span> <span class="n">P00</span><span class="p">(</span><span class="n">tau_prime_fixed</span><span class="p">)</span>
+
+<span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">actual_risk</span><span class="p">(</span><span class="n">pi_0</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">pi_0</span> <span class="ow">in</span> <span class="n">pi0_values</span><span class="p">]</span>
+
 
 <span class="c1"># Find the intersection point between actual risk and Bayes risk</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_values</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bayes_r_values</span><span class="p">))</span>
@@ -569,7 +653,8 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
 
 <span class="c1"># Calculate the endpoints of the actual risk</span>
 <span class="n">r1_0</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Actual risk at pi_0 = 0</span>
-<span class="n">r0_1</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Actual risk at pi_0 = 1</span>
+<span class="n">r0_1</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Actual risk at pi_0 = 1 </span>
+<span class="c1"># index -1 means the last value in the array</span>
 
 <span class="c1"># Create a plot with additional annotations</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -608,22 +693,22 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2bcd24f4be27eaf566910cea6ca37eab8bff1d68748603bb4ff139ccaa2438ed.png" src="_images/2bcd24f4be27eaf566910cea6ca37eab8bff1d68748603bb4ff139ccaa2438ed.png" />
+<img alt="_images/e0dbc86ddfd6fd8551e056bc4296e95d2de0ad6d11824bd0233a9e0596e16fa5.png" src="_images/e0dbc86ddfd6fd8551e056bc4296e95d2de0ad6d11824bd0233a9e0596e16fa5.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="decision-using-minimax-criterion">
-<h1>Decision using MiniMax Criterion<a class="headerlink" href="#decision-using-minimax-criterion" title="Link to this heading">#</a></h1>
+<h2>Decision using MiniMax Criterion<a class="headerlink" href="#decision-using-minimax-criterion" title="Link to this heading">#</a></h2>
 <p><strong>OBJECTIVE.</strong> The minimax criterion <strong>minimizes</strong> the <strong>maximum</strong> risk.</p>
 <p>The maximin criterion also <strong>maximizes</strong> the <strong>minimum</strong> risk.</p>
-<p>In the example above, the minimax criterion would assume the value of <span class="math notranslate nohighlight">\( \pi_0 \)</span> such that the actual risk is a constant represented by the dotted line.</p>
+<p>In the example above, the minimax criterion would assume the value of <span class="math notranslate nohighlight">\( \pi_0 \)</span> such that the actual risk is a constant represented by the dashed line.</p>
+</section>
 <section id="decision-making">
 <h2>Decision Making<a class="headerlink" href="#decision-making" title="Link to this heading">#</a></h2>
 <p><strong>METHODOLOGY.</strong> The question is how to use the minimax criterion to make decision <span class="math notranslate nohighlight">\(D_0\)</span> or <span class="math notranslate nohighlight">\(D_1\)</span>.</p>
 <p>Three different situations must be examined in determining the minimax criterion.</p>
 <ol class="arabic simple">
-<li><p>The case where the minimax criterion corresponds to <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>.</p></li>
+<li><p>The case where the minimax criterion corresponds to <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>.</p></li>
 <li><p>The case where the minimax solution corresponds to <span class="math notranslate nohighlight">\( \pi_0 \)</span> interior to the interval <span class="math notranslate nohighlight">\( (0, 1) \)</span> and the Bayes risk is differentiable at this solution.</p></li>
 <li><p>The case where the minimax solution corresponds to <span class="math notranslate nohighlight">\( \pi_0 \)</span> interior to <span class="math notranslate nohighlight">\( (0, 1) \)</span> but the Bayes risk is not differentiable at this solution.</p></li>
 </ol>
@@ -631,8 +716,11 @@ r_j(a) = C_{1j}P_{1j} + C_{0j}P_{0j}, \quad j = 0, 1
 </section>
 <section id="endpoint-minimax-solution">
 <h2>Endpoint Minimax Solution<a class="headerlink" href="#endpoint-minimax-solution" title="Link to this heading">#</a></h2>
-<p>In some cases of using the Bayes risk, the minimax solution is to always decide <span class="math notranslate nohighlight">\( D_1 \)</span>. Since the minimax risk for an endpoint maximum is always either <span class="math notranslate nohighlight">\( C_{00} \)</span> or <span class="math notranslate nohighlight">\( C_{11} \)</span>, the easiest way to determine this case is to first try to find a minimax solution using the approaches of the following two sections. If this attempt is successful, we simply compare Here is the transcript of the provided image:</p>
-<p>the risk so obtained with <span class="math notranslate nohighlight">\( C_{00} \)</span> and <span class="math notranslate nohighlight">\( C_{11} \)</span> and pick the maximum. If, however, we are unsuccessful in finding an internal minimax using the approaches of the next two sections, then the minimax solution is one of the endpoints. In this case, the risk is the maximum of <span class="math notranslate nohighlight">\( C_{00} \)</span> or <span class="math notranslate nohighlight">\( C_{11} \)</span>.”</p>
+<p>In some cases of using the Bayes risk, the minimax solution is to always decide <span class="math notranslate nohighlight">\( D_1 \)</span>.</p>
+<p>Since the minimax risk for an endpoint maximum is always either <span class="math notranslate nohighlight">\( C_{00} \)</span> or <span class="math notranslate nohighlight">\( C_{11} \)</span>, the easiest way to determine this case is to first try to find a minimax solution using the approaches of the following two sections.</p>
+<p>If this attempt is successful, we simply compare the risk so obtained with <span class="math notranslate nohighlight">\( C_{00} \)</span> and <span class="math notranslate nohighlight">\( C_{11} \)</span> and pick the maximum.</p>
+<p>If, however, we are unsuccessful in finding an internal minimax using the approaches of the next two sections, then the minimax solution is one of the endpoints.</p>
+<p>In this case, the risk is the maximum of <span class="math notranslate nohighlight">\( C_{00} \)</span> or <span class="math notranslate nohighlight">\( C_{11} \)</span>.”</p>
 <p><strong>DISCUSSION.</strong> This solution applies when the minimax risk occurs at one of the endpoints of the decision space, meaning <span class="math notranslate nohighlight">\( \pi_0 = 0 \)</span> or <span class="math notranslate nohighlight">\( \pi_0 = 1 \)</span>.</p>
 <section id="decision-rule">
 <h3>Decision Rule:<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h3>
@@ -695,7 +783,8 @@ r_0(a) = r_1(a)
 <section id="nondifferentiable-interior-minimax-solution">
 <h2>Nondifferentiable Interior Minimax Solution<a class="headerlink" href="#nondifferentiable-interior-minimax-solution" title="Link to this heading">#</a></h2>
 <p>This case always arises when the underlying conditional probabilities <span class="math notranslate nohighlight">\( p(y|H_0) \)</span> and <span class="math notranslate nohighlight">\( p(y|H_1) \)</span> are discrete or hybrid.</p>
-<p>In such a case, the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> is not differentiable everywhere. To find the minimax solution in this case, we adopt an approach as follows.</p>
+<p>In such a case, the likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> is not differentiable everywhere.</p>
+<p>To find the minimax solution in this case, we adopt an approach as follows.</p>
 <p>Define two decision rules.</p>
 <p>The first is defined by letting <span class="math notranslate nohighlight">\( \pi_0 \)</span> approach <span class="math notranslate nohighlight">\( a \)</span> from below, that is,</p>
 <div class="math notranslate nohighlight">
@@ -730,8 +819,10 @@ R_1^+ = \{ y : L(y) &gt; \frac{a^+(C_{10} - C_{00})}{(1 - a^+)(C_{01} - C_{11})}
 \end{split}\]</div>
 <p>and is known as a randomization rule.</p>
 <p>If <span class="math notranslate nohighlight">\( L(y) \)</span> exceeds <span class="math notranslate nohighlight">\( \tau_{MM} \)</span>, decide <span class="math notranslate nohighlight">\( D_1 \)</span>. If <span class="math notranslate nohighlight">\( L(y) &lt; \tau_{MM} \)</span>, decide <span class="math notranslate nohighlight">\( D_0 \)</span>. If <span class="math notranslate nohighlight">\( L(y) = \tau_{MM} \)</span>, decide <span class="math notranslate nohighlight">\( D_1 \)</span> with probability <span class="math notranslate nohighlight">\( \eta \)</span>.</p>
-<p>We want to pick the variable <span class="math notranslate nohighlight">\( \eta \)</span> so that the conditional risk associated with decision <span class="math notranslate nohighlight">\( D_1 \)</span> and the decision rule <span class="math notranslate nohighlight">\( \delta_{MM} \)</span> is the same as the conditional risk associated with decision <span class="math notranslate nohighlight">\( D_0 \)</span> and <span class="math notranslate nohighlight">\( \delta_{MM} \)</span>. For this case, these conditional risks are labeled as <span class="math notranslate nohighlight">\( \delta r_j \)</span>, <span class="math notranslate nohighlight">\( j = 0, 1 \)</span>.</p>
-<p>It is assumed that region <span class="math notranslate nohighlight">\( R_1^- \)</span> occurs with probability <span class="math notranslate nohighlight">\( \eta \)</span> and <span class="math notranslate nohighlight">\( R_1^+ \)</span> with probability <span class="math notranslate nohighlight">\( (1 - \eta) \)</span>. Now, the conditional risks are</p>
+<p>We want to pick the variable <span class="math notranslate nohighlight">\( \eta \)</span> so that the conditional risk associated with decision <span class="math notranslate nohighlight">\( D_1 \)</span> and the decision rule <span class="math notranslate nohighlight">\( \delta_{MM} \)</span> is the same as the conditional risk associated with decision <span class="math notranslate nohighlight">\( D_0 \)</span> and <span class="math notranslate nohighlight">\( \delta_{MM} \)</span>.</p>
+<p>For this case, these conditional risks are labeled as <span class="math notranslate nohighlight">\( \delta r_j \)</span>, <span class="math notranslate nohighlight">\( j = 0, 1 \)</span>.</p>
+<p>It is assumed that region <span class="math notranslate nohighlight">\( R_1^- \)</span> occurs with probability <span class="math notranslate nohighlight">\( \eta \)</span> and <span class="math notranslate nohighlight">\( R_1^+ \)</span> with probability <span class="math notranslate nohighlight">\( (1 - \eta) \)</span>.</p>
+<p>Now, the conditional risks are</p>
 <div class="math notranslate nohighlight">
 \[
 \delta r_j = \eta r_j(a^-) + (1 - \eta) r_j(a^+), \quad j = 0, 1 
@@ -782,9 +873,8 @@ R_1^+ = \{ y : L(y) &gt; \frac{a^+(C_{10} - C_{00})}{(1 - a^+)(C_{01} - C_{11})}
 <p>The minimax criterion seeks to minimize the worst-case risk that could arise from incorrect assumptions about <span class="math notranslate nohighlight">\( \pi_0 \)</span>.</p>
 </section>
 </section>
-</section>
 <section id="example-antipodal-signal-detection-and-decision-using-minimax-criterion">
-<h1>Example: Antipodal Signal Detection and Decision Using MiniMax Criterion<a class="headerlink" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion" title="Link to this heading">#</a></h1>
+<h2>Example: Antipodal Signal Detection and Decision Using MiniMax Criterion<a class="headerlink" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion" title="Link to this heading">#</a></h2>
 <p>This example [B2, Ex 4.9] continues previous example, we assume that:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \pi_0 \)</span> is unknown,</p></li>
@@ -828,6 +918,7 @@ f = \text{erf} \left( \frac{b - \tau_{MM}'}{\sqrt{2\sigma}} \right) - \frac{1}{2
 0, &amp; y &lt; -0.073
 \end{cases}
 \end{split}\]</div>
+</section>
 <section id="numerical-results">
 <h2>Numerical results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
 <p>Plot <span class="math notranslate nohighlight">\( f \)</span> for <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span> as a function of <span class="math notranslate nohighlight">\( \tau_{MM}' \)</span></p>
@@ -1031,7 +1122,7 @@ Minimax Threshold: -0.07301030447230179
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/988e2fd1f864d617d81f4f02af104ca912a4f177929bd710efa4c40bb2d28c4d.png" src="_images/988e2fd1f864d617d81f4f02af104ca912a4f177929bd710efa4c40bb2d28c4d.png" />
+<img alt="_images/9807f7dd8dbd16d5304c2e26cb0676111302ba5c112aef724b7d21ee2d826cd8.png" src="_images/9807f7dd8dbd16d5304c2e26cb0676111302ba5c112aef724b7d21ee2d826cd8.png" />
 </div>
 </div>
 </section>
@@ -1101,17 +1192,14 @@ Minimax Threshold: -0.07301030447230179
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk-when-the-a-priori-probability-is-unknown-and-guessed">Actual risk when the a priori probability is unknown and guessed</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-the-bayes-risk-and-the-actual-risk">Demonstrate the Bayes risk and the actual risk</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-bayes-risk-as-a-function-of-pi-0">Fig. Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-risk-review">Bayes risk review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-risk-as-a-function-of-pi-0">Bayes risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk">Actual risk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-risk-as-a-function-of-pi-0">Actual risk as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actual-and-bayes-risks-as-a-function-of-pi-0">Actual and Bayes risks as a function of <span class="math notranslate nohighlight">\(\pi_0\)</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-using-minimax-criterion">Decision using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-using-minimax-criterion">Decision using MiniMax Criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making">Decision Making</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-minimax-solution">Endpoint Minimax Solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule:</a></li>
@@ -1125,15 +1213,10 @@ Minimax Threshold: -0.07301030447230179
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Making Procedure</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion">Example: Antipodal Signal Detection and Decision Using MiniMax Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-minimax-criterion">Example: Antipodal Signal Detection and Decision Using MiniMax Criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

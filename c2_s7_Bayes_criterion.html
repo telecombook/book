@@ -229,10 +229,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
-
-
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
 
 </ul>
@@ -348,7 +345,6 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-map-vs-bayes-criteria">Compare MAP vs. Bayes Criteria</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
 </ul>
 </li>
 </ul>
@@ -370,7 +366,8 @@ document.write(`
 <li><p>There is a fact that some decisions might be more important than others and some errors might be more costly than others.</p></li>
 <li><p>The MAP criterion of the previous section ignores the fact.</p></li>
 </ul>
-<p>For example, consider a hypothetical situation where you are suspected of having a fatal, yet curable, disease. If <span class="math notranslate nohighlight">\( H_0 \)</span> corresponds to the hypothesis of no disease, then the following “costs” are associated with each of the four possibilities:</p>
+<p>For example, consider a hypothetical situation where you are suspected of having a fatal, yet curable, disease.</p>
+<p>If <span class="math notranslate nohighlight">\( H_0 \)</span> corresponds to the hypothesis of no disease, then the following “costs” are associated with each of the four possibilities:</p>
 <ul class="simple">
 <li><p>With probability <span class="math notranslate nohighlight">\( P_{00} \)</span> a correct decision is made that there is no disease. In this case, the only cost is that of the initial medical test.</p></li>
 <li><p>With probability <span class="math notranslate nohighlight">\( P_{01} \)</span> an incorrect decision is made that you do not have the disease; the cost is quite high, namely, death.</p></li>
@@ -428,15 +425,14 @@ r = \pi_0 C_{01} + \pi_1 C_{11} + \int_{R_0} \left\{\pi_1 (C_{01} - C_{11})p(y|H
 <section id="decision-making">
 <h2>Decision Making<a class="headerlink" href="#decision-making" title="Link to this heading">#</a></h2>
 <p><strong>METHODOLOGY.</strong> The question is given the received observation, how we make a decision using the Bayes criterion, i.e., how to make decision <span class="math notranslate nohighlight">\(D_0\)</span> or <span class="math notranslate nohighlight">\(D_1\)</span> using the Bayes rule.</p>
-<p>Since the first two terms are constant, minimizing <span class="math notranslate nohighlight">\( r \)</span> is equivalent to minimizing the integral in its expression. This, in turn, is equivalent to finding the range <span class="math notranslate nohighlight">\( R_0 \)</span> that minimizes this integral.</p>
+<p>Since the first two terms are constant, minimizing <span class="math notranslate nohighlight">\( r \)</span> is equivalent to minimizing the integral in its expression.</p>
+<p>This, in turn, is equivalent to finding the range <span class="math notranslate nohighlight">\( R_0 \)</span> that minimizes this integral.</p>
 <p>Let</p>
 <div class="math notranslate nohighlight">
 \[
 g(y) = \pi_1 (C_{01} - C_{11}) p(y|H_1) - \pi_0 (C_{10} - C_{00}) p(y|H_0) 
 \]</div>
 <p>be that integrand.</p>
-<p>Figure 4.3 shows a conceptual representation of <span class="math notranslate nohighlight">\( g(y) \)</span>.</p>
-<p>If we pick <span class="math notranslate nohighlight">\( R_0 \)</span> to be the range of <span class="math notranslate nohighlight">\( y \)</span> such that <span class="math notranslate nohighlight">\( g(y) \)</span> is negative, as shown in the figure, then the integral is maximally negative and <span class="math notranslate nohighlight">\( r \)</span> is minimized.</p>
 <p>The <em><strong>decision rule</strong></em> is to decide <span class="math notranslate nohighlight">\( D_0 \)</span> if</p>
 <div class="math notranslate nohighlight">
 \[
@@ -577,10 +573,10 @@ D_0, &amp; \text{if } y &lt; \tau'
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9864
-P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0136
-P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0368
-P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9632
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9860
+P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0140
+P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0333
+P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9667
 </pre></div>
 </div>
 </div>
@@ -616,9 +612,6 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9632
 \text{SNR (dB)} = 10 \log_{10} \left( \frac{\text{Signal Power}}{\text{Noise Power}} \right)
 \]</div>
 <p>Typically, SNR is measured at the receiver side. When considering the power of the transmitted signal relative to noise, it is referred to as the <strong>transmit SNR</strong>.</p>
-</section>
-<section id="numerical-results">
-<h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given parameters</span>
@@ -739,7 +732,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9632
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f2e66c70fce722713b34ff5ad8abc49d742376bbaf0eb82dfd2f8ed05e2b049.png" src="_images/0f2e66c70fce722713b34ff5ad8abc49d742376bbaf0eb82dfd2f8ed05e2b049.png" />
+<img alt="_images/ebba8dadd987313a65a8f70618ee207158b4394e6e9c4bd908bc867107fe49e3.png" src="_images/ebba8dadd987313a65a8f70618ee207158b4394e6e9c4bd908bc867107fe49e3.png" />
 </div>
 </div>
 <p><strong>DISCUSSION.</strong> This comparison may not be entirely fair because the Bayes criterion requires knowledge of both the costs associated with different types of errors and the a priori probabilities of the hypotheses.</p>
@@ -823,7 +816,6 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9632
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-map-vs-bayes-criteria">Compare MAP vs. Bayes Criteria</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
 </ul>
 </li>
 </ul>
