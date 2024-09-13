@@ -623,7 +623,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0384, 0.2068)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0344, 0.194)
 </pre></div>
 </div>
 </div>
@@ -652,7 +652,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 <span class="n">theoretical_pdf_H1</span> <span class="o">=</span> <span class="n">gaussian_pdf</span><span class="p">(</span><span class="n">y_values_mid</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>  <span class="c1"># for H1 hypothesis</span>
 
 <span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Plotting Empirical PDFs as histograms</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_given_s0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical p(y|H0)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
@@ -676,7 +676,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/767c8488c1ef631c94ea46f53c69fcc6e6e4043da375d4017edb4f64d35a4390.png" src="_images/767c8488c1ef631c94ea46f53c69fcc6e6e4043da375d4017edb4f64d35a4390.png" />
+<img alt="_images/ccddb6898c49ffb96b834eba5df465e7dd2d2ddb304fba6dd221cf3eb9df27ba.png" src="_images/ccddb6898c49ffb96b834eba5df465e7dd2d2ddb304fba6dd221cf3eb9df27ba.png" />
 </div>
 </div>
 </section>
@@ -687,7 +687,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># Plot PDFs and shading decision regions</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># PDF under H0 (p(y|H0))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">y_given_s0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;p(y|H0)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
@@ -714,7 +714,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ca104458fe0e56ff0055903d949c707833c71aeb39c557a210ac3fc19a7ba5e.png" src="_images/3ca104458fe0e56ff0055903d949c707833c71aeb39c557a210ac3fc19a7ba5e.png" />
+<img alt="_images/3d8bfc942cd79587c1175c8e25987a3942ef6eff96e4f20d76a95ff2e44fafaa.png" src="_images/3d8bfc942cd79587c1175c8e25987a3942ef6eff96e4f20d76a95ff2e44fafaa.png" />
 </div>
 </div>
 </section>
@@ -887,10 +887,10 @@ P_{11} \approx 0.950878
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9904
-P01 (Decide H0 | H1 true): 0.0096
-P10 (Decide H1 | H0 true): 0.0517
-P11 (Decide H1 | H1 true): 0.9483
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9914
+P01 (Decide H0 | H1 true): 0.0086
+P10 (Decide H1 | H0 true): 0.0485
+P11 (Decide H1 | H1 true): 0.9515
 </pre></div>
 </div>
 </div>
@@ -906,7 +906,7 @@ P11 (Decide H1 | H1 true): 0.9483
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot PDFs and decision regions</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># P00 plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -947,7 +947,7 @@ P11 (Decide H1 | H1 true): 0.9483
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef2101170a181e2557931e5062d0c3b9578c6d3092ed5964e9665194b65d9f1c.png" src="_images/ef2101170a181e2557931e5062d0c3b9578c6d3092ed5964e9665194b65d9f1c.png" />
+<img alt="_images/27ff47efb7ad0bf56c2c2f6a8bf35b729460ddad556802df1b7fdeecacf55511.png" src="_images/27ff47efb7ad0bf56c2c2f6a8bf35b729460ddad556802df1b7fdeecacf55511.png" />
 </div>
 </div>
 <section id="error-types-for-a-general-decision-threshold">
@@ -1024,8 +1024,8 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix:
 [[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
  [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
-[[0.9904 0.0096]
- [0.0517 0.9483]]
+[[0.9914 0.0086]
+ [0.0485 0.9515]]
 </pre></div>
 </div>
 </div>
@@ -1059,8 +1059,8 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix (using sklearn):
 [[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
  [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
-[[0.9904 0.0096]
- [0.0517 0.9483]]
+[[0.9914 0.0086]
+ [0.0485 0.9515]]
 </pre></div>
 </div>
 </div>
@@ -1071,7 +1071,7 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># Plot the confusion matrix</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_normalized</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Decide H0 (</span><span class="si">{</span><span class="n">s0</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Decide H1 (</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;H0 true (</span><span class="si">{</span><span class="n">s0</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;H1 true (</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">])</span>
 
 <span class="c1"># Labels and title</span>
@@ -1085,7 +1085,7 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ec7b103b6a6e834d989d248cb5c21c84d34abba8f6694f41cce283c355307bd.png" src="_images/7ec7b103b6a6e834d989d248cb5c21c84d34abba8f6694f41cce283c355307bd.png" />
+<img alt="_images/3044d65b609748cdfb11c42e7346a403b3a724c79e2a54662ed08daa9aba9acd.png" src="_images/3044d65b609748cdfb11c42e7346a403b3a724c79e2a54662ed08daa9aba9acd.png" />
 </div>
 </div>
 </section>

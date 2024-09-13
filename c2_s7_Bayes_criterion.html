@@ -573,10 +573,10 @@ D_0, &amp; \text{if } y &lt; \tau'
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9860
-P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0140
-P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0333
-P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9667
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9873
+P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0127
+P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0341
+P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9659
 </pre></div>
 </div>
 </div>
@@ -705,7 +705,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9667
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Plot P00, P01, P10, P11 for MAP criterion</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
@@ -732,7 +732,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9667
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ebba8dadd987313a65a8f70618ee207158b4394e6e9c4bd908bc867107fe49e3.png" src="_images/ebba8dadd987313a65a8f70618ee207158b4394e6e9c4bd908bc867107fe49e3.png" />
+<img alt="_images/781ae835469e33fe97c18b3dd0062b0aeb7b84a7b8b7c07af5a7e58b6fdd0906.png" src="_images/781ae835469e33fe97c18b3dd0062b0aeb7b84a7b8b7c07af5a7e58b6fdd0906.png" />
 </div>
 </div>
 <p><strong>DISCUSSION.</strong> This comparison may not be entirely fair because the Bayes criterion requires knowledge of both the costs associated with different types of errors and the a priori probabilities of the hypotheses.</p>
