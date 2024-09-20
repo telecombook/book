@@ -468,8 +468,10 @@ P_d = \Pr(D_1|H_1) = \int_{R_1(\mu)} p(y|H_1) dy
 <p>It follows that changing <span class="math notranslate nohighlight">\( \mu \)</span> to <em>increase</em> <span class="math notranslate nohighlight">\( P_d \)</span> also tends to <em>increase</em> <span class="math notranslate nohighlight">\( P_f \)</span>.</p>
 <p>Thus, we change <span class="math notranslate nohighlight">\( \mu \)</span>, i.e., vary the temporary threshold, <span class="math notranslate nohighlight">\(\tau_{NP}^{temp}\)</span>, until we get the largest value of <span class="math notranslate nohighlight">\( \alpha' \leq \alpha \)</span>.</p>
 <p>This will then correspond to the largest value of <span class="math notranslate nohighlight">\( P_d \)</span>, and the threshold will be <span class="math notranslate nohighlight">\( \tau_{NP} \)</span>.</p>
-<p>$$
-\tau_{NP} = \mu^* \triangleq \arg\max_{\mu} P_d \quad\text{subject to}\quad P_f \leq \alpha_f</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{NP} = \mu^* \triangleq \arg\max_{\mu} P_d \quad\text{subject to}\quad P_f \leq \alpha_f
+\]</div>
 </section>
 </section>
 <section id="decision-rule">
@@ -775,9 +777,9 @@ P_d = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neyman-Pearson threshold tau&#39;_NP = -0.3592242172276997
-Neyman-Pearson Criterion, P00 (Decide H0 | H0 true): 0.9000
+Neyman-Pearson Criterion, P00 (Decide H0 | H0 true): 0.9007
 Neyman-Pearson Criterion, P01 (Decide H0 | H1 true): 0.0032
-Neyman-Pearson Criterion, P10 (Decide H1 | H0 true): 0.1000
+Neyman-Pearson Criterion, P10 (Decide H1 | H0 true): 0.0993
 Neyman-Pearson Criterion, P11 (Decide H1 | H1 true): 0.9968
 </pre></div>
 </div>
