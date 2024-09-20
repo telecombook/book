@@ -232,6 +232,14 @@
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimator</a></li>
 </ul>
 </details></li>
 </ul>
@@ -980,6 +988,68 @@ f = \text{erf} \left( \frac{b - \tau_{MM}'}{\sqrt{2\sigma}} \right) - \frac{1}{2
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/2d71a349002b19543005f42cfc6a9ae2e88209f397f6d6a35edaada1812322ac.png" src="_images/2d71a349002b19543005f42cfc6a9ae2e88209f397f6d6a35edaada1812322ac.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="c1"># Given parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Signal amplitude</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># Noise variance</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000000</span>  <span class="c1"># Number of samples for simulation</span>
+
+<span class="c1"># Define the function f for the Minimax criterion</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t_MM_prime</span><span class="p">):</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">erf</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">t_MM_prime</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_squared</span><span class="p">))</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">erf</span><span class="p">((</span><span class="n">t_MM_prime</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_squared</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">term1</span> <span class="o">-</span> <span class="n">term2</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+<span class="c1"># Solve for the minimax threshold t_MM_prime using fsolve</span>
+<span class="n">t_MM_prime</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Initial guess is 0</span>
+
+<span class="c1"># Simulate received signals and decisions based on the Minimax threshold</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="c1"># Generating noise</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Simulating received y under each hypothesis</span>
+<span class="n">y_given_s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise</span>
+<span class="n">y_given_s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">noise</span>
+
+<span class="c1"># Decisions based on the Minimax threshold</span>
+<span class="n">decisions_s0_MM</span> <span class="o">=</span> <span class="n">y_given_s0</span> <span class="o">&gt;=</span> <span class="n">t_MM_prime</span>  <span class="c1"># Decide s1 if y &gt;= t_MM_prime (for H0)</span>
+<span class="n">decisions_s1_MM</span> <span class="o">=</span> <span class="n">y_given_s1</span> <span class="o">&gt;=</span> <span class="n">t_MM_prime</span>  <span class="c1"># Decide s1 if y &gt;= t_MM_prime (for H1)</span>
+
+<span class="c1"># Estimating transmitted signals (s_hat) based on decisions for Minimax criterion</span>
+<span class="n">s0_hat_MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s0_MM</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H0)</span>
+<span class="n">s1_hat_MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s1_MM</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H1)</span>
+
+<span class="c1"># Calculating empirical probabilities for Minimax criterion</span>
+<span class="n">P00_MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_MM</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+<span class="n">P01_MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_MM</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+<span class="n">P10_MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_MM</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true</span>
+<span class="n">P11_MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_MM</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimax Criterion, P00 (Decide H0 | H0 true): </span><span class="si">{</span><span class="n">P00_MM</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimax Criterion, P01 (Decide H0 | H1 true): </span><span class="si">{</span><span class="n">P01_MM</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimax Criterion, P10 (Decide H1 | H0 true): </span><span class="si">{</span><span class="n">P10_MM</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimax Criterion, P11 (Decide H1 | H1 true): </span><span class="si">{</span><span class="n">P11_MM</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimax Criterion, P00 (Decide H0 | H0 true): 0.9681
+Minimax Criterion, P01 (Decide H0 | H1 true): 0.0159
+Minimax Criterion, P10 (Decide H1 | H0 true): 0.0319
+Minimax Criterion, P11 (Decide H1 | H1 true): 0.9841
+</pre></div>
+</div>
 </div>
 </div>
 </section>

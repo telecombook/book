@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Telecom Book &#8212; Telecom Book</title>
+    <title>Chapter 3: Fundamentals of Estimation Theory &#8212; Telecom Book</title>
   
   
   
@@ -59,11 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s0';</script>
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 1: Review of Probability Theory" href="c1_s0.html" />
+    <link rel="next" title="Parameter Estimation" href="c3_s3_parameter_estimation.html" />
+    <link rel="prev" title="Perfomance Comaprison" href="c2_x3_comparison.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -146,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,7 +175,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
 
@@ -236,7 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 3: Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
 
 
@@ -333,7 +332,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Telecom Book</h1>
+    <h1>Chapter 3: Fundamentals of Estimation Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -343,9 +342,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web">Web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -357,24 +354,44 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="telecom-book">
-<h1>Telecom Book<a class="headerlink" href="#telecom-book" title="Link to this heading">#</a></h1>
-<section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
-<p>The long-term objective of this TelecomBook is to provide an intuitive understanding of telecommunication systems through mathematical expressions and simulations. The book will cover three main topics:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-fundamentals-of-estimation-theory">
+<h1>Chapter 3: Fundamentals of Estimation Theory<a class="headerlink" href="#chapter-3-fundamentals-of-estimation-theory" title="Link to this heading">#</a></h1>
+<p>Applications of estimation theory typically require obtaining an <strong>estimate</strong> either of</p>
 <ul class="simple">
-<li><p>Probability theory</p></li>
-<li><p>Signal detection, decision, and estimation theory</p></li>
-<li><p>Telecommunications theory</p></li>
+<li><p>a specific parameter</p></li>
+<li><p>a desired waveform.</p></li>
 </ul>
-</section>
-<section id="web">
-<h2>Web<a class="headerlink" href="#web" title="Link to this heading">#</a></h2>
-<p>The content of this book undergoes continual revisions and updates.</p>
-</section>
-<section id="contact">
-<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading">#</a></h2>
-<p>We look forward to receiving your feedback, including perspectives, comments, corrections, and suggestions, which can be sent to <a class="reference external" href="mailto:telecombook&#37;&#52;&#48;outlook&#46;com">telecombook<span>&#64;</span>outlook<span>&#46;</span>com</a> . Thank you for your interest and contributions.</p>
+<p>In <strong>parameter estimation</strong>, we consider two cases:</p>
+<ul class="simple">
+<li><p>known distribution</p></li>
+<li><p>unknown distributions
+of the observables.</p></li>
+</ul>
+<p>We also study properties of <strong>estimators</strong>, which characterize the performance and behavior of the estimates.</p>
+<p>We will consider various estimation methods on estimating:</p>
+<ul class="simple">
+<li><p>single deterministic parameter</p></li>
+<li><p>vector deterministic parameters</p></li>
+<li><p>random single parameter</p></li>
+<li><p>random vector parameters
+In each of these cases, knowledge of specific distributions is presumed.</p></li>
+</ul>
+<p>Observables are used to produce an estimate of the parameters of interest</p>
+<p>An important question to resolve is: <strong>How good is the estimate?</strong></p>
+<p>To answer the question of the quality of the estimate, it is important to understand properties associated with a good estimate, such as</p>
+<ul class="simple">
+<li><p>unbiased</p></li>
+<li><p>consistent</p></li>
+<li><p>invariant</p></li>
+<li><p>minimum variance</p></li>
+<li><p>efficient</p></li>
+</ul>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>The contents of the sections in this chapter are based on the following materials.</p>
+<ul class="simple">
+<li><p>T. Schonhoff and A. Giordano, <em>Detection and Estimation Theory and its Applications</em>. Prentice Hall, 2006 , Chapter 10</p></li>
+</ul>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -410,12 +427,21 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="c2_x3_comparison.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Perfomance Comaprison</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="c1_s0.html"
+       href="c3_s3_parameter_estimation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 1: Review of Probability Theory</p>
+        <p class="prev-next-title">Parameter Estimation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -435,9 +461,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web">Web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unbiased Estimator &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s5_unbiased_estimator';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Parameter Estimation" href="c3_s3_parameter_estimation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unbiased Estimator</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unbiased Estimator</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biased-estimator">Biased Estimator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-the-bias-of-the-sample-variance">Proof: The Bias of the Sample Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-a-biased-estimate-to-an-unbiased-estimate">Transform a Biased Estimate to an Unbiased Estimate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotically-unbiased-estimator">Asymptotically Unbiased Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-unbiased-estimator-for-a-deterministic-parameter">Summary: Unbiased Estimator for a Deterministic Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-random-parameter-s">Unbiased Estimator for Random Parameter(s)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-parameter-vector">Random Parameter Vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-random-parameter">Single Random Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-true-mean-is-a-random-variable">Example: The True Mean is a Random Variable</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unbiased-estimator">
+<h1>Unbiased Estimator<a class="headerlink" href="#unbiased-estimator" title="Link to this heading">#</a></h1>
+<p><strong>Definition.</strong>
+An estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) \)</span> for the single nonrandom parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is <strong>unbiased</strong> if <span class="math notranslate nohighlight">\( E\{\hat{\boldsymbol{\alpha}}\} = \alpha \)</span> for all <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>Much of the discussion of properties of an estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> is based on the specialization of a single parameter rather than a vector, so that the notation is less complicated.</p>
+<p>As an example of unbiased and biased estimates, consider the case of the sample mean and sample variance formed by <span class="math notranslate nohighlight">\( m \)</span> identically distributed random variables <span class="math notranslate nohighlight">\( \mathbf{y}_i, \ i = 1, \ldots, m \)</span>.</p>
+<p>It is further assumed that the random variables are mutually uncorrelated and each has the same mean <span class="math notranslate nohighlight">\(\mu\)</span> and the same variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>, i.e., <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>.</p>
+<p>The sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i
+\]</div>
+<p>We have <span class="math notranslate nohighlight">\(E \{\bar{\mathbf{y}}\} = \mu, \quad \forall \mu\)</span>, so the sample mean is an unbiased estimator.</p>
+<section id="proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">
+<h2>Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased<a class="headerlink" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased" title="Link to this heading">#</a></h2>
+<p>Given:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>, for <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}_i\)</span> are mutually uncorrelated, with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span></p></li>
+</ul>
+<p>The sample mean is:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i.
+\]</div>
+<p><strong>Proof</strong></p>
+<p>The expectation of <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\{\bar{\mathbf{y}}\} = E\left\{\frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i\right\} = \frac{1}{m} \sum_{i=1}^{m} E\{\mathbf{y}_i\}.
+   \]</div>
+<p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{y}_i\} = \mu\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\{\bar{\mathbf{y}}\} = \frac{1}{m} \cdot m\mu = \mu.
+   \]</div>
+<p>Thus, we conclude that</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\bar{\mathbf{y}}\} = \mu
+\]</div>
+<p>thus, <span class="math notranslate nohighlight">\( \bar{\mathbf{y}}\)</span> is an unbiased estimator of <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">true_means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>  <span class="c1"># Different true means (mu)</span>
+<span class="n">num_observations</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Number of observations (m)</span>
+<span class="n">variance</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Unit variance</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Number of trials to average the estimates</span>
+
+<span class="c1"># Store the sample means for each true mean</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">true_mean</span> <span class="ow">in</span> <span class="n">true_means</span><span class="p">:</span>
+    <span class="n">trial_means</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">):</span>
+        <span class="c1"># Generate m independent Gaussian random variables with mean `true_mean` and unit variance</span>
+        <span class="n">observations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">true_mean</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">num_observations</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate the sample mean (estimator)</span>
+        <span class="n">sample_mean</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">num_observations</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+        <span class="n">trial_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate the average of sample means over all trials</span>
+    <span class="n">average_sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trial_means</span><span class="p">)</span>
+    <span class="n">sample_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">average_sample_mean</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">true_means</span><span class="p">,</span> <span class="n">sample_means</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">true_means</span><span class="p">,</span> <span class="n">true_means</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;True Mean (mu)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Unbiasedness of the Sample Mean Estimator&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add annotations to show the value of the sample mean at each point</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">true_mean</span><span class="p">,</span> <span class="n">sample_mean</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">true_means</span><span class="p">,</span> <span class="n">sample_means</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">sample_mean</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+                 <span class="p">(</span><span class="n">true_mean</span><span class="p">,</span> <span class="n">sample_mean</span><span class="p">),</span> 
+                 <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> 
+                 <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+                 <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d042dc1688bda9be1553ce911a92e17e9511e70c26c44abd7b3cdefe737577ed.png" src="_images/d042dc1688bda9be1553ce911a92e17e9511e70c26c44abd7b3cdefe737577ed.png" />
+</div>
+</div>
+</section>
+<section id="biased-estimator">
+<h2>Biased Estimator<a class="headerlink" href="#biased-estimator" title="Link to this heading">#</a></h2>
+<p>The sample variance <span class="math notranslate nohighlight">\( \mathbf{s}_{\mathbf{y}}^2 \)</span> is expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{s}^2_{\mathbf{y}}\} \neq \sigma^2_{\mathbf{y}}\)</span>, the sample variance is a biased estimator to estimate the true variance <span class="math notranslate nohighlight">\(\sigma^2_{\mathbf{y}}\)</span></p>
+<section id="proof-the-bias-of-the-sample-variance">
+<h3>Proof: The Bias of the Sample Variance<a class="headerlink" href="#proof-the-bias-of-the-sample-variance" title="Link to this heading">#</a></h3>
+<p>We prove that the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is a biased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span> by showing that:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2.
+\]</div>
+<p><strong>Definitions and Assumptions</strong></p>
+<p>Given:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}_i\)</span>, <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span>, are independent and identically distributed random variables with <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>.</p></li>
+<li><p>The sample mean is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i.
+  \]</div>
+</li>
+<li><p>The sample variance is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2.
+  \]</div>
+</li>
+</ul>
+<p><strong>Expand the Expected Value of the Sample Variance</strong></p>
+<p>We start by finding the expected value of <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\mathbf{y}}^2\} = E\left\{\frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \frac{1}{m} \sum_{i=1}^{m} E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\}.
+\]</div>
+<p>Next, expand the term inside the expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+(\mathbf{y}_i - \bar{\mathbf{y}})^2 = \left[(\mathbf{y}_i - \mu) - (\bar{\mathbf{y}} - \mu)\right]^2.
+\]</div>
+<p>Using the identity <span class="math notranslate nohighlight">\((a - b)^2 = a^2 - 2ab + b^2\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+(\mathbf{y}_i - \bar{\mathbf{y}})^2 = (\mathbf{y}_i - \mu)^2 - 2(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu) + (\bar{\mathbf{y}} - \mu)^2.
+\]</div>
+<p>Taking the expectation of both sides:</p>
+<div class="math notranslate nohighlight">
+\[
+E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = E\left\{(\mathbf{y}_i - \mu)^2\right\} - 2E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} + E\left\{(\bar{\mathbf{y}} - \mu)^2\right\}.
+\]</div>
+<p><strong>Evaluate Each Term Separately</strong></p>
+<p>First Term: <span class="math notranslate nohighlight">\(E\left\{(\mathbf{y}_i - \mu)^2\right\}\)</span></p>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>, this term is simply the variance:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\left\{(\mathbf{y}_i - \mu)^2\right\} = \sigma_{\mathbf{y}}^2.
+   \]</div>
+<p>Second Term: <span class="math notranslate nohighlight">\(E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\}\)</span></p>
+<p>The sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+   \bar{\mathbf{y}} = \frac{1}{m} \sum_{j=1}^{m} \mathbf{y}_j.
+   \]</div>
+<p>Thus, the expectation becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\left\{(\mathbf{y}_i - \mu)\left(\frac{1}{m} \sum_{j=1}^{m} (\mathbf{y}_j - \mu)\right)\right\}.
+   \]</div>
+<p>Expanding and using the linearity of expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = \frac{1}{m} \sum_{j=1}^{m} E\left\{(\mathbf{y}_i - \mu)(\mathbf{y}_j - \mu)\right\}.
+   \]</div>
+<p>We have
+$<span class="math notranslate nohighlight">\(
+   E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = 
+   \begin{cases}
+   0, &amp; i \neq j, \\
+   \frac{1}{m} \sigma_{\mathbf{y}}^2, &amp; i = j.
+   \end{cases}
+   \)</span>$</p>
+<p>The second term then becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+   -2E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = -\frac{2}{m} \sigma_{\mathbf{y}}^2.
+   \]</div>
+<p>Third Term: <span class="math notranslate nohighlight">\(E\left\{(\bar{\mathbf{y}} - \mu)^2\right\}\)</span></p>
+<p>Since <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is the mean of <span class="math notranslate nohighlight">\(m\)</span> independent variables with variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\left\{(\bar{\mathbf{y}} - \mu)^2\right\} = \frac{\sigma_{\mathbf{y}}^2}{m}.
+   \]</div>
+<p><strong>Closed-form Expression of the Sample Variance</strong></p>
+<p>Substituting the evaluated terms into the expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \sigma_{\mathbf{y}}^2 - \frac{2\sigma_{\mathbf{y}}^2}{m} + \frac{\sigma_{\mathbf{y}}^2}{m}.
+\]</div>
+<p>Simplify the expression:</p>
+<div class="math notranslate nohighlight">
+\[
+E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \sigma_{\mathbf{y}}^2 \left(1 - \frac{1}{m}\right).
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \frac{1}{m} \sum_{i=1}^{m} E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \frac{1}{m} \cdot m \left(\sigma_{\mathbf{y}}^2 \left(1 - \frac{1}{m}\right)\right).
+\]</div>
+<p>Simplifying further:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2.
+\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 \neq \sigma_{\mathbf{y}}^2.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2\)</span>, the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is a biased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>.</p>
+</section>
+<section id="transform-a-biased-estimate-to-an-unbiased-estimate">
+<h3>Transform a Biased Estimate to an Unbiased Estimate<a class="headerlink" href="#transform-a-biased-estimate-to-an-unbiased-estimate" title="Link to this heading">#</a></h3>
+<p>To obtain an unbiased estimate of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>, we need to correct the bias in the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span>.</p>
+<p>As shown above, the expected value of the sample variance is:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is scaled down by a factor of <span class="math notranslate nohighlight">\(\frac{m - 1}{m}\)</span>, we can adjust it to obtain an unbiased estimator.</p>
+<p><strong>Unbiased Estimator of the True Variance</strong></p>
+<p>To remove the bias, multiply <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> by <span class="math notranslate nohighlight">\(\frac{m}{m-1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \mathbf{s}_{\mathbf{y}}^2.
+\]</div>
+<p><strong>Proof that <span class="math notranslate nohighlight">\(\mathbf{s}_{\text{unbiased}}^2\)</span> is Unbiased</strong></p>
+<p>Using the definition of <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \cdot \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2.
+   \]</div>
+<p>Using the previously derived expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+   E\{\mathbf{s}_{\text{unbiased}}^2\} = \frac{m}{m - 1} E\{\mathbf{s}_{\mathbf{y}}^2\} = \frac{m}{m - 1} \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 = \sigma_{\mathbf{y}}^2.
+   \]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{s}_{\text{unbiased}}^2\} = \sigma_{\mathbf{y}}^2, \quad \forall \sigma_{\mathbf{y}}^2
+\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{s}_{\text{unbiased}}^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2
+\]</div>
+<p>is an unbiased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># True mean</span>
+<span class="n">sigma_y</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># True standard deviation</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># Sample size</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Number of simulations</span>
+
+<span class="c1"># Arrays to store variances</span>
+<span class="n">biased_variances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">unbiased_variances</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Simulations</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+    <span class="c1"># Generate m samples from a normal distribution</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate the biased sample variance (divide by m)</span>
+    <span class="n">biased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">biased_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">biased_variance</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate the unbiased sample variance (divide by m-1)</span>
+    <span class="n">unbiased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">unbiased_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unbiased_variance</span><span class="p">)</span>
+
+<span class="c1"># Calculate the mean of the variances from the simulations</span>
+<span class="n">mean_biased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased_variances</span><span class="p">)</span>
+<span class="n">mean_unbiased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased_variances</span><span class="p">)</span>
+
+<span class="n">mean_biased_variance</span><span class="p">,</span> <span class="n">mean_unbiased_variance</span><span class="p">,</span> <span class="n">sigma_y</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># Display results</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean of biased variance: </span><span class="si">{</span><span class="n">mean_biased_variance</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean of unbiased variance: </span><span class="si">{</span><span class="n">mean_unbiased_variance</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;True variance: </span><span class="si">{</span><span class="n">sigma_y</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean of biased variance: 2407.10
+Mean of unbiased variance: 2490.10
+True variance: 2500.00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Different true variance values to test</span>
+<span class="n">true_variances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Test true variance from 1 to 50</span>
+
+<span class="c1"># Arrays to store results</span>
+<span class="n">biased_means</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">unbiased_means</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Loop over different true variance values</span>
+<span class="k">for</span> <span class="n">sigma_y</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">true_variances</span><span class="p">):</span>  <span class="c1"># Use square root because we specified variances</span>
+    <span class="n">biased_variances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unbiased_variances</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Simulate for each true variance</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">biased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">unbiased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">biased_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">biased_variance</span><span class="p">)</span>
+        <span class="n">unbiased_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unbiased_variance</span><span class="p">)</span>
+    
+    <span class="c1"># Store the mean variances for each true variance</span>
+    <span class="n">biased_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased_variances</span><span class="p">))</span>
+    <span class="n">unbiased_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased_variances</span><span class="p">))</span>
+
+<span class="c1"># Plotting the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">true_variances</span><span class="p">,</span> <span class="n">biased_means</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Biased Sample Variance Estimate&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">true_variances</span><span class="p">,</span> <span class="n">unbiased_means</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unbiased Sample Variance Estimate&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">true_variances</span><span class="p">,</span> <span class="n">true_variances</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Variance&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;True Variance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Variance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Biased and Unbiased Variance Estimates&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9469301a838a071d367971b2e27d8b29969d7d7b24bdfcd897f4d0e4c8ea4524.png" src="_images/9469301a838a071d367971b2e27d8b29969d7d7b24bdfcd897f4d0e4c8ea4524.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="asymptotically-unbiased-estimator">
+<h2>Asymptotically Unbiased Estimator<a class="headerlink" href="#asymptotically-unbiased-estimator" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_m\)</span> (random, boldface) represents a sequence of estimates of an unknown parameter <span class="math notranslate nohighlight">\(\alpha\)</span> (fixed, nonboldface).</p></li>
+<li><p>The estimator <span class="math notranslate nohighlight">\(\hat{\alpha}_m\)</span> is defined to be <em>asymptotically unbiased</em> if:</p>
+<div class="math notranslate nohighlight">
+\[
+  \lim_{m \to \infty} E\{\hat{\boldsymbol{\alpha}}_m\} = \alpha.
+  \]</div>
+</li>
+</ul>
+<p>This means that as the sample size <span class="math notranslate nohighlight">\(m\)</span> increases indefinitely, the expected value of the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_m\)</span> converges to the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>The idea of asymptotic unbiasedness is crucial in statistics because it assures that an estimator, even if biased for small sample sizes, will provide increasingly accurate estimates as the sample size grows.</p>
+<p>This concept is often relevant in practical scenarios where large samples are obtainable, allowing such estimators to be reliable in the long run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">true_variance</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Set true variance to 100</span>
+<span class="n">true_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">true_variance</span><span class="p">)</span>  <span class="c1"># True standard deviation</span>
+<span class="n">sample_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>  <span class="c1"># Different sample sizes to test</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Number of simulations per sample size</span>
+
+<span class="c1"># Arrays to store mean of variance estimates for each sample size</span>
+<span class="n">biased_means</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">unbiased_means</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Loop over different sample sizes</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sample_sizes</span><span class="p">:</span>
+    <span class="n">biased_variances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unbiased_variances</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Simulate for each sample size</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">true_sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="c1"># Calculate biased and unbiased variances</span>
+        <span class="n">biased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">unbiased_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">biased_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">biased_variance</span><span class="p">)</span>
+        <span class="n">unbiased_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unbiased_variance</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate mean estimates for current sample size</span>
+    <span class="n">biased_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased_variances</span><span class="p">))</span>
+    <span class="n">unbiased_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased_variances</span><span class="p">))</span>
+
+<span class="c1"># Plotting the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">biased_means</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Biased Variance Estimate&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">unbiased_means</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unbiased Variance Estimate&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">true_variance</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Variance (100)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Size (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Variance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Asymptotic Behavior of Biased vs. Unbiased Variance Estimates&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8b3fa4747d85ca3dfd3ef94d612fc63f2e017a915c2ecd99af457f7fdb5cb9ce.png" src="_images/8b3fa4747d85ca3dfd3ef94d612fc63f2e017a915c2ecd99af457f7fdb5cb9ce.png" />
+</div>
+</div>
+</section>
+<section id="summary-unbiased-estimator-for-a-deterministic-parameter">
+<h2>Summary: Unbiased Estimator for a Deterministic Parameter<a class="headerlink" href="#summary-unbiased-estimator-for-a-deterministic-parameter" title="Link to this heading">#</a></h2>
+<p><strong>Deterministic Parameter</strong>: A parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is considered deterministic if it has a fixed value, not subject to any randomness.</p>
+<p>For example, in the context of a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span> are deterministic parameters.</p>
+<p><strong>Unbiased Estimator</strong>: An estimator <span class="math notranslate nohighlight">\(\hat{\alpha}(\vec{\mathbf{y}})\)</span> is a function of the observed data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> used to estimate the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>The estimator <span class="math notranslate nohighlight">\(\hat{\alpha}(\vec{\mathbf{y}})\)</span> is said to be unbiased if its expected value (mean) is equal to the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> for all possible values of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>Mathematically, this is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\alpha}(\vec{\mathbf{y}})] = \alpha, \quad \forall \alpha
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(E[\hat{\alpha}(\vec{\mathbf{y}})]\)</span> represents the expectation (average value) of the estimator <span class="math notranslate nohighlight">\(\hat{\alpha}(\vec{\mathbf{y}})\)</span> over all possible samples <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p>
+<p>If this condition holds, it means that the estimator does not systematically overestimate or underestimate the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>; it is accurate “on average.”</p>
+</section>
+<section id="unbiased-estimator-for-random-parameter-s">
+<h2>Unbiased Estimator for Random Parameter(s)<a class="headerlink" href="#unbiased-estimator-for-random-parameter-s" title="Link to this heading">#</a></h2>
+<section id="random-parameter-vector">
+<h3>Random Parameter Vector<a class="headerlink" href="#random-parameter-vector" title="Link to this heading">#</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is an estimate of the random parameter <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span>, where <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> itself is a random vector with mean <span class="math notranslate nohighlight">\( E\{\vec{\boldsymbol{\alpha}}\} = \vec{\mu}_{\boldsymbol{\alpha}} \)</span>.</p>
+<p><strong>Conditionally Unbiased Estimator</strong>:</p>
+<p>An estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is said to be <strong>conditionally unbiased</strong> if the conditional mean of <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> given vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> equals the parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> itself, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\alpha}\} = \vec{\alpha}, \quad \forall \vec{\alpha}
+\]</div>
+<p><strong>Unconditionally Unbiased Estimator</strong>:</p>
+<p>Assuming the density function <span class="math notranslate nohighlight">\( p(\vec{\alpha}) \)</span> is the known density function of the random parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span>:</p>
+<p>To be unconditionally unbiased, the estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> must satisfy the condition:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = E \{ \vec{\hat{\boldsymbol{\alpha}}} \} = E\{ \vec{\boldsymbol{\alpha}} \} = \vec{\mu}_{\boldsymbol{\alpha}}.
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = \int_{-\infty}^{\infty
+} E \{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\alpha} \} p(\vec{\alpha}) d\vec{\alpha}.
+\]</div>
+<p>This condition states that the overall expected value of the estimator equals the expected value of the parameter (vector), regardless of its randomness.</p>
+</section>
+<section id="single-random-parameter">
+<h3>Single Random Parameter<a class="headerlink" href="#single-random-parameter" title="Link to this heading">#</a></h3>
+<p>The parameter to be estimated is itself a single random variable.</p>
+<p>For example, in Bayesian statistics, parameters are often treated as random variables with their own distributions.</p>
+<p><strong>Conditionally Unbiased Estimator</strong></p>
+<p>When the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> is random, an estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> is <strong>conditionally unbiased</strong> if the expectation of the estimator, given the true value of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha} = \alpha\)</span>, is equal to that true value:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) | \boldsymbol{\alpha} = \alpha] = \alpha, \quad \forall \alpha
+\]</div>
+<p>This means that if we knew the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, the estimator would, on average, yield that exact value.</p>
+<p>Conditional unbiasedness ensures that the estimator is accurate on average for each possible realization of the random parameter.</p>
+<p><strong>Unbiased Estimator (in the random parameter context)</strong>:</p>
+<p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> is <strong>unbiased</strong> in the context of a random parameter if its overall expectation equals the expected value of the parameter itself:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})] = E[\boldsymbol{\alpha}]
+\]</div>
+<p>Here, the expectation <span class="math notranslate nohighlight">\(E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})]\)</span> is taken over both the randomness in the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> and any randomness in the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
+<p>This condition implies that, when averaged over all possible values of both the data and the random parameter, the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> will equal the average (expected) value of the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
+</section>
+<section id="example-the-true-mean-is-a-random-variable">
+<h3>Example: The True Mean is a Random Variable<a class="headerlink" href="#example-the-true-mean-is-a-random-variable" title="Link to this heading">#</a></h3>
+<p>An example where the parameter of a distribution is random can be found in <em>Bayesian statistics</em>.</p>
+<p>In such scenarios, the parameter of a distribution itself, e.g., the true mean, is treated as a random variable with its own distribution, reflecting our uncertainty about its value.</p>
+<p><strong>Problem Setup</strong></p>
+<p>Suppose we have a set of observations <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span> that are normally distributed with an unknown mean <span class="math notranslate nohighlight">\(\mu\)</span> and known variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>However, unlike the typical setup, we assume that the mean <span class="math notranslate nohighlight">\(\mu\)</span> is not fixed but is instead a random variable itself, i.e., <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> (boldface).</p>
+<p><strong>Random Parameter (Random True Mean)</strong></p>
+<p>Assume that the mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is random and follows its own distribution, for example:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\mu} \sim \mathcal{N}(\mu_0, \sigma_{\boldsymbol{\mu}}^2),
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu_0\)</span> is the prior mean (the mean of <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_{\boldsymbol{\mu}}^2\)</span> is the prior variance, reflecting uncertainty about <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>.</p></li>
+</ul>
+<p><strong>Observations Given <span class="math notranslate nohighlight">\(\mu\)</span> (nonboldface)</strong></p>
+<p>Given the random mean <span class="math notranslate nohighlight">\(\mu\)</span> (nonboldface), the observations <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span> are conditionally distributed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y}_i \mid \mu \sim \mathcal{N}(\mu_0, \sigma_{\boldsymbol{\mu}}^2), \quad i = 1, \ldots, n,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{\boldsymbol{\mu}}^2\)</span> is known.</p>
+<p><strong>Estimating the Random Parameter <span class="math notranslate nohighlight">\(\mu\)</span></strong></p>
+<p>Here, <span class="math notranslate nohighlight">\(\mu\)</span> is the parameter of interest, but it is treated as a random variable with its own distribution.</p>
+<p>We want to estimate <span class="math notranslate nohighlight">\(\mu\)</span> based on the observed data <span class="math notranslate nohighlight">\( \mathbf{y}_1, \ldots, \mathbf{y}_m \)</span>.</p>
+<p><strong>Conditional Expectation</strong></p>
+<p>The expected value of each observation given the random parameter <span class="math notranslate nohighlight">\(\mu\)</span> (nonboldface) is:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{y}_i \mid \mu\} = \mu.
+\]</div>
+<p>This means that the observations are centered around the random mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>, showing that they are conditionally unbiased estimators of <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>.</p>
+<p><strong>Unconditional Expectation</strong></p>
+<p>To find the unconditional expectation of <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span>, considering the randomness of <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>, we use the law of total expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{y}_i\} = E\{E\{\mathbf{y}_i \mid \mu\}\} = E\{\boldsymbol{\mu}\} = \mu_0.
+\]</div>
+<p>This shows that the overall expectation of the observations reflects the prior mean <span class="math notranslate nohighlight">\(\mu_0\)</span> of the random parameter <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c3_s3_parameter_estimation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Parameter Estimation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biased-estimator">Biased Estimator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-the-bias-of-the-sample-variance">Proof: The Bias of the Sample Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-a-biased-estimate-to-an-unbiased-estimate">Transform a Biased Estimate to an Unbiased Estimate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotically-unbiased-estimator">Asymptotically Unbiased Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-unbiased-estimator-for-a-deterministic-parameter">Summary: Unbiased Estimator for a Deterministic Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-random-parameter-s">Unbiased Estimator for Random Parameter(s)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-parameter-vector">Random Parameter Vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-random-parameter">Single Random Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-true-mean-is-a-random-variable">Example: The True Mean is a Random Variable</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -232,6 +232,14 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Neyman-Pearson Criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimator</a></li>
 </ul>
 </details></li>
 </ul>
@@ -360,7 +368,7 @@ document.write(`
   <section id="neyman-pearson-criterion">
 <h1>Neyman-Pearson Criterion<a class="headerlink" href="#neyman-pearson-criterion" title="Link to this heading">#</a></h1>
 <p><strong>MOTIVATION</strong>. The Neyman-Pearson criterion requires neither costs nor <em>a priori</em> probabilities for its formulation.</p>
-<p>If neither costs nor <em>a priori</em> probabilities are known, the system designer’s first choice should be the Neyman-Pearson criterion.</p>
+<p>If <strong>neither</strong> costs nor <em>a priori</em> probabilities are known, the system designer’s first choice should be the Neyman-Pearson criterion.</p>
 <p>Only if it is impossible or impractical to specify a maximum false alarm rate should the ML criterion be used.</p>
 <p>The following table summarizes the detection criterion of interest with their associated requirements.</p>
 <p>Note that the ML criterion is not listed in the table, since it is more commonly used in estimation theory than in detection theory.</p>
@@ -397,7 +405,7 @@ document.write(`
 <p>Typically, the false-alarm probability <span class="math notranslate nohighlight">\( P_f \)</span> is constrained to be below some specified level <span class="math notranslate nohighlight">\( \alpha_f \)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
-P_f = P(D_1|H_0) \leq \alpha_f
+P_f = \Pr(D_1|H_0) \leq \alpha_f
 \]</div>
 <p>With this constraint, the probability of detection <span class="math notranslate nohighlight">\( P_d \)</span> is then maximized.</p>
 <p><strong>OBJECTIVE.</strong>
@@ -412,19 +420,20 @@ P_f := \alpha' \quad\text{where}\quad \alpha' \leq \alpha_f
 <p>Using a Lagrange multiplier <span class="math notranslate nohighlight">\( \mu \)</span>, define a function <span class="math notranslate nohighlight">\( F \)</span> as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 F &amp;= P_d - \mu[P_f - \alpha'] \\
-&amp;= P(D_1|H_1) - \mu[P(D_1|H_0) - \alpha']
-\end{align} 
+&amp;= \Pr(D_1|H_1) - \mu[\Pr(D_1|H_0) - \alpha']
+\end{align*} 
 \end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\( P_f - \alpha' \)</span> is not zero, it is a function minus a specific value assigned to that function.</p>
 <p>Maximizing <span class="math notranslate nohighlight">\( P_d \)</span> also maximizes <span class="math notranslate nohighlight">\( F \)</span>.</p>
 <p>It follows that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 F &amp;= \int_{R_1} p(y|H_1) dy - \mu \int_{R_1} p(y|H_0) dy + \mu \alpha' \\
 &amp;= \int_{R_1} [p(y|H_1) - \mu p(y|H_0)] dy + \mu \alpha' 
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p><strong>Discussion.</strong> Note that <span class="math notranslate nohighlight">\( F \)</span> is not a Lagrangian function <span class="math notranslate nohighlight">\( \mathcal{L}(\mu) \)</span>, because the problem is a maximization problem and has not yet been transformed into the standard form for minimization.</p>
 <p>In the Lagrangian method, problems are typically framed as minimization tasks, and the objective function needs to be appropriately modified for that purpose.</p>
@@ -441,21 +450,23 @@ p(y|H_1) - \mu p(y|H_0) \geq 0
 <p>It follows that</p>
 <div class="math notranslate nohighlight">
 \[
-L(y) = \frac{p(y|H_1)}{p(y|H_0)} \geq \mu 
+L(y) = \frac{p(y|H_1)}{p(y|H_0)} \geq \mu \triangleq \tau_{NP}^{temp}
 \]</div>
-<p>Again, we have a <strong>likelihood-ratio test</strong>.</p>
+<p>Again, we have a <strong>likelihood-ratio test (LRT)</strong>.</p>
 <p>By definition,</p>
 <div class="math notranslate nohighlight">
 \[
-P_f = P(D_1|H_0) = \int_{R_1(\mu)} p(y|H_0) dy = \alpha' 
+P_f = \Pr(D_1|H_0) = \int_{R_1(\mu)} p(y|H_0) dy = \alpha' 
 \]</div>
-<p>where we have explicitly shown the dependence of the region <span class="math notranslate nohighlight">\( R_1 \)</span> on <span class="math notranslate nohighlight">\( \mu \)</span>. Since</p>
+<p>where we have explicitly shown the <em>dependence</em> of the region <span class="math notranslate nohighlight">\( R_1 \)</span> on <span class="math notranslate nohighlight">\( \mu \)</span>.</p>
+<p>Since</p>
 <div class="math notranslate nohighlight">
 \[
-P_d = P(D_1|H_1) = \int_{R_1(\mu)} p(y|H_1) dy 
+P_d = \Pr(D_1|H_1) = \int_{R_1(\mu)} p(y|H_1) dy 
 \]</div>
-<p>i.e., both integrals of the previous two equations are over the same range <span class="math notranslate nohighlight">\( R_1(\mu) \)</span>, it follows that changing <span class="math notranslate nohighlight">\( \mu \)</span> to increase <span class="math notranslate nohighlight">\( P_d \)</span> also tends to increase <span class="math notranslate nohighlight">\( P_f \)</span>.</p>
-<p>Thus, we change <span class="math notranslate nohighlight">\( \mu \)</span> until we get the largest value of <span class="math notranslate nohighlight">\( \alpha' \leq \alpha \)</span>.</p>
+<p>i.e., both integrals of the previous two equations are over the same range <span class="math notranslate nohighlight">\( R_1(\mu) \)</span>.</p>
+<p>It follows that changing <span class="math notranslate nohighlight">\( \mu \)</span> to <em>increase</em> <span class="math notranslate nohighlight">\( P_d \)</span> also tends to <em>increase</em> <span class="math notranslate nohighlight">\( P_f \)</span>.</p>
+<p>Thus, we change <span class="math notranslate nohighlight">\( \mu \)</span>, i.e., vary the temporary threshold, <span class="math notranslate nohighlight">\(\tau_{NP}^{temp}\)</span>, until we get the largest value of <span class="math notranslate nohighlight">\( \alpha' \leq \alpha \)</span>.</p>
 <p>This will then correspond to the largest value of <span class="math notranslate nohighlight">\( P_d \)</span>, and the threshold will be <span class="math notranslate nohighlight">\( \tau_{NP} \)</span>.</p>
 <p>$$
 \tau_{NP} = \mu^* \triangleq \arg\max_{\mu} P_d \quad\text{subject to}\quad P_f \leq \alpha_f</p>
@@ -484,7 +495,8 @@ P_d = P(D_1|H_1) = \int_{R_1(\mu)} p(y|H_1) dy
 <section id="example-antipodal-signal-detection-and-decision-using-np-criterion">
 <h2>Example: Antipodal Signal Detection and Decision using NP Criterion<a class="headerlink" href="#example-antipodal-signal-detection-and-decision-using-np-criterion" title="Link to this heading">#</a></h2>
 <p>This example [B2, Ex 4.11] is a continuation of our previous examples.</p>
-<p>In order to use the Neyman-Pearson criterion, we must specify a maximum false-alarm probability <span class="math notranslate nohighlight">\( \alpha_f \)</span>. As an example, let us set <span class="math notranslate nohighlight">\( \alpha_f = 0.1 \)</span>.</p>
+<p>In order to use the Neyman-Pearson criterion, we must specify a maximum false-alarm probability <span class="math notranslate nohighlight">\( \alpha_f \)</span>.</p>
+<p>As an example, let us set <span class="math notranslate nohighlight">\( \alpha_f = 0.1 \)</span>.</p>
 <p>Since these examples all use a log-likelihood ratio, we must find a threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -495,19 +507,19 @@ P_f = \int_{\tau'_{NP}}^\infty p(y|H_0) dy = \frac{1}{\sqrt{2\pi\sigma^2}} \int_
 \[
 P_d = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y-b)^2}{2\sigma^2}\right) dy
 \]</div>
-<p>It is clear that both <span class="math notranslate nohighlight">\( P_f \)</span> and <span class="math notranslate nohighlight">\( P_d \)</span> decrease as <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> increases.</p>
-<p>Since we want <span class="math notranslate nohighlight">\( P_d \)</span> to be as large as possible, we set the threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> so that <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span>.</p>
+<p>It is evident that both <span class="math notranslate nohighlight">\( P_f \)</span> and <span class="math notranslate nohighlight">\( P_d \)</span> decrease as the threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> increases.</p>
+<p>To maximize <span class="math notranslate nohighlight">\( P_d \)</span>, we select the threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> such that <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span>.</p>
+<p>The threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> can be determined directly as the root of the equation <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span>, without the need to derive it through the Lagrangian formulation.</p>
 <p>Using the aforementioned values of <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>, we want to find <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
 \sqrt{\frac{2}{\pi}} \int_{\tau'_{NP}}^\infty \exp \left(-2(y+1)^2\right) dy = 0.1 
 \]</div>
-<p>or</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{1}{2} \text{erfc} \left(\sqrt{2}(\tau'_{NP} + 1)\right) = 0.1 
+\iff \frac{1}{2} \text{erfc} \left(\sqrt{2}(\tau'_{NP} + 1)\right) = 0.1 
 \]</div>
-<p>After some computation step, e.g., using tables of error functions, we obtain <span class="math notranslate nohighlight">\( \tau'_{NP} \approx -0.36007 \)</span></p>
+<p>After some computation step, e.g., using error functions, we obtain <span class="math notranslate nohighlight">\( \tau'_{NP} \approx -0.36007 \)</span></p>
 <p>The NP decision rule is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -521,28 +533,22 @@ P_d = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(
 <p>In the Gaussian tail probability, using the complementary error function, for gerneral <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, set <span class="math notranslate nohighlight">\(P_f = \alpha_f\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
-   \frac{1}{2} \text{erfc} \left( \frac{\tau'_{NP} + b}{\sqrt{2\sigma^2}} \right) = \alpha_f.
-   \]</div>
+\frac{1}{2} \text{erfc} \left( \frac{\tau'_{NP} + b}{\sqrt{2\sigma^2}} \right) = \alpha_f.
+\]</div>
 <p>Next, apply the inverse complementary error function <span class="math notranslate nohighlight">\( \text{erfc}^{-1} \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-   \frac{\tau'_{NP} + b}{\sqrt{2\sigma^2}} = \text{erfc}^{-1}(2\alpha_f).
-   \]</div>
+\frac{\tau'_{NP} + b}{\sqrt{2\sigma^2}} = \text{erfc}^{-1}(2\alpha_f).
+\]</div>
 <p>where <span class="math notranslate nohighlight">\( \text{erfc}^{-1} \)</span> is the inverse complementary error function.</p>
 <p>Thus, we have</p>
 <div class="math notranslate nohighlight">
 \[
-   \tau'_{NP} = -b + \sqrt{2\sigma^2} \, \text{erfc}^{-1}(2\alpha_f).
-   \]</div>
+\tau'_{NP} = -b + \sqrt{2\sigma^2} \, \text{erfc}^{-1}(2\alpha_f).
+\]</div>
 </section>
 <section id="numerical-results">
 <h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
-<p>The simulation follows these steps:</p>
-<ul class="simple">
-<li><p><strong>Plot <span class="math notranslate nohighlight">\( P_f \)</span> and <span class="math notranslate nohighlight">\( P_d \)</span> as a function of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span></strong>: We calculate <span class="math notranslate nohighlight">\( P_f \)</span> and <span class="math notranslate nohighlight">\( P_d \)</span> for a range of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> values and plot them.</p></li>
-<li><p><strong>Demonstrate the optimization of <span class="math notranslate nohighlight">\( P_d \)</span> subject to <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span></strong>: We show that maximizing <span class="math notranslate nohighlight">\( P_d \)</span> is achieved by selecting the threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> such that <span class="math notranslate nohighlight">\( P_f = \alpha_f = 0.1 \)</span>.</p></li>
-<li><p><strong>Solve the <span class="math notranslate nohighlight">\(P_f\)</span>’s constraint equation.</strong> We find the value of <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> that satisfies the false alarm rate constraint <span class="math notranslate nohighlight">\( P_f = 0.1 \)</span>.</p></li>
-</ul>
 <p>We assume the setting as in previous examples, i.e., <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>.</p>
 <ul>
 <li><p>For <span class="math notranslate nohighlight">\( P_f \)</span>:</p>
@@ -696,6 +702,85 @@ P_d = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/fd98668b8f82e0d07ec09200bb4c05d1f4e076fb3323684686c4ca6dd8e041dc.png" src="_images/fd98668b8f82e0d07ec09200bb4c05d1f4e076fb3323684686c4ca6dd8e041dc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfcinv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Given parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Signal amplitude</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># Noise variance</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">)</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000000</span>  <span class="c1"># Number of samples for simulation</span>
+<span class="n">alpha_f</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Desired false alarm probability</span>
+
+<span class="c1"># Mathematical expressions for P_f and P_d</span>
+<span class="k">def</span> <span class="nf">P_f_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">P_d_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate tau&#39;_NP threshold for Neyman-Pearson criterion</span>
+<span class="k">def</span> <span class="nf">tau_NP_theoretical</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">erfcinv</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha_f</span><span class="p">)</span>
+
+<span class="c1"># Calculate tau&#39;_NP</span>
+<span class="n">tau_NP</span> <span class="o">=</span> <span class="n">tau_NP_theoretical</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson threshold tau&#39;_NP = </span><span class="si">{</span><span class="n">tau_NP</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simulate received signals and decisions based on Neyman-Pearson threshold</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="c1"># Generate noise</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Simulate received y under each hypothesis</span>
+<span class="n">y_given_s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># When H0 is true</span>
+<span class="n">y_given_s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># When H1 is true</span>
+
+<span class="c1"># Decisions based on the Neyman-Pearson threshold</span>
+<span class="n">decisions_s0_NP</span> <span class="o">=</span> <span class="n">y_given_s0</span> <span class="o">&gt;=</span> <span class="n">tau_NP</span>  <span class="c1"># Decide H1 if y &gt;= tau&#39;_NP (for H0)</span>
+<span class="n">decisions_s1_NP</span> <span class="o">=</span> <span class="n">y_given_s1</span> <span class="o">&gt;=</span> <span class="n">tau_NP</span>  <span class="c1"># Decide H1 if y &gt;= tau&#39;_NP (for H1)</span>
+
+<span class="c1"># Estimating transmitted signals (s_hat) based on decisions for Neyman-Pearson criterion</span>
+<span class="n">s0_hat_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s0_NP</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H0)</span>
+<span class="n">s1_hat_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s1_NP</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H1)</span>
+
+<span class="c1"># Calculating empirical probabilities for Neyman-Pearson criterion</span>
+<span class="n">P00_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_NP</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+<span class="n">P01_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_NP</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+<span class="n">P10_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_NP</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true (false alarm)</span>
+<span class="n">P11_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_NP</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true (detection)</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P00 (Decide H0 | H0 true): </span><span class="si">{</span><span class="n">P00_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P01 (Decide H0 | H1 true): </span><span class="si">{</span><span class="n">P01_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P10 (Decide H1 | H0 true): </span><span class="si">{</span><span class="n">P10_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P11 (Decide H1 | H1 true): </span><span class="si">{</span><span class="n">P11_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot the results for P_f and P_d as a function of tau_NP</span>
+<span class="n">tau_NP_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">P_f_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P_f_math</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_NP_range</span><span class="p">])</span>
+<span class="n">P_d_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P_d_math</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_NP_range</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neyman-Pearson threshold tau&#39;_NP = -0.3592242172276997
+Neyman-Pearson Criterion, P00 (Decide H0 | H0 true): 0.9000
+Neyman-Pearson Criterion, P01 (Decide H0 | H1 true): 0.0032
+Neyman-Pearson Criterion, P10 (Decide H1 | H0 true): 0.1000
+Neyman-Pearson Criterion, P11 (Decide H1 | H1 true): 0.9968
+</pre></div>
+</div>
 </div>
 </div>
 </section>

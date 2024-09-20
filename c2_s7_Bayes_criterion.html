@@ -232,6 +232,14 @@
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimator</a></li>
 </ul>
 </details></li>
 </ul>
@@ -493,7 +501,7 @@ L(y) \underset{D_0}{\overset{D_1}{\gtrless}} \tau_B
 <p>The decision rule based on this threshold is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\delta(y) = \begin{cases}
+\delta'_B (y) = \begin{cases}
 D_1, &amp; \text{if } y \geq \tau' \\
 D_0, &amp; \text{if } y &lt; \tau'
 \end{cases}
@@ -515,17 +523,15 @@ D_0, &amp; \text{if } y &lt; \tau'
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># Given parameters</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">sigma2</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># Variance</span>
 <span class="n">pi0</span> <span class="o">=</span> <span class="mf">0.8</span>
 <span class="n">pi1</span> <span class="o">=</span> <span class="mf">0.2</span>
 
 <span class="c1"># Number of simulations</span>
-<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000000</span>
 
 <span class="c1"># Costs assigned to decisions</span>
 <span class="n">C00</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Cost of deciding D0 when H0 is true (correct decision, no cost)</span>
@@ -541,42 +547,42 @@ D_0, &amp; \text{if } y &lt; \tau'
 <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
 
 <span class="c1"># Simulating received y under each hypothesis</span>
-<span class="n">y_given_s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise</span>
-<span class="n">y_given_s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">noise</span>
+<span class="n">y_given_s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># When H0 is true</span>
+<span class="n">y_given_s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># When H1 is true</span>
 
 <span class="c1"># Bayes decision threshold tau_B calculation</span>
 <span class="n">tau_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">pi0</span> <span class="o">*</span> <span class="p">(</span><span class="n">C10</span> <span class="o">-</span> <span class="n">C00</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">pi1</span> <span class="o">*</span> <span class="p">(</span><span class="n">C01</span> <span class="o">-</span> <span class="n">C11</span><span class="p">))</span>
 
-<span class="c1"># Bayes decision threshold tau&#39; using log-likelihood ratio</span>
+<span class="c1"># Bayes decision threshold tau_prime using log-likelihood ratio</span>
 <span class="n">tau_prime_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tau_B</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span>
 
 <span class="c1"># Decisions based on the Bayes threshold</span>
-<span class="n">decisions_s0_B</span> <span class="o">=</span> <span class="n">y_given_s0</span> <span class="o">&gt;=</span> <span class="n">tau_prime_B</span>
-<span class="n">decisions_s1_B</span> <span class="o">=</span> <span class="n">y_given_s1</span> <span class="o">&gt;=</span> <span class="n">tau_prime_B</span>
+<span class="n">decisions_s0_B</span> <span class="o">=</span> <span class="n">y_given_s0</span> <span class="o">&gt;=</span> <span class="n">tau_prime_B</span>  <span class="c1"># Decide s1 if y &gt;= threshold</span>
+<span class="n">decisions_s1_B</span> <span class="o">=</span> <span class="n">y_given_s1</span> <span class="o">&gt;=</span> <span class="n">tau_prime_B</span>  <span class="c1"># Decide s1 if y &gt;= threshold</span>
 
 <span class="c1"># Estimating transmitted signals (s_hat) based on decisions for Bayes criterion</span>
-<span class="n">s0_hat_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s0_B</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0</span>
-<span class="n">s1_hat_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s1_B</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>
+<span class="n">s0_hat_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s0_B</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H0)</span>
+<span class="n">s1_hat_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s1_B</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H1)</span>
 
 <span class="c1"># Calculating empirical probabilities for Bayes criterion</span>
-<span class="n">P00_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_B</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>
-<span class="n">P01_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_B</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>
-<span class="n">P10_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_B</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>
-<span class="n">P11_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_B</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>
+<span class="n">P00_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_B</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+<span class="n">P01_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_B</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+<span class="n">P10_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_B</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true</span>
+<span class="n">P11_empirical_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_B</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true</span>
 
 <span class="c1"># Print results</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P00 (Decide H0 | H0 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P00_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P01 (Decide H0 | H1 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P01_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P10 (Decide H1 | H0 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P10_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P11 (Decide H1 | H1 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P11_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bayes, P00 (Decide H0 | H0 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P00_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bayes, P01 (Decide H0 | H1 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P01_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bayes, P10 (Decide H1 | H0 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P10_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bayes, P11 (Decide H1 | H1 true) using Bayes decision threshold: </span><span class="si">{</span><span class="n">P11_empirical_B</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9873
-P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0127
-P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0341
-P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9659
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes, P00 (Decide H0 | H0 true) using Bayes decision threshold: 0.9850
+Bayes, P01 (Decide H0 | H1 true) using Bayes decision threshold: 0.0337
+Bayes, P10 (Decide H1 | H0 true) using Bayes decision threshold: 0.0150
+Bayes, P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9663
 </pre></div>
 </div>
 </div>
@@ -672,10 +678,15 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9659
     <span class="n">s1_hat_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s1_bayes</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
     
     <span class="c1"># Calculating empirical probabilities for MAP criterion</span>
-    <span class="n">P00_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_map</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">P01_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_map</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
-    <span class="n">P10_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_map</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">P11_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_map</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+    <span class="c1"># P00_map = np.mean(s0_hat_map == -b)</span>
+    <span class="c1"># P01_map = np.mean(s0_hat_map == b)</span>
+    <span class="c1"># P10_map = np.mean(s1_hat_map == -b)</span>
+    <span class="c1"># P11_map = np.mean(s1_hat_map == b)</span>
+    <span class="c1"># Calculating empirical probabilities</span>
+    <span class="n">P00_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_map</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+    <span class="n">P01_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_map</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+    <span class="n">P10_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_map</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true</span>
+    <span class="n">P11_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_map</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true</span>
     
     <span class="c1"># Store MAP results</span>
     <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">snr_db</span><span class="p">)</span>
@@ -685,10 +696,16 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9659
     <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P11_map</span><span class="p">)</span>
     
     <span class="c1"># Calculating empirical probabilities for Bayes criterion</span>
-    <span class="n">P00_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_bayes</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">P01_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_bayes</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
-    <span class="n">P10_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_bayes</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">P11_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_bayes</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+    <span class="c1"># P00_bayes = np.mean(s0_hat_bayes == -b)</span>
+    <span class="c1"># P01_bayes = np.mean(s0_hat_bayes == b)</span>
+    <span class="c1"># P10_bayes = np.mean(s1_hat_bayes == -b)</span>
+    <span class="c1"># P11_bayes = np.mean(s1_hat_bayes == b)</span>
+
+    <span class="c1"># Calculating empirical probabilities for Bayes criterion</span>
+    <span class="n">P00_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_bayes</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+    <span class="n">P01_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_bayes</span> <span class="o">==</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+    <span class="n">P10_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_bayes</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true</span>
+    <span class="n">P11_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_bayes</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true</span>
     
     <span class="c1"># Store Bayes results</span>
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">snr_db</span><span class="p">)</span>
@@ -696,28 +713,23 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9659
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P01_bayes</span><span class="p">)</span>
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P10_bayes</span><span class="p">)</span>
     <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P11_bayes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Plotting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Plot P00, P01, P10, P11 for MAP criterion</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_map</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (MAP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot P00, P01, P10, P11 for Bayes criterion</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P00&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{00}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P01&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{01}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P10&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{10}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;SNR (dB)&quot;</span><span class="p">],</span> <span class="n">results_bayes</span><span class="p">[</span><span class="s2">&quot;P11&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_</span><span class="si">{11}</span><span class="s1">$ (Bayes)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add labels and title</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SNR (dB)&#39;</span><span class="p">)</span>
@@ -732,7 +744,7 @@ P11 (Decide H1 | H1 true) using Bayes decision threshold: 0.9659
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/781ae835469e33fe97c18b3dd0062b0aeb7b84a7b8b7c07af5a7e58b6fdd0906.png" src="_images/781ae835469e33fe97c18b3dd0062b0aeb7b84a7b8b7c07af5a7e58b6fdd0906.png" />
+<img alt="_images/390ea9825c169fc7a51e7152c6b96cac5ebf970d4000b5df1905e616b937ea07.png" src="_images/390ea9825c169fc7a51e7152c6b96cac5ebf970d4000b5df1905e616b937ea07.png" />
 </div>
 </div>
 <p><strong>DISCUSSION.</strong> This comparison may not be entirely fair because the Bayes criterion requires knowledge of both the costs associated with different types of errors and the a priori probabilities of the hypotheses.</p>

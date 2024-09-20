@@ -232,6 +232,14 @@
 <li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimator</a></li>
 </ul>
 </details></li>
 </ul>
@@ -583,8 +591,8 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 <span class="n">pi0</span> <span class="o">=</span> <span class="mf">0.8</span>
 <span class="n">pi1</span> <span class="o">=</span> <span class="mf">0.2</span>
 
-<span class="c1"># Number of simulations</span>
-<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="c1"># Number of simulations, should be 1e6 to get accurate results</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000000</span>
 
 <span class="c1"># Generating s0 and s1</span>
 <span class="n">s0</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
@@ -623,7 +631,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0344, 0.194)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.038468), np.float64(0.197924))
 </pre></div>
 </div>
 </div>
@@ -676,7 +684,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ccddb6898c49ffb96b834eba5df465e7dd2d2ddb304fba6dd221cf3eb9df27ba.png" src="_images/ccddb6898c49ffb96b834eba5df465e7dd2d2ddb304fba6dd221cf3eb9df27ba.png" />
+<img alt="_images/890b772393dfb8b83c6f882d99845726f93d910ae2b1d70afd0ee85b511f613f.png" src="_images/890b772393dfb8b83c6f882d99845726f93d910ae2b1d70afd0ee85b511f613f.png" />
 </div>
 </div>
 </section>
@@ -714,7 +722,7 @@ L(y) \geq \tau_{MAP} \iff \exp\left( \frac{2yb}{\sigma^2} \right) \geq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d8bfc942cd79587c1175c8e25987a3942ef6eff96e4f20d76a95ff2e44fafaa.png" src="_images/3d8bfc942cd79587c1175c8e25987a3942ef6eff96e4f20d76a95ff2e44fafaa.png" />
+<img alt="_images/0ff57ae932b6eb69476a08452f4c7474c107f30ad034bf5d2ee031805d0d9660.png" src="_images/0ff57ae932b6eb69476a08452f4c7474c107f30ad034bf5d2ee031805d0d9660.png" />
 </div>
 </div>
 </section>
@@ -765,7 +773,7 @@ y \in R_0 \implies L(y) &lt; \frac{\pi_0}{\pi_1}
 <li><p><span class="math notranslate nohighlight">\( H_1 \)</span> corresponds to “signal present.”</p></li>
 </ul>
 <p>In this case, <span class="math notranslate nohighlight">\( H_0 \)</span> is often referred to as the null hypothesis and <span class="math notranslate nohighlight">\( H_1 \)</span> as the alternate hypothesis.</p>
-<p>In general, we define <span class="math notranslate nohighlight">\( P_{ij} \)</span> as the probability of deciding <span class="math notranslate nohighlight">\( D_i \)</span>, when, in fact, hypothesis <span class="math notranslate nohighlight">\( H_j \)</span> is correct.</p>
+<p>We define <span class="math notranslate nohighlight">\( P_{ij} \)</span> as the probability of deciding <span class="math notranslate nohighlight">\( D_i \)</span>, when, in fact, hypothesis <span class="math notranslate nohighlight">\( H_j \)</span> is correct.</p>
 <p>In terms of the underlying probability density functions, it can be seen that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -873,24 +881,24 @@ P_{11} \approx 0.950878
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculating empirical probabilities</span>
-<span class="n">P00_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>
-<span class="n">P01_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>
-<span class="n">P10_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>
-<span class="n">P11_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>
+<span class="n">P00_empirical_MAP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_MAP</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+<span class="n">P01_empirical_MAP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_MAP</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+<span class="n">P10_empirical_MAP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_MAP</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true</span>
+<span class="n">P11_empirical_MAP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_MAP</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true</span>
 
 <span class="c1"># Print results</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P00 (Decide H0 | H0 true): </span><span class="si">{</span><span class="n">P00_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P01 (Decide H0 | H1 true): </span><span class="si">{</span><span class="n">P01_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P10 (Decide H1 | H0 true): </span><span class="si">{</span><span class="n">P10_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P11 (Decide H1 | H1 true): </span><span class="si">{</span><span class="n">P11_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAP, P00 (Decide H0 | H0 true): </span><span class="si">{</span><span class="n">P00_empirical_MAP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAP, P01 (Decide H0 | H1 true): </span><span class="si">{</span><span class="n">P01_empirical_MAP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAP, P10 (Decide H1 | H0 true): </span><span class="si">{</span><span class="n">P10_empirical_MAP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAP, P11 (Decide H1 | H1 true): </span><span class="si">{</span><span class="n">P11_empirical_MAP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00 (Decide H0 | H0 true): 0.9914
-P01 (Decide H0 | H1 true): 0.0086
-P10 (Decide H1 | H0 true): 0.0485
-P11 (Decide H1 | H1 true): 0.9515
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAP, P00 (Decide H0 | H0 true): 0.9898
+MAP, P01 (Decide H0 | H1 true): 0.0489
+MAP, P10 (Decide H1 | H0 true): 0.0102
+MAP, P11 (Decide H1 | H1 true): 0.9511
 </pre></div>
 </div>
 </div>
@@ -947,7 +955,7 @@ P11 (Decide H1 | H1 true): 0.9515
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27ff47efb7ad0bf56c2c2f6a8bf35b729460ddad556802df1b7fdeecacf55511.png" src="_images/27ff47efb7ad0bf56c2c2f6a8bf35b729460ddad556802df1b7fdeecacf55511.png" />
+<img alt="_images/24d826cd4f524e923dee0908825ab2643b3b9377e62bb63c029c33e03ad34682.png" src="_images/24d826cd4f524e923dee0908825ab2643b3b9377e62bb63c029c33e03ad34682.png" />
 </div>
 </div>
 <section id="error-types-for-a-general-decision-threshold">
@@ -1024,8 +1032,8 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix:
 [[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
  [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
-[[0.9914 0.0086]
- [0.0485 0.9515]]
+[[0.9905 0.0095]
+ [0.0516 0.9484]]
 </pre></div>
 </div>
 </div>
@@ -1059,8 +1067,8 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix (using sklearn):
 [[P00 (Decide H0 | H0 true)  P01 (Decide H0 | H1 true)]
  [P10 (Decide H1 | H0 true)  P11 (Decide H1 | H1 true)]]
-[[0.9914 0.0086]
- [0.0485 0.9515]]
+[[0.9904 0.0096]
+ [0.0495 0.9505]]
 </pre></div>
 </div>
 </div>
@@ -1085,7 +1093,7 @@ P_{11} = \Pr(\text{Deciding } H_1 \mid H_1 \text{ is true}) = \int_{\tau}^{\inft
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3044d65b609748cdfb11c42e7346a403b3a724c79e2a54662ed08daa9aba9acd.png" src="_images/3044d65b609748cdfb11c42e7346a403b3a724c79e2a54662ed08daa9aba9acd.png" />
+<img alt="_images/5d3b9ae840b8b881011b8aaecc8ecd0f120f5fe33fd26f4e2c931b0995222de0.png" src="_images/5d3b9ae840b8b881011b8aaecc8ecd0f120f5fe33fd26f4e2c931b0995222de0.png" />
 </div>
 </div>
 </section>
