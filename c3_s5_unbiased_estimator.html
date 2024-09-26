@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Unbiased Estimator &#8212; Telecom Book</title>
+    <title>Unbiased Estimates &#8212; Telecom Book</title>
   
   
   
@@ -63,6 +63,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Estimators Based on Sufficient Statistics" href="c3_s6_sufficient_statistic.html" />
     <link rel="prev" title="Parameter Estimation" href="c3_s3_parameter_estimation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -238,7 +239,13 @@
 <li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
 
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unbiased Estimator</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -331,7 +338,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Unbiased Estimator</h1>
+    <h1>Unbiased Estimates</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -341,20 +348,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biased-estimator">Biased Estimator</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-unbiased-and-biased-estimators">Examples of Unbiased and Biased Estimators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-biased-estimator">Example of a Biased Estimator</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-the-bias-of-the-sample-variance">Proof: The Bias of the Sample Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-a-biased-estimate-to-an-unbiased-estimate">Transform a Biased Estimate to an Unbiased Estimate</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotically-unbiased-estimator">Asymptotically Unbiased Estimator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-unbiased-estimator-for-a-deterministic-parameter">Summary: Unbiased Estimator for a Deterministic Parameter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-random-parameter-s">Unbiased Estimator for Random Parameter(s)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-parameter-vector">Random Parameter Vector</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-random-parameter">Single Random Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-a-single-random-parameter">Unbiased Estimator for A Single Random Parameter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-true-mean-is-a-random-variable">Example: The True Mean is a Random Variable</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-a-vectir-of-random-parameters">Unbiased Estimator for A Vectir of Random Parameters</a></li>
 </ul>
             </nav>
         </div>
@@ -366,19 +372,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unbiased-estimator">
-<h1>Unbiased Estimator<a class="headerlink" href="#unbiased-estimator" title="Link to this heading">#</a></h1>
-<p><strong>Definition.</strong>
-An estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) \)</span> for the single nonrandom parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is <strong>unbiased</strong> if <span class="math notranslate nohighlight">\( E\{\hat{\boldsymbol{\alpha}}\} = \alpha \)</span> for all <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>Much of the discussion of properties of an estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> is based on the specialization of a single parameter rather than a vector, so that the notation is less complicated.</p>
-<p>As an example of unbiased and biased estimates, consider the case of the sample mean and sample variance formed by <span class="math notranslate nohighlight">\( m \)</span> identically distributed random variables <span class="math notranslate nohighlight">\( \mathbf{y}_i, \ i = 1, \ldots, m \)</span>.</p>
-<p>It is further assumed that the random variables are mutually uncorrelated and each has the same mean <span class="math notranslate nohighlight">\(\mu\)</span> and the same variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>, i.e., <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>.</p>
-<p>The sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is given by</p>
+  <section id="unbiased-estimates">
+<h1>Unbiased Estimates<a class="headerlink" href="#unbiased-estimates" title="Link to this heading">#</a></h1>
+<p><strong>Definition</strong></p>
+<p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> for a single nonrandom parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is called <strong>unbiased</strong> if it satisfies the condition</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+E\{\hat{\boldsymbol{\alpha}}\} = \alpha , \quad \forall \alpha
+\]</div>
+<p>Note that discussions about the properties of an estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> in this chapter typically focus on estimating a single parameter rather than a vector of parameters, to simplify the notation and analysis.</p>
+<section id="examples-of-unbiased-and-biased-estimators">
+<h2>Examples of Unbiased and Biased Estimators<a class="headerlink" href="#examples-of-unbiased-and-biased-estimators" title="Link to this heading">#</a></h2>
+<p>Let’s examine the sample mean and sample variance derived from <span class="math notranslate nohighlight">\(m\)</span> identically distributed random variables <span class="math notranslate nohighlight">\(\mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m\)</span>.</p>
+<p>Assume that these random variables are mutually uncorrelated, each having the same mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>, specifically <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>.</p>
+<p>The <strong>sample mean</strong> <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
 \[
 \bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i
 \]</div>
-<p>We have <span class="math notranslate nohighlight">\(E \{\bar{\mathbf{y}}\} = \mu, \quad \forall \mu\)</span>, so the sample mean is an unbiased estimator.</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+E\{\bar{\mathbf{y}}\} = \mu , \quad \forall \mu
+\]</div>
+<p>which shows that the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is an <em>unbiased</em> estimator of the true mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+</section>
 <section id="proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">
 <h2>Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased<a class="headerlink" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased" title="Link to this heading">#</a></h2>
 <p>Given:</p>
@@ -389,18 +407,18 @@ An estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alph
 <p>The sample mean is:</p>
 <div class="math notranslate nohighlight">
 \[
-\bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i.
+\bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i
 \]</div>
 <p><strong>Proof</strong></p>
 <p>The expectation of <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\{\bar{\mathbf{y}}\} = E\left\{\frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i\right\} = \frac{1}{m} \sum_{i=1}^{m} E\{\mathbf{y}_i\}.
+   E\{\bar{\mathbf{y}}\} = E\left\{\frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i\right\} = \frac{1}{m} \sum_{i=1}^{m} E\{\mathbf{y}_i\}
    \]</div>
 <p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{y}_i\} = \mu\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\{\bar{\mathbf{y}}\} = \frac{1}{m} \cdot m\mu = \mu.
+   E\{\bar{\mathbf{y}}\} = \frac{1}{m} \cdot m\mu = \mu
    \]</div>
 <p>Thus, we conclude that</p>
 <div class="math notranslate nohighlight">
@@ -459,132 +477,134 @@ E\{\bar{\mathbf{y}}\} = \mu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d042dc1688bda9be1553ce911a92e17e9511e70c26c44abd7b3cdefe737577ed.png" src="_images/d042dc1688bda9be1553ce911a92e17e9511e70c26c44abd7b3cdefe737577ed.png" />
+<img alt="_images/451dea4b967536e2c71e8a92bf6e47f463d0ffbbaae2e19b68648c26a43512a7.png" src="_images/451dea4b967536e2c71e8a92bf6e47f463d0ffbbaae2e19b68648c26a43512a7.png" />
 </div>
 </div>
-</section>
-<section id="biased-estimator">
-<h2>Biased Estimator<a class="headerlink" href="#biased-estimator" title="Link to this heading">#</a></h2>
-<p>The sample variance <span class="math notranslate nohighlight">\( \mathbf{s}_{\mathbf{y}}^2 \)</span> is expressed as</p>
+<section id="example-of-a-biased-estimator">
+<h3>Example of a Biased Estimator<a class="headerlink" href="#example-of-a-biased-estimator" title="Link to this heading">#</a></h3>
+<p>The <strong>sample variance</strong> <span class="math notranslate nohighlight">\( \mathbf{s}_{\mathbf{y}}^2 \)</span> is expressed as</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2
 \]</div>
-<p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{s}^2_{\mathbf{y}}\} \neq \sigma^2_{\mathbf{y}}\)</span>, the sample variance is a biased estimator to estimate the true variance <span class="math notranslate nohighlight">\(\sigma^2_{\mathbf{y}}\)</span></p>
+<p>We have that <span class="math notranslate nohighlight">\(E\{\mathbf{s}^2_{\mathbf{y}}\} \neq \sigma^2_{\mathbf{y}}\)</span>, therefore, the sample variance is a <em>biased</em> estimator to estimate the true variance <span class="math notranslate nohighlight">\(\sigma^2_{\mathbf{y}}\)</span></p>
+</section>
 <section id="proof-the-bias-of-the-sample-variance">
 <h3>Proof: The Bias of the Sample Variance<a class="headerlink" href="#proof-the-bias-of-the-sample-variance" title="Link to this heading">#</a></h3>
 <p>We prove that the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is a biased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span> by showing that:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2.
+E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2
 \]</div>
 <p><strong>Definitions and Assumptions</strong></p>
 <p>Given:</p>
-<ul>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{y}_i\)</span>, <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span>, are independent and identically distributed random variables with <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>.</p></li>
-<li><p>The sample mean is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-  \bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i.
-  \]</div>
-</li>
-<li><p>The sample variance is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-  \mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2.
-  \]</div>
-</li>
+<li><p>The sample mean is defined as:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\bar{\mathbf{y}} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i
+\]</div>
+<ul class="simple">
+<li><p>The sample variance is defined as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2
+\]</div>
 <p><strong>Expand the Expected Value of the Sample Variance</strong></p>
 <p>We start by finding the expected value of <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{s}_{\mathbf{y}}^2\} = E\left\{\frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \frac{1}{m} \sum_{i=1}^{m} E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\}.
+E\{\mathbf{s}_{\mathbf{y}}^2\} = E\left\{\frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \frac{1}{m} \sum_{i=1}^{m} E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\}
 \]</div>
 <p>Next, expand the term inside the expectation:</p>
 <div class="math notranslate nohighlight">
 \[
-(\mathbf{y}_i - \bar{\mathbf{y}})^2 = \left[(\mathbf{y}_i - \mu) - (\bar{\mathbf{y}} - \mu)\right]^2.
+(\mathbf{y}_i - \bar{\mathbf{y}})^2 = \left[(\mathbf{y}_i - \mu) - (\bar{\mathbf{y}} - \mu)\right]^2
 \]</div>
 <p>Using the identity <span class="math notranslate nohighlight">\((a - b)^2 = a^2 - 2ab + b^2\)</span>, we have:</p>
 <div class="math notranslate nohighlight">
 \[
-(\mathbf{y}_i - \bar{\mathbf{y}})^2 = (\mathbf{y}_i - \mu)^2 - 2(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu) + (\bar{\mathbf{y}} - \mu)^2.
+(\mathbf{y}_i - \bar{\mathbf{y}})^2 = (\mathbf{y}_i - \mu)^2 - 2(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu) + (\bar{\mathbf{y}} - \mu)^2
 \]</div>
 <p>Taking the expectation of both sides:</p>
 <div class="math notranslate nohighlight">
 \[
-E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = E\left\{(\mathbf{y}_i - \mu)^2\right\} - 2E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} + E\left\{(\bar{\mathbf{y}} - \mu)^2\right\}.
+E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = E\left\{(\mathbf{y}_i - \mu)^2\right\} - 2E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} + E\left\{(\bar{\mathbf{y}} - \mu)^2\right\}
 \]</div>
-<p><strong>Evaluate Each Term Separately</strong></p>
-<p>First Term: <span class="math notranslate nohighlight">\(E\left\{(\mathbf{y}_i - \mu)^2\right\}\)</span></p>
+<p><strong>For the first term: <span class="math notranslate nohighlight">\(E\left\{(\mathbf{y}_i - \mu)^2\right\}\)</span></strong></p>
 <p>Since <span class="math notranslate nohighlight">\(\mathbf{y}_i \sim \mathcal{N}(\mu, \sigma_{\mathbf{y}}^2)\)</span>, this term is simply the variance:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\left\{(\mathbf{y}_i - \mu)^2\right\} = \sigma_{\mathbf{y}}^2.
-   \]</div>
-<p>Second Term: <span class="math notranslate nohighlight">\(E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\}\)</span></p>
+E\left\{(\mathbf{y}_i - \mu)^2\right\} = \sigma_{\mathbf{y}}^2
+\]</div>
+<p><strong>For the second term: <span class="math notranslate nohighlight">\(E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\}\)</span></strong></p>
 <p>The sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-   \bar{\mathbf{y}} = \frac{1}{m} \sum_{j=1}^{m} \mathbf{y}_j.
-   \]</div>
+\bar{\mathbf{y}} = \frac{1}{m} \sum_{j=1}^{m} \mathbf{y}_j
+\]</div>
 <p>Thus, the expectation becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\left\{(\mathbf{y}_i - \mu)\left(\frac{1}{m} \sum_{j=1}^{m} (\mathbf{y}_j - \mu)\right)\right\}.
-   \]</div>
+E\left\{(\mathbf{y}_i - \mu)\left(\frac{1}{m} \sum_{j=1}^{m} (\mathbf{y}_j - \mu)\right)\right\}
+\]</div>
 <p>Expanding and using the linearity of expectation:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = \frac{1}{m} \sum_{j=1}^{m} E\left\{(\mathbf{y}_i - \mu)(\mathbf{y}_j - \mu)\right\}.
-   \]</div>
-<p>We have
-$<span class="math notranslate nohighlight">\(
-   E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = 
-   \begin{cases}
-   0, &amp; i \neq j, \\
-   \frac{1}{m} \sigma_{\mathbf{y}}^2, &amp; i = j.
-   \end{cases}
-   \)</span>$</p>
+E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = \frac{1}{m} \sum_{j=1}^{m} E\left\{(\mathbf{y}_i - \mu)(\mathbf{y}_j - \mu)\right\}
+\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = 
+\begin{cases}
+0, &amp; i \neq j, \\
+\frac{1}{m} \sigma_{\mathbf{y}}^2, &amp; i = j
+\end{cases}
+\end{split}\]</div>
 <p>The second term then becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-   -2E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = -\frac{2}{m} \sigma_{\mathbf{y}}^2.
-   \]</div>
-<p>Third Term: <span class="math notranslate nohighlight">\(E\left\{(\bar{\mathbf{y}} - \mu)^2\right\}\)</span></p>
+-2E\left\{(\mathbf{y}_i - \mu)(\bar{\mathbf{y}} - \mu)\right\} = -\frac{2}{m} \sigma_{\mathbf{y}}^2
+\]</div>
+<p><strong>For the third term <span class="math notranslate nohighlight">\(E\left\{(\bar{\mathbf{y}} - \mu)^2\right\}\)</span></strong></p>
 <p>Since <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is the mean of <span class="math notranslate nohighlight">\(m\)</span> independent variables with variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>, we have:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\left\{(\bar{\mathbf{y}} - \mu)^2\right\} = \frac{\sigma_{\mathbf{y}}^2}{m}.
-   \]</div>
+E\left\{(\bar{\mathbf{y}} - \mu)^2\right\} = \frac{\sigma_{\mathbf{y}}^2}{m}
+\]</div>
 <p><strong>Closed-form Expression of the Sample Variance</strong></p>
 <p>Substituting the evaluated terms into the expectation:</p>
 <div class="math notranslate nohighlight">
 \[
-E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \sigma_{\mathbf{y}}^2 - \frac{2\sigma_{\mathbf{y}}^2}{m} + \frac{\sigma_{\mathbf{y}}^2}{m}.
+E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \sigma_{\mathbf{y}}^2 - \frac{2\sigma_{\mathbf{y}}^2}{m} + \frac{\sigma_{\mathbf{y}}^2}{m}
 \]</div>
 <p>Simplify the expression:</p>
 <div class="math notranslate nohighlight">
 \[
-E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \sigma_{\mathbf{y}}^2 \left(1 - \frac{1}{m}\right).
+E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \sigma_{\mathbf{y}}^2 \left(1 - \frac{1}{m}\right)
 \]</div>
 <p>Thus:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{s}_{\mathbf{y}}^2\} = \frac{1}{m} \sum_{i=1}^{m} E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \frac{1}{m} \cdot m \left(\sigma_{\mathbf{y}}^2 \left(1 - \frac{1}{m}\right)\right).
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \frac{1}{m} \sum_{i=1}^{m} E\left\{(\mathbf{y}_i - \bar{\mathbf{y}})^2\right\} = \frac{1}{m} \cdot m \left(\sigma_{\mathbf{y}}^2 \left(1 - \frac{1}{m}\right)\right)
 \]</div>
 <p>Simplifying further:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2.
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2
 \]</div>
 <p>We have</p>
 <div class="math notranslate nohighlight">
-\[
-E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 \neq \sigma_{\mathbf{y}}^2.
+\[ \color{blue}
+E\{\mathbf{s}_{\mathbf{y}}^2\} 
+= \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 
+\neq \sigma_{\mathbf{y}}^2
 \]</div>
-<p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2\)</span>, the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is a biased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2\)</span>, the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is a biased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span></p>
 </section>
 <section id="transform-a-biased-estimate-to-an-unbiased-estimate">
 <h3>Transform a Biased Estimate to an Unbiased Estimate<a class="headerlink" href="#transform-a-biased-estimate-to-an-unbiased-estimate" title="Link to this heading">#</a></h3>
@@ -592,25 +612,31 @@ E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}
 <p>As shown above, the expected value of the sample variance is:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2.
+E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is scaled down by a factor of <span class="math notranslate nohighlight">\(\frac{m - 1}{m}\)</span>, we can adjust it to obtain an unbiased estimator.</p>
 <p><strong>Unbiased Estimator of the True Variance</strong></p>
 <p>To remove the bias, multiply <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> by <span class="math notranslate nohighlight">\(\frac{m}{m-1}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[
-\mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \mathbf{s}_{\mathbf{y}}^2.
+\[ \color{blue}
+\mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \mathbf{s}_{\mathbf{y}}^2
 \]</div>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+E \left\{\mathbf{s}_{\text{unbiased}}^2 \right\} = \sigma_{\mathbf{y}}^2
+\]</div>
+<p>the estimator <span class="math notranslate nohighlight">\(\mathbf{s}_{\text{unbiased}}^2\)</span> is an <em>unbiased</em> estimator to estimate the true variance <span class="math notranslate nohighlight">\(\sigma^2_{\mathbf{y}}\)</span></p>
 <p><strong>Proof that <span class="math notranslate nohighlight">\(\mathbf{s}_{\text{unbiased}}^2\)</span> is Unbiased</strong></p>
 <p>Using the definition of <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-   \mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \cdot \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2.
+   \mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \cdot \frac{1}{m} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2
    \]</div>
 <p>Using the previously derived expectation:</p>
 <div class="math notranslate nohighlight">
 \[
-   E\{\mathbf{s}_{\text{unbiased}}^2\} = \frac{m}{m - 1} E\{\mathbf{s}_{\mathbf{y}}^2\} = \frac{m}{m - 1} \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 = \sigma_{\mathbf{y}}^2.
+   E\{\mathbf{s}_{\text{unbiased}}^2\} = \frac{m}{m - 1} E\{\mathbf{s}_{\mathbf{y}}^2\} = \frac{m}{m - 1} \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 = \sigma_{\mathbf{y}}^2
    \]</div>
 <p>Thus, we have</p>
 <div class="math notranslate nohighlight">
@@ -620,7 +646,7 @@ E\{\mathbf{s}_{\text{unbiased}}^2\} = \sigma_{\mathbf{y}}^2, \quad \forall \sigm
 <p>Thus,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{s}_{\text{unbiased}}^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2
+\mathbf{s}_{\text{unbiased}}^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (\mathbf{y}_i - \bar{\mathbf{y}})^2 = \frac{m}{m - 1} \mathbf{s}_{\mathbf{y}}^2
 \]</div>
 <p>is an unbiased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span>.</p>
 <div class="cell docutils container">
@@ -663,8 +689,8 @@ E\{\mathbf{s}_{\text{unbiased}}^2\} = \sigma_{\mathbf{y}}^2, \quad \forall \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean of biased variance: 2407.10
-Mean of unbiased variance: 2490.10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean of biased variance: 2414.87
+Mean of unbiased variance: 2498.14
 True variance: 2500.00
 </pre></div>
 </div>
@@ -713,22 +739,21 @@ True variance: 2500.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9469301a838a071d367971b2e27d8b29969d7d7b24bdfcd897f4d0e4c8ea4524.png" src="_images/9469301a838a071d367971b2e27d8b29969d7d7b24bdfcd897f4d0e4c8ea4524.png" />
+<img alt="_images/e397dd7dad47c48d4a890b3214f5b0f248578d8af3e672a541ff153b7b21fa89.png" src="_images/e397dd7dad47c48d4a890b3214f5b0f248578d8af3e672a541ff153b7b21fa89.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="asymptotically-unbiased-estimator">
 <h2>Asymptotically Unbiased Estimator<a class="headerlink" href="#asymptotically-unbiased-estimator" title="Link to this heading">#</a></h2>
-<ul>
+<ul class="simple">
 <li><p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_m\)</span> (random, boldface) represents a sequence of estimates of an unknown parameter <span class="math notranslate nohighlight">\(\alpha\)</span> (fixed, nonboldface).</p></li>
-<li><p>The estimator <span class="math notranslate nohighlight">\(\hat{\alpha}_m\)</span> is defined to be <em>asymptotically unbiased</em> if:</p>
-<div class="math notranslate nohighlight">
-\[
-  \lim_{m \to \infty} E\{\hat{\boldsymbol{\alpha}}_m\} = \alpha.
-  \]</div>
-</li>
+<li><p>The estimator <span class="math notranslate nohighlight">\(\hat{\alpha}_m\)</span> is defined to be <em>asymptotically unbiased</em> if:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\lim_{m \to \infty} E\{\hat{\boldsymbol{\alpha}}_m\} = \alpha
+\]</div>
 <p>This means that as the sample size <span class="math notranslate nohighlight">\(m\)</span> increases indefinitely, the expected value of the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_m\)</span> converges to the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <p>The idea of asymptotic unbiasedness is crucial in statistics because it assures that an estimator, even if biased for small sample sizes, will provide increasingly accurate estimates as the sample size grows.</p>
 <p>This concept is often relevant in practical scenarios where large samples are obtainable, allowing such estimators to be reliable in the long run.</p>
@@ -778,58 +803,18 @@ True variance: 2500.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8b3fa4747d85ca3dfd3ef94d612fc63f2e017a915c2ecd99af457f7fdb5cb9ce.png" src="_images/8b3fa4747d85ca3dfd3ef94d612fc63f2e017a915c2ecd99af457f7fdb5cb9ce.png" />
+<img alt="_images/5bc698e3164751b883b7e8d879d7678b6c55449a279bbcdd8282d43a06090c68.png" src="_images/5bc698e3164751b883b7e8d879d7678b6c55449a279bbcdd8282d43a06090c68.png" />
 </div>
 </div>
 </section>
-<section id="summary-unbiased-estimator-for-a-deterministic-parameter">
-<h2>Summary: Unbiased Estimator for a Deterministic Parameter<a class="headerlink" href="#summary-unbiased-estimator-for-a-deterministic-parameter" title="Link to this heading">#</a></h2>
-<p><strong>Deterministic Parameter</strong>: A parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is considered deterministic if it has a fixed value, not subject to any randomness.</p>
-<p>For example, in the context of a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span> are deterministic parameters.</p>
-<p><strong>Unbiased Estimator</strong>: An estimator <span class="math notranslate nohighlight">\(\hat{\alpha}(\vec{\mathbf{y}})\)</span> is a function of the observed data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> used to estimate the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>The estimator <span class="math notranslate nohighlight">\(\hat{\alpha}(\vec{\mathbf{y}})\)</span> is said to be unbiased if its expected value (mean) is equal to the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> for all possible values of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>Mathematically, this is expressed as:</p>
-<div class="math notranslate nohighlight">
-\[
-E[\hat{\alpha}(\vec{\mathbf{y}})] = \alpha, \quad \forall \alpha
-\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(E[\hat{\alpha}(\vec{\mathbf{y}})]\)</span> represents the expectation (average value) of the estimator <span class="math notranslate nohighlight">\(\hat{\alpha}(\vec{\mathbf{y}})\)</span> over all possible samples <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p>
-<p>If this condition holds, it means that the estimator does not systematically overestimate or underestimate the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>; it is accurate “on average.”</p>
-</section>
-<section id="unbiased-estimator-for-random-parameter-s">
-<h2>Unbiased Estimator for Random Parameter(s)<a class="headerlink" href="#unbiased-estimator-for-random-parameter-s" title="Link to this heading">#</a></h2>
-<section id="random-parameter-vector">
-<h3>Random Parameter Vector<a class="headerlink" href="#random-parameter-vector" title="Link to this heading">#</a></h3>
-<p>Suppose <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is an estimate of the random parameter <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span>, where <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> itself is a random vector with mean <span class="math notranslate nohighlight">\( E\{\vec{\boldsymbol{\alpha}}\} = \vec{\mu}_{\boldsymbol{\alpha}} \)</span>.</p>
-<p><strong>Conditionally Unbiased Estimator</strong>:</p>
-<p>An estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is said to be <strong>conditionally unbiased</strong> if the conditional mean of <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> given vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> equals the parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> itself, i.e.,</p>
-<div class="math notranslate nohighlight">
-\[
-E\{\vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\alpha}\} = \vec{\alpha}, \quad \forall \vec{\alpha}
-\]</div>
-<p><strong>Unconditionally Unbiased Estimator</strong>:</p>
-<p>Assuming the density function <span class="math notranslate nohighlight">\( p(\vec{\alpha}) \)</span> is the known density function of the random parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span>:</p>
-<p>To be unconditionally unbiased, the estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> must satisfy the condition:</p>
-<div class="math notranslate nohighlight">
-\[
-E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = E \{ \vec{\hat{\boldsymbol{\alpha}}} \} = E\{ \vec{\boldsymbol{\alpha}} \} = \vec{\mu}_{\boldsymbol{\alpha}}.
-\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[
-E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = \int_{-\infty}^{\infty
-} E \{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\alpha} \} p(\vec{\alpha}) d\vec{\alpha}.
-\]</div>
-<p>This condition states that the overall expected value of the estimator equals the expected value of the parameter (vector), regardless of its randomness.</p>
-</section>
-<section id="single-random-parameter">
-<h3>Single Random Parameter<a class="headerlink" href="#single-random-parameter" title="Link to this heading">#</a></h3>
+<section id="unbiased-estimator-for-a-single-random-parameter">
+<h2>Unbiased Estimator for A Single Random Parameter<a class="headerlink" href="#unbiased-estimator-for-a-single-random-parameter" title="Link to this heading">#</a></h2>
 <p>The parameter to be estimated is itself a single random variable.</p>
 <p>For example, in Bayesian statistics, parameters are often treated as random variables with their own distributions.</p>
 <p><strong>Conditionally Unbiased Estimator</strong></p>
 <p>When the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> is random, an estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> is <strong>conditionally unbiased</strong> if the expectation of the estimator, given the true value of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha} = \alpha\)</span>, is equal to that true value:</p>
 <div class="math notranslate nohighlight">
-\[
+\[ \color{blue}
 E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) | \boldsymbol{\alpha} = \alpha] = \alpha, \quad \forall \alpha
 \]</div>
 <p>This means that if we knew the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, the estimator would, on average, yield that exact value.</p>
@@ -837,12 +822,11 @@ E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) | \boldsymbol{\alpha} = \alpha] = 
 <p><strong>Unbiased Estimator (in the random parameter context)</strong>:</p>
 <p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> is <strong>unbiased</strong> in the context of a random parameter if its overall expectation equals the expected value of the parameter itself:</p>
 <div class="math notranslate nohighlight">
-\[
+\[ \color{blue}
 E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})] = E[\boldsymbol{\alpha}]
 \]</div>
 <p>Here, the expectation <span class="math notranslate nohighlight">\(E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})]\)</span> is taken over both the randomness in the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> and any randomness in the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
 <p>This condition implies that, when averaged over all possible values of both the data and the random parameter, the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> will equal the average (expected) value of the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
-</section>
 <section id="example-the-true-mean-is-a-random-variable">
 <h3>Example: The True Mean is a Random Variable<a class="headerlink" href="#example-the-true-mean-is-a-random-variable" title="Link to this heading">#</a></h3>
 <p>An example where the parameter of a distribution is random can be found in <em>Bayesian statistics</em>.</p>
@@ -854,7 +838,7 @@ E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})] = E[\boldsymbol{\alpha}]
 <p>Assume that the mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is random and follows its own distribution, for example:</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\mu} \sim \mathcal{N}(\mu_0, \sigma_{\boldsymbol{\mu}}^2),
+\boldsymbol{\mu} \sim \mathcal{N}(\mu_0, \sigma_{\boldsymbol{\mu}}^2)
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -865,7 +849,7 @@ E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})] = E[\boldsymbol{\alpha}]
 <p>Given the random mean <span class="math notranslate nohighlight">\(\mu\)</span> (nonboldface), the observations <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span> are conditionally distributed as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{y}_i \mid \mu \sim \mathcal{N}(\mu_0, \sigma_{\boldsymbol{\mu}}^2), \quad i = 1, \ldots, n,
+\mathbf{y}_i \mid \mu \sim \mathcal{N}(\mu_0, \sigma_{\boldsymbol{\mu}}^2), \quad i = 1, \ldots, n
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma_{\boldsymbol{\mu}}^2\)</span> is known.</p>
 <p><strong>Estimating the Random Parameter <span class="math notranslate nohighlight">\(\mu\)</span></strong></p>
@@ -875,17 +859,41 @@ E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})] = E[\boldsymbol{\alpha}]
 <p>The expected value of each observation given the random parameter <span class="math notranslate nohighlight">\(\mu\)</span> (nonboldface) is:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{y}_i \mid \mu\} = \mu.
+E\{\mathbf{y}_i \mid \mu\} = \mu
 \]</div>
 <p>This means that the observations are centered around the random mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>, showing that they are conditionally unbiased estimators of <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>.</p>
 <p><strong>Unconditional Expectation</strong></p>
 <p>To find the unconditional expectation of <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span>, considering the randomness of <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>, we use the law of total expectation:</p>
 <div class="math notranslate nohighlight">
 \[
-E\{\mathbf{y}_i\} = E\{E\{\mathbf{y}_i \mid \mu\}\} = E\{\boldsymbol{\mu}\} = \mu_0.
+E\{\mathbf{y}_i\} = E\{E\{\mathbf{y}_i \mid \mu\}\} = E\{\boldsymbol{\mu}\} = \mu_0
 \]</div>
 <p>This shows that the overall expectation of the observations reflects the prior mean <span class="math notranslate nohighlight">\(\mu_0\)</span> of the random parameter <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>.</p>
 </section>
+</section>
+<section id="unbiased-estimator-for-a-vectir-of-random-parameters">
+<h2>Unbiased Estimator for A Vectir of Random Parameters<a class="headerlink" href="#unbiased-estimator-for-a-vectir-of-random-parameters" title="Link to this heading">#</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is an estimate of the random parameter <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span>, where <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> itself is a random vector with mean <span class="math notranslate nohighlight">\( E\{\vec{\boldsymbol{\alpha}}\} = \vec{\mu}_{\boldsymbol{\alpha}} \)</span>.</p>
+<p><strong>Conditionally Unbiased Estimator</strong>:</p>
+<p>An estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is said to be <strong>conditionally unbiased</strong> if the conditional mean of <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> given vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> equals the parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> itself, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+E\{\vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} = \vec{\alpha}\} = \vec{\alpha}, \quad \forall \vec{\alpha}
+\]</div>
+<p><strong>Unconditionally Unbiased Estimator</strong>:</p>
+<p>Assuming the density function <span class="math notranslate nohighlight">\( p(\vec{\alpha}) \)</span> is the known density function of the random parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span>:</p>
+<p>To be unconditionally unbiased, the estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> must satisfy the condition:</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = E \{ \vec{\hat{\boldsymbol{\alpha}}} \} = E\{ \vec{\boldsymbol{\alpha}} \} = \vec{\mu}_{\boldsymbol{\alpha}}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = \int_{-\infty}^{\infty
+} E \{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\alpha} \} p(\vec{\alpha}) d\vec{\alpha}
+\]</div>
+<p>This condition states that the overall expected value of the estimator equals the expected value of the parameter (vector), regardless of its randomness.</p>
 </section>
 </section>
 
@@ -928,6 +936,15 @@ E\{\mathbf{y}_i\} = E\{E\{\mathbf{y}_i \mid \mu\}\} = E\{\boldsymbol{\mu}\} = \m
         <p class="prev-next-title">Parameter Estimation</p>
       </div>
     </a>
+    <a class="right-next"
+       href="c3_s6_sufficient_statistic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Estimators Based on Sufficient Statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -944,20 +961,19 @@ E\{\mathbf{y}_i\} = E\{E\{\mathbf{y}_i \mid \mu\}\} = E\{\boldsymbol{\mu}\} = \m
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biased-estimator">Biased Estimator</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-unbiased-and-biased-estimators">Examples of Unbiased and Biased Estimators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-that-the-sample-mean-bar-mathbf-y-is-unbiased">Proof that the Sample Mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is Unbiased</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-biased-estimator">Example of a Biased Estimator</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-the-bias-of-the-sample-variance">Proof: The Bias of the Sample Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-a-biased-estimate-to-an-unbiased-estimate">Transform a Biased Estimate to an Unbiased Estimate</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotically-unbiased-estimator">Asymptotically Unbiased Estimator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-unbiased-estimator-for-a-deterministic-parameter">Summary: Unbiased Estimator for a Deterministic Parameter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-random-parameter-s">Unbiased Estimator for Random Parameter(s)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-parameter-vector">Random Parameter Vector</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-random-parameter">Single Random Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-a-single-random-parameter">Unbiased Estimator for A Single Random Parameter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-true-mean-is-a-random-variable">Example: The True Mean is a Random Variable</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator-for-a-vectir-of-random-parameters">Unbiased Estimator for A Vectir of Random Parameters</a></li>
 </ul>
   </nav></div>
 

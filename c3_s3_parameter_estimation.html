@@ -63,7 +63,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Unbiased Estimator" href="c3_s5_unbiased_estimator.html" />
+    <link rel="next" title="Unbiased Estimates" href="c3_s5_unbiased_estimator.html" />
     <link rel="prev" title="Chapter 3: Fundamentals of Estimation Theory" href="c3_s0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -239,7 +239,13 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Parameter Estimation</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -552,10 +558,10 @@ The variance of <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector y (independent random variables): [1.59454076 2.72656913 3.31323151 1.98098278 2.83498587 2.46506165
- 2.67139442 1.93767995 0.88648018 1.63768733]
-Vector z (realizations of a single random variable): [0.7035917  1.16787082 2.26648748 2.33149366 1.25169195 0.58211687
- 3.49668929 2.17961534 2.77306979 1.07661513]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector y (independent random variables): [3.81316084 4.528068   1.99266755 2.79518979 2.47529156 2.20920512
+ 1.83336544 0.74929189 1.96130601 1.27907856]
+Vector z (realizations of a single random variable): [2.41146529 3.38344752 2.09292434 0.64230777 2.97560585 0.90225711
+ 2.59873945 2.7450164  1.86232048 2.09895991]
 </pre></div>
 </div>
 </div>
@@ -643,10 +649,10 @@ Vector z (realizations of a single random variable): [0.7035917  1.16787082 2.26
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True mean (mu): 5
-Sample mean (estimate of mu): 5.020932612274124
+Sample mean (estimate of mu): 5.020818707346941
 </pre></div>
 </div>
-<img alt="_images/e0c27a04fe0a21c5be6b9efb3da4476594273e8d494e08b0517aa3357f656081.png" src="_images/e0c27a04fe0a21c5be6b9efb3da4476594273e8d494e08b0517aa3357f656081.png" />
+<img alt="_images/dedb22f125a060e49c4d13e1ed2a049059b492a1bab6410764e35e31150faade.png" src="_images/dedb22f125a060e49c4d13e1ed2a049059b492a1bab6410764e35e31150faade.png" />
 </div>
 </div>
 </section>
@@ -719,7 +725,7 @@ Sample mean (estimate of mu): 5.020932612274124
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5d9b88fd0db95d54885c2691c9d37769315e1dfae78e6e81db3a15f97cdfd0b8.png" src="_images/5d9b88fd0db95d54885c2691c9d37769315e1dfae78e6e81db3a15f97cdfd0b8.png" />
+<img alt="_images/d807739262ff7daa058a4886131704c9bc5566a40cc5f7553457ecd2d3d1591a.png" src="_images/d807739262ff7daa058a4886131704c9bc5566a40cc5f7553457ecd2d3d1591a.png" />
 </div>
 </div>
 <section id="schonhoff-s-method">
@@ -763,7 +769,7 @@ Sample mean (estimate of mu): 5.020932612274124
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/86783edec9f271bcc94e634adf614d3caa59e8c861b3b42c8e396435f7cf02db.png" src="_images/86783edec9f271bcc94e634adf614d3caa59e8c861b3b42c8e396435f7cf02db.png" />
+<img alt="_images/035c6af35f46040860085a0be2099321ad9d9a4f325312f93c36fbfd7aaed616.png" src="_images/035c6af35f46040860085a0be2099321ad9d9a4f325312f93c36fbfd7aaed616.png" />
 </div>
 </div>
 </section>
@@ -814,7 +820,7 @@ Sample mean (estimate of mu): 5.020932612274124
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unbiased Estimator</p>
+        <p class="prev-next-title">Unbiased Estimates</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

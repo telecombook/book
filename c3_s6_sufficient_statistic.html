@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Estimators Based on Sufficient Statistics &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s6_sufficient_statistic';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Minimum Variance Estimaties" href="c3_s7_minimum_variance_estimates.html" />
+    <link rel="prev" title="Unbiased Estimates" href="c3_s5_unbiased_estimator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estimators Based on Sufficient Statistics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistic">Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-sufficient-statistic">Definition of Sufficient Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-a-statistic-is-sufficient">Determine If a Statistic is Sufficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-as-a-sufficient-statistic">Example: Sample Mean as a Sufficient Statistic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-likelihood-function-joint-pdf">Derivation of the likelihood function (joint PDF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-sufficient-statistic-t-vec-mathbf-y-vs-estimator-hat-boldsymbol-alpha-vec-mathbf-y">Discussion: Sufficient Statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> vs. Estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sufficient-statistic-for-the-sample-variance">Sufficient Statistic for The Sample Variance</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="estimators-based-on-sufficient-statistics">
+<h1>Estimators Based on Sufficient Statistics<a class="headerlink" href="#estimators-based-on-sufficient-statistics" title="Link to this heading">#</a></h1>
+<section id="statistic">
+<h2>Statistic<a class="headerlink" href="#statistic" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\( T(\vec{\mathbf{y}}) \)</span> be a <strong>statistic</strong>, which is a function of the observed random variables <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span> generated by a probability density function (PDF) <span class="math notranslate nohighlight">\( p(y_1, y_2, \ldots, y_m; \alpha) \)</span> where <span class="math notranslate nohighlight">\(\alpha\)</span> is an unknown parameter.</p>
+<p>Note that</p>
+<ul class="simple">
+<li><p>When random samples depend on <span class="math notranslate nohighlight">\(\alpha\)</span>, the statistic derived from these samples is used to infer <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p>A useful statistic should summarize all the information from the measurements efficiently, often by reducing multiple random variables to a single manageable form.</p></li>
+<li><p>Such a statistic can serve as a good estimator of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+</ul>
+<p>For instance:</p>
+<ul class="simple">
+<li><p>The estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}} = \mathbf{y}_1\)</span> does not capture all the information about <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p>However, the sample mean-based estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}} = T(\vec{\mathbf{y}}) \triangleq \bar{\mathbf{y}}\)</span>, derived from independent, identically distributed normal random variables, retains all relevant information about <span class="math notranslate nohighlight">\(\alpha\)</span> and is considered a <em>sufficient</em> statistic.</p></li>
+<li><p>This implies that <span class="math notranslate nohighlight">\( T(\vec{\mathbf{y}}) = \bar{\mathbf{y}} \)</span> encapsulates all the information about <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> available in the sample.</p></li>
+</ul>
+</section>
+<section id="definition-of-sufficient-statistic">
+<h2>Definition of Sufficient Statistic<a class="headerlink" href="#definition-of-sufficient-statistic" title="Link to this heading">#</a></h2>
+<p>In the context of statistical estimation, a <strong>sufficient statistic</strong> is a function of the data that captures all the information necessary to estimate a parameter.</p>
+<p>Mathematically speaking, a statistic <span class="math notranslate nohighlight">\( T(\vec{\mathbf{y}}) \)</span> is considered sufficient for <span class="math notranslate nohighlight">\(\alpha\)</span> if the conditional pdf of the data given <span class="math notranslate nohighlight">\( T(\vec{\mathbf{y}})\)</span>, i.e., <span class="math notranslate nohighlight">\(p(y_1, y_2, \ldots, y_m \mid T(\vec{y}))\)</span> does not depend on <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>Formally, if you have a set of observations <span class="math notranslate nohighlight">\(\vec{\mathbf{y}} = (\mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m)\)</span> and a parameter of interest <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, then a statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is said to be sufficient for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> if the conditional distribution of the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>, given the statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> and the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, is independent of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}),\boldsymbol{\alpha}) = P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}))
+\]</div>
+<p>This means that once you know <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span>, the original data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> provides no additional information about the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>. In other words, <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> captures all the information that <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> contains about <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
+</section>
+<section id="determine-if-a-statistic-is-sufficient">
+<h2>Determine If a Statistic is Sufficient<a class="headerlink" href="#determine-if-a-statistic-is-sufficient" title="Link to this heading">#</a></h2>
+<p>One method to determine whether a statistic is sufficient, e.g., a statistic <span class="math notranslate nohighlight">\( T(\bar{\mathbf{y}}) \)</span> is sufficient for a parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, is through the <strong>Fisher Factorization Theorem</strong>.</p>
+<p>According to the theorem, if the probability density function (pdf) <span class="math notranslate nohighlight">\( p(y_1, y_2, \ldots, y_m; \alpha) \)</span> can be factored into two parts:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( g(T(\bar{\vec{y}}), \alpha) \)</span>: a function that depends on the statistic <span class="math notranslate nohighlight">\( T(\bar{\mathbf{y}}) \)</span> and the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( h(y_1, y_2, \ldots, y_m) \)</span>: a function that depends only on the observed data and not on the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+</ul>
+<p>Then, <span class="math notranslate nohighlight">\( T(\bar{\vec{y}}) \)</span> is a sufficient statistic for <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>Mathematically, the factorization can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+p(y_1, \ldots, y_m; \alpha) = g(T(y_1, \ldots, y_m), \alpha) h(y_1, \ldots, y_m)
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( g(\cdot) \)</span> encapsulates the dependency on the statistic and the parameter, while <span class="math notranslate nohighlight">\( h(\cdot) \)</span> isolates the data dependency, confirming the sufficiency of <span class="math notranslate nohighlight">\( T(\bar{\mathbf{y}}) \)</span>.</p>
+<p>Therefore, an estimate (or statistic) <span class="math notranslate nohighlight">\( T(\bar{\mathbf{y}}) \)</span> is considered a <em>sufficient estimate</em> for a parameter <span class="math notranslate nohighlight">\(\alpha\)</span> if it satisfies the Fisher factorization theorem.</p>
+<p><em>The converse is also true</em>. If <span class="math notranslate nohighlight">\( T(\vec{y}) \)</span> is a sufficient statistic for the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, then the probability density function (pdf) <span class="math notranslate nohighlight">\( p(\vec{y}; \alpha) \)</span> can be factored according to the Fisher factorization theorem.</p>
+<p>This means that if <span class="math notranslate nohighlight">\( T(\vec{y}) \)</span> is sufficient, the pdf can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}; \alpha) = g(T(\vec{y}), \alpha) \, h(\vec{y})
+\]</div>
+<p>In general, <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is a sufficient statistic for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> if and only if the probability distribution (or likelihood) <span class="math notranslate nohighlight">\(p(\vec{\mathbf{y}}|\boldsymbol{\alpha})\)</span> can be factored into the product of two functions:</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+p(\vec{\mathbf{y}}|\boldsymbol{\alpha}) = g(T(\vec{\mathbf{y}}), \boldsymbol{\alpha}) h(\vec{\mathbf{y}})
+\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(T(\vec{\mathbf{y}}), \boldsymbol{\alpha})\)</span> is a function that depends on the data only through the statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> and the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>,</p>
+<ul>
+<li><p>It encapsulates all the information about the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> through the statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span>.</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(h(\vec{\mathbf{y}})\)</span> is a function that depends on the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> but not on the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
+<ul>
+<li><p>It does not provide any information about <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p></li>
+<li><p>It only contributes to the overall likelihood through the data distribution, not through the parameter estimation.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="example-sample-mean-as-a-sufficient-statistic">
+<h2>Example: Sample Mean as a Sufficient Statistic<a class="headerlink" href="#example-sample-mean-as-a-sufficient-statistic" title="Link to this heading">#</a></h2>
+<p>Consider the scenario where you have a set of <span class="math notranslate nohighlight">\(m\)</span> independent and identically distributed (i.i.d.) observations <span class="math notranslate nohighlight">\(\vec{\mathbf{y}} = (\mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m)\)</span>, each RV follows a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>, where the mean <span class="math notranslate nohighlight">\(\mu\)</span> is the parameter of interest, and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is known.</p>
+<p>The likelihood function is:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y};\mu, \sigma^2) = \prod_{i=1}^{m} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y_i - \mu)^2}{2\sigma^2}\right)
+\]</div>
+<p>This can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+p(y_1, \ldots, y_m; \mu, \sigma^2) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \mu)^2\right)
+\]</div>
+<p>The sum of squares is expanded as</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^{m} (y_i - \mu)^2 = \sum_{i=1}^{m} y_i^2 - 2\mu \sum_{i=1}^{m} y_i + m\mu^2
+\]</div>
+<p>The sample mean is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{y} = \frac{1}{m} \sum_{i=1}^{m} y_i
+\]</div>
+<p>Substituting this into the likelihood function, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y};\mu, \sigma^2) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \left( \sum_{i=1}^{m} y_i^2 - 2m\mu \bar{y} + m\mu^2 \right) \right)
+\]</div>
+<p>We can factor this expression as:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y};\mu, \sigma^2) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right) \cdot \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)
+\]</div>
+<p>Here, the likelihood function <span class="math notranslate nohighlight">\(p(\vec{y}|\mu)\)</span> has been factored into two components:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(\bar{y}, \mu) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right)\)</span>, which depends on the data <span class="math notranslate nohighlight">\(\vec{y}\)</span>, the sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span>, and the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(h(\vec{y}) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)\)</span>, which depends on the data <span class="math notranslate nohighlight">\(\vec{y}\)</span>, the sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span>, and the parameter <span class="math notranslate nohighlight">\(\sigma^2\)</span>, but not on the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+</ul>
+<p>The pdf of <span class="math notranslate nohighlight">\(\vec{y}\)</span> depends on the observations <span class="math notranslate nohighlight">\(\{y_1, y_2, \ldots, y_m\}\)</span> only through <span class="math notranslate nohighlight">\(\bar{y}\)</span>. This aligns with the Fisher factorization theorem, where the function <span class="math notranslate nohighlight">\( h(\vec{y}) = 1 \)</span> indicates that all necessary information about <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is contained in these statistics.</p>
+<p>According to the Factorization Theorem, this factorization confirms that the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is a sufficient statistic for the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>The statistic <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> captures all the information about <span class="math notranslate nohighlight">\(\mu\)</span> that is contained in the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p>
+<section id="derivation-of-the-likelihood-function-joint-pdf">
+<h3>Derivation of the likelihood function (joint PDF)<a class="headerlink" href="#derivation-of-the-likelihood-function-joint-pdf" title="Link to this heading">#</a></h3>
+<p>Note that the likelihood function is the joint PDF of the observations <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span>.</p>
+<p>Specifically, given that <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span> are independent and identically distributed (i.i.d.) random variables from a normal distribution <span class="math notranslate nohighlight">\( \mathcal{N}(\mu, \sigma^2) \)</span>, the joint pdf of these observations can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\vec{\mathbf{y}};\mu) = f(\mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m; \mu) = \prod_{i=1}^{m} f(\mathbf{y}_i ; \mu)
+\]</div>
+<p>Since each <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span> is normally distributed with mean <span class="math notranslate nohighlight">\( \mu \)</span> and variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>, the pdf of each <span class="math notranslate nohighlight">\( y_i \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\mathbf{y}_i ; \mu) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y_i - \mu)^2}{2\sigma^2}\right)
+\]</div>
+<p>Thus, the joint pdf is:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\vec{y} ; \mu) = \prod_{i=1}^{m} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y_i - \mu)^2}{2\sigma^2}\right)
+\]</div>
+<p>This can be simplified to:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\vec{y} ; \mu) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \mu)^2\right)
+\]</div>
+<p>This is the joint pdf of the observations <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span>, and it is also the likelihood function when considering <span class="math notranslate nohighlight">\( \mu \)</span> as the parameter to be estimated from the data.</p>
+</section>
+<section id="discussion-sufficient-statistic-t-vec-mathbf-y-vs-estimator-hat-boldsymbol-alpha-vec-mathbf-y">
+<h3>Discussion: Sufficient Statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> vs. Estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span><a class="headerlink" href="#discussion-sufficient-statistic-t-vec-mathbf-y-vs-estimator-hat-boldsymbol-alpha-vec-mathbf-y" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A sufficient statistic is a function of the data that captures all the information available in the data about a particular parameter.</p></li>
+<li><p>An estimator is a rule or function that provides an estimate of a parameter based on the observed data. It is also typically a statistic (a function of the data) that is used to infer the value of an unknown parameter.</p></li>
+</ul>
+<p>Loosely speaking, a sufficient statistic is a statistic (a function of data), which can be used to serve as an estimator. A sufficient statistic often plays a dual role as a statistic and as an estimator.</p>
+</section>
+</section>
+<section id="sufficient-statistic-for-the-sample-variance">
+<h2>Sufficient Statistic for The Sample Variance<a class="headerlink" href="#sufficient-statistic-for-the-sample-variance" title="Link to this heading">#</a></h2>
+<p>Consider independent and identically distributed (i.i.d.) Gaussian random variables, where each individual observation <span class="math notranslate nohighlight">\(\mathbf{y}_i\)</span> is normally distributed with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> as above.</p>
+<p>We know that the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is a sufficient statistic for estimating the true mean <span class="math notranslate nohighlight">\(\mu\)</span>. Now, what is a sufficient statistic for estimating the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>?</p>
+<p>We have that the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m}(\mathbf{y}_i - \bar{\mathbf{y}})^2
+\]</div>
+<p>Note that the expression</p>
+<div class="math notranslate nohighlight">
+\[
+\exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)
+\]</div>
+<p>we can rewrite it in terms of the sample variance <span class="math notranslate nohighlight">\( s_y^2 = \frac{1}{m} \sum_{i=1}^{m} (y_i - \bar{y})^2 \)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+\exp\left(-\frac{m s_y^2}{2\sigma^2}\right)
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|\mu) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right) \cdot \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)
+\]</div>
+<p>can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|\mu) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right) \cdot \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{m s_y^2}{2\sigma^2}\right)
+\]</div>
+<p>Therefore, the <strong>sample variance <span class="math notranslate nohighlight">\( s_y^2 \)</span></strong> is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>Therefore, the <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong> is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>Note that</p>
+<ul class="simple">
+<li><p>The <strong>sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span></strong> is a sufficient statistic for the mean <span class="math notranslate nohighlight">\(\mu\)</span> of the distribution.</p>
+<ul>
+<li><p>This means it contains all the necessary information about <span class="math notranslate nohighlight">\(\mu\)</span> present in the data.</p></li>
+<li><p>Moreover, <span class="math notranslate nohighlight">\(\bar{y}\)</span> is an unbiased estimator of the true mean <span class="math notranslate nohighlight">\(\mu\)</span>, meaning that its expected value equals <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+</ul>
+</li>
+<li><p>The <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong>, on the other hand, is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<ul>
+<li><p>It captures all the relevant information about the variance from the data.</p></li>
+<li><p>However, when used as an estimator of the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is a biased estimator.</p></li>
+<li><p>Specifically, the expectation of <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is <span class="math notranslate nohighlight">\(\frac{m-1}{m}\sigma^2\)</span>, which is slightly lower than the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
+<li><p>To correct this bias, the unbiased estimator of the variance is <span class="math notranslate nohighlight">\(\frac{m}{m-1} s_{\mathbf{y}}^2\)</span>, often denoted as <span class="math notranslate nohighlight">\( s^2_{\text{unbiased}} \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Therefore, the <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong> is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>Note that</p>
+<ul class="simple">
+<li><p>The <strong>sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span></strong> is a sufficient statistic for the mean <span class="math notranslate nohighlight">\(\mu\)</span> of the distribution.</p>
+<ul>
+<li><p>This means it contains all the necessary information about <span class="math notranslate nohighlight">\(\mu\)</span> present in the data.</p></li>
+<li><p>Moreover, <span class="math notranslate nohighlight">\(\bar{y}\)</span> is an unbiased estimator of the true mean <span class="math notranslate nohighlight">\(\mu\)</span>, meaning that its expected value equals <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+</ul>
+</li>
+<li><p>The <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong>, on the other hand, is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<ul>
+<li><p>It captures all the relevant information about the variance from the data.</p></li>
+<li><p>However, when used as an estimator of the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is a biased estimator.</p></li>
+<li><p>Specifically, the expectation of <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is <span class="math notranslate nohighlight">\(\frac{m-1}{m}\sigma^2\)</span>, which is slightly lower than the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. - To correct this bias, the unbiased estimator of the variance is <span class="math notranslate nohighlight">\(\frac{m}{m-1} s_{\mathbf{y}}^2\)</span>, often denoted as <span class="math notranslate nohighlight">\( s^2_{\text{unbiased}} \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c3_s5_unbiased_estimator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unbiased Estimates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c3_s7_minimum_variance_estimates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Minimum Variance Estimaties</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistic">Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-sufficient-statistic">Definition of Sufficient Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-a-statistic-is-sufficient">Determine If a Statistic is Sufficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-as-a-sufficient-statistic">Example: Sample Mean as a Sufficient Statistic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-likelihood-function-joint-pdf">Derivation of the likelihood function (joint PDF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-sufficient-statistic-t-vec-mathbf-y-vs-estimator-hat-boldsymbol-alpha-vec-mathbf-y">Discussion: Sufficient Statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> vs. Estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sufficient-statistic-for-the-sample-variance">Sufficient Statistic for The Sample Variance</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
