@@ -243,9 +243,12 @@
 <li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
 </ul>
 </details></li>
 </ul>
@@ -377,8 +380,9 @@ document.write(`
 <p><strong>Definition</strong></p>
 <p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> for a single nonrandom parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is called <strong>unbiased</strong> if it satisfies the condition</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E\{\hat{\boldsymbol{\alpha}}\} = \alpha , \quad \forall \alpha
+}
 \]</div>
 <p>Note that discussions about the properties of an estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> in this chapter typically focus on estimating a single parameter rather than a vector of parameters, to simplify the notation and analysis.</p>
 <section id="examples-of-unbiased-and-biased-estimators">
@@ -392,8 +396,9 @@ E\{\hat{\boldsymbol{\alpha}}\} = \alpha , \quad \forall \alpha
 \]</div>
 <p>We have that</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E\{\bar{\mathbf{y}}\} = \mu , \quad \forall \mu
+}
 \]</div>
 <p>which shows that the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is an <em>unbiased</em> estimator of the true mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 </section>
@@ -477,7 +482,7 @@ E\{\bar{\mathbf{y}}\} = \mu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/451dea4b967536e2c71e8a92bf6e47f463d0ffbbaae2e19b68648c26a43512a7.png" src="_images/451dea4b967536e2c71e8a92bf6e47f463d0ffbbaae2e19b68648c26a43512a7.png" />
+<img alt="_images/4e145fffa2a5174d24820e53e40081460df38a06cc7782482d9d55ba443774f2.png" src="_images/4e145fffa2a5174d24820e53e40081460df38a06cc7782482d9d55ba443774f2.png" />
 </div>
 </div>
 <section id="example-of-a-biased-estimator">
@@ -599,10 +604,11 @@ E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}
 \]</div>
 <p>We have</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E\{\mathbf{s}_{\mathbf{y}}^2\} 
 = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}}^2 
 \neq \sigma_{\mathbf{y}}^2
+}
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\(E\{\mathbf{s}_{\mathbf{y}}^2\} \neq \sigma_{\mathbf{y}}^2\)</span>, the sample variance <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> is a biased estimator of the true variance <span class="math notranslate nohighlight">\(\sigma_{\mathbf{y}}^2\)</span></p>
 </section>
@@ -618,12 +624,13 @@ E\{\mathbf{s}_{\mathbf{y}}^2\} = \left(\frac{m - 1}{m}\right) \sigma_{\mathbf{y}
 <p><strong>Unbiased Estimator of the True Variance</strong></p>
 <p>To remove the bias, multiply <span class="math notranslate nohighlight">\(\mathbf{s}_{\mathbf{y}}^2\)</span> by <span class="math notranslate nohighlight">\(\frac{m}{m-1}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 \mathbf{s}_{\text{unbiased}}^2 = \frac{m}{m - 1} \mathbf{s}_{\mathbf{y}}^2
+}
 \]</div>
 <p>We have that</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[
 E \left\{\mathbf{s}_{\text{unbiased}}^2 \right\} = \sigma_{\mathbf{y}}^2
 \]</div>
 <p>the estimator <span class="math notranslate nohighlight">\(\mathbf{s}_{\text{unbiased}}^2\)</span> is an <em>unbiased</em> estimator to estimate the true variance <span class="math notranslate nohighlight">\(\sigma^2_{\mathbf{y}}\)</span></p>
@@ -689,8 +696,8 @@ E\{\mathbf{s}_{\text{unbiased}}^2\} = \sigma_{\mathbf{y}}^2, \quad \forall \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean of biased variance: 2414.87
-Mean of unbiased variance: 2498.14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean of biased variance: 2420.13
+Mean of unbiased variance: 2503.58
 True variance: 2500.00
 </pre></div>
 </div>
@@ -739,7 +746,7 @@ True variance: 2500.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e397dd7dad47c48d4a890b3214f5b0f248578d8af3e672a541ff153b7b21fa89.png" src="_images/e397dd7dad47c48d4a890b3214f5b0f248578d8af3e672a541ff153b7b21fa89.png" />
+<img alt="_images/4776c9f88d1ad8868b5d7a03ddd543bb9aac872f83116082194e1499f3251890.png" src="_images/4776c9f88d1ad8868b5d7a03ddd543bb9aac872f83116082194e1499f3251890.png" />
 </div>
 </div>
 </section>
@@ -751,8 +758,9 @@ True variance: 2500.00
 <li><p>The estimator <span class="math notranslate nohighlight">\(\hat{\alpha}_m\)</span> is defined to be <em>asymptotically unbiased</em> if:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 \lim_{m \to \infty} E\{\hat{\boldsymbol{\alpha}}_m\} = \alpha
+}
 \]</div>
 <p>This means that as the sample size <span class="math notranslate nohighlight">\(m\)</span> increases indefinitely, the expected value of the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_m\)</span> converges to the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <p>The idea of asymptotic unbiasedness is crucial in statistics because it assures that an estimator, even if biased for small sample sizes, will provide increasingly accurate estimates as the sample size grows.</p>
@@ -803,7 +811,7 @@ True variance: 2500.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5bc698e3164751b883b7e8d879d7678b6c55449a279bbcdd8282d43a06090c68.png" src="_images/5bc698e3164751b883b7e8d879d7678b6c55449a279bbcdd8282d43a06090c68.png" />
+<img alt="_images/d11da94d5ee152cbbd76a07cb6aceb528d11c164049d95de5f2f8a415aa19187.png" src="_images/d11da94d5ee152cbbd76a07cb6aceb528d11c164049d95de5f2f8a415aa19187.png" />
 </div>
 </div>
 </section>
@@ -814,16 +822,18 @@ True variance: 2500.00
 <p><strong>Conditionally Unbiased Estimator</strong></p>
 <p>When the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> is random, an estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> is <strong>conditionally unbiased</strong> if the expectation of the estimator, given the true value of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha} = \alpha\)</span>, is equal to that true value:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) | \boldsymbol{\alpha} = \alpha] = \alpha, \quad \forall \alpha
+}
 \]</div>
 <p>This means that if we knew the true value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, the estimator would, on average, yield that exact value.</p>
 <p>Conditional unbiasedness ensures that the estimator is accurate on average for each possible realization of the random parameter.</p>
 <p><strong>Unbiased Estimator (in the random parameter context)</strong>:</p>
 <p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> is <strong>unbiased</strong> in the context of a random parameter if its overall expectation equals the expected value of the parameter itself:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})] = E[\boldsymbol{\alpha}]
+}
 \]</div>
 <p>Here, the expectation <span class="math notranslate nohighlight">\(E[\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})]\)</span> is taken over both the randomness in the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> and any randomness in the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
 <p>This condition implies that, when averaged over all possible values of both the data and the random parameter, the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> will equal the average (expected) value of the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
@@ -877,15 +887,17 @@ E\{\mathbf{y}_i\} = E\{E\{\mathbf{y}_i \mid \mu\}\} = E\{\boldsymbol{\mu}\} = \m
 <p><strong>Conditionally Unbiased Estimator</strong>:</p>
 <p>An estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> is said to be <strong>conditionally unbiased</strong> if the conditional mean of <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> given vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> equals the parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span> itself, i.e.,</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E\{\vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} = \vec{\alpha}\} = \vec{\alpha}, \quad \forall \vec{\alpha}
+}
 \]</div>
 <p><strong>Unconditionally Unbiased Estimator</strong>:</p>
 <p>Assuming the density function <span class="math notranslate nohighlight">\( p(\vec{\alpha}) \)</span> is the known density function of the random parameter vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span>:</p>
 <p>To be unconditionally unbiased, the estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> must satisfy the condition:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 E\{ E\{ \vec{\hat{\boldsymbol{\alpha}}} \mid \vec{\boldsymbol{\alpha}} \} \} = E \{ \vec{\hat{\boldsymbol{\alpha}}} \} = E\{ \vec{\boldsymbol{\alpha}} \} = \vec{\mu}_{\boldsymbol{\alpha}}
+}
 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">

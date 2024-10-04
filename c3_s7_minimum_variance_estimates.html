@@ -243,9 +243,12 @@
 <li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Minimum Variance Estimaties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
 </ul>
 </details></li>
 </ul>
@@ -389,8 +392,9 @@ document.write(`
 \]</div>
 <p>Apllying the Chebyshev’s inequality into estimation theorey, we have that, for an estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> (where the bold symbol indicates that it is a random variable) of a true parameter <span class="math notranslate nohighlight">\(\alpha\)</span> (the normal symbol indicating a specific value), Chebyshev’s inequality can be expressed as:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 \Pr\left(|\hat{\boldsymbol{\alpha}} - \alpha| &gt; \epsilon\right) &lt; \frac{V(\hat{\boldsymbol{\alpha}})}{\epsilon^2}
+}
 \]</div>
 <p>Here:</p>
 <ul>
@@ -412,10 +416,11 @@ document.write(`
 <p>It tells us how good an estimator can be in terms of its variance.</p>
 <p>Specifically, for an unbiased estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span>, the variance <span class="math notranslate nohighlight">\(V(\hat{\boldsymbol{\alpha}})\)</span> must satisfy the following inequality:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 V(\hat{\boldsymbol{\alpha}}) \geq \frac{1}{-E\left\{\frac{\partial^2}{\partial\alpha^2}\ln p(\vec{y};\alpha) \right\}}
+}
 \]</div>
-<p>Where:</p>
+<p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(\vec{y};\alpha)\)</span> is the likelihood function, representing the probability of observing the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> given the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\frac{\partial^2}{\partial\alpha^2}\ln p(\vec{y};\alpha)\)</span> is the second derivative of the log-likelihood function with respect to the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, which measures the curvature of the likelihood function.</p></li>
@@ -477,8 +482,9 @@ F^{-1}(\mu) = \frac{1}{-E\left\{\frac{\partial^2}{\partial\mu^2} \ln p(y_1, \dot
 \]</div>
 <p>Thus, we have</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 V\{\hat{\boldsymbol{\alpha}}\} = F^{-1}(\alpha) = \frac{\sigma^2}{m}
+}
 \]</div>
 <p>Therefore, we have</p>
 <ul class="simple">
@@ -602,14 +608,14 @@ Theoretical Minimum Variance (Cramér-Rao Bound): 0.0800
 \frac{1}{2} \left(\mathbf{y}_{(\frac{m}{2})} + \mathbf{y}_{(\frac{m}{2}+1)}\right) &amp; \text{if } m \text{ is even}
 \end{cases}
 \end{split}\]</div>
-<p>Where <span class="math notranslate nohighlight">\( \mathbf{y}_{(i)} \)</span> denotes the <span class="math notranslate nohighlight">\( i \)</span>th smallest value in the sorted sample.</p>
+<p>where <span class="math notranslate nohighlight">\( \mathbf{y}_{(i)} \)</span> denotes the <span class="math notranslate nohighlight">\( i \)</span>-th smallest value in the sorted sample.</p>
 <p><strong>Trimmed Mean</strong></p>
 <p>The trimmed mean is an average computed after removing a specified percentage of the smallest and largest values from the sample. For a <span class="math notranslate nohighlight">\( \lambda\%- \)</span> trimmed mean:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Trimmed Mean} = \frac{1}{m - 2k} \sum_{i=k+1}^{m-k} \mathbf{y}_{(i)}
 \]</div>
-<p>Where:</p>
+<p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \mathbf{y}_{(1)} \leq \mathbf{y}_{(2)} \leq \dots \leq \mathbf{y}_{(m)} \)</span> is the sorted sample.</p></li>
 <li><p><span class="math notranslate nohighlight">\( k = \left\lfloor \frac{\lambda \times m}{100} \right\rfloor \)</span> is the number of values trimmed from each end of the sample.</p></li>
@@ -620,18 +626,18 @@ Theoretical Minimum Variance (Cramér-Rao Bound): 0.0800
 \[
 \text{Harmonic Mean} = \frac{m}{\sum_{i=1}^{m} \frac{1}{\mathbf{y}_i}}
 \]</div>
-<p>Where:</p>
+<p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \mathbf{y}_i &gt; 0 \)</span> for all <span class="math notranslate nohighlight">\( i \)</span> (the harmonic mean is only defined for positive values).</p></li>
 <li><p><span class="math notranslate nohighlight">\( m \)</span> is the number of observations in the sample.</p></li>
 </ul>
 <p><strong>Geometric Mean</strong></p>
-<p>The geometric mean is the <span class="math notranslate nohighlight">\( m \)</span>th root of the product of the sample values. It is defined as:</p>
+<p>The geometric mean is the <span class="math notranslate nohighlight">\( m \)</span>-th root of the product of the sample values. It is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Geometric Mean} = \left(\prod_{i=1}^{m} \mathbf{y}_i\right)^{\frac{1}{m}}
 \]</div>
-<p>Where:</p>
+<p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \mathbf{y}_i &gt; 0 \)</span> for all <span class="math notranslate nohighlight">\( i \)</span> (the geometric mean is only defined for positive values).</p></li>
 <li><p><span class="math notranslate nohighlight">\( m \)</span> is the number of observations in the sample.</p></li>

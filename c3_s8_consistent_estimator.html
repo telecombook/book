@@ -63,7 +63,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bayes Estimation" href="c3_s9_s11_Bayes_MSE_estimator.html" />
+    <link rel="next" title="Bayes Estimation" href="c3_s9_s10_Bayes_estimator.html" />
     <link rel="prev" title="Minimum Variance Estimaties" href="c3_s7_minimum_variance_estimates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -243,9 +243,12 @@
 <li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Consistent Estimates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
 </ul>
 </details></li>
 </ul>
@@ -348,9 +351,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Consistent Estimates</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-chebyshevs-inequality">Relationship to Chebyshev’s Inequality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-as-a-consistent-estimator">Example: Sample Mean as a Consistent Estimator</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-estimators">Invariant Estimators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-squared-estimator">Example: Sample Mean Squared Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-linear-transformation-of-estimator">Example: Linear Transformation of Estimator</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -368,8 +380,9 @@ document.write(`
 <p>Consistency can be expressed more rigorously through a probabilistic statement.</p>
 <p>For any small <span class="math notranslate nohighlight">\( \epsilon &gt; 0 \)</span>, the probability that the estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_m \)</span> lies within an interval <span class="math notranslate nohighlight">\( (\alpha - \epsilon, \alpha + \epsilon) \)</span> around the true parameter <span class="math notranslate nohighlight">\( \alpha \)</span> should approach 1 as the number of observations <span class="math notranslate nohighlight">\( m \)</span> goes to infinity, i.e.:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 \lim_{m \to \infty} \Pr ( \alpha - \epsilon &lt; \hat{\boldsymbol{\alpha}}_m &lt; \alpha + \epsilon ) = 1
+}
 \]</div>
 <p>In other words, an estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> is consistent for a parameter <span class="math notranslate nohighlight">\( \alpha \)</span> if, as the sample size <span class="math notranslate nohighlight">\( m \to \infty \)</span>, the probability that the estimator is within any arbitrary distance <span class="math notranslate nohighlight">\( \epsilon \)</span> of the true parameter approaches <span class="math notranslate nohighlight">\(1\)</span>, i.e.:</p>
 <div class="math notranslate nohighlight">
@@ -392,8 +405,9 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\( V\{\hat{\boldsymbol{\alpha}}\} = E\{(\hat{\boldsymbol{\alpha}} - \alpha)^2\} \)</span> is the variance of the estimator.</p>
 <p>If we know that the variance <span class="math notranslate nohighlight">\( V\{\hat{\boldsymbol{\alpha}}(\vec{y}_m)\} \)</span> converges to 0 as <span class="math notranslate nohighlight">\( m \to \infty \)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 \lim_{m \to \infty} V\{\hat{\boldsymbol{\alpha}}(\vec{y}_m)\} = 0
+}
 \]</div>
 <p>then Chebyshev’s inequality implies that <span class="math notranslate nohighlight">\( \Pr(|\hat{\boldsymbol{\alpha}}(\vec{y}_m) - \alpha| &gt; \epsilon) \)</span> will also converge to 0, showing that <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> is a consistent estimator.</p>
 <p><strong>Discussion. Dependence on Sample Size <span class="math notranslate nohighlight">\( m \)</span></strong></p>
@@ -479,8 +493,8 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">num_trials</span> <span class="o">=</span> <span class="mi">10000</span>      <span class="c1"># Number of trials for each sample size</span>
 
 <span class="c1"># Initialize lists to store results</span>
-<span class="n">probabilities</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1"># Pr(|y_bar - mu| &lt; epsilon)</span>
-<span class="n">empirical_variances</span> <span class="o">=</span> <span class="p">[]</span>      <span class="c1"># Empirical variance of y_bar</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1"># Pr(|\mathbf{y}_bar - mu| &lt; epsilon)</span>
+<span class="n">empirical_variances</span> <span class="o">=</span> <span class="p">[]</span>      <span class="c1"># Empirical variance of \mathbf{y}_bar</span>
 <span class="n">chebyshev_bounds</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># Chebyshev&#39;s bound for each m</span>
 
 <span class="c1"># 3. Simulation Loop</span>
@@ -491,7 +505,7 @@ $<span class="math notranslate nohighlight">\(
     <span class="c1"># 3. Compute the sample mean for each trial: shape (num_trials,)</span>
     <span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     
-    <span class="c1"># 4. Compute the probability Pr(|y_bar - mu| &lt; epsilon)</span>
+    <span class="c1"># 4. Compute the probability Pr(|\mathbf{y}_bar - mu| &lt; epsilon)</span>
     <span class="c1"># This is the proportion of sample_means within [mu - epsilon, mu + epsilon]</span>
     <span class="n">count_within_epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sample_means</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">)</span>
     <span class="n">probability</span> <span class="o">=</span> <span class="n">count_within_epsilon</span> <span class="o">/</span> <span class="n">num_trials</span>
@@ -507,13 +521,13 @@ $<span class="math notranslate nohighlight">\(
     
     <span class="c1"># Optional: Print progress</span>
     <span class="c1"># print(f&quot;Sample Size m = {m}:&quot;)</span>
-    <span class="c1"># print(f&quot;  Pr(|y_bar - mu| &lt; {epsilon}) = {probability:.4f}&quot;)</span>
-    <span class="c1"># print(f&quot;  Empirical Variance of y_bar = {empirical_var:.4f}&quot;)</span>
+    <span class="c1"># print(f&quot;  Pr(|\mathbf{y}_bar - mu| &lt; {epsilon}) = {probability:.4f}&quot;)</span>
+    <span class="c1"># print(f&quot;  Empirical Variance of \mathbf{y}_bar = {empirical_var:.4f}&quot;)</span>
     <span class="c1"># print(f&quot;  Chebyshev&#39;s Bound = {chebyshev_bound:.4f}\n&quot;)</span>
 
 <span class="c1"># 4. Visualization</span>
 
-<span class="c1"># a. Probability Pr(|y_bar - mu| &lt; epsilon) vs. Sample Size m</span>
+<span class="c1"># a. Probability Pr(|\mathbf{y}_bar - mu| &lt; epsilon) vs. Sample Size m</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Probability&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Size (m)&#39;</span><span class="p">)</span>
@@ -524,7 +538,7 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># b. Empirical Variance of y_bar vs. Sample Size m</span>
+<span class="c1"># b. Empirical Variance of \mathbf{y}_bar vs. Sample Size m</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">empirical_variances</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Variance&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="p">[</span><span class="n">sigma2</span><span class="o">/</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sample_sizes</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Variance (σ²/m)&#39;</span><span class="p">)</span>
@@ -554,6 +568,68 @@ $<span class="math notranslate nohighlight">\(
 <img alt="_images/cc11efc1b74f7ff081776a9187c81ca957bdb07c445217a350e3cfc875c308f5.png" src="_images/cc11efc1b74f7ff081776a9187c81ca957bdb07c445217a350e3cfc875c308f5.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="invariant-estimators">
+<h1>Invariant Estimators<a class="headerlink" href="#invariant-estimators" title="Link to this heading">#</a></h1>
+<p>An important characteristic that an estimator is <em>invariance</em> under transformations of the parameter being estimated.</p>
+<p>Formally, consider an estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> of a parameter <span class="math notranslate nohighlight">\( \alpha \)</span>, and let <span class="math notranslate nohighlight">\( g(\alpha) \)</span> be a function of <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
+<p>The estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> is said to be invariant under the transformation <span class="math notranslate nohighlight">\( g \)</span> if <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\alpha}}) \)</span> serves as a (good) estimator of <span class="math notranslate nohighlight">\( g(\alpha) \)</span>.</p>
+<p>This typically means that <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\alpha}}) \)</span> retains desirable properties such as unbiasedness or consistency when estimating <span class="math notranslate nohighlight">\( g(\alpha) \)</span>.</p>
+<p>For instance, maximum likelihood estimators (MLEs) exhibit this invariance property.</p>
+<p>Specifically, if <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_{\text{MLE}} \)</span> is the MLE of <span class="math notranslate nohighlight">\( \alpha \)</span>, then <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\alpha}}_{\text{MLE}}) \)</span> is the MLE of <span class="math notranslate nohighlight">\( g(\alpha) \)</span>.</p>
+<section id="example-sample-mean-squared-estimator">
+<h2>Example: Sample Mean Squared Estimator<a class="headerlink" href="#example-sample-mean-squared-estimator" title="Link to this heading">#</a></h2>
+<p>Consider independent and identically distributed (i.i.d.) random variables <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_m \)</span>, each with mean <span class="math notranslate nohighlight">\( \mu \)</span> and variance 1; that is, <span class="math notranslate nohighlight">\( E[\mathbf{y}_i] = \mu \)</span> and <span class="math notranslate nohighlight">\( \operatorname{Var}(\mathbf{y}_i) = 1 \)</span> for all <span class="math notranslate nohighlight">\( i \)</span>.</p>
+<p>The sample mean is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\mu}} = \frac{1}{m} \sum_{i=1}^m \mathbf{y}_i
+\]</div>
+<p>This estimator is unbiased since:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}] = \frac{1}{m} \sum_{i=1}^m E[\mathbf{y}_i] = \frac{1}{m} \cdot m \mu = \mu
+\]</div>
+<p>Now, consider the function <span class="math notranslate nohighlight">\( g(\mu) = \mu^2 \)</span> and its estimator <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\mu}}) = \hat{\boldsymbol{\mu}}^2 \)</span>.</p>
+<p>One might expect <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}^2 \)</span> to be a good estimator of <span class="math notranslate nohighlight">\( \mu^2 \)</span>, but let’s examine its properties.</p>
+<p>Compute the expected value of <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}^2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}^2] = E\left[ \left( \frac{1}{m} \sum_{i=1}^m \mathbf{y}_i \right)^2 \right] = \operatorname{Var}(\hat{\boldsymbol{\mu}}) + \left( E[\hat{\boldsymbol{\mu}}] \right)^2
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \operatorname{Var}(\hat{\boldsymbol{\mu}}) = \frac{1}{m^2} \sum_{i=1}^m \operatorname{Var}(\mathbf{y}_i) = \frac{1}{m^2} \cdot m \cdot 1 = \frac{1}{m} \)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}^2] = \frac{1}{m} + \mu^2
+\]</div>
+<p>This shows that <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}^2 \)</span> is a biased estimator of <span class="math notranslate nohighlight">\( \mu^2 \)</span> because:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}^2] \neq \mu^2
+\]</div>
+<p>Therefore, the invariance property does not hold in this case, as <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\mu}}) \)</span> is not an unbiased estimator of <span class="math notranslate nohighlight">\( g(\mu) \)</span>.</p>
+</section>
+<section id="example-linear-transformation-of-estimator">
+<h2>Example: Linear Transformation of Estimator<a class="headerlink" href="#example-linear-transformation-of-estimator" title="Link to this heading">#</a></h2>
+<p>Now, consider a linear transformation, such as converting measurements from pounds to kilograms or seconds to minutes. Let’s revisit the sample mean <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}} \)</span> of the random variables <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span>.</p>
+<p>Suppose we multiply each observation by a scalar <span class="math notranslate nohighlight">\( a \)</span>, defining new variables <span class="math notranslate nohighlight">\( z_i = a \mathbf{y}_i \)</span>. The sample mean of the transformed data is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\mu}}_z = \frac{1}{m} \sum_{i=1}^m z_i = \frac{1}{m} \sum_{i=1}^m a \mathbf{y}_i = a \hat{\boldsymbol{\mu}}
+\]</div>
+<p>The expected value of <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}_z \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}_z] = a E[\hat{\boldsymbol{\mu}}] = a \mu
+\]</div>
+<p>which means <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}_z \)</span> is an unbiased estimator of <span class="math notranslate nohighlight">\( a \mu \)</span>.</p>
+<p>In this case, the estimator is invariant under the transformation <span class="math notranslate nohighlight">\( g(\mu) = a \mu \)</span> because applying the transformation to the estimator yields an unbiased estimator of the transformed parameter:</p>
+<div class="math notranslate nohighlight">
+\[
+g(\hat{\boldsymbol{\mu}}) = a \hat{\boldsymbol{\mu}} \quad \text{is an unbiased estimator of} \quad g(\mu) = a \mu
+\]</div>
+<p>Thus, invariance is achieved under linear scaling transformations.</p>
 </section>
 </section>
 
@@ -597,7 +673,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </a>
     <a class="right-next"
-       href="c3_s9_s11_Bayes_MSE_estimator.html"
+       href="c3_s9_s10_Bayes_estimator.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -621,9 +697,18 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Consistent Estimates</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-chebyshevs-inequality">Relationship to Chebyshev’s Inequality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-as-a-consistent-estimator">Example: Sample Mean as a Consistent Estimator</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-estimators">Invariant Estimators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-squared-estimator">Example: Sample Mean Squared Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-linear-transformation-of-estimator">Example: Linear Transformation of Estimator</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

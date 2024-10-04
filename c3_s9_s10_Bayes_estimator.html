@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Chapter 2: Introduction to Detection &#8212; Telecom Book</title>
+    <title>Bayes Estimation &#8212; Telecom Book</title>
   
   
   
@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'c2_s0';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s9_s10_Bayes_estimator';</script>
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MAP and ML Criteria" href="c2_s5_MAP_ML_critera.html" />
-    <link rel="prev" title="Example: Band-Limited White Gaussian Noise Process" href="c1_s15_s21_c_Gaussian_process_ex_2.html" />
+    <link rel="next" title="Minimum Mean Squared Error (MMSE) Estimation" href="c3_s11_MMSE_estimator.html" />
+    <link rel="prev" title="Consistent Estimates" href="c3_s8_consistent_estimator.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,7 +223,7 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 2: Introduction to Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
 
@@ -235,7 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
 
 
@@ -244,7 +244,7 @@
 <li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bayes Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
@@ -341,7 +341,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 2: Introduction to Detection</h1>
+    <h1>Bayes Estimation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -351,16 +351,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-hypothesis-detection-from-a-sample">Binary Hypothesis Detection from a Sample</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-of-hypothesis-testing">Definitions of Hypothesis Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-h-0-and-h-1">Examples of <span class="math notranslate nohighlight">\(H_0\)</span> and <span class="math notranslate nohighlight">\(H_1\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-function">Weighting Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-risk">Average Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-cost">Conditional Cost</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-risk-as-a-function-of-conditional-cost">Average Risk as a Function of Conditional Cost</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule-delta-y">Decision Rule (<span class="math notranslate nohighlight">\(\delta(y)\)</span>)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-outcomes-and-associated-probabilities">Decision Outcomes and Associated Probabilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation-of-the-bayes-estimator">Mathematical Formulation of the Bayes Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-specific-cost-functions">Some Specific Cost Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-sequential-learning-in-bayesian-estimation">Discussion: Sequential Learning in Bayesian Estimation</a></li>
 </ul>
             </nav>
         </div>
@@ -372,118 +371,157 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-introduction-to-detection">
-<h1>Chapter 2: Introduction to Detection<a class="headerlink" href="#chapter-2-introduction-to-detection" title="Link to this heading">#</a></h1>
-<section id="binary-hypothesis-detection-from-a-sample">
-<h2>Binary Hypothesis Detection from a Sample<a class="headerlink" href="#binary-hypothesis-detection-from-a-sample" title="Link to this heading">#</a></h2>
-<p>Binary hypothesis detection is a fundamental concept in statistical signal processing and decision theory. This chapter introduces the basic principles and mathematical frameworks for detecting one of two possible hypotheses based on observed data. The focus is on defining the problem and setting up the rules for making decisions under uncertainty.</p>
-<section id="definitions-of-hypothesis-testing">
-<h3>Definitions of Hypothesis Testing<a class="headerlink" href="#definitions-of-hypothesis-testing" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Random Variable (<span class="math notranslate nohighlight">\(\mathbf{y}\)</span>)</strong>: Consider a random variable <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> that represents the observed data. The distribution of <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> depends on one of two possible hypotheses:</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(H_0\)</span> (null hypothesis)</p></li>
-<li><p><span class="math notranslate nohighlight">\(H_1\)</span> (alternative hypothesis)
-The goal is to determine which hypothesis is true based on the observation <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
-</ul>
+  <section id="bayes-estimation">
+<h1>Bayes Estimation<a class="headerlink" href="#bayes-estimation" title="Link to this heading">#</a></h1>
+<p>Classical estimation theory involves the estimate of unknown but deterministic parameters.</p>
+<p>However, it is often possible to model the parameter to be estimated as a random variable <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> with some postulated distribution <span class="math notranslate nohighlight">\(p(\alpha)\)</span>, referred to as the <em>a priori</em> pdf.</p>
+<p>For example, suppose there are many values for the sample mean collected over some period of time.</p>
+<p>Bayesian methods allow the introduction of this data via the assumed distribution of the sample mean.</p>
+<section id="weighting-function">
+<h2>Weighting Function<a class="headerlink" href="#weighting-function" title="Link to this heading">#</a></h2>
+<p>There may also be a weighting function that incorporates the cost <span class="math notranslate nohighlight">\(C(\boldsymbol{\alpha}, \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))\)</span>, also referred to by some authors as a loss, introduced by the error <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}_e\)</span> between the estimate and its true value and defined by</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\boldsymbol{\alpha}_e = \boldsymbol{\alpha} - \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) \qquad \text{(C3.78)}
+}
+\]</div>
+<p>An example of such a weighting function is the mean-squared error between the estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{y})\)</span> and the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
+<p>This cost is the counterpart of that observed in detection theory as described.</p>
+</section>
+<section id="average-risk">
+<h2>Average Risk<a class="headerlink" href="#average-risk" title="Link to this heading">#</a></h2>
+<p>Similarly, an average risk <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> is obtained by averaging the cost over <span class="math notranslate nohighlight">\(p(\alpha, \vec{y})\)</span>, the joint pdf of the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, and the observable <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> according to</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\mathcal{R} = E\{C(\boldsymbol{\alpha}, \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))\} 
+= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y})) p(\alpha, \vec{y}) \, d\alpha \, d\vec{y} \qquad \text{(C3.79)}
+}
+\]</div>
+<p><strong>Objective.</strong> Minimizing this average risk yields a Bayes estimate.</p>
+</section>
+<section id="conditional-cost">
+<h2>Conditional Cost<a class="headerlink" href="#conditional-cost" title="Link to this heading">#</a></h2>
+<p>The conditional cost <span class="math notranslate nohighlight">\(C_c(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})|\vec{y})\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+C_c(\hat{\boldsymbol{\alpha}}|\vec{y}) 
+= \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y})) p(\alpha|\vec{y}) \, d\alpha \qquad \text{(C3.80)}
+}
+\]</div>
+<p>Note that this is a correction of [B2, Eq. (10.80)].</p>
+<p>so that an alternative expression for the average risk can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} p(\vec{y}) C_c(\hat{\alpha}(\vec{y})|\vec{y}) \, d\vec{y} \qquad \text{(C3.81)}
+\]</div>
+<p>Since the pdf of the observable is positive over the range of its outcomes, <em>minimizing the average risk is accomplished by minimizing the conditional risk</em>.</p>
+<section id="average-risk-as-a-function-of-conditional-cost">
+<h3>Average Risk as a Function of Conditional Cost<a class="headerlink" href="#average-risk-as-a-function-of-conditional-cost" title="Link to this heading">#</a></h3>
+<p>To derive equation (C3.81) from equations (C3.79) and (C3.80), we start by examining the expression for the average risk <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> given in equation (C3.79):</p>
+<div class="math notranslate nohighlight">
+\[ 
+\mathcal{R} = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha, \vec{y}) \, d\alpha \, d\vec{y}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(C(\alpha, \hat{\alpha}(\vec{y}))\)</span> is the cost function, and <span class="math notranslate nohighlight">\(p(\alpha, \vec{y})\)</span> is the joint probability density function (pdf) of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> and the observable <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
+<p>Next, we recognize that the joint pdf <span class="math notranslate nohighlight">\(p(\alpha, \vec{y})\)</span> can be factored using Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha, \vec{y}) = p(\alpha|\vec{y})\, p(\vec{y})
+\]</div>
+<p>Substituting this into the expression for <span class="math notranslate nohighlight">\(\mathcal{R}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha|\vec{y})\, p(\vec{y}) \, d\alpha \, d\vec{y}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(p(\vec{y})\)</span> does not depend on <span class="math notranslate nohighlight">\(\alpha\)</span>, we can factor it out of the inner integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} \left[ p(\vec{y}) \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha|\vec{y})\, d\alpha \right] d\vec{y}
+\]</div>
+<p>The inner integral is the definition of the conditional cost <span class="math notranslate nohighlight">\(C_c(\hat{\alpha}(\vec{y})|\vec{y})\)</span> as given in equation (C3.80):</p>
+<div class="math notranslate nohighlight">
+\[
+C_c(\hat{\alpha}(\vec{y})|\vec{y}) = \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Substituting this back into our expression for <span class="math notranslate nohighlight">\(\mathcal{R}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} p(\vec{y})\, C_c(\hat{\alpha}(\vec{y})|\vec{y})\, d\vec{y}
+\]</div>
+<p>This is equation (C3.81), which expresses the average risk <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> in terms of the observable’s pdf <span class="math notranslate nohighlight">\(p(\vec{y})\)</span> and the conditional cost <span class="math notranslate nohighlight">\(C_c(\hat{\alpha}(\vec{y})|\vec{y})\)</span>.</p>
+</section>
+</section>
+<section id="mathematical-formulation-of-the-bayes-estimator">
+<h2>Mathematical Formulation of the Bayes Estimator<a class="headerlink" href="#mathematical-formulation-of-the-bayes-estimator" title="Link to this heading">#</a></h2>
+<p>An alternative and insightful way to introduce Bayes estimation is by observing that, from a mathematical standpoint, the estimator is derived from Equation (C3.80) and can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\hat{\boldsymbol{\alpha}}_B 
+= \arg\min_{\hat{\boldsymbol{\alpha(\vec{\mathbf{y}})}}} E\{C(\boldsymbol{\alpha}, \hat{\boldsymbol{\alpha}})\} 
+= \arg\min_{\hat{\boldsymbol{\alpha}(\vec{\mathbf{y}})}} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha})\, p(\alpha | \vec{y})\, d\alpha
+}
+\]</div>
+<p>The <em>a posteriori</em> distribution is obtained from Bayes’ theorem and can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha|\vec{y}) = \frac{p(\vec{y}|\alpha) p(\alpha)}{\int_{-\infty}^{\infty} p(\vec{y}|\alpha) p(\alpha) \, d\alpha}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( p(\vec{y}|\alpha) \)</span> is referred to as the likelihood distribution, since it provides the current observations reflecting the value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+</section>
+<section id="some-specific-cost-functions">
+<h2>Some Specific Cost Functions<a class="headerlink" href="#some-specific-cost-functions" title="Link to this heading">#</a></h2>
+<p>To proceed further, a cost function must be selected.</p>
+<p>Examples of cost functions include:</p>
+<ol class="arabic">
+<li><p><strong>Squared-error cost function</strong>, defined by</p>
+<div class="math notranslate nohighlight">
+\[
+   C_S(\alpha, \hat{\alpha}(\vec{y})) = (\alpha - \hat{\alpha}(\vec{y}))^2 = \alpha_e^2
+   \]</div>
 </li>
-<li><p><strong>Conditional Probability</strong>: The likelihood of observing a particular value <span class="math notranslate nohighlight">\(y\)</span> under each hypothesis is given by the conditional probability <span class="math notranslate nohighlight">\(P(y|H_j)\)</span>, where <span class="math notranslate nohighlight">\(j \in \{0, 1\}\)</span>. This represents the probability of observing <span class="math notranslate nohighlight">\(y\)</span> given that hypothesis <span class="math notranslate nohighlight">\(H_j\)</span> is true.</p></li>
-</ul>
-<section id="examples-of-h-0-and-h-1">
-<h4>Examples of <span class="math notranslate nohighlight">\(H_0\)</span> and <span class="math notranslate nohighlight">\(H_1\)</span><a class="headerlink" href="#examples-of-h-0-and-h-1" title="Link to this heading">#</a></h4>
-<p><strong>Cognitive Radio (White Space Detection):</strong></p>
-<ul class="simple">
-<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: No primary user present, only noise (<span class="math notranslate nohighlight">\(y = n\)</span>) — white space available. This hypothesis typically represents the absence of the desired signal or the presence of noise only. In this case, <strong><span class="math notranslate nohighlight">\(P_{00}\)</span></strong>, the probability of correctly deciding <span class="math notranslate nohighlight">\(H_0\)</span> when <span class="math notranslate nohighlight">\(H_0\)</span> is true, is often referred to as the <strong>probability of correct rejection</strong>.</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(H_1\)</span></strong>: Primary user present, signal and noise (<span class="math notranslate nohighlight">\(y = s + n\)</span>) — band occupied. This hypothesis represents the presence of the signal we aim to detect.</p></li>
-</ul>
-<p><strong>Jamming Detection:</strong></p>
-<ul class="simple">
-<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: No jamming, normal communication signal plus noise (<span class="math notranslate nohighlight">\(y = s + n\)</span>).</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(H_1\)</span></strong>: Jamming present, communication signal plus noise and jamming signal (<span class="math notranslate nohighlight">\(y = s + n + j\)</span>).</p></li>
-</ul>
-<p><strong>GAN (Generative Adversarial Networks):</strong></p>
-<ul class="simple">
-<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: Generated (fake) data, output from the generator.</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(H_1\)</span></strong>: Real data, actual sample from the dataset (generated data is considered as real data).</p></li>
-</ul>
-</section>
-</section>
-<section id="decision-rule-delta-y">
-<h3>Decision Rule (<span class="math notranslate nohighlight">\(\delta(y)\)</span>)<a class="headerlink" href="#decision-rule-delta-y" title="Link to this heading">#</a></h3>
-<ul>
-<li><p><strong>Objective</strong>: The central objective is to devise a decision rule <span class="math notranslate nohighlight">\(\delta(y)\)</span> that uses the observed data <span class="math notranslate nohighlight">\(y\)</span> to decide whether <span class="math notranslate nohighlight">\(H_0\)</span> or <span class="math notranslate nohighlight">\(H_1\)</span> is true.</p></li>
-<li><p><strong>Decision Rule Structure</strong>:</p>
+<li><p><strong>Uniform cost function</strong> defined by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \delta(y) = \begin{cases} 
-  H_1, &amp; \text{if } y \in R_1 \\
-  H_0, &amp; \text{if } y \in R_0 
-  \end{cases}
-  \end{split}\]</div>
-<p>Here:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(R_1\)</span> is the <strong>observation region</strong> where <span class="math notranslate nohighlight">\(H_1\)</span> is declared.</p></li>
-<li><p><span class="math notranslate nohighlight">\(R_0\)</span> is the <strong>observation region</strong> where <span class="math notranslate nohighlight">\(H_0\)</span> is declared.</p></li>
-</ul>
+   C_U(\alpha, \hat{\alpha}(\vec{y})) = 
+   \begin{cases}
+   0, &amp; |\alpha_e| &lt; \frac{\Delta}{2} \\
+   1, &amp; |\alpha_e| &gt; \frac{\Delta}{2}
+   \end{cases}
+   \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta\)</span> is a small number.</p>
 </li>
-</ul>
+<li><p><strong>Absolute-error cost function</strong>, defined by</p>
+<div class="math notranslate nohighlight">
+\[
+   C_{AE}(\alpha, \hat{\alpha}(\vec{y})) = |\alpha_e|
+   \]</div>
+</li>
+</ol>
 </section>
-</section>
-<section id="decision-outcomes-and-associated-probabilities">
-<h2>Decision Outcomes and Associated Probabilities<a class="headerlink" href="#decision-outcomes-and-associated-probabilities" title="Link to this heading">#</a></h2>
-<p>The effectiveness of the hypothesis test is evaluated by the probabilities of the various outcomes, which are summarized in the following table:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>True Hypothesis</strong></p></th>
-<th class="head"><p><strong>Decision</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Probability</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
-<td><p></p></td>
-<td><p><span class="math notranslate nohighlight">\( P_{00} = \int_{R_0} P(y \mid H_0) \, dy \)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
-<td><p>False alarm (Type I Error)</p></td>
-<td><p><span class="math notranslate nohighlight">\( P_f = P_{10} = \int_{R_1} P(y \mid H_0) \, dy \)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
-<td><p>Detection (Correct detection)</p></td>
-<td><p><span class="math notranslate nohighlight">\( P_d = P_{11} = \int_{R_1} P(y \mid H_1) \, dy \)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( H_1 \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
-<td><p>Miss (Type II Error)</p></td>
-<td><p><span class="math notranslate nohighlight">\( P_m = P_{01} = \int_{R_0} P(y \mid H_1) \, dy \)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="discussion-sequential-learning-in-bayesian-estimation">
+<h2>Discussion: Sequential Learning in Bayesian Estimation<a class="headerlink" href="#discussion-sequential-learning-in-bayesian-estimation" title="Link to this heading">#</a></h2>
+<p>From the previous discussion, it becomes evident that a Bayes estimate relies on the <em>a posteriori</em> distribution, which requires knowledge of both the <em>a priori</em> distribution and the likelihood function.</p>
+<p>The <em>a priori</em> distribution encapsulates our understanding of the parameter before any data is observed.</p>
+<p>Once data is collected, this knowledge is updated, leading to a new <em>a posteriori</em> distribution.</p>
+<p>This process highlights Bayesian estimation as a form of sequential learning.</p>
+<p>If an additional independent data set <span class="math notranslate nohighlight">\(\vec{x}\)</span> becomes available after measuring <span class="math notranslate nohighlight">\(\vec{y}\)</span>, we can update our estimates using a sequential version of Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p(\alpha|\vec{x}, \vec{y}) 
+&amp;= \frac{p(\vec{x}, \vec{y}|\alpha)p(\alpha)}{\int_{-\infty}^{\infty} p(\vec{x}, \vec{y}|\alpha)p(\alpha) \, d\alpha} \\
+&amp;= \frac{p(\vec{x}|\alpha)p(\vec{y}|\alpha)p(\alpha)}{\int_{-\infty}^{\infty} p(\vec{x}, \vec{y}|\alpha)p(\alpha) \, d\alpha} \\
+&amp;= \frac{p(\alpha|\vec{x})p(\vec{y}|\alpha)}{\int_{-\infty}^{\infty} p(\alpha|\vec{x})p(\vec{y}|\alpha) \, d\alpha}
+\end{align*}
+\end{split}\]</div>
+<p>This equation demonstrates how to update the posterior probability <span class="math notranslate nohighlight">\(p(\alpha|\vec{x}, \vec{y})\)</span> of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> given both data sets <span class="math notranslate nohighlight">\(\vec{x}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
 <ul class="simple">
-<li><p><strong><span class="math notranslate nohighlight">\(P_{00}\)</span></strong>: The probability of correctly deciding <span class="math notranslate nohighlight">\(H_0\)</span> when <span class="math notranslate nohighlight">\(H_0\)</span> is true.</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(P_f = P_{10}\)</span></strong>: The probability of deciding <span class="math notranslate nohighlight">\(H_1\)</span> when <span class="math notranslate nohighlight">\(H_0\)</span> is true. This is known as a <strong>false alarm</strong> or <strong>Type I error</strong>.</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(P_d = P_{11}\)</span></strong>: The probability of correctly deciding <span class="math notranslate nohighlight">\(H_1\)</span> when <span class="math notranslate nohighlight">\(H_1\)</span> is true, also known as the <strong>probability of detection</strong>.</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(P_m = P_{01}\)</span></strong>: The probability of deciding <span class="math notranslate nohighlight">\(H_0\)</span> when <span class="math notranslate nohighlight">\(H_1\)</span> is true, known as a <strong>miss</strong> or <strong>Type II error</strong>.</p></li>
-</ul>
-<p><strong>Importance of Decision Rules</strong></p>
-<ul class="simple">
-<li><p>The effectiveness of a hypothesis test is determined by how well the decision rule <span class="math notranslate nohighlight">\(\delta(y)\)</span> can distinguish between <span class="math notranslate nohighlight">\(H_0\)</span> and <span class="math notranslate nohighlight">\(H_1\)</span>. A well-designed rule maximizes <span class="math notranslate nohighlight">\(P_d\)</span> while minimizing <span class="math notranslate nohighlight">\(P_f\)</span> and <span class="math notranslate nohighlight">\(P_m\)</span>.</p></li>
+<li><p><strong>Joint Likelihood:</strong> The numerator <span class="math notranslate nohighlight">\(p(\vec{x}, \vec{y}|\alpha)p(\alpha)\)</span> represents the joint likelihood of observing both data sets given <span class="math notranslate nohighlight">\(\alpha\)</span>, multiplied by the prior probability of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p><strong>Independence Assumption:</strong> Since <span class="math notranslate nohighlight">\(\vec{x}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span> are independent given <span class="math notranslate nohighlight">\(\alpha\)</span>, we can factor the joint likelihood as <span class="math notranslate nohighlight">\(p(\vec{x}|\alpha)p(\vec{y}|\alpha)\)</span>.</p></li>
+<li><p><strong>Sequential Updating:</strong> The expression <span class="math notranslate nohighlight">\(\frac{p(\alpha|\vec{x})p(\vec{y}|\alpha)}{\int_{-\infty}^{\infty} p(\alpha|\vec{x})p(\vec{y}|\alpha) \, d\alpha}\)</span> shows that the posterior after observing <span class="math notranslate nohighlight">\(\vec{x}\)</span> serves as the <em>new prior</em> when updating with <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p></li>
+<li><p><strong>Normalization:</strong> The denominator ensures that the posterior probability distribution <span class="math notranslate nohighlight">\(p(\alpha|\vec{x}, \vec{y})\)</span> integrates to one.</p></li>
 </ul>
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p>The contents of the sections in this chapter are based on the following materials.</p>
-<ul class="simple">
-<li><p>T. Schonhoff and A. Giordano, <em>Detection and Estimation Theory and its Applications</em>. Prentice Hall, 2006 , Chapter 4</p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -517,20 +555,20 @@ The goal is to determine which hypothesis is true based on the observation <span
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="c1_s15_s21_c_Gaussian_process_ex_2.html"
+       href="c3_s8_consistent_estimator.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Example: Band-Limited White Gaussian Noise Process</p>
+        <p class="prev-next-title">Consistent Estimates</p>
       </div>
     </a>
     <a class="right-next"
-       href="c2_s5_MAP_ML_critera.html"
+       href="c3_s11_MMSE_estimator.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MAP and ML Criteria</p>
+        <p class="prev-next-title">Minimum Mean Squared Error (MMSE) Estimation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -550,16 +588,15 @@ The goal is to determine which hypothesis is true based on the observation <span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-hypothesis-detection-from-a-sample">Binary Hypothesis Detection from a Sample</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-of-hypothesis-testing">Definitions of Hypothesis Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-h-0-and-h-1">Examples of <span class="math notranslate nohighlight">\(H_0\)</span> and <span class="math notranslate nohighlight">\(H_1\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-function">Weighting Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-risk">Average Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-cost">Conditional Cost</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-risk-as-a-function-of-conditional-cost">Average Risk as a Function of Conditional Cost</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule-delta-y">Decision Rule (<span class="math notranslate nohighlight">\(\delta(y)\)</span>)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-outcomes-and-associated-probabilities">Decision Outcomes and Associated Probabilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation-of-the-bayes-estimator">Mathematical Formulation of the Bayes Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-specific-cost-functions">Some Specific Cost Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-sequential-learning-in-bayesian-estimation">Discussion: Sequential Learning in Bayesian Estimation</a></li>
 </ul>
   </nav></div>
 

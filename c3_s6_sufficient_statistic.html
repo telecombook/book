@@ -243,9 +243,12 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Estimators Based on Sufficient Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
 </ul>
 </details></li>
 </ul>
@@ -392,8 +395,9 @@ document.write(`
 <p>Mathematically speaking, a statistic <span class="math notranslate nohighlight">\( T(\vec{\mathbf{y}}) \)</span> is considered sufficient for <span class="math notranslate nohighlight">\(\alpha\)</span> if the conditional pdf of the data given <span class="math notranslate nohighlight">\( T(\vec{\mathbf{y}})\)</span>, i.e., <span class="math notranslate nohighlight">\(p(y_1, y_2, \ldots, y_m \mid T(\vec{y}))\)</span> does not depend on <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <p>Formally, if you have a set of observations <span class="math notranslate nohighlight">\(\vec{\mathbf{y}} = (\mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m)\)</span> and a parameter of interest <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, then a statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is said to be sufficient for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> if the conditional distribution of the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>, given the statistic <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> and the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, is independent of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, i.e.:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}),\boldsymbol{\alpha}) = P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}))
+}
 \]</div>
 <p>This means that once you know <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span>, the original data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> provides no additional information about the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>. In other words, <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> captures all the information that <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> contains about <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
 </section>
@@ -408,8 +412,9 @@ P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}),\boldsymbol{\alpha}) = P(\vec{\mathbf{y}}
 <p>Then, <span class="math notranslate nohighlight">\( T(\bar{\vec{y}}) \)</span> is a sufficient statistic for <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <p>Mathematically, the factorization can be expressed as:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{
 p(y_1, \ldots, y_m; \alpha) = g(T(y_1, \ldots, y_m), \alpha) h(y_1, \ldots, y_m)
+}
 \]</div>
 <p>Here, <span class="math notranslate nohighlight">\( g(\cdot) \)</span> encapsulates the dependency on the statistic and the parameter, while <span class="math notranslate nohighlight">\( h(\cdot) \)</span> isolates the data dependency, confirming the sufficiency of <span class="math notranslate nohighlight">\( T(\bar{\mathbf{y}}) \)</span>.</p>
 <p>Therefore, an estimate (or statistic) <span class="math notranslate nohighlight">\( T(\bar{\mathbf{y}}) \)</span> is considered a <em>sufficient estimate</em> for a parameter <span class="math notranslate nohighlight">\(\alpha\)</span> if it satisfies the Fisher factorization theorem.</p>
@@ -421,8 +426,10 @@ p(\vec{y}; \alpha) = g(T(\vec{y}), \alpha) \, h(\vec{y})
 \]</div>
 <p>In general, <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is a sufficient statistic for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> if and only if the probability distribution (or likelihood) <span class="math notranslate nohighlight">\(p(\vec{\mathbf{y}}|\boldsymbol{\alpha})\)</span> can be factored into the product of two functions:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ 
+\boxed{
 p(\vec{\mathbf{y}}|\boldsymbol{\alpha}) = g(T(\vec{\mathbf{y}}), \boldsymbol{\alpha}) h(\vec{\mathbf{y}})
+}
 \]</div>
 <p>Here:</p>
 <ul class="simple">
@@ -467,18 +474,27 @@ p(y_1, \ldots, y_m; \mu, \sigma^2) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^
 \[
 p(\vec{y};\mu, \sigma^2) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \left( \sum_{i=1}^{m} y_i^2 - 2m\mu \bar{y} + m\mu^2 \right) \right)
 \]</div>
-<p>We can factor this expression as:</p>
+<p>Applying the Fisher Factorization theorem, we get</p>
 <div class="math notranslate nohighlight">
 \[
-p(\vec{y};\mu, \sigma^2) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right) \cdot \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)
+p(\vec{y}; \mu, \sigma^2) = \underbrace{\exp\left( -\frac{m(\bar{y} - \mu)^2}{2\sigma^2} \right)}_{g(\bar{y}, \mu)} \cdot \underbrace{\left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^m \exp\left( -\frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \bar{y})^2 \right)}_{h(\vec{y})}
 \]</div>
-<p>Here, the likelihood function <span class="math notranslate nohighlight">\(p(\vec{y}|\mu)\)</span> has been factored into two components:</p>
+<p>where</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(g(\bar{y}, \mu) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right)\)</span>, which depends on the data <span class="math notranslate nohighlight">\(\vec{y}\)</span>, the sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span>, and the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(h(\vec{y}) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)\)</span>, which depends on the data <span class="math notranslate nohighlight">\(\vec{y}\)</span>, the sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span>, and the parameter <span class="math notranslate nohighlight">\(\sigma^2\)</span>, but not on the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( g(T(\vec{y}), \alpha) = g(\bar{y}, \mu) \)</span>:</strong></p>
+<ul>
+<li><p>Depends on <span class="math notranslate nohighlight">\( \mu \)</span>: Through <span class="math notranslate nohighlight">\( \mu \)</span> in <span class="math notranslate nohighlight">\( (\bar{y} - \mu)^2 \)</span></p></li>
+<li><p>Depends on <span class="math notranslate nohighlight">\(T(\vec{y}) =  \bar{y} \)</span></p></li>
 </ul>
-<p>According to the Factorization Theorem, this factorization confirms that the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is a sufficient statistic for the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
-<p>The statistic <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> captures all the information about <span class="math notranslate nohighlight">\(\mu\)</span> that is contained in the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\( h(\vec{y}) \)</span>:</strong></p>
+<ul>
+<li><p>Depends <strong>only</strong> on the data <span class="math notranslate nohighlight">\( \vec{y} \)</span>: Through <span class="math notranslate nohighlight">\( \sum_{i=1}^{m} (y_i - \bar{y})^2 \)</span> and the constant term <span class="math notranslate nohighlight">\( \left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^m \)</span> (not that from <span class="math notranslate nohighlight">\(\vec{y}\)</span> we can compute <span class="math notranslate nohighlight">\(\bar{y}\)</span>)</p></li>
+<li><p><strong>Does not depend</strong> on <span class="math notranslate nohighlight">\( \mu \)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Thus, this factorization confirms that the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}\)</span> is a sufficient statistic for the parameter <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <section id="derivation-of-the-likelihood-function-joint-pdf">
 <h3>Derivation of the likelihood function (joint PDF)<a class="headerlink" href="#derivation-of-the-likelihood-function-joint-pdf" title="Link to this heading">#</a></h3>
 <p>Note that the likelihood function is the joint PDF of the observations <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span>.</p>
@@ -522,47 +538,49 @@ f(\vec{y} ; \mu) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac
 \[
 \mathbf{s}_{\mathbf{y}}^2 = \frac{1}{m} \sum_{i=1}^{m}(\mathbf{y}_i - \bar{\mathbf{y}})^2
 \]</div>
-<p>Note that the expression</p>
+<p>Recall that the likelihood function is given by</p>
 <div class="math notranslate nohighlight">
 \[
-\exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)
+p(\vec{y}; \mu, \sigma^2) = \left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^m \exp\left( -\frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \mu)^2 \right)
 \]</div>
-<p>we can rewrite it in terms of the sample variance <span class="math notranslate nohighlight">\( s_y^2 = \frac{1}{m} \sum_{i=1}^{m} (y_i - \bar{y})^2 \)</span> as</p>
+<p>Given that <span class="math notranslate nohighlight">\( \mu \)</span> is <strong>known</strong> (or already estimated), our goal is to identify a statistic that <strong>encapsulates all information</strong> about <span class="math notranslate nohighlight">\( \sigma^2 \)</span> contained in the data <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p>The realization of the sample variance is</p>
 <div class="math notranslate nohighlight">
 \[
-\exp\left(-\frac{m s_y^2}{2\sigma^2}\right)
+s_y^2 = \frac{1}{m} \sum_{i=1}^{m} (y_i - \mu)^2
 \]</div>
-<p>Therefore,</p>
+<p>Thus, the sum of squared deviations from the mean is:</p>
 <div class="math notranslate nohighlight">
 \[
-p(\vec{y}|\mu) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right) \cdot \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^{m} y_i^2 + \frac{m\bar{y}^2}{\sigma^2}\right)
+\sum_{i=1}^{m} (y_i - \mu)^2 = m s_y^2
 \]</div>
-<p>can be expressed as</p>
+<p>Substitute the expression for the sum of squared deviations into the likelihood function:</p>
 <div class="math notranslate nohighlight">
 \[
-p(\vec{y}|\mu) = \exp\left(-\frac{m}{2\sigma^2}(\bar{y} - \mu)^2\right) \cdot \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^m \exp\left(-\frac{m s_y^2}{2\sigma^2}\right)
+p(\vec{y}; \mu, \sigma^2) = \left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^m \exp\left( -\frac{m s_y^2}{2\sigma^2} \right)
 \]</div>
-<p>Therefore, the <strong>sample variance <span class="math notranslate nohighlight">\( s_y^2 \)</span></strong> is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
-<p>Therefore, the <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong> is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
-<p>Note that</p>
+<p>Applying the Fisher Factorization theorem, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}; \mu, \sigma^2) = \underbrace{\left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^m \exp\left( -\frac{m s_y^2}{2\sigma^2} \right)}_{g(s_y^2, \sigma^2)} \cdot \underbrace{1}_{h(\vec{y})}
+\]</div>
+<p>where</p>
 <ul class="simple">
-<li><p>The <strong>sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span></strong> is a sufficient statistic for the mean <span class="math notranslate nohighlight">\(\mu\)</span> of the distribution.</p>
+<li><p><strong><span class="math notranslate nohighlight">\( g(T(\vec{y}), \alpha)  = g(s_y^2, \sigma^2) \)</span>:</strong></p>
 <ul>
-<li><p>This means it contains all the necessary information about <span class="math notranslate nohighlight">\(\mu\)</span> present in the data.</p></li>
-<li><p>Moreover, <span class="math notranslate nohighlight">\(\bar{y}\)</span> is an unbiased estimator of the true mean <span class="math notranslate nohighlight">\(\mu\)</span>, meaning that its expected value equals <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p><strong>Depends on <span class="math notranslate nohighlight">\( \sigma^2 \)</span>:</strong> Through the exponential term and the coefficient.</p></li>
+<li><p>Depends on the data only through <span class="math notranslate nohighlight">\( s_y^2 \)</span>: Since <span class="math notranslate nohighlight">\( s_y^2 \)</span> is a function of <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p></li>
 </ul>
 </li>
-<li><p>The <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong>, on the other hand, is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<li><p><strong><span class="math notranslate nohighlight">\( h(\vec{y}) = 1 \)</span>:</strong></p>
 <ul>
-<li><p>It captures all the relevant information about the variance from the data.</p></li>
-<li><p>However, when used as an estimator of the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is a biased estimator.</p></li>
-<li><p>Specifically, the expectation of <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is <span class="math notranslate nohighlight">\(\frac{m-1}{m}\sigma^2\)</span>, which is slightly lower than the true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
-<li><p>To correct this bias, the unbiased estimator of the variance is <span class="math notranslate nohighlight">\(\frac{m}{m-1} s_{\mathbf{y}}^2\)</span>, often denoted as <span class="math notranslate nohighlight">\( s^2_{\text{unbiased}} \)</span>.</p></li>
+<li><p><strong>Independence from <span class="math notranslate nohighlight">\( \sigma^2 \)</span>:</strong> This function does not involve <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p></li>
+<li><p>In this case, <span class="math notranslate nohighlight">\( h(\vec{y}) \)</span> is simply 1, meaning it does not contribute any additional information about <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p></li>
 </ul>
 </li>
 </ul>
-<p>Therefore, the <strong>sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span></strong> is also a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
-<p>Note that</p>
+<p>Thus, the sample variance <span class="math notranslate nohighlight">\( s_{\mathbf{y}}^2 \)</span> is a sufficient statistic for the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>In summary:</p>
 <ul class="simple">
 <li><p>The <strong>sample mean <span class="math notranslate nohighlight">\(\bar{y}\)</span></strong> is a sufficient statistic for the mean <span class="math notranslate nohighlight">\(\mu\)</span> of the distribution.</p>
 <ul>

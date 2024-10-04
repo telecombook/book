@@ -63,7 +63,8 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Bayes Estimation" href="c3_s9_s11_Bayes_MSE_estimator.html" />
+    <link rel="next" title="Maximum Likelihood (ML) Estimation" href="c3_s13_ML_estimator.html" />
+    <link rel="prev" title="Minimum Mean Squared Error (MMSE) Estimation" href="c3_s11_MMSE_estimator.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -242,9 +243,12 @@
 <li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c3_s9_s11_Bayes_MSE_estimator.html">Bayes Estimation</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
 </ul>
 </details></li>
 </ul>
@@ -372,8 +376,9 @@ document.write(`
 <h2>MAP Estimator Definition<a class="headerlink" href="#map-estimator-definition" title="Link to this heading">#</a></h2>
 <p>The MAP estimate is computed by maximizing the posterior probability density function (PDF) <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span> with respect to the parameter <span class="math notranslate nohighlight">\( \alpha \)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{ 
 \hat{\alpha}_{\text{MAP}} = \arg \max_{\alpha} \{ p(\alpha | \vec{y}) \}
+}
 \]</div>
 <p>According to Bayes’ theorem, the posterior PDF is given by:</p>
 <div class="math notranslate nohighlight">
@@ -383,8 +388,9 @@ p(\alpha | \vec{y}) = \frac{p(\vec{y} | \alpha) p(\alpha)}{p(\vec{y})}
 <p>Since the denominator <span class="math notranslate nohighlight">\( p(\vec{y}) \)</span> does not depend on <span class="math notranslate nohighlight">\( \alpha \)</span>, it can be omitted in the maximization process.</p>
 <p>Therefore, the MAP estimate simplifies to finding the value of <span class="math notranslate nohighlight">\( \alpha \)</span> that maximizes the product <span class="math notranslate nohighlight">\( p(\vec{y} | \alpha) p(\alpha) \)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{ 
 \hat{\alpha}_{\text{MAP}} = \arg \max_{\alpha} \{ p(\vec{y} | \alpha) p(\alpha) \}
+}
 \]</div>
 <p>This simplification makes MAP estimation computationally efficient, as it avoids calculating the often complex denominator <span class="math notranslate nohighlight">\( p(\vec{y}) \)</span>.</p>
 </section>
@@ -452,7 +458,7 @@ C_c(\hat{\alpha}|\vec{y}) = \int_{-\infty}^{\hat{\alpha}(\vec{y}) - \frac{\Delta
 \]</div>
 <p>Substituting back into the average risk expression, we have:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[
 \mathcal{R} = \int_{-\infty}^{\infty} p(\vec{y}) \left[ 1 - \int_{\hat{\alpha}(\vec{y}) - \frac{\Delta}{2}}^{\hat{\alpha}(\vec{y}) + \frac{\Delta}{2}} p(\alpha|\vec{y})\, d\alpha \right] d\vec{y}
 \]</div>
 <p>Note that</p>
@@ -474,8 +480,9 @@ C_c(\hat{\alpha}|\vec{y}) = \int_{-\infty}^{\hat{\alpha}(\vec{y}) - \frac{\Delta
 <p>Thus, minimizing <span class="math notranslate nohighlight">\( \mathcal{R} \)</span> is equivalent to maximizing <span class="math notranslate nohighlight">\( p(\hat{\alpha}(\vec{y})|\vec{y}) \)</span>.</p>
 <p>Therefore, the optimal estimate <span class="math notranslate nohighlight">\( \hat{\alpha}_{\text{MAP}} \)</span> is the value of <span class="math notranslate nohighlight">\( \alpha \)</span> that maximizes the posterior probability density function given <span class="math notranslate nohighlight">\( \vec{y} \)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
-\hat{\alpha}_{\text{MAP}} = \arg \max_{\alpha} \{ p(\alpha|\vec{y}) \}
+\[ \boxed{ 
+\hat{\alpha}_{\text{MAP}} = \arg \max_{\hat{\alpha}} \{ p(\alpha|\vec{y}) \}
+}
 \]</div>
 </section>
 <section id="finding-the-map-estimate">
@@ -490,15 +497,17 @@ C_c(\hat{\alpha}|\vec{y}) = \int_{-\infty}^{\hat{\alpha}(\vec{y}) - \frac{\Delta
 <p>In the case of a unimodal posterior density—that is, a distribution with a single peak—the estimate <span class="math notranslate nohighlight">\( \hat{\alpha}_{\text{MAP}} \)</span> is the mode of <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span>.</p>
 <p>Note that the <em>mode</em> of a probability distribution is the value at which the PDF reaches its maximum—the point where the distribution has its peak.</p>
 <p><strong>Differential Equation</strong></p>
-<p>We have that, in calculus, the maxima (and minima) of a differentiable function occur at critical points where the first derivative is zero. This is because the slope of the tangent to the function at these points is horizontal, indicating a potential maximum or minimum.</p>
+<p>We have that, in calculus, the maxima (and minima) of a differentiable function occur at critical points where the first derivative is zero.</p>
+<p>This is because the slope of the tangent to the function at these points is horizontal, indicating a potential maximum or minimum.</p>
 <p>Therefore, in our MAP estimation,</p>
 <ul class="simple">
 <li><p>To find the maximum of the posterior density <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span>, we look for the point where the function attains its highest value with respect to <span class="math notranslate nohighlight">\( \alpha \)</span>.</p></li>
 <li><p>Setting the derivative to zero helps us locate critical points of <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span>, i.e.:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{ 
 \frac{\partial}{\partial \alpha} p(\alpha | \vec{y}) = 0
+}
 \]</div>
 <ul class="simple">
 <li><p>For a unimodal distribution, this critical point corresponds to the global maximum.</p></li>
@@ -527,7 +536,7 @@ C_c(\hat{\alpha}|\vec{y}) = \int_{-\infty}^{\hat{\alpha}(\vec{y}) - \frac{\Delta
 \[
 \hat{\mu}_{MAP} = \gamma^2 \omega = \frac{\beta^2 \bar{y} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
 \]</div>
-<p>Also show that the <em>a posteriori</em> PDF <span class="math notranslate nohighlight">\( p(\mu | \vec{y}) \)</span> is Gaussian, the <em>mode</em> and <em>mean</em> are identical, so that the MAP estimate is the same as the MSE estimate.</p>
+<p>Also show that the <em>a posteriori</em> PDF <span class="math notranslate nohighlight">\( p(\mu | \vec{y}) \)</span> is Gaussian, the <em>mode</em> and <em>mean</em> are identical, so that the MAP estimate is the same as the MMSE estimate.</p>
 <p><strong>Solution</strong></p>
 <p>To find the MAP estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}_{\text{MAP}} \)</span> of the unknown random mean <span class="math notranslate nohighlight">\( \boldsymbol{\mu} \)</span> using the given observations <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span>, we’ll use the posterior PDF provided in equation (C3.98):</p>
 <div class="math notranslate nohighlight">
@@ -543,8 +552,9 @@ p(\mu | \vec{y}) = \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left( -\frac{[\mu - \gamm
 </ul>
 <p>Therefore, the MAP estimate <span class="math notranslate nohighlight">\( \hat{\mu}_{\text{MAP}} \)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{ 
 \hat{\mu}_{\text{MAP}} = \gamma^2 \omega
+}
 \]</div>
 <p>Here we present breifly again the derivation of <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <p><strong>Calculating <span class="math notranslate nohighlight">\( \gamma^2 \)</span> and <span class="math notranslate nohighlight">\( \omega \)</span>:</strong></p>
@@ -590,10 +600,11 @@ p(\mu | \vec{y}) = \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left( -\frac{[\mu - \gamm
 \]</div>
 <p>The <span class="math notranslate nohighlight">\( \sigma^2 \beta^2 \)</span> terms cancel out:</p>
 <div class="math notranslate nohighlight">
-\[ \color{blue}
+\[ \boxed{ 
 \hat{\mu}_{\text{MAP}} = \frac{m \beta^2 \bar{y} + m_1 \sigma^2}{m \beta^2 + \sigma^2}
+}
 \]</div>
-<p>Thus, the MAP estimate is the same as the MSE estimate obtained in previous section.</p>
+<p>Thus, the MAP estimate is the same as the MMSE estimate obtained in previous section.</p>
 </section>
 </section>
 
@@ -628,13 +639,22 @@ p(\mu | \vec{y}) = \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left( -\frac{[\mu - \gamm
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="c3_s9_s11_Bayes_MSE_estimator.html"
+       href="c3_s11_MMSE_estimator.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bayes Estimation</p>
+        <p class="prev-next-title">Minimum Mean Squared Error (MMSE) Estimation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="c3_s13_ML_estimator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Maximum Likelihood (ML) Estimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
