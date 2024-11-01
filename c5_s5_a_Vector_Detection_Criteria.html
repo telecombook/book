@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Criteria for Multiple Sample Detection of Binary Hypotheses &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c5_s5_a_Vector_Detection_Criteria';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example: Antipodal Signal Detection using Multiple Samples" href="c5_s5_b_example_a.html" />
+    <link rel="prev" title="Detection Problem with Multiple Samples" href="c5_s3_Vector_Detection.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c4_s0_intro.html">Chapter 4: Signal Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c4_s3_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s7_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s8_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s10_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s13_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s15_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Chapter 5: Vector and Multi-Hypothesis Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Criteria for Multiple Sample Detection of Binary Hypotheses</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-criterion">Bayes Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimax-criterion">Minimax Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-pearson-criterion">Neyman-Pearson Criterion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="criteria-for-multiple-sample-detection-of-binary-hypotheses">
+<h1>Criteria for Multiple Sample Detection of Binary Hypotheses<a class="headerlink" href="#criteria-for-multiple-sample-detection-of-binary-hypotheses" title="Link to this heading">#</a></h1>
+<p>Each decision criterion—Bayes, MAP, Minimax, and Neyman-Pearson—can be effectively extended to handle multiple measurements by adapting their respective decision rules and thresholds to accommodate the higher-dimensional data involved.</p>
+<section id="bayes-criterion">
+<h2>Bayes Criterion<a class="headerlink" href="#bayes-criterion" title="Link to this heading">#</a></h2>
+<p>The Bayes criterion for handling multiple measurements extends naturally from its single-measurement counterpart.</p>
+<p><strong>Definition of Bayes Risk:</strong></p>
+<p>The Bayes risk is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+r = [P_{00}C_{00} + P_{10}C_{10}]\pi_0 + [P_{01}C_{01} + P_{11}C_{11}]\pi_1 
+}
+\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( P_{11} = 1 - P_{01} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( P_{10} = 1 - P_{00} \)</span></p></li>
+</ul>
+<p>The probabilities <span class="math notranslate nohighlight">\( P_{00} \)</span> and <span class="math notranslate nohighlight">\( P_{01} \)</span> are defined by the integrals:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{00} = \int_{R_0} p_0(\vec{y}) d\vec{y}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_{01} = \int_{R_0} p_1(\vec{y}) d\vec{y}
+\]</div>
+<p>These integrals are similar to those in the single-measurement case but are extended to a <span class="math notranslate nohighlight">\( k \)</span>-dimensional vector <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p><strong>Simplified Bayes Risk:</strong></p>
+<p>The Bayes risk can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+r = \pi_0 C_{01} + \pi_1 C_{11} + \int_{R_0} \left[ \pi_1 (C_{01} - C_{11}) p_1(\vec{y}) - \pi_0 (C_{10} - C_{00}) p_0(\vec{y}) \right] d\vec{y}
+\]</div>
+<p>To minimize <span class="math notranslate nohighlight">\( r \)</span>, we seek the volume <span class="math notranslate nohighlight">\( R_0 \)</span> in <span class="math notranslate nohighlight">\( k \)</span>-space that achieves this minimum.</p>
+<p><strong>Decision Threshold</strong></p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+\eta_B = \frac{\pi_0 (C_{10} - C_{00})}{\pi_1 (C_{01} - C_{11})}
+}
+\]</div>
+<p><strong>Decision Rule:</strong></p>
+<p>Choose <span class="math notranslate nohighlight">\( R_0 \)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_1 (C_{01} - C_{11}) p_1(\vec{y}) - \pi_0 (C_{10} - C_{00}) p_0(\vec{y}) &lt; 0
+\]</div>
+<p>This leads to a likelihood ratio decision rule:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y})}{p_0(\vec{y})} &lt; \eta_B 
+\]</div>
+<p>In summary, the decision rule based on the combined notation is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+L(\vec{y}) \begin{cases} \ge \eta_B &amp; \text{choose } D_1 \\ &lt; \eta_B &amp; \text{choose } D_0 \end{cases} 
+\end{split}\]</div>
+</section>
+<section id="map-criterion">
+<h2>MAP Criterion<a class="headerlink" href="#map-criterion" title="Link to this heading">#</a></h2>
+<p>When the costs associated with decisions are <strong>unknown</strong>, the Maximum A Posteriori (MAP) criterion is applied.</p>
+<p><strong>Equivalence to Cost Setting:</strong></p>
+<p>The MAP criterion is equivalent to assuming that the cost differences satisfy <span class="math notranslate nohighlight">\( C_{10} - C_{00} = C_{01} - C_{11} \)</span>.</p>
+<p><strong>Threshold and Decision Rule:</strong></p>
+<p>Under MAP, the threshold is determined by:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\eta_{MAP} = \frac{\pi_0}{\pi_1}
+}
+\]</div>
+<p>The corresponding decision rule is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{MAP}(\vec{y}) = \begin{cases} 1, &amp; L(\vec{y}) \ge \eta_{MAP} \\ 0, &amp; L(\vec{y}) &lt; \eta_{MAP} \end{cases}
+\end{split}\]</div>
+<p>This means that if the likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> exceeds <span class="math notranslate nohighlight">\( \eta_{MAP} \)</span>, decision <span class="math notranslate nohighlight">\( D_1 \)</span> is made; otherwise, <span class="math notranslate nohighlight">\( D_0 \)</span> is chosen.</p>
+</section>
+<section id="minimax-criterion">
+<h2>Minimax Criterion<a class="headerlink" href="#minimax-criterion" title="Link to this heading">#</a></h2>
+<p>The minimax approach for multiple measurements mirrors the single-measurement scenario.</p>
+<p><strong>Extension to Multiple Measurements:</strong></p>
+<p>All principles applicable to single measurements in detection theory are valid for multiple measurements. The key difference is that the single-measurement likelihood ratio <span class="math notranslate nohighlight">\( L(y) \)</span> is replaced by the multiple-measurement ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span>.</p>
+<p><strong>Minimax Decision Rule:</strong></p>
+<p>The minimax decision rule, which minimizes the maximum possible risk, is formulated as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{mm}(\vec{y}) = \begin{cases} 1, &amp; L(\vec{y}) &gt; \eta_{mm} \\ \eta, &amp; L(\vec{y}) = \eta_{mm} \\ 0, &amp; L(\vec{y}) &lt; \eta_{mm} \end{cases}
+\end{split}\]</div>
+<p>Typically, a randomized decision is employed to determine the exact value of <span class="math notranslate nohighlight">\( \eta \)</span>. The threshold <span class="math notranslate nohighlight">\( \eta_{mm} \)</span> is established using methodologies from single-measurement detection theory.</p>
+</section>
+<section id="neyman-pearson-criterion">
+<h2>Neyman-Pearson Criterion<a class="headerlink" href="#neyman-pearson-criterion" title="Link to this heading">#</a></h2>
+<p>Similar to the minimax approach, the Neyman-Pearson criterion for multiple measurements builds directly on the single-measurement framework, ensuring that the false-alarm rate remains below a specified level <span class="math notranslate nohighlight">\( \alpha_f \)</span>.</p>
+<p><strong>Adaptation to Multiple Measurements:</strong></p>
+<p>By replacing the single measurement <span class="math notranslate nohighlight">\( y \)</span> with the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> and extending the integrals to <span class="math notranslate nohighlight">\( k \)</span>-dimensional spaces, the Neyman-Pearson derivation seamlessly applies to multiple measurements.</p>
+<p><strong>Neyman-Pearson Decision Rule:</strong></p>
+<p>The decision rule under the Neyman-Pearson criterion, which may involve randomized tests, is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{NP}(\vec{y}) = \begin{cases} 1, &amp; L(\vec{y}) &gt; \eta_{NP} \\ \eta, &amp; L(\vec{y}) = \eta_{NP} \\ 0, &amp; L(\vec{y}) &lt; \eta_{NP} \end{cases}
+\end{split}\]</div>
+<p>This rule ensures that the probability of a false alarm does not exceed the predefined threshold <span class="math notranslate nohighlight">\( \alpha_f \)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c5_s3_Vector_Detection.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Detection Problem with Multiple Samples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c5_s5_b_example_a.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example: Antipodal Signal Detection using Multiple Samples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-criterion">Bayes Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-criterion">MAP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimax-criterion">Minimax Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-pearson-criterion">Neyman-Pearson Criterion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
