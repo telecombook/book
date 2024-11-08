@@ -63,7 +63,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Optimum Digital Detector in Additive Gaussian Noise" href="c5_s6_Optimum_Digital_Detector.html" />
+    <link rel="next" title="The Optimum Digital Detector in Additive Gaussian Noise" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html" />
     <link rel="prev" title="Example: Antipodal Signal Detection using Multiple Samples" href="c5_s5_b_example_a.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -275,8 +275,14 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -826,7 +832,7 @@ P_{FA} = P(L(\vec{y}) &gt; \eta_{NP} \mid H_0)
 <span class="n">P_D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">P_D</span><span class="p">)</span>
 
 <span class="c1"># 5. Plot ROC Curve</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_FA</span><span class="p">,</span> <span class="n">P_D</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ROC Curve&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Guess&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability of False Alarm (P_FA)&#39;</span><span class="p">)</span>
@@ -863,7 +869,7 @@ P_{FA} = P(L(\vec{y}) &gt; \eta_{NP} \mid H_0)
     <span class="n">y2_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">y1_vals</span><span class="p">,</span> <span class="n">eta0</span> <span class="o">/</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># Plot observations and decision boundary</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Plot H0 observations</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_H0</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_H0</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;H0&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -893,14 +899,14 @@ P_{FA} = P(L(\vec{y}) &gt; \eta_{NP} \mid H_0)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02f3645de714e5b60e938323e49bc065595de52d4411151216cdf46c31e3a84c.png" src="_images/02f3645de714e5b60e938323e49bc065595de52d4411151216cdf46c31e3a84c.png" />
+<img alt="_images/ca39564264444c981724021ef67e2bcabe2948a2aa20b321b142ef7df5a2861e.png" src="_images/ca39564264444c981724021ef67e2bcabe2948a2aa20b321b142ef7df5a2861e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Desired P_FA: 0.05
 Selected Threshold (eta_L): 1.2437
 Actual P_FA: 0.0501
 Corresponding P_D: 0.3129
 </pre></div>
 </div>
-<img alt="_images/2af4e85e5e5ffdf5f98d545fe5e2e115e8e982886487f9c70c09fa9cc36a670e.png" src="_images/2af4e85e5e5ffdf5f98d545fe5e2e115e8e982886487f9c70c09fa9cc36a670e.png" />
+<img alt="_images/9c81a21b5d3fe0c0009aa1e3a7983460f48d3cafe1a8b505a153c0667f93fc69.png" src="_images/9c81a21b5d3fe0c0009aa1e3a7983460f48d3cafe1a8b505a153c0667f93fc69.png" />
 </div>
 </div>
 </section>
@@ -946,7 +952,7 @@ Corresponding P_D: 0.3129
       </div>
     </a>
     <a class="right-next"
-       href="c5_s6_Optimum_Digital_Detector.html"
+       href="c5_s6_Optimum_Digital_Detector_Schonhoff.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

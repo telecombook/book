@@ -63,7 +63,8 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="The Optimum Digital Detector in Additive Gaussian Noise" href="c5_s6_Optimum_Digital_Detector.html" />
+    <link rel="next" title="Continuous Signals with White Gaussian Noise" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html" />
+    <link rel="prev" title="Optimum Digital Detector – Alternative Representation" href="c5_s6_Optimum_Digital_Detector_alternative.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -274,8 +275,14 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -381,6 +388,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-impulse-response-fir-filter">Finite Impulse Response (FIR) Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matched-filter">Matched Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b2-example-5-4">[B2, Example 5.4]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-examples">MATLAB Examples</a></li>
 </ul>
             </nav>
         </div>
@@ -473,6 +481,13 @@ u_0(t) = e^{-j \pi / 2} = -j, \quad (i - 1)T \leq t &lt; iT
 <p>Since the signals <span class="math notranslate nohighlight">\( u_1(t) \)</span> and <span class="math notranslate nohighlight">\( u_0(t) \)</span> are constants throughout the bit duration <span class="math notranslate nohighlight">\( T \)</span>, this implies that a matched filter designed for operation in white noise will also have constant tap coefficients.</p>
 <p><img alt="Image" src="_images/fig_5_6.png" /></p>
 </section>
+<section id="matlab-examples">
+<h2>MATLAB Examples<a class="headerlink" href="#matlab-examples" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mathworks.com/help/phased/ug/signal-detection-in-white-gaussian-noise.html">Signal Detection in White Gaussian Noise</a></p></li>
+<li><p><a class="reference external" href="https://www.mathworks.com/help/phased/ug/signal-detection-using-multiple-samples.html">Signal Detection Using Multiple Samples</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -506,13 +521,22 @@ u_0(t) = e^{-j \pi / 2} = -j, \quad (i - 1)T \leq t &lt; iT
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="c5_s6_Optimum_Digital_Detector.html"
+       href="c5_s6_Optimum_Digital_Detector_alternative.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Optimum Digital Detector in Additive Gaussian Noise</p>
+        <p class="prev-next-title">Optimum Digital Detector – Alternative Representation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="c5_s12_Optimal_Detection_Continuous_White_Noise.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Continuous Signals with White Gaussian Noise</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -533,6 +557,7 @@ u_0(t) = e^{-j \pi / 2} = -j, \quad (i - 1)T \leq t &lt; iT
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-impulse-response-fir-filter">Finite Impulse Response (FIR) Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matched-filter">Matched Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b2-example-5-4">[B2, Example 5.4]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-examples">MATLAB Examples</a></li>
 </ul>
   </nav></div>
 
