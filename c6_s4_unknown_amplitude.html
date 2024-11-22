@@ -290,6 +290,17 @@
 <li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Unknown Amplitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Chapter 7: Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
 </ul>
 </details></li>
 </ul>
@@ -392,6 +403,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-amplitude-in-wireless-channels">Random Amplitude in Wireless Channels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-multipath-fading-channels">Examples of Multipath Fading Channels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-conditional-probabilites">Review Conditional Probabilites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-f-x-y">Compute <span class="math notranslate nohighlight">\( f(X|Y) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-f-x">Compute <span class="math notranslate nohighlight">\( f(X) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-our-problem">Applications in Our Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-p-i-vec-y">Compute <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-density-functions">Conditional Density Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-uniform-phase">Unknown Uniform Phase</a></li>
@@ -400,6 +422,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recevier-structure">Recevier Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receiver-structure">Receiver Structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-analysis">Performance Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-of-rayleigh-channel">Special Case of Rayleigh Channel</a></li>
 </ul>
@@ -417,19 +440,124 @@ document.write(`
                   
   <section id="unknown-amplitude">
 <h1>Unknown Amplitude<a class="headerlink" href="#unknown-amplitude" title="Link to this heading">#</a></h1>
-<p>Radio systems often operate over channels where the amplitude of the received signal is a random variable.</p>
-<p>The most common example of this phenomenon is the multipath fading channel, characterized by the many propagation paths from the transmitter to the receiver.</p>
-<p>The total received signal from these many paths, <em>i.e.</em>, multipath, exhibits an amplitude that is the result of mutual interference, sometimes constructive and sometimes destructive.</p>
-<p>Specific examples of multipath fading channels include</p>
+<section id="random-amplitude-in-wireless-channels">
+<h2>Random Amplitude in Wireless Channels<a class="headerlink" href="#random-amplitude-in-wireless-channels" title="Link to this heading">#</a></h2>
+<p>In many radio systems, the amplitude of the received signal is not fixed but instead varies randomly due to channel conditions.</p>
+<p>A prominent example of this is the multipath fading channel, where signals travel between the transmitter and receiver along multiple propagation paths.</p>
+<p>The superposition of these paths causes the received signal’s amplitude to fluctuate due to mutual interference, which can be either constructive or destructive, depending on the relative phases and delays of the arriving signals.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Plot the topology of the multipath scenario</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Base station and receiver positions</span>
+<span class="n">base_station</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">receiver</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define the paths as reflections from obstacles</span>
+<span class="n">obstacles</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+
+<span class="c1"># Plot the base station and receiver</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">base_station</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Base Station&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">receiver</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Receiver&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Plot obstacles and paths</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">obstacle</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obstacles</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">obstacle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Obstacle&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">base_station</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">obstacle</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">base_station</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">obstacle</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">obstacle</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">receiver</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">obstacle</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">receiver</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="c1"># Direct path</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">base_station</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">receiver</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">base_station</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">receiver</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Direct Path&quot;</span><span class="p">)</span>
+
+<span class="c1"># Labels and legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Topology of Multipath Fading Scenario&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X Position (m)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y Position (m)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7962385ac6ea207268c79f0ad5bae0799cca86bceec3d1bb764316046c3d0005.png" src="_images/7962385ac6ea207268c79f0ad5bae0799cca86bceec3d1bb764316046c3d0005.png" />
+</div>
+</div>
+<section id="examples-of-multipath-fading-channels">
+<h3>Examples of Multipath Fading Channels<a class="headerlink" href="#examples-of-multipath-fading-channels" title="Link to this heading">#</a></h3>
 <ol class="arabic">
-<li><p>The high-frequency (HF) skywave channel, which allows communications between geographically distant sites by the refraction of radio waves through the earth’s ionosphere.</p>
-<p>The relatively large beamwidths of the antennas and natural irregularities in the ionosphere cause the multipath phenomenon.</p>
+<li><p><strong>High-Frequency (HF) Skywave Channel</strong><br />
+This channel enables communication between geographically distant locations by refracting radio waves through the Earth’s ionosphere.</p>
+<p>The multipath effect arises due to the relatively wide beamwidths of antennas and natural irregularities in the ionosphere.</p>
 </li>
-<li><p>The troposcatter channel, which allows communications between distant sites by the scattering of radio waves from molecules in the earth’s troposphere.</p></li>
-<li><p>Almost any high-resolution radar system, where the received signal is composed of reflections from many different portions of the “target.”</p></li>
-<li><p>The mobile radio communication channel, where the resultant signal can be composed of both a direct path and various multipath reflections from nearby structures.</p></li>
+<li><p><strong>Troposcatter Channel</strong><br />
+Communication over long distances is facilitated in this channel by the scattering of radio waves from atmospheric molecules within the Earth’s troposphere.</p></li>
+<li><p><strong>High-Resolution Radar Systems</strong><br />
+In these systems, the received signal consists of multiple reflections from different sections of the target, leading to multipath effects.</p></li>
+<li><p><strong>Mobile Radio Communication Channel</strong><br />
+Here, the received signal is often a combination of a direct path and several reflected paths caused by nearby structures, such as buildings or vehicles.</p></li>
 </ol>
-<p>Because of the nature of these types of channels, it is usually impractical or impossible to estimate the phase of the received signal. Thus, we are concerned with a situation where both the <em>amplitude</em> and <em>phase</em> are random variables.</p>
+<p>Given the characteristics of these channels, estimating the phase of the received signal is typically impractical or infeasible.</p>
+<p>As a result, both the <em>amplitude</em> and <em>phase</em> of the received signal must be treated as random variables.</p>
+</section>
+</section>
+<section id="review-conditional-probabilites">
+<h2>Review Conditional Probabilites<a class="headerlink" href="#review-conditional-probabilites" title="Link to this heading">#</a></h2>
+<section id="compute-f-x-y">
+<h3>Compute <span class="math notranslate nohighlight">\( f(X|Y) \)</span><a class="headerlink" href="#compute-f-x-y" title="Link to this heading">#</a></h3>
+<p>Using the marginalization equation:</p>
+<div class="math notranslate nohighlight">
+\[
+f(X|Y) = \int f(X|Y, Z = z) \cdot f_Z(z) \, dz 
+\]</div>
+</section>
+<section id="compute-f-x">
+<h3>Compute <span class="math notranslate nohighlight">\( f(X) \)</span><a class="headerlink" href="#compute-f-x" title="Link to this heading">#</a></h3>
+<p>Using the marginalization equation:</p>
+<div class="math notranslate nohighlight">
+\[
+f(X) = \int f(X|Y = y) \cdot f_Y(y) \, dy
+\]</div>
+</section>
+<section id="applications-in-our-problem">
+<h3>Applications in Our Problem<a class="headerlink" href="#applications-in-our-problem" title="Link to this heading">#</a></h3>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(\vec{y}|\alpha_i) = \int p_i(\vec{y}|\alpha_i, \beta_i) \cdot f_{\boldsymbol{\beta}_i}(\beta_i) \, d\beta_i
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{y} \)</span></strong>: Observed signal vector</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \alpha_i \)</span></strong>: Amplitude parameter</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \beta_i \)</span></strong>: Phase parameter (unknown and uniformly distributed)</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( f_{\boldsymbol{\beta}_i}(\beta_i) \)</span></strong>: Uniform distribution of <span class="math notranslate nohighlight">\( \beta_i \)</span>, epresenting the <em>prior distribution</em> of <span class="math notranslate nohighlight">\( \beta_i \)</span>.</p></li>
+</ul>
+<p>By integrating out <span class="math notranslate nohighlight">\( \beta_i \)</span>, we obtain the marginal conditional density <span class="math notranslate nohighlight">\( p_i(\vec{y}|\alpha_i) \)</span>, which accounts for all possible phases <span class="math notranslate nohighlight">\( \beta_i \)</span>.</p>
+</section>
+<section id="compute-p-i-vec-y">
+<h3>Compute <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span><a class="headerlink" href="#compute-p-i-vec-y" title="Link to this heading">#</a></h3>
+<p>To find the unconditional PDF <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span>, we marginalize over the random variable <span class="math notranslate nohighlight">\( \alpha_i \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(\vec{y}) = \int p_i(\vec{y}|\alpha_i) \cdot p_{\boldsymbol{\alpha}_i}(\alpha_i) \, d\alpha_i
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( p_i(\vec{y}|\alpha_i) \)</span></strong>: The conditional PDF of <span class="math notranslate nohighlight">\( \vec{y} \)</span> given <span class="math notranslate nohighlight">\( \alpha_i \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( p_{\boldsymbol{\alpha}_i}(\alpha_i) \)</span></strong>: The marginal PDF of <span class="math notranslate nohighlight">\( \alpha_i \)</span>, representing the <em>prior distribution</em> of <span class="math notranslate nohighlight">\( \alpha_i \)</span>.</p></li>
+</ul>
+<p>This integral effectively <strong>averages</strong> the conditional densities <span class="math notranslate nohighlight">\( p_i(\vec{y}|\alpha_i) \)</span> over the distribution of <span class="math notranslate nohighlight">\( \alpha_i \)</span>, yielding the unconditional density <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span>.</p>
+</section>
+</section>
 <section id="signal-modelling">
 <h2>Signal Modelling<a class="headerlink" href="#signal-modelling" title="Link to this heading">#</a></h2>
 <p>Using the derivations in the previous section, we can rewrite the vector form of the signal as</p>
@@ -451,18 +579,25 @@ p_i(\vec{y} | \alpha_i, \beta_i) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\fr
 \[\begin{split}
 \begin{align*}
 p_i(\vec{y} | \alpha_i, \beta_i) 
-&amp;= \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \exp \left( \frac{\alpha_i}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) \\
-&amp;\times \exp \left( -\frac{\alpha_i^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right), \quad i = 0, 1
+= \frac{1}{(2\pi\sigma_z^2)^k} 
+&amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha_i}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) \\
+\times &amp;\exp \left( -\frac{\alpha_i^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right), \quad i = 0, 1
 \end{align*}
 \end{split}\]</div>
 <section id="unknown-uniform-phase">
 <h3>Unknown Uniform Phase<a class="headerlink" href="#unknown-uniform-phase" title="Link to this heading">#</a></h3>
-<p>Assuming the phases <span class="math notranslate nohighlight">\( \beta_i \)</span> are each uniform on the interval <span class="math notranslate nohighlight">\( (0, 2\pi) \)</span>, we arrive at a conditional density function (from the derivation in the previous section):</p>
+<p>Assuming the phases <span class="math notranslate nohighlight">\( \beta_i \)</span> are each uniform on the interval <span class="math notranslate nohighlight">\( (0, 2\pi) \)</span>.</p>
+<p>We arrive at a conditional density function (from the derivation in the previous section):</p>
 <div class="math notranslate nohighlight">
-\[
-p_i(\vec{y}|\alpha_i) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right)
-\times I_0 \left( \frac{\alpha_i}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) \exp \left( -\frac{\alpha_i^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right), \quad i = 0, 1
-\]</div>
+\[\begin{split}
+\begin{align*}
+p_i(\vec{y}|\alpha_i) = \frac{1}{(2\pi\sigma_z^2)^k} 
+&amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;I_0 \left( \frac{\alpha_i}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) \\
+\times &amp;\exp \left( -\frac{\alpha_i^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right), \quad i = 0, 1
+\end{align*}
+\end{split}\]</div>
 </section>
 <section id="unknown-rician-amplitude">
 <h3>Unknown Rician Amplitude<a class="headerlink" href="#unknown-rician-amplitude" title="Link to this heading">#</a></h3>
@@ -475,20 +610,21 @@ p_i(\vec{y}) = \int p(\vec{y}|\alpha_i) p(\alpha_i) d\alpha_i
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-p(\alpha_i) = \frac{\alpha_i}{\sigma_i^2} \exp \left( -\frac{1}{2\sigma_i^2} \left( \alpha_i^2 + \kappa_i^2 \right) \right) I_0 \left( \frac{\alpha_i \kappa_i}{\sigma_i^2} \right)
+p(\alpha_i) = \frac{\alpha_i}{\sigma_i^2} \exp \left( -\frac{1}{2\sigma_i^2} \left( \alpha_i^2 + \Upsilon_i^2 \right) \right) I_0 \left( \frac{\alpha_i \Upsilon_i}{\sigma_i^2} \right)
 }
 \]</div>
-<p>where <span class="math notranslate nohighlight">\( \kappa_i^2 \)</span> is proportional to the power if the multipath signal contains any nonstochastic or direct components and <span class="math notranslate nohighlight">\( \sigma_i^2 \)</span> is proportional to the random multipath power.</p>
-<p>If <span class="math notranslate nohighlight">\( \kappa_i = 0 \)</span>, the density function is a Rayleigh, corresponding to the generally well-known Rayleigh fading channel.</p>
+<p>where <span class="math notranslate nohighlight">\( \Upsilon_i^2 \)</span> is proportional to the power if the multipath signal contains any nonstochastic or direct components and <span class="math notranslate nohighlight">\( \sigma_i^2 \)</span> is proportional to the random multipath power.</p>
+<p>If <span class="math notranslate nohighlight">\( \Upsilon_i = 0 \)</span>, the density function is a Rayleigh, corresponding to the generally well-known Rayleigh fading channel.</p>
 <p>Many authors have used the Rician or Rayleigh fading channels to accurately model “real” channels of interest.</p>
 <p>Using the Rician pdf <span class="math notranslate nohighlight">\(p(\alpha_i)\)</span>, we can write the unconditional density function as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
 p_i(\vec{y}) 
-&amp;= \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 - \frac{\kappa_i^2}{2\sigma_i^2} \right) \\
-&amp;\times \int_0^{\infty} \frac{\alpha_i}{\sigma_i^2} \exp \left( -\alpha_i^2 \left[ \frac{1}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 + \frac{1}{2\sigma_i^2} \right] \right) \\
-&amp;\times I_0 \left( \frac{\alpha_i}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) I_0 \left( \frac{\alpha_i \kappa_i}{\sigma_i^2} \right) d\alpha_i, \quad i = 0, 
+= \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 - \frac{\Upsilon_i^2}{2\sigma_i^2} \right) \\
+\times \int_0^{\infty} \bigg[\frac{\alpha_i}{\sigma_i^2} &amp;\exp \left( -\alpha_i^2 \left[ \frac{1}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 + \frac{1}{2\sigma_i^2} \right] \right) \\
+\times &amp;I_0 \left( \frac{\alpha_i}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) I_0 \left( \frac{\alpha_i \Upsilon_i}{\sigma_i^2} \right) 
+\bigg] d\alpha_i, \quad i = 0, 
 \end{align*}
 \end{split}\]</div>
 <p>The integral is evaluated as</p>
@@ -503,8 +639,8 @@ p_i(\vec{y})
 \boxed{
 \begin{align*}
 p_i(\vec{y}) 
-&amp;= \frac{1}{(2\pi)^{k} \sigma_z^{2k} \sigma_i^2} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 - \frac{\kappa_i^2}{2\sigma_i^2} \right) \\
-&amp;\times \frac{1}{2c_i} \exp \left[ \frac{g_i^2 + \kappa_i^2}{4c_i} \right] I_0 \left( \frac{g_i \kappa_i}{2c_i} \right), \quad i = 0, 1
+&amp;= \frac{1}{(2\pi)^{k} \sigma_z^{2k} \sigma_i^2} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 - \frac{\Upsilon_i^2}{2\sigma_i^2} \right) \\
+&amp;\times \frac{1}{2c_i} \exp \left[ \frac{g_i^2 + \Upsilon_i^2}{4c_i} \right] I_0 \left( \frac{g_i \Upsilon_i}{2c_i} \right), \quad i = 0, 1
 \end{align*}
 }
 \end{split}\]</div>
@@ -521,7 +657,7 @@ g_i = \frac{1}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right|
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-e_i = \frac{\kappa_i}{\sigma_i^2}
+e_i = \frac{\Upsilon_i}{\sigma_i^2}
 \]</div>
 </section>
 </section>
@@ -529,9 +665,12 @@ e_i = \frac{\kappa_i}{\sigma_i^2}
 <h2>Likelihood Ratio<a class="headerlink" href="#likelihood-ratio" title="Link to this heading">#</a></h2>
 <p>It follows that the likelihood ratio is</p>
 <div class="math notranslate nohighlight">
-\[
-L(\vec{y}) = \exp \left( \frac{\kappa_0^2 e_1}{2\sigma_0^2} - \frac{\kappa_1^2 e_0}{2\sigma_1^2} \right) \frac{c_0 \sigma_0^2}{c_1 \sigma_1^2} \exp \left( \frac{g_1^2 + e_1^2}{4c_1} - \frac{g_0^2 + e_0^2}{4c_0} \right) \frac{I_0 \left( \frac{g_1 e_1}{2c_1} \right)}{I_0 \left( \frac{g_0 e_0}{2c_0} \right)}
-\]</div>
+\[\begin{split}
+\begin{align*}
+L(\vec{y}) = &amp;\exp \left( \frac{\Upsilon_0^2}{2\sigma_0^2} - \frac{\Upsilon_1^2}{2\sigma_1^2} \right) \frac{c_0 \sigma_0^2}{c_1 \sigma_1^2} \\
+\times &amp;\exp \left( \frac{g_1^2 + e_1^2}{4c_1} - \frac{g_0^2 + e_0^2}{4c_0} \right) \frac{I_0 \left( \frac{g_1 e_1}{2c_1} \right)}{I_0 \left( \frac{g_0 e_0}{2c_0} \right)}
+\end{align*}
+\end{split}\]</div>
 <p>Although the derivation can proceed somewhat further, it is more instructive to limit it to practical situations.</p>
 <p>For example, since the channel attenuation introduces a random amplitude, signals would normally be chosen to have equal energy, <em>i.e.,</em></p>
 <div class="math notranslate nohighlight">
@@ -541,7 +680,7 @@ L(\vec{y}) = \exp \left( \frac{\kappa_0^2 e_1}{2\sigma_0^2} - \frac{\kappa_1^2 e
 <p>Furthermore, if the signals under both hypotheses traverse the same channel, then</p>
 <div class="math notranslate nohighlight">
 \[
-\kappa_1 = \kappa_0 = \kappa
+\Upsilon_1 = \Upsilon_0 = \Upsilon
 \]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
@@ -556,7 +695,7 @@ c_0 = c_1 = c = \frac{\mathcal{E}}{\sigma_z^2} + \frac{1}{2\sigma_r^2}
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-e_0 = e_1 = e = \frac{\kappa}{\sigma_r^2}
+e_0 = e_1 = e = \frac{\Upsilon}{\sigma_r^2}
 \]</div>
 <p>from which, <span class="math notranslate nohighlight">\(L(\vec{y})\)</span>  can be simplified to</p>
 <div class="math notranslate nohighlight">
@@ -577,42 +716,62 @@ L(\vec{y}) = \exp \left( \frac{g_1^2 - g_0^2}{4c} \right) \frac{I_0 \left( \frac
 <h2>Recevier Structure<a class="headerlink" href="#recevier-structure" title="Link to this heading">#</a></h2>
 <p>Using the preceding equation, we see that Figure 6.10 shows an optimal binary digital receiver under these conditions.</p>
 <p><img alt="Fig. 6.10" src="_images/fig_6_10.png" /></p>
-<p>From the figure, it can be seen that, even though it is not necessary to know the random amplitude <span class="math notranslate nohighlight">\( \alpha \)</span>, in order to implement this receiver it is necessary to know its statistical parameters <span class="math notranslate nohighlight">\( \sigma_r^2 \)</span> and <span class="math notranslate nohighlight">\( \kappa \)</span>.</p>
+<p>From the figure, it can be seen that, even though it is not necessary to know the random amplitude <span class="math notranslate nohighlight">\( \alpha \)</span>, in order to implement this receiver it is necessary to know its statistical parameters <span class="math notranslate nohighlight">\( \sigma_r^2 \)</span> and <span class="math notranslate nohighlight">\( \Upsilon \)</span>.</p>
 <p>Actually, in this case of equal channel conditions, it is unnecessary to implement the receiver of Figure 6.10.</p>
 <p>A careful inspection of the receiver indicates that, since the term <span class="math notranslate nohighlight">\( c \)</span> is positive and <span class="math notranslate nohighlight">\( e \)</span> is nonnegative, when one of the decision variables, e.g., <span class="math notranslate nohighlight">\( U_1 \)</span>, is greater than the other, <span class="math notranslate nohighlight">\( U_0 \)</span>, then <span class="math notranslate nohighlight">\( g_1 &gt; g_0 \)</span>, and vice versa. It follows that the receiver of Figure 6.4 is also optimal in this case.</p>
+</section>
+<section id="receiver-structure">
+<h2>Receiver Structure<a class="headerlink" href="#receiver-structure" title="Link to this heading">#</a></h2>
+<p>Figure 6.10 illustrates the optimal binary digital receiver for the described conditions, as derived from the preceding equation.</p>
+<p><img alt="Fig. 6.10" src="_images/fig_6_10.png" /></p>
+<p>The figure demonstrates that while it is unnecessary to explicitly know the random amplitude <span class="math notranslate nohighlight">\( \alpha \)</span> to implement the receiver, knowledge of its statistical parameters <span class="math notranslate nohighlight">\( \sigma_r^2 \)</span> and <span class="math notranslate nohighlight">\( \Upsilon \)</span> is essential.</p>
+<p>However, under equal channel conditions, implementing the receiver of Figure 6.10 becomes redundant.</p>
+<p>Upon closer examination, it is evident that since the term <span class="math notranslate nohighlight">\( c \)</span> is positive and <span class="math notranslate nohighlight">\( e \)</span> is nonnegative, the decision-making simplifies.</p>
+<p>When one decision variable, e.g., <span class="math notranslate nohighlight">\( U_1 \)</span>, is greater than the other, <span class="math notranslate nohighlight">\( U_0 \)</span>, it implies that <span class="math notranslate nohighlight">\( g_1 &gt; g_0 \)</span>, and vice versa.</p>
+<p>Consequently, the receiver depicted in Figure 6.4 remains optimal in this scenario as well.</p>
 </section>
 <section id="performance-analysis">
 <h2>Performance Analysis<a class="headerlink" href="#performance-analysis" title="Link to this heading">#</a></h2>
 <p>The performance of a receiver structure such as Figure 6.4 in conditions of variable received-signal amplitude <span class="math notranslate nohighlight">\( \alpha \)</span> can be determined analytically under the following conditions.</p>
-<p>In the last section, we found this structure’s error-rate performance under conditions of constant amplitude <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
+<p>In the section of Unknown Phase, we found this structure’s error-rate performance under conditions of constant amplitude <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
 <p>If the channel conditions change slowly with respect to the signaling rate <span class="math notranslate nohighlight">\( 1/T \)</span>, then the error rates can be considered as conditional probabilities, conditioned on the amplitude <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
-<p>For example, if orthogonal signaling is used, the error rate from Section 6.3 is</p>
+<p>For example, <strong>if orthogonal signaling is used</strong>, the error rate from the section of unknown phase is</p>
 <div class="math notranslate nohighlight">
 \[
 \Pr(\text{error}|\alpha) = \frac{1}{2} \exp \left( -\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \right)
 \]</div>
-<p>It follows that the unconditional error rate is</p>
+<p>Given Rician amplitude, it follows that the unconditional error rate is</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\text{error}) = \int_0^{\infty} \frac{1}{2} \exp \left( -\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \right) \frac{\alpha}{\sigma_r^2} \exp \left( -\frac{1}{2\sigma_r^2} \left[ \alpha^2 + \kappa^2 \right] \right) I_0 \left( \frac{\alpha \kappa}{\sigma_r^2} \right) d\alpha
+\Pr(\text{error}) = \int_0^{\infty} \frac{1}{2} \exp \left( -\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \right) \frac{\alpha}{\sigma_r^2} \exp \left( -\frac{1}{2\sigma_r^2} \left[ \alpha^2 + \Upsilon^2 \right] \right) I_0 \left( \frac{\alpha \Upsilon}{\sigma_r^2} \right) d\alpha
 \]</div>
 <p>Apter some calculation steps, we have</p>
 <div class="math notranslate nohighlight">
 \[\boxed{
-\Pr(\text{error}) = \frac{1}{2 \left( 1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2} \right)} \exp \left( -\frac{\mathcal{E}}{\sigma_z^2} \frac{\kappa^2}{1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2}} \right)
+\Pr(\text{error}) = \frac{1}{2 \left( 1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2} \right)} \exp \left( -\frac{\mathcal{E}}{\sigma_z^2} \frac{\Upsilon^2}{1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2}} \right)
 }
 \]</div>
 <section id="special-case-of-rayleigh-channel">
 <h3>Special Case of Rayleigh Channel<a class="headerlink" href="#special-case-of-rayleigh-channel" title="Link to this heading">#</a></h3>
-<p>For a Rayleigh channel, <span class="math notranslate nohighlight">\( \kappa = 0 \)</span> and</p>
+<p>For a Rayleigh fading channel:</p>
+<ul class="simple">
+<li><p>The received signal does not have a deterministic line-of-sight (LOS) component.</p></li>
+<li><p>As a result, the <strong>mean received signal strength</strong> (i.e., the deterministic component <span class="math notranslate nohighlight">\(\Upsilon\)</span>) is zero, i.e., <span class="math notranslate nohighlight">\( \Upsilon = 0\)</span>.</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\( \Upsilon = 0 \)</span>, the exponential term becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\text{error}) = \frac{1}{2 \left( 1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2} \right)}
+\exp\left(-\frac{\mathcal{E}}{\sigma_z^2} \frac{\Upsilon^2}{1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2}}\right) = \exp(0) = 1.
+\]</div>
+<p>Thus, the probability of error simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(\text{error}) = \frac{1}{2 \left( 1 + \frac{2\sigma_r^2 \mathcal{E}}{\sigma_z^2} \right)}.
 \]</div>
 <p>Consiser the general likelihood ratio above, if one of the hypotheses, say <span class="math notranslate nohighlight">\( H_0 \)</span>, corresponds to the “radar problem” of noise only, it is straightforward to show that the likelihood ratio is</p>
 <div class="math notranslate nohighlight">
 \[
-L(\vec{y}) = \exp \left( \frac{g_1^2 + e_1^2}{4c_1} \right) I_0 \left( \frac{g_1 e_1}{2c_1} \right) \left[ \frac{1}{2c_1 \sigma_1^2} \exp \left( -\frac{\kappa^2}{2\sigma_r^2} \right) \right]
+L(\vec{y}) = \exp \left( \frac{g_1^2 + e_1^2}{4c_1} \right) I_0 \left( \frac{g_1 e_1}{2c_1} \right) \left[ \frac{1}{2c_1 \sigma_1^2} \exp \left( -\frac{\Upsilon^2}{2\sigma_r^2} \right) \right]
 \]</div>
 <p>The term in square brackets in this equation is a constant, which can be predetermined and incorporated in the decision threshold.</p>
 </section>
@@ -683,6 +842,17 @@ L(\vec{y}) = \exp \left( \frac{g_1^2 + e_1^2}{4c_1} \right) I_0 \left( \frac{g_1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-amplitude-in-wireless-channels">Random Amplitude in Wireless Channels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-multipath-fading-channels">Examples of Multipath Fading Channels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-conditional-probabilites">Review Conditional Probabilites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-f-x-y">Compute <span class="math notranslate nohighlight">\( f(X|Y) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-f-x">Compute <span class="math notranslate nohighlight">\( f(X) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-our-problem">Applications in Our Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-p-i-vec-y">Compute <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-density-functions">Conditional Density Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-uniform-phase">Unknown Uniform Phase</a></li>
@@ -691,6 +861,7 @@ L(\vec{y}) = \exp \left( \frac{g_1^2 + e_1^2}{4c_1} \right) I_0 \left( \frac{g_1
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recevier-structure">Recevier Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receiver-structure">Receiver Structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-analysis">Performance Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-of-rayleigh-channel">Special Case of Rayleigh Channel</a></li>
 </ul>

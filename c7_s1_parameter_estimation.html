@@ -1,0 +1,704 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parameter Estimation in White Gaussian Noise &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c7_s1_parameter_estimation';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Amplitude Estimation in the Coherent Case with AWGN" href="c7_s2_amplitude_coherent_estimation.html" />
+    <link rel="prev" title="Chapter 7: Estimation of Specific Parameters" href="c7_s0_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c4_s0_intro.html">Chapter 4: Signal Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c4_s3_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s7_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s8_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s10_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s13_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s15_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Chapter 5: Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Chapter 6: Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c7_s0_intro.html">Chapter 7: Estimation of Specific Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parameter Estimation in White Gaussian Noise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-estimation">MAP Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-estimation">ML Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-estimation">MSE Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance">Minimum Variance</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="parameter-estimation-in-white-gaussian-noise">
+<h1>Parameter Estimation in White Gaussian Noise<a class="headerlink" href="#parameter-estimation-in-white-gaussian-noise" title="Link to this heading">#</a></h1>
+<p>Assume that <span class="math notranslate nohighlight">\( k \)</span> samples of the measured signal <span class="math notranslate nohighlight">\( y_i \)</span>, taken over a period <span class="math notranslate nohighlight">\( T \)</span>, are real with</p>
+<div class="math notranslate nohighlight">
+\[
+y_i = s_i(\alpha) + n_i, \quad i = 1, \ldots, k
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \alpha \)</span> is the parameter to be estimated</p></li>
+<li><p><span class="math notranslate nohighlight">\( s_i(\alpha) \)</span>, <span class="math notranslate nohighlight">\( i = 1, \ldots, k \)</span>, are samples of the signal</p></li>
+<li><p><span class="math notranslate nohighlight">\( n_i \)</span>, <span class="math notranslate nohighlight">\( i = 1, \ldots, k \)</span>, are samples of zero-mean, white Gaussian noise with variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p></li>
+</ul>
+<p>Note that <span class="math notranslate nohighlight">\(\sigma^2 = N_0 B\)</span> for passband.</p>
+<p>Let <span class="math notranslate nohighlight">\( \vec{y} \)</span> be the set of samples <span class="math notranslate nohighlight">\( y_i \)</span>, <span class="math notranslate nohighlight">\( i = 1, \ldots, k \)</span>.</p>
+<p>The pdf <span class="math notranslate nohighlight">\( p(\vec{y}|\alpha) \)</span> can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|\alpha) = \frac{1}{(2\pi\sigma^2)^{k/2}} \exp \left[ -\frac{1}{2\sigma^2} \sum_{i=1}^k (y_i - s_i(\alpha))^2 \right]
+\]</div>
+<section id="map-estimation">
+<h2>MAP Estimation<a class="headerlink" href="#map-estimation" title="Link to this heading">#</a></h2>
+<p>A MAP estimate of <span class="math notranslate nohighlight">\( \alpha \)</span> can then be obtained by finding the maximum of <span class="math notranslate nohighlight">\( \ln p(\alpha|\vec{y}) \)</span> or equivalently, by finding the maximum of <span class="math notranslate nohighlight">\( \ln[p(\vec{y}|\alpha) p(\alpha)] \)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial \alpha} \ln p(\vec{y}|\alpha) + \frac{\partial}{\partial \alpha} \ln p(\alpha) = 0
+\]</div>
+<p>Pluggin <span class="math notranslate nohighlight">\(p(\vec{y}|\alpha)\)</span>, a MAP estimate to be obtained as the solution to</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\sigma^2} \sum_{i=1}^k (y_i - s_i(\alpha)) \frac{\partial s_i(\alpha)}{\partial \alpha} + \frac{\partial}{\partial \alpha} \ln p(\alpha) = 0
+\]</div>
+<p>To proceed further, the form of the signal and the a priori pdf <span class="math notranslate nohighlight">\( p(\alpha) \)</span> (if <span class="math notranslate nohighlight">\( \alpha \)</span> is random) must be known.</p>
+</section>
+<section id="ml-estimation">
+<h2>ML Estimation<a class="headerlink" href="#ml-estimation" title="Link to this heading">#</a></h2>
+<p>An ML estimate can be obtained by finding the maximum of <span class="math notranslate nohighlight">\( p(\vec{y}|\alpha) \)</span> given <span class="math notranslate nohighlight">\(p(\alpha)\)</span> is unknown.</p>
+<p>Thus, the ML estimate results by finding the solution to</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k (y_i - s_i(\alpha)) \frac{\partial s_i(\alpha)}{\partial \alpha} = 0
+\]</div>
+</section>
+<section id="mse-estimation">
+<h2>MSE Estimation<a class="headerlink" href="#mse-estimation" title="Link to this heading">#</a></h2>
+<p>An MSE estimate can be obtained by computing</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\alpha}_{\rm MSE} = \int_{-\infty}^{\infty} \alpha p(\alpha | \vec{y}) d\alpha
+\]</div>
+<p>where the pdf <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span> is determined by Bayes’ rule, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha | \vec{y}) = \frac{p(\vec{y}|\alpha) p(\alpha)}{p(\vec{y})}
+\]</div>
+<p>From the condition probability (the A Posteriori), we have</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha | \vec{y}) = \kappa p(\alpha) \exp \left( -\frac{1}{2\sigma^2} \sum_{i=1}^k (y_i - s_i(\alpha))^2 \right)
+\]</div>
+<p>where the constant</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa \triangleq \frac{1}{(2\pi\sigma^2)^{k/2} p(\vec{y})}
+\]</div>
+<p>is independent of the parameter <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
+<p>Continuous versions of these results can be obtained by utilizing the procedure outlined in Chapter 5 (e.g., multiply with <span class="math notranslate nohighlight">\(\Delta t\)</span>).</p>
+<p>For example, the MAP estimate above can be expressed in continuous form by</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\sigma^2} \int_0^T [y(t) - s(t, \alpha)] \frac{\partial s(t, \alpha)}{\partial \alpha} \, dt + \frac{\partial}{\partial \alpha} \ln p(\alpha) = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( T \)</span> is the measurement interval.</p>
+</section>
+<section id="minimum-variance">
+<h2>Minimum Variance<a class="headerlink" href="#minimum-variance" title="Link to this heading">#</a></h2>
+<p>We use the <strong>Cramér-Rao bound (CRB)</strong> to compute the <strong>minimum variance</strong> of an unbiased estimator <span class="math notranslate nohighlight">\( \hat{\alpha} \)</span>.</p>
+<p>We have the log-likelihood is:</p>
+<div class="math notranslate nohighlight">
+\[
+\ln p(\vec{y}|\alpha) = -\frac{k}{2} \ln 2\pi \sigma^2 - \frac{1}{2\sigma^2} \sum_{i=1}^k (y_i - s_i(\alpha))^2
+\]</div>
+<p><strong>Score Function</strong></p>
+<p>The score function is the derivative of the log-likelihood with respect to the parameter <span class="math notranslate nohighlight">\( \alpha \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial \alpha} \ln p(\vec{y}|\alpha) = \frac{1}{\sigma^2} \sum_{i=1}^k (y_i - s_i(\alpha)) \frac{\partial s_i(\alpha)}{\partial \alpha}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \frac{\partial s_i(\alpha)}{\partial \alpha} \)</span>: Sensitivity of the model output <span class="math notranslate nohighlight">\( s_i \)</span> to changes in the parameter <span class="math notranslate nohighlight">\( \alpha \)</span>.</p></li>
+<li><p>The term <span class="math notranslate nohighlight">\( (y_i - s_i(\alpha)) \)</span> captures the residual between the observed data and the model prediction.</p></li>
+</ul>
+<p><strong>Fisher Information</strong></p>
+<p>The <strong>Fisher information</strong> is computed as the expectation of the square of the score function:</p>
+<div class="math notranslate nohighlight">
+\[
+E \left\{ \left[ \frac{\partial}{\partial \alpha} \ln p(\vec{y}|\alpha) \right]^2 \right\}
+\]</div>
+<p>Substituting the score function:</p>
+<div class="math notranslate nohighlight">
+\[
+E \left\{ \left[ \frac{\partial}{\partial \alpha} \ln p(\vec{y}|\alpha) \right]^2 \right\} = \frac{1}{\sigma^4} \sum_{i=1}^k \sum_{j=1}^k E[n_i n_j] \frac{\partial s_i(\alpha)}{\partial \alpha} \frac{\partial s_j(\alpha)}{\partial \alpha}
+\]</div>
+<p>For <strong>white Gaussian noise</strong>, <span class="math notranslate nohighlight">\( E[n_i n_j] = \sigma^2 \delta_{ij} \)</span> (where <span class="math notranslate nohighlight">\( \delta_{ij} \)</span> is 1 if <span class="math notranslate nohighlight">\( i = j \)</span>, and 0 otherwise). This simplifies the double sum to:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{I}(\alpha) = \frac{1}{\sigma^2} \sum_{i=1}^k \left( \frac{\partial s_i(\alpha)}{\partial \alpha} \right)^2
+\]</div>
+<p><strong>Cramér-Rao Bound</strong></p>
+<p>The second derivative of the log-likelihood function <span class="math notranslate nohighlight">\( \ln p(\vec{y}; \alpha) \)</span> with respect to <span class="math notranslate nohighlight">\( \alpha \)</span> is related to the <strong>curvature</strong> of the log-likelihood function.</p>
+<p>This is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^2}{\partial \alpha^2} \ln p(\vec{y}; \alpha)
+\]</div>
+<p>The log-likelihood function generally has a <strong>maximum</strong> at the true parameter value <span class="math notranslate nohighlight">\( \alpha \)</span>, because it represents the parameter value that maximizes the probability of observing the data <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p>Near the maximum, the log-likelihood curve bends downwards, which means the second derivative is negative.</p>
+<p>Thus, The Fisher information is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{I}(\alpha) = - E\left\{\frac{\partial^2}{\partial \alpha^2} \ln p(\vec{y}; \alpha)\right\}
+\]</div>
+<p>Here, the negative sign ensures that the Fisher information is <strong>positive</strong>, as the expected value of the second derivative is typically negative.</p>
+<p>The variance of an unbiased estimator satisfies the inequality:</p>
+<div class="math notranslate nohighlight">
+\[
+V(\hat{\alpha}) \geq \frac{1}{\mathcal{I}(\alpha)}
+\]</div>
+<p>where the Fisher information <span class="math notranslate nohighlight">\( \mathcal{I}(\alpha) \)</span> is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{I}(\alpha) = -E\left\{\frac{\partial^2}{\partial \alpha^2} \ln p(\vec{y}; \alpha)\right\}
+\]</div>
+<p>Substituting this into the CRB inequality leads to:</p>
+<div class="math notranslate nohighlight">
+\[
+V(\hat{\alpha}) \geq \frac{1}{-E\left\{\frac{\partial^2}{\partial \alpha^2} \ln p(\vec{y}; \alpha)\right\}}
+\]</div>
+<p>which is defined in Chapper 3.</p>
+<p><strong>Back to our problem</strong></p>
+<p>Substituting <span class="math notranslate nohighlight">\( \mathcal{I}(\alpha) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\hat{\alpha}) \geq \frac{\sigma^2}{\sum_{i=1}^k \left( \frac{\partial s_i(\alpha)}{\partial \alpha} \right)^2}
+\]</div>
+<p>The <strong>minimum variance</strong> for any unbiased estimator <span class="math notranslate nohighlight">\( \hat{\alpha} \)</span>, denoted <span class="math notranslate nohighlight">\( \sigma^2_{\text{min}}(\hat{\alpha}) \)</span>, is therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2_{\text{min}}(\hat{\alpha}) = \frac{\sigma^2}{\sum_{i=1}^k \left( \frac{\partial s_i(\alpha)}{\partial \alpha} \right)^2}
+\]</div>
+<p><strong>Continuous Case</strong></p>
+<p>If the data is continuous over time rather than discrete, the summation is replaced by an integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2_{\text{min}}(\hat{\alpha}) = \frac{\sigma^2}{\int_0^T \left( \frac{\partial s(t, \alpha)}{\partial \alpha} \right)^2 dt}
+\]</div>
+<p>This generalizes the result to cases where <span class="math notranslate nohighlight">\( s(t, \alpha) \)</span> is a continuous signal.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c7_s0_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 7: Estimation of Specific Parameters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c7_s2_amplitude_coherent_estimation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Amplitude Estimation in the Coherent Case with AWGN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-estimation">MAP Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-estimation">ML Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-estimation">MSE Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance">Minimum Variance</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

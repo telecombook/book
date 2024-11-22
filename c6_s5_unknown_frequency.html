@@ -63,6 +63,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unknown Delay" href="c6_s6_unknown_delay.html" />
     <link rel="prev" title="Unknown Amplitude" href="c6_s4_unknown_amplitude.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -289,6 +290,17 @@
 <li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Chapter 7: Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
 </ul>
 </details></li>
 </ul>
@@ -392,7 +404,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-density-functions">Conditional Density Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probabilites">Conditional Probabilites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-frequency-known-amplitude">Unknown Frequency, Known Amplitude</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approximated-likelihood-ratio">Approximated Likelihood Ratio</a></li>
@@ -415,23 +427,24 @@ document.write(`
                   
   <section id="unknown-frequency">
 <h1>Unknown Frequency<a class="headerlink" href="#unknown-frequency" title="Link to this heading">#</a></h1>
-<p>Since we are dealing, in this section, with an unknown frequency, it is easily assumed that the phase is also unknown.</p>
-<p>Furthermore, for the sake of simplicity, we will assume the following conditions about the unknown frequency random variable <span class="math notranslate nohighlight">\( f_d \)</span>:</p>
-<ol class="arabic">
-<li><p><span class="math notranslate nohighlight">\( f_d \)</span> is either present under <em>both</em> hypotheses.</p>
-<p>From this, we can infer that a single transmitter sends a signal corresponding to one of the two hypotheses.</p>
-<p><span class="math notranslate nohighlight">\( f_d \)</span> represents a Doppler shift and/or a frequency offset between the transmitter and receiver.</p>
+<p>In this section, we address the scenario where the frequency is unknown.</p>
+<p>Typically, this implies that the phase is also unknown.</p>
+<p>For simplicity, we make the following assumptions about the random variable representing the unknown frequency, <span class="math notranslate nohighlight">\( f_d \)</span>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( f_d \)</span> is present under both hypotheses.</p>
+<p>This implies that a single transmitter emits a signal corresponding to one of the two hypotheses.</p>
+<p>Here, <span class="math notranslate nohighlight">\( f_d \)</span> represents a Doppler shift or a frequency offset between the transmitter and receiver.</p>
 </li>
-<li><p>or <span class="math notranslate nohighlight">\( f_d \)</span> is present under <em>one</em> hypothesis and the other hypothesis represents noise only,</p></li>
-<li><p>and <span class="math notranslate nohighlight">\( f_d \)</span> is constant for the entire measurement interval <span class="math notranslate nohighlight">\( T \)</span>.</p></li>
-</ol>
-<p>These assumptions can be relaxed, but only at the cost of a significant increase in complexity.</p>
+<li><p><span class="math notranslate nohighlight">\( f_d \)</span> is present under one hypothesis, while the other hypothesis corresponds to noise only.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_d \)</span> remains constant throughout the entire measurement interval <span class="math notranslate nohighlight">\( T \)</span>.</p></li>
+</ul>
+<p>While these assumptions simplify the analysis, relaxing them would result in significantly increased complexity.</p>
 <section id="signal-modelling">
 <h2>Signal Modelling<a class="headerlink" href="#signal-modelling" title="Link to this heading">#</a></h2>
 <p>Using these assumptions, if we have <span class="math notranslate nohighlight">\( k \)</span> samples over the duration <span class="math notranslate nohighlight">\( T \)</span>, the <span class="math notranslate nohighlight">\( j \)</span>-th sample under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-y_j = \alpha a_i(t_j) e^{j 2\pi (f_i + f_d)t_j + \phi_i(t_j) + \beta_i} + z_j, \quad i = 0, 1, \quad j = 1, \dots, k
+y_j = \alpha a_i(t_j) e^{j[ 2\pi (f_i + f_d)t_j + \phi_i(t_j) + \beta_i]} + z_j, \quad i = 0, 1, \quad j = 1, \dots, k
 \]</div>
 <p>where</p>
 <ul class="simple">
@@ -449,7 +462,7 @@ y_j = \alpha a_i(t_j) e^{j 2\pi (f_i + f_d)t_j + \phi_i(t_j) + \beta_i} + z_j, \
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{u}_i = \{ u_{i1}, u_{i2}, \dots, u_{ik} \}^T = \{ a_i(t_j) e^{j 2\pi f_i t_j + \phi_i(t_j)} \}^T
+\vec{u}_i = \{ u_{i1}, u_{i2}, \dots, u_{ik} \}^T = \{ a_i(t_j) e^{j [2\pi f_i t_j + \phi_i(t_j)]} \}^T
 \]</div>
 <p>represents the components corresponding to the known frequency <span class="math notranslate nohighlight">\( f_i \)</span> and</p>
 <div class="math notranslate nohighlight">
@@ -459,8 +472,8 @@ y_j = \alpha a_i(t_j) e^{j 2\pi (f_i + f_d)t_j + \phi_i(t_j) + \beta_i} + z_j, \
 <p>corresponds to the unknown frequency random variable <span class="math notranslate nohighlight">\( f_d \)</span>.</p>
 <p>Both <span class="math notranslate nohighlight">\( \vec{u}_i \)</span> and <span class="math notranslate nohighlight">\( \vec{v} \)</span> are column vectors.</p>
 </section>
-<section id="conditional-density-functions">
-<h2>Conditional Density Functions<a class="headerlink" href="#conditional-density-functions" title="Link to this heading">#</a></h2>
+<section id="conditional-probabilites">
+<h2>Conditional Probabilites<a class="headerlink" href="#conditional-probabilites" title="Link to this heading">#</a></h2>
 <p>If the noise is zero mean and white with a correlation matrix of <span class="math notranslate nohighlight">\( \sigma_z^2 I \)</span>, the conditional density functions are</p>
 <div class="math notranslate nohighlight">
 \[
@@ -472,7 +485,7 @@ p_i(\vec{y}|\alpha, \beta_i, f_d) = \frac{1}{(2\pi \sigma_z^2)^k} \exp \left( -\
 \begin{align*}
 p_i(\vec{y}|\alpha, \beta_i, f_d) 
 &amp;= \frac{1}{(2\pi \sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
-&amp;\times \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij} v_j^* \right| \cos(\beta_i - \xi_i) \right) \\
+&amp;\times \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* v_j^* \right| \cos(\beta_i - \xi_i) \right) \\
 &amp;\times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij} v_j|^2 \right), \quad i = 0, 1
 \end{align*}
 \end{split}\]</div>
@@ -486,7 +499,8 @@ p_i(\vec{y}|\alpha, \beta_i, f_d)
 \[
 |v_j|^2 = (e^{j 2\pi f_d t_j})(e^{-j 2\pi f_d t_j}) = 1
 \]</div>
-<p>it follows that the last term is</p>
+<p>Note that <span class="math notranslate nohighlight">\(v_j^* = e^{-j 2\pi f_d t_j}\)</span>.</p>
+<p>It follows that the last term is</p>
 <div class="math notranslate nohighlight">
 \[
 \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) = \exp \left( -\frac{\alpha^2 \mathcal{E}_i}{\sigma_z^2} \right)
@@ -506,7 +520,8 @@ p_i(\vec{y}|\alpha, f_d)
 </section>
 <section id="likelihood-ratio">
 <h2>Likelihood Ratio<a class="headerlink" href="#likelihood-ratio" title="Link to this heading">#</a></h2>
-<p>The first two terms have no effect on the decision; the conditional likelihood ratio is</p>
+<p>The first two terms have no effect on the decision.</p>
+<p>Thus, the conditional likelihood ratio is</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
@@ -543,9 +558,12 @@ L_1(\vec{y}|f_d) = \frac{I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^
 <p>Assume that <span class="math notranslate nohighlight">\( f_d \)</span> is known to be in the interval <span class="math notranslate nohighlight">\( f_l \leq f_d \leq f_u \)</span>; that is, usually the physics of the problem allows us to estimate the maximum and minimum Doppler and frequency offsets.</p>
 <p>If the received frequency shift <span class="math notranslate nohighlight">\( f_m \)</span> occurs with probability <span class="math notranslate nohighlight">\( P(f_m) \)</span>, then the integral above can be approximated by a sum</p>
 <div class="math notranslate nohighlight">
-\[
-\int_{f_l}^{f_u} I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_j^* \right) p(f_d) \, df_d \approx \sum_{m=1}^M I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_{jm}^* \right) P(f_m)
-\]</div>
+\[\begin{split}
+\begin{align*}
+&amp;\quad \int_{f_l}^{f_u} I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_j^* \right) p(f_d) \, df_d \\
+&amp;\approx \sum_{m=1}^M I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_{jm}^* \right) P(f_m)
+\end{align*}
+\end{split}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -572,7 +590,7 @@ v_{jm}^* = e^{-j 2\pi f_m t_j}
 <p>Specifically, we will assume that the transmitted signal energies <span class="math notranslate nohighlight">\( \mathcal{E}_1 \)</span> and <span class="math notranslate nohighlight">\( \mathcal{E}_0 \)</span> are identical and that the amplitude density function is Rician with pdf</p>
 <div class="math notranslate nohighlight">
 \[
-p(\alpha) = \frac{\alpha}{\sigma_r^2} \exp \left( -\frac{\alpha^2 + \kappa^2}{2 \sigma_r^2} \right) I_0 \left( \frac{\alpha \kappa}{\sigma_r^2} \right)
+p(\alpha) = \frac{\alpha}{\sigma_r^2} \exp \left( -\frac{\alpha^2 + \Upsilon^2}{2 \sigma_r^2} \right) I_0 \left( \frac{\alpha \Upsilon}{\sigma_r^2} \right)
 \]</div>
 <p>Then we can average <span class="math notranslate nohighlight">\(p_i(\vec{y}|\alpha, f_d)\)</span> using the density function <span class="math notranslate nohighlight">\(p(\alpha)\)</span> and using the relationship (as we did previously)</p>
 <div class="math notranslate nohighlight">
@@ -584,7 +602,7 @@ p(\alpha) = \frac{\alpha}{\sigma_r^2} \exp \left( -\frac{\alpha^2 + \kappa^2}{2 
 \[\begin{split}
 \begin{align*}
 p_i(\vec{y}|f_d) 
-&amp;= \frac{1}{(2\pi \sigma_z^2)^k \sigma_r^2} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \exp \left( -\frac{\kappa^2}{2\sigma_r^2} \right) \\
+&amp;= \frac{1}{(2\pi \sigma_z^2)^k \sigma_r^2} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \exp \left( -\frac{\Upsilon^2}{2\sigma_r^2} \right) \\
 &amp;\times \frac{1}{2c} \exp \left( \frac{\tilde{g}_i^2 + e^2}{4c} \right) I_0 \left( \frac{e}{2c} \tilde{g}_i \right)
 \end{align*}
 \end{split}\]</div>
@@ -601,7 +619,7 @@ c = \frac{\mathcal{E}}{\sigma_z^2} + \frac{1}{2\sigma_r^2}
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-e = \frac{\kappa}{\sigma_r^2}
+e = \frac{\Upsilon}{\sigma_r^2}
 \]</div>
 <p>This allows the unconditional likelihood function to be written as</p>
 <div class="math notranslate nohighlight">
@@ -612,9 +630,12 @@ L(\vec{y}) = \frac{\int \exp \left( \frac{1}{4c} \tilde{g}_1^2 \right) I_0 \left
 <p>Using a similar approximation method, i.e.:</p>
 <p>If the received frequency shift <span class="math notranslate nohighlight">\( f_m \)</span> occurs with probability <span class="math notranslate nohighlight">\( P(f_m) \)</span>, then the integral above can be approximated by a sum</p>
 <div class="math notranslate nohighlight">
-\[
-\int_{f_l}^{f_u} I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_j^* \right) p(f_d) \, df_d \approx \sum_{m=1}^M I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_{jm}^* \right) P(f_m)
-\]</div>
+\[\begin{split}
+\begin{align*}
+&amp;\quad \int_{f_l}^{f_u} I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_j^* \right) p(f_d) \, df_d \\
+&amp;\approx \sum_{m=1}^M I_0 \left( \frac{\alpha}{\sigma_z^2} \sum_{j=1}^k y_j u_{ij}^* v_{jm}^* \right) P(f_m)
+\end{align*}
+\end{split}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -674,6 +695,15 @@ v_{jm}^* = e^{-j 2\pi f_m t_j}
         <p class="prev-next-title">Unknown Amplitude</p>
       </div>
     </a>
+    <a class="right-next"
+       href="c6_s6_unknown_delay.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unknown Delay</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -691,7 +721,7 @@ v_{jm}^* = e^{-j 2\pi f_m t_j}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-density-functions">Conditional Density Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probabilites">Conditional Probabilites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-frequency-known-amplitude">Unknown Frequency, Known Amplitude</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approximated-likelihood-ratio">Approximated Likelihood Ratio</a></li>

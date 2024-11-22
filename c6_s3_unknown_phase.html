@@ -290,6 +290,17 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Unknown Phase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Chapter 7: Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
 </ul>
 </details></li>
 </ul>
@@ -396,14 +407,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-representation-with-random-phase">Signal Representation with Random Phase</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-density-functions">Conditional Density Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probabilities">Conditional Probabilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution-for-beta-i">Uniform Distribution for <span class="math notranslate nohighlight">\( \beta_i \)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-in-terms-of-bessel-function">Expressing in Terms of Bessel function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modified-bessel-function-i-0-x">The Modified Bessel Function <span class="math notranslate nohighlight">\( I_0(x) \)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihook-ratio">Likelihook Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio-llr">Log-Likelihood Ratio (LLR)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-variable-u-i">Decision Variable <span class="math notranslate nohighlight">\( U_i \)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule-based-on-llr">Decision Rule Based on LLR</a></li>
@@ -480,12 +489,12 @@ document.write(`
 <p>Since we are focusing on a random phase, the received signal</p>
 <div class="math notranslate nohighlight">
 \[
-y(t) = \alpha a_i(t - t_0) e^{j \left( 2 \pi (f_i + f_d)(t - t_0) + \phi_i(t - t_0) + \beta \right)} + z(t),
+y(t) = \alpha a_i(t - t_0) e^{j \left[ 2 \pi (f_i + f_d)(t - t_0) + \phi_i(t - t_0) + \beta \right]} + z(t),
 \]</div>
 <p>can be re-expressed as</p>
 <div class="math notranslate nohighlight">
 \[
-y(t) = \alpha a_i(t - t_0)e^{j2\pi(f_i+f_d)(t-t_0)+\phi_i(t-t_0)+\beta_i)} + z(t)
+y(t) = \alpha a_i(t - t_0)e^{j[2\pi(f_i+f_d)(t-t_0)+\phi_i(t-t_0)+\beta_i]} + z(t)
 \]</div>
 <p>where</p>
 <ul class="simple">
@@ -539,37 +548,6 @@ u_{ij} = a_i(t_j)e^{j(2\pi f_i t_j + \phi_i(t_j))}
 </ul>
 </section>
 </section>
-<section id="conditional-density-functions">
-<h2>Conditional Density Functions<a class="headerlink" href="#conditional-density-functions" title="Link to this heading">#</a></h2>
-<p>If the noise is zero mean and white, with a correlation matrix of <span class="math notranslate nohighlight">\( \sigma_z^2 I \)</span>, where <span class="math notranslate nohighlight">\( I \)</span> is a <span class="math notranslate nohighlight">\( k \times k \)</span> identity matrix.</p>
-<p>Recall that <span class="math notranslate nohighlight">\(\sigma_z^2 = 2 \sigma^2\)</span>.</p>
-<p>The conditional density functions are</p>
-<div class="math notranslate nohighlight">
-\[
-p_0(\vec{y}|\beta_0) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} [\vec{y} - \alpha \vec{u}_0 e^{j\beta_0}]^T [\vec{y}^* - \alpha \vec{u}_0^* e^{-j\beta_0}] \right)
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[
-p_1(\vec{y}|\beta_1) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} [\vec{y} - \alpha \vec{u}_1 e^{j\beta_1}]^T [\vec{y}^* - \alpha \vec{u}_1^* e^{-j\beta_1}] \right)
-\]</div>
-<p>Each of which can be written as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boxed{
-\begin{align*}
-p_i(\vec{y} | \beta_i) &amp;= \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
-&amp;\qquad\times \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) \\
-&amp;\qquad\times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right), \quad i = 0, 1
-\end{align*}
-}
-\end{split}\]</div>
-<p>where</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \left| \sum_{j=1}^k y_j u_{ij}^* \right| \)</span> is the magnitude</p></li>
-<li><p><span class="math notranslate nohighlight">\( \xi_i \)</span> is the phase of the dot product of <span class="math notranslate nohighlight">\( \vec{y} \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_i^* \)</span>.</p></li>
-</ul>
-</section>
 <section id="conditional-probabilities">
 <h2>Conditional Probabilities<a class="headerlink" href="#conditional-probabilities" title="Link to this heading">#</a></h2>
 <p>We aim to derive the conditional probability density functions (pdfs) of the received signal vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> under two different hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
@@ -614,8 +592,11 @@ p_1(\vec{y}|\beta_1) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigm
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-(\vec{y} - \alpha \vec{u}_i e^{j \beta_i})^H (\vec{y} - \alpha \vec{u}_i e^{j \beta_i}) &amp;= \vec{y}^H \vec{y} - \alpha e^{-j \beta_i} \vec{y}^H \vec{u}_i - \alpha e^{j \beta_i} \vec{u}_i^H \vec{y} + \alpha^2 \vec{u}_i^H \vec{u}_i \\
-&amp;= \sum_{j=1}^k |y_j|^2 - \alpha e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} - \alpha e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j + \alpha^2 \sum_{j=1}^k |u_{ij}|^2
+(\vec{y} - \alpha \vec{u}_i e^{j \beta_i})^H (\vec{y} - \alpha \vec{u}_i e^{j \beta_i}) 
+&amp;= \vec{y}^H \vec{y} - \alpha e^{-j \beta_i} \vec{y}^H \vec{u}_i \\
+&amp;\quad- \alpha e^{j \beta_i} \vec{u}_i^H \vec{y} + \alpha^2 \vec{u}_i^H \vec{u}_i \\
+&amp;= \sum_{j=1}^k |y_j|^2 - \alpha e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} \\
+&amp;\quad- \alpha e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j + \alpha^2 \sum_{j=1}^k |u_{ij}|^2
 \end{align*}
 \end{split}\]</div>
 <p>where</p>
@@ -626,9 +607,14 @@ p_1(\vec{y}|\beta_1) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigm
 </ul>
 <p>Substituting the expanded norm back into the conditional pdf:</p>
 <div class="math notranslate nohighlight">
-\[
-p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} \exp\left( -\frac{1}{2 \sigma_z^2} \left[ \sum_{j=1}^k |y_j|^2 - \alpha e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} - \alpha e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j + \alpha^2 \sum_{j=1}^k |u_{ij}|^2 \right] \right)
-\]</div>
+\[\begin{split}
+\begin{align*}
+p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} \exp\bigg( -\frac{1}{2 \sigma_z^2} \bigg[ &amp;\sum_{j=1}^k |y_j|^2 \\
+&amp;- \alpha e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} \\
+&amp;- \alpha e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j \\
+&amp;+ \alpha^2 \sum_{j=1}^k |u_{ij}|^2 \bigg] \bigg)
+\end{align*}
+\end{split}\]</div>
 <p><strong>Simplifying the Exponential Term</strong></p>
 <p>We can rearrange the terms inside the exponential to separate the components that depend on <span class="math notranslate nohighlight">\( \beta_i \)</span> from those that don’t:</p>
 <div class="math notranslate nohighlight">
@@ -670,9 +656,9 @@ p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} \exp\left( -\frac{1}{2 \s
 \[\begin{split}
 \boxed{
 \begin{align*}
-p_i(\vec{y} | \beta_i) &amp;= \frac{1}{(2\pi \sigma_z^2)^k} \exp\left( -\frac{1}{2 \sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
-&amp;\quad \times \exp\left( \frac{\alpha}{\sigma_z^2} R_i \cos(\beta_i - \xi_i) \right) \\
-&amp;\quad \times \exp\left( -\frac{\alpha^2}{2 \sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right)
+p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} &amp;\exp\left( -\frac{1}{2 \sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp\left( \frac{\alpha}{\sigma_z^2} R_i \cos(\beta_i - \xi_i) \right) \\
+\times &amp;\exp\left( -\frac{\alpha^2}{2 \sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right)
 \end{align*}
 }
 \end{split}\]</div>
@@ -681,13 +667,13 @@ p_i(\vec{y} | \beta_i) &amp;= \frac{1}{(2\pi \sigma_z^2)^k} \exp\left( -\frac{1}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-p_0(\vec{y}|\beta_0) &amp;= \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
-&amp;\quad \times \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \cos(\beta_0 - \xi_0) \right) \\
-&amp;\quad \times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2 \right) \\
+p_0(\vec{y}|\beta_0) = \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \cos(\beta_0 - \xi_0) \right) \\
+\times &amp;\exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2 \right) \\
 \\
-p_1(\vec{y}|\beta_1) &amp;= \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
-&amp;\quad \times \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \cos(\beta_1 - \xi_1) \right) \\
-&amp;\quad \times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2 \right)
+p_1(\vec{y}|\beta_1) = \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \cos(\beta_1 - \xi_1) \right) \\
+\times &amp;\exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2 \right)
 \end{align*}
 \end{split}\]</div>
 <p>where:</p>
@@ -738,9 +724,9 @@ p_i(\vec{y}) = \frac{1}{2\pi} \int_{0}^{2\pi} p_i(\vec{y} | \beta_i) \, d\beta_i
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-p_i(\vec{y}) &amp;= \frac{1}{2\pi} \int_{0}^{2\pi} \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
-&amp;\quad \times \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) \\
-&amp;\quad \times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) d\beta_i
+p_i(\vec{y}) = \frac{1}{2\pi} \int_{0}^{2\pi} \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) \\
+\times &amp;\exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) d\beta_i
 \end{align*}
 \end{split}\]</div>
 <p>Observe that several terms inside the integral do not depend on <span class="math notranslate nohighlight">\( \beta_i \)</span>, which can be factored out:</p>
@@ -818,24 +804,6 @@ I_0(x) = \frac{1}{2\pi} \int_{0}^{2\pi} e^{x \cos(\theta)} \, d\theta
 </li>
 </ul>
 </section>
-</section>
-<section id="likelihook-ratio">
-<h2>Likelihook Ratio<a class="headerlink" href="#likelihook-ratio" title="Link to this heading">#</a></h2>
-<p>From these density functions, the log-likelihood ratio is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\ell(\vec{y}) &amp;= \ln L(\vec{y}) \\
-&amp;= \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \right) - \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \right) \\
-&amp;\qquad- \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2  + \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2 \\
-&amp;= U_1 - U_0
-\end{align*}
-\end{split}\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[
-U_i = \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) - \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2, \quad i = 0, 1
-\]</div>
 </section>
 <section id="log-likelihood-ratio-llr">
 <h2>Log-Likelihood Ratio (LLR)<a class="headerlink" href="#log-likelihood-ratio-llr" title="Link to this heading">#</a></h2>
@@ -1765,14 +1733,12 @@ SNR: 9 dB | Theoretical P_E: 0.000214 | Empirical P_E: 0.000328
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-representation-with-random-phase">Signal Representation with Random Phase</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-density-functions">Conditional Density Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probabilities">Conditional Probabilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution-for-beta-i">Uniform Distribution for <span class="math notranslate nohighlight">\( \beta_i \)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-in-terms-of-bessel-function">Expressing in Terms of Bessel function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modified-bessel-function-i-0-x">The Modified Bessel Function <span class="math notranslate nohighlight">\( I_0(x) \)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihook-ratio">Likelihook Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio-llr">Log-Likelihood Ratio (LLR)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-variable-u-i">Decision Variable <span class="math notranslate nohighlight">\( U_i \)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule-based-on-llr">Decision Rule Based on LLR</a></li>
