@@ -554,7 +554,9 @@ A_{\alpha}^{-1} =
 <p>From which it follows that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-H^TR_n^{-1} = 
+\begin{align*}
+H^TR_n^{-1} 
+&amp;= 
 \begin{bmatrix} 
 1 &amp; 1 \\ 
 0 &amp; 1 \\ 
@@ -564,16 +566,20 @@ H^TR_n^{-1} =
 1 &amp; -1 \\ 
 -1 &amp; 2 
 \end{bmatrix}
-=
+\\
+&amp;=
 \begin{bmatrix} 
 0 &amp; 1 \\ 
 -1 &amp; 2 \\ 
 1 &amp; -1 
-\end{bmatrix},
+\end{bmatrix}
+\end{align*}
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A_{\alpha}^{-1} \vec{\mu}_{\alpha} = 
+\begin{align*}
+A_{\alpha}^{-1} \vec{\mu}_{\alpha} 
+&amp;= 
 \begin{bmatrix} 
 1 &amp; -1 &amp; 1 \\ 
 -1 &amp; 2 &amp; -2 \\ 
@@ -584,16 +590,20 @@ A_{\alpha}^{-1} \vec{\mu}_{\alpha} =
 0 \\ 
 0 
 \end{bmatrix}
-=
+\\
+&amp;=
 \begin{bmatrix} 
 1 \\ 
 -1 \\ 
 1 
-\end{bmatrix}.
+\end{bmatrix}
+\end{align*}
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-H^TR_n^{-1}H + A_{\alpha}^{-1} =
+\begin{align*}
+H^TR_n^{-1}H + A_{\alpha}^{-1} 
+&amp;=
 \begin{bmatrix} 
 0 &amp; 1 \\ 
 -1 &amp; 2 \\ 
@@ -602,19 +612,22 @@ H^TR_n^{-1}H + A_{\alpha}^{-1} =
 \begin{bmatrix} 
 1 &amp; 0 &amp; 1 \\ 
 1 &amp; 1 &amp; 0 
-\end{bmatrix}
-+
+\end{bmatrix} 
+\\
+&amp;\quad+
 \begin{bmatrix} 
 1 &amp; -1 &amp; 1 \\ 
 -1 &amp; 2 &amp; -2 \\ 
 1 &amp; -2 &amp; 3 
 \end{bmatrix}
-=
+\\
+&amp;=
 \begin{bmatrix} 
 2 &amp; 0 &amp; 1 \\ 
 0 &amp; 4 &amp; -3 \\ 
 1 &amp; -3 &amp; 4 
-\end{bmatrix}.
+\end{bmatrix}
+\end{align*}
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -629,7 +642,9 @@ H^TR_n^{-1}H + A_{\alpha}^{-1} =
 <p>From Eq. (12.46) and the previous relationships, the MAP estimate is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\hat{\vec{\alpha}}_{MAP} = \frac{1}{10} 
+\begin{align*}
+\hat{\vec{\alpha}}_{MAP} 
+&amp;= \frac{1}{10} 
 \begin{bmatrix} 
 7 &amp; -3 &amp; -4 \\ 
 -3 &amp; 7 &amp; 6 \\ 
@@ -643,8 +658,9 @@ H^TR_n^{-1}H + A_{\alpha}^{-1} =
 \begin{bmatrix} 
 y_1 \\ 
 y_2 
-\end{bmatrix}
-+ 
+\end{bmatrix} 
+\\
+&amp;+ 
 \frac{1}{10} 
 \begin{bmatrix} 
 7 &amp; -3 &amp; -4 \\ 
@@ -655,7 +671,8 @@ y_2
 1 \\ 
 -1 \\ 
 1 
-\end{bmatrix}.
+\end{bmatrix}
+\end{align*}
 \end{split}\]</div>
 <p>or</p>
 <div class="math notranslate nohighlight">
@@ -882,9 +899,9 @@ A_alpha =
  [0 1 1]]
 
 MAP Estimator Results (Mean ± Std Dev):
-alpha1_est = 1.1163 ± 1.1331
-alpha2_est = 0.1163 ± 1.1331
-alpha3_est = 0.0418 ± 0.4448
+alpha1_est = 0.9594 ± 0.8941
+alpha2_est = -0.0406 ± 0.8941
+alpha3_est = 0.0503 ± 0.4038
 
 Cramér-Rao Bounds (CRB):
 Var(alpha1) &gt;= 0.7000
@@ -892,7 +909,7 @@ Var(alpha2) &gt;= 0.7000
 Var(alpha3) &gt;= 0.8000
 </pre></div>
 </div>
-<img alt="_images/e545b24210c5055b15a3d547136f16ce4e73874c9a8882f560902bed11605d31.png" src="_images/e545b24210c5055b15a3d547136f16ce4e73874c9a8882f560902bed11605d31.png" />
+<img alt="_images/a7fa14ab99ef5f0e6f08a42db7052b81a2a115ded1863749925c422de877bba0.png" src="_images/a7fa14ab99ef5f0e6f08a42db7052b81a2a115ded1863749925c422de877bba0.png" />
 </div>
 </div>
 <div class="cell docutils container">
