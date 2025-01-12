@@ -66,7 +66,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Functions of Random Variables" href="pr_c3_s0_functions_of_RV.html" />
+    <link rel="next" title="Functions of A Random Variable" href="pr_c3_s0_functions_of_RV.html" />
     <link rel="prev" title="Probability Definition" href="pr_c1_s2_probability_definition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -171,7 +171,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Random Variable</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="pr_c2_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="pr_c2_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
@@ -415,9 +415,9 @@
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf"><strong>Probability Density Function (PDF)</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Definition</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-probability-density-function"><strong>Properties of the Probability Density Function</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-probability-density-function">Properties of the Probability Density Function</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-the-probability-density-function-pdf">Probability and the Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
@@ -432,20 +432,28 @@
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-random-variable">Bernoulli Random Variable</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-resources"><strong>Programming Resources</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-random-variable"><strong>Gaussian Random Variable</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-random-variable">Gaussian Random Variable</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Definition</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-of-the-pdf">Key Parameters of the PDF</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-a-gaussian-rv">CDF of A Gaussian RV</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-to-compute-the-cdf"><strong>Approaches to Compute the CDF</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-forms-for-gaussian-cdf-evaluation">Standard Forms for Gaussian CDF Evaluation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-on-q-function">Discussions on <span class="math notranslate nohighlight">\( Q \)</span>-Function</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-standard-forms">Advantages of Standard Forms</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tail-probability">Tail Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level">Significance Level</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level-alpha">Significance Level <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#one-tailed-test">One-Tailed Test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#two-tailed-test">Two-Tailed Test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-value-using-q-function">Critical Value Using Q-Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-specific-alpha">Example of A Specific <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-in-hypothesis-testing">Interpretation in Hypothesis Testing</a></li>
 </ul>
 </li>
 </ul>
@@ -559,7 +567,7 @@ F_X(x_1) \leq F_X(x_2) \quad \text{for } x_1 &lt; x_2
 <p>Consider a random variable <span class="math notranslate nohighlight">\( X \)</span> with the following probability mass function:</p>
 <div class="math notranslate nohighlight">
 \[
-P(X = 2) = 0.5, \quad P(X = 4) = 0.5
+\Pr(X = 2) = 0.5, \quad \Pr(X = 4) = 0.5
 \]</div>
 <p>The corresponding cumulative distribution function <span class="math notranslate nohighlight">\( F_X(x) \)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
@@ -595,7 +603,7 @@ F_X(x_2) = F_X(3.5) = 0.5
 <p>For the earlier example of a discrete random variable with:</p>
 <div class="math notranslate nohighlight">
 \[
-P(X = 2) = 0.5, \quad P(X = 4) = 0.5,
+\Pr(X = 2) = 0.5, \quad \Pr(X = 4) = 0.5,
 \]</div>
 <p>The CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> is:</p>
 <div class="math notranslate nohighlight">
@@ -612,14 +620,14 @@ F_X(x) =
 <li><p>Between <span class="math notranslate nohighlight">\( x \in [2, 4) \)</span>, the CDF remains flat (<span class="math notranslate nohighlight">\( F_X(x) = 0.5 \)</span>).</p></li>
 <li><p>Despite the flat region, <span class="math notranslate nohighlight">\( F_X(x) \)</span> is still non-decreasing, adhering to the definition of monotonicity.</p></li>
 </ul>
-<p>Hence, non-decreasing monotonicity captures both the jumps (due to probability masses) and flat regions (due to absence of probability) in the CDF, making it a more flexible and suitable mathematical description.</p>
+<p>Hence, non-decreasing monotonicity captures both the jumps (due to probability masses) and flat regions (due to absence of probability) in the CDF.</p>
 </section>
 </section>
 </section>
 <section id="probability-density-function-pdf">
-<h3><strong>Probability Density Function (PDF)</strong><a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h3>
+<h3>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h3>
 <section id="id1">
-<h4><strong>Definition</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h4>Definition<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>A <strong>random variable (RV)</strong> <span class="math notranslate nohighlight">\( X \)</span> is classified as <strong>continuous</strong> if its <strong>cumulative distribution function (CDF)</strong>, <span class="math notranslate nohighlight">\( F_X(x) \)</span>, is differentiable with respect to the arbitrary variable <span class="math notranslate nohighlight">\( x \)</span>, for all <span class="math notranslate nohighlight">\( x \)</span>.</p>
 <p>The derivative of the CDF, denoted as <span class="math notranslate nohighlight">\( f_X(x) \)</span>, is called the <strong>probability density function (PDF)</strong> of the RV <span class="math notranslate nohighlight">\( X \)</span>. Mathematically, it is defined as:</p>
 <div class="math notranslate nohighlight">
@@ -629,7 +637,7 @@ f_X(x) = \frac{d}{dx}F_X(x) \quad \text{for all } x
 <p>The PDF provides a way to describe the probability distribution of a continuous random variable in terms of its density.</p>
 </section>
 <section id="properties-of-the-probability-density-function">
-<h4><strong>Properties of the Probability Density Function</strong><a class="headerlink" href="#properties-of-the-probability-density-function" title="Link to this heading">#</a></h4>
+<h4>Properties of the Probability Density Function<a class="headerlink" href="#properties-of-the-probability-density-function" title="Link to this heading">#</a></h4>
 <ol class="arabic">
 <li><p><strong>Nonnegativity</strong>:</p>
 <ul>
@@ -792,9 +800,7 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <li><p>Binary decisions (e.g., yes or no).</p></li>
 <li><p>Success-failure experiments in statistics.</p></li>
 </ul>
-</section>
-<section id="programming-resources">
-<h4><strong>Programming Resources</strong><a class="headerlink" href="#programming-resources" title="Link to this heading">#</a></h4>
+<p><strong>Programming Resources</strong></p>
 <ul class="simple">
 <li><p><strong>MATLAB</strong>: The Bernoulli distribution can be implemented using the function <a class="reference external" href="https://www.mathworks.com/help/stats/bernoulli-distribution.html"><code class="docutils literal notranslate"><span class="pre">binopdf</span></code></a>.</p></li>
 <li><p><strong>Python (SciPy)</strong>: The Bernoulli distribution is available via <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bernoulli.html"><code class="docutils literal notranslate"><span class="pre">scipy.stats.bernoulli</span></code></a>.</p></li>
@@ -821,7 +827,7 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">cdf_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
 
 <span class="c1"># Visualization</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 
 <span class="c1"># Bernoulli events plot (separate plots for empirical and built-in RVs)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -854,7 +860,7 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Empirical CDF plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_rv</span><span class="p">,</span> <span class="n">cdf_y</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
 <span class="n">sorted_builtin_rv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">bernoulli_builtin_rv</span><span class="p">)</span>
 <span class="n">cdf_builtin_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
@@ -868,19 +874,18 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c4899425563f6418ceb11d8797331c196120bd075e31f40cd5cd552a98d9bf72.png" src="_images/c4899425563f6418ceb11d8797331c196120bd075e31f40cd5cd552a98d9bf72.png" />
-<img alt="_images/98ea5a5ca77127c61b1744706ca122444e6f3c0fc9af17657832bae978313bf5.png" src="_images/98ea5a5ca77127c61b1744706ca122444e6f3c0fc9af17657832bae978313bf5.png" />
+<img alt="_images/42a3ac4ea7fc29fcb0a0571dfd91845760c2e0117abbd352fd60eaeed8c14174.png" src="_images/42a3ac4ea7fc29fcb0a0571dfd91845760c2e0117abbd352fd60eaeed8c14174.png" />
+<img alt="_images/8e49b6838ece72813f95cda82654834a422e4a007ba7ed5f3758be8fb9cdb659.png" src="_images/8e49b6838ece72813f95cda82654834a422e4a007ba7ed5f3758be8fb9cdb659.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="gaussian-random-variable">
-<h3><strong>Gaussian Random Variable</strong><a class="headerlink" href="#gaussian-random-variable" title="Link to this heading">#</a></h3>
+<h3>Gaussian Random Variable<a class="headerlink" href="#gaussian-random-variable" title="Link to this heading">#</a></h3>
 <p><strong>Importance of Gaussian Random Variables</strong></p>
 <ul class="simple">
 <li><p><strong>Prevalence in Applications</strong>: The Gaussian random variable (RV) is the most widely used and significant RV in probability and statistics due to its universal applicability in modeling real-world phenomena.</p></li>
@@ -947,9 +952,7 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <li><p><strong>No Closed-Form Solution</strong>: It is <strong>impossible to express this integral in a closed form</strong> using elementary functions.</p></li>
 <li><p>Despite this limitation, the Gaussian CDF remains widely used due to its importance in probability and statistics.</p></li>
 </ul>
-</section>
-<section id="approaches-to-compute-the-cdf">
-<h4><strong>Approaches to Compute the CDF</strong><a class="headerlink" href="#approaches-to-compute-the-cdf" title="Link to this heading">#</a></h4>
+<p><strong>Approaches to Compute the CDF</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Tabulated Values</strong>:</p>
 <ul class="simple">
@@ -971,19 +974,18 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <h4>Standard Forms for Gaussian CDF Evaluation<a class="headerlink" href="#standard-forms-for-gaussian-cdf-evaluation" title="Link to this heading">#</a></h4>
 <p>When calculating the <strong>Cumulative Distribution Function (CDF)</strong> of a Gaussian random variable (RV), it must first be expressed in one of several commonly used <strong>standard forms</strong>.</p>
 <p>These forms simplify computations and are widely used in mathematics and engineering.</p>
-<ol class="arabic">
-<li><p><strong>Error Function (<span class="math notranslate nohighlight">\( \text{erf}(x) \)</span>)</strong>:</p>
+<p><strong>Error Function (<span class="math notranslate nohighlight">\( \text{erf}(x) \)</span>)</strong>:</p>
 <ul>
 <li><p>Defined as twice the integral of a normalized Gaussian function from 0 to <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
 <li><p>Expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-     \text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} \exp(-t^2) \, dt, \quad x \geq 0, \, \text{erf}(x) \in [0,1].
-     \]</div>
+    \text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} \exp(-t^2) \, dt, \quad x \geq 0, \, \text{erf}(x) \in [0,1].
+    \]</div>
 </li>
 <li><p>The substitution <span class="math notranslate nohighlight">\( t = \frac{x}{\sqrt{2}\sigma} \)</span> relates it to Gaussian probabilities.</p></li>
 </ul>
-</li>
+<ol class="arabic" start="2">
 <li><p><strong>Complementary Error Function (<span class="math notranslate nohighlight">\( \text{erfc}(x) \)</span>)</strong>:</p>
 <ul>
 <li><p>Defined as:</p>
@@ -1109,15 +1111,14 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e4f685dde7350c0fc951c7cb8f34bdbaa819291d38a19b595a06978ac5b48b0.png" src="_images/0e4f685dde7350c0fc951c7cb8f34bdbaa819291d38a19b595a06978ac5b48b0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices where Gaussian RV &gt; 3: [ 493  901 1883 2783 3074 3305 3611 3671 3797 4174 4380 4633 4764 4942
- 5047 5445 5678 7415 8235 8252]
+<img alt="_images/70486b05db1af8c1f3ad0ee7668c6471638eb0023c7861963881b3c01182d2aa.png" src="_images/70486b05db1af8c1f3ad0ee7668c6471638eb0023c7861963881b3c01182d2aa.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices where Gaussian RV &gt; 3: [ 139  404  545 4463 4956 5655 5746 7742 7777 7822 9171 9301]
 </pre></div>
 </div>
-<img alt="_images/899829ad783dacd2f9bec93ba508380f7386025295771a488893161fc22524f6.png" src="_images/899829ad783dacd2f9bec93ba508380f7386025295771a488893161fc22524f6.png" />
-<img alt="_images/5c42467f4b87410f619ce97e63126f87adeb879b8679c9b8791927e5e95d05ad.png" src="_images/5c42467f4b87410f619ce97e63126f87adeb879b8679c9b8791927e5e95d05ad.png" />
-<img alt="_images/590de450887eb9d344961faf46551cf2dbd8fb5171cdcf23679513f74eeaea5a.png" src="_images/590de450887eb9d344961faf46551cf2dbd8fb5171cdcf23679513f74eeaea5a.png" />
-<img alt="_images/69b8be18609aa2437836449da002b3418f157618183436dd37bec62bbc1f9cc8.png" src="_images/69b8be18609aa2437836449da002b3418f157618183436dd37bec62bbc1f9cc8.png" />
+<img alt="_images/9304981d750dce2133d5f715298c38e2511e8544abd4db2a462fbc7c1fe9954f.png" src="_images/9304981d750dce2133d5f715298c38e2511e8544abd4db2a462fbc7c1fe9954f.png" />
+<img alt="_images/69c5771a99652433c82f14af13ab245e39976393b933ffcd6b8f23a7ee3154e0.png" src="_images/69c5771a99652433c82f14af13ab245e39976393b933ffcd6b8f23a7ee3154e0.png" />
+<img alt="_images/17b0e0fd3d8e77612d29fad3f1ad35d36084dd396fd8bd3950e459355e28deeb.png" src="_images/17b0e0fd3d8e77612d29fad3f1ad35d36084dd396fd8bd3950e459355e28deeb.png" />
+<img alt="_images/925f5217e37650d70f665aa22dcd02b67d6f6068d67496da169963d59b2bb6f0.png" src="_images/925f5217e37650d70f665aa22dcd02b67d6f6068d67496da169963d59b2bb6f0.png" />
 </div>
 </div>
 </section>
@@ -1173,47 +1174,214 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 </ul>
 </li>
 </ul>
+</section>
+</section>
+</section>
+<section id="tail-probability">
+<h3>Tail Probability<a class="headerlink" href="#tail-probability" title="Link to this heading">#</a></h3>
+<p>The <strong>tail probability</strong> of a random variable (RV) describes the likelihood that a RV takes on values far away from its mean, specifically in the “tails” of its distribution.</p>
+<p>The <strong>Q-function</strong> is commonly used to express the tail probability of a Gaussian RV and is closely related to the cumulative distribution function (CDF).</p>
+<p><strong>Definition</strong><br />
+The tail probability refers to the probability that <span class="math notranslate nohighlight">\( X \)</span> takes a value greater than (or less than) a certain threshold. Mathematically:</p>
+<ul class="simple">
+<li><p><strong>Upper tail probability:</strong> <span class="math notranslate nohighlight">\( \Pr(X &gt; a) \)</span></p></li>
+<li><p><strong>Lower tail probability:</strong> <span class="math notranslate nohighlight">\( \Pr(X &lt; b) \)</span></p></li>
+</ul>
+<p>For the standard normal distribution (<span class="math notranslate nohighlight">\( \mu = 0, \sigma^2 = 1 \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; a) = \int_a^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &lt; b) = \int_{-\infty}^b \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+\]</div>
+<p>Recall that:</p>
+<div class="math notranslate nohighlight">
+\[
+Q(x) = \Pr(X &gt; x) = \int_x^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( x \)</span> is the threshold.</p>
+<p><strong>Properties</strong></p>
+<ul>
+<li><p>Symmetry relationship:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(-x) = 1 - Q(x)
+   \]</div>
+</li>
+<li><p>For small <span class="math notranslate nohighlight">\( x \)</span>, <span class="math notranslate nohighlight">\( Q(x) \)</span> can be approximated as:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(x) \approx \frac{1}{\sqrt{2\pi}x} e^{-\frac{x^2}{2}}, \quad x \gg 1
+   \]</div>
+</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><p>Find <span class="math notranslate nohighlight">\( \Pr(X &gt; 1) \)</span> for a standard normal RV:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Pr(X &gt; 1) = Q(1) = \int_1^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt
+   \]</div>
+</li>
+<li><p>Approximate <span class="math notranslate nohighlight">\( Q(3) \)</span>:
+Using the approximation:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(3) \approx \frac{1}{\sqrt{2\pi} \cdot 3} e^{-\frac{3^2}{2}} = \frac{1}{\sqrt{2\pi} \cdot 3} e^{-4.5}
+   \]</div>
+</li>
+</ul>
+</section>
+<section id="significance-level">
+<h3>Significance Level<a class="headerlink" href="#significance-level" title="Link to this heading">#</a></h3>
+<p>The <strong>tail probability</strong> of a RV is closely tied to the <strong>significance level <span class="math notranslate nohighlight">\( \alpha \)</span></strong> in hypothesis testing and statistical inference.</p>
+<section id="significance-level-alpha">
+<h4>Significance Level <span class="math notranslate nohighlight">\( \alpha \)</span><a class="headerlink" href="#significance-level-alpha" title="Link to this heading">#</a></h4>
+<p>In hypothesis testing:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \alpha \)</span> is the probability of rejecting the null hypothesis (<span class="math notranslate nohighlight">\( H_0 \)</span>) when it is true (Type I error).</p></li>
+<li><p>Typically, <span class="math notranslate nohighlight">\( \alpha \)</span> is chosen as a small value (e.g., <span class="math notranslate nohighlight">\( 0.05, 0.01 \)</span>), representing the maximum acceptable level of error.</p></li>
+</ul>
+<p>The significance level determines the critical region or threshold beyond which the null hypothesis is rejected.</p>
+<p><strong>Tail Probability and <span class="math notranslate nohighlight">\( \alpha \)</span></strong><br />
+In a hypothesis test:</p>
+<ul class="simple">
+<li><p>For a <strong>one-tailed test</strong>, <span class="math notranslate nohighlight">\( \alpha \)</span> corresponds directly to the tail probability.</p></li>
+<li><p>For a <strong>two-tailed test</strong>, <span class="math notranslate nohighlight">\( \alpha \)</span> is split equally between the two tails of the distribution.</p></li>
+</ul>
+</section>
+<section id="one-tailed-test">
+<h4>One-Tailed Test<a class="headerlink" href="#one-tailed-test" title="Link to this heading">#</a></h4>
+<p>In a one-tailed test, we are interested in the probability of a value exceeding a certain critical value (<span class="math notranslate nohighlight">\( z_\alpha \)</span>) or falling below a threshold:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = \alpha \quad \text{or} \quad \Pr(X &lt; -z_\alpha) = \alpha
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( z_\alpha \)</span> is the critical value such that the tail probability beyond <span class="math notranslate nohighlight">\( z_\alpha \)</span> is exactly <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
+</section>
+<section id="two-tailed-test">
+<h4>Two-Tailed Test<a class="headerlink" href="#two-tailed-test" title="Link to this heading">#</a></h4>
+<p>In a two-tailed test, the significance level <span class="math notranslate nohighlight">\( \alpha \)</span> is divided equally between the two tails:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_{\alpha/2}) = \frac{\alpha}{2} \quad \text{and} \quad \Pr(X &lt; -z_{\alpha/2}) = \frac{\alpha}{2}
+\]</div>
+<p>The total tail probability is the sum of the probabilities in both tails:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_{\alpha/2} \, \text{or} \, X &lt; -z_{\alpha/2}) = \alpha
+\]</div>
+</section>
+<section id="critical-value-using-q-function">
+<h4>Critical Value Using Q-Function<a class="headerlink" href="#critical-value-using-q-function" title="Link to this heading">#</a></h4>
+<p>The critical value <span class="math notranslate nohighlight">\( z_\alpha \)</span> (or <span class="math notranslate nohighlight">\( z_{\alpha/2} \)</span>) is related to the Q-function for a standard normal distribution:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = Q(z_\alpha) = \alpha
+\]</div>
+<p>To find <span class="math notranslate nohighlight">\( z_\alpha \)</span>, we use the inverse of the Q-function or the complementary cumulative distribution function (CCDF):</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = Q^{-1}(\alpha)
+\]</div>
+<p>For a two-tailed test:
+$<span class="math notranslate nohighlight">\(
+z_{\alpha/2} = Q^{-1}(\alpha/2)
+\)</span>$</p>
+</section>
+<section id="example-of-a-specific-alpha">
+<h4>Example of A Specific <span class="math notranslate nohighlight">\( \alpha \)</span><a class="headerlink" href="#example-of-a-specific-alpha" title="Link to this heading">#</a></h4>
+<p>Suppose <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span>:</p>
+<ul>
+<li><p>For a one-tailed test:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(X &gt; z_\alpha) = \alpha = 0.05
+  \]</div>
+<p>Using a standard normal table or calculator, <span class="math notranslate nohighlight">\( z_\alpha = 1.645 \)</span>.</p>
+</li>
+<li><p>For a two-tailed test:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(X &gt; z_{\alpha/2}) = \Pr(X &lt; -z_{\alpha/2}) = \frac{\alpha}{2} = 0.025
+  \]</div>
+<p>From the standard normal table, <span class="math notranslate nohighlight">\( z_{\alpha/2} = 1.96 \)</span>.</p>
+</li>
+</ul>
+</section>
+<section id="interpretation-in-hypothesis-testing">
+<h4>Interpretation in Hypothesis Testing<a class="headerlink" href="#interpretation-in-hypothesis-testing" title="Link to this heading">#</a></h4>
+<p>In hypothesis testing, the <strong>tail probability</strong> quantifies the extremity of the observed test statistic under the null hypothesis. If the observed test statistic falls in the tail region defined by <span class="math notranslate nohighlight">\( \alpha \)</span>, the null hypothesis is rejected.</p>
+<p>For example:</p>
+<ul>
+<li><p>If the test statistic <span class="math notranslate nohighlight">\( T \)</span> is compared to <span class="math notranslate nohighlight">\( z_\alpha \)</span> in a one-tailed test:</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{Reject } H_0 \text{ if } T &gt; z_\alpha
+  \]</div>
+</li>
+<li><p>In a two-tailed test:
+$<span class="math notranslate nohighlight">\(
+\text{Reject } H_0 \text{ if } |T| &gt; z_{\alpha/2}
+\)</span>$</p></li>
+</ul>
+<p>Thus, the tail probability provides the basis for determining statistical significance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Highlight tail probability</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Value for tail probability demonstration</span>
-<span class="n">tail_x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-<span class="n">tail_pdf_values</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">tail_x_values</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalPDF</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tail_x_values</span><span class="p">,</span> <span class="n">tail_pdf_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tail Area&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical Gaussian PDF with Tail Area Shaded&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># Given significance level alpha</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1"># Calculate z_alpha for one-tailed test</span>
+<span class="c1"># z_alpha = Q^{-1}(alpha)</span>
+<span class="n">z_alpha_one_tail</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># Calculate z_alpha for two-tailed test</span>
+<span class="n">z_alpha_two_tail</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Define the range for plotting and the standard normal PDF</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Range of z values</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Standard normal PDF</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Standard normal distribution curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Standard Normal Distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+
+<span class="c1"># Highlight one-tailed region (z_alpha = 1.645)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">z_alpha_one_tail</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;One-tailed region (z=</span><span class="si">{</span><span class="n">z_alpha_one_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Highlight two-tailed regions (z_alpha = 1.96)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">z_alpha_two_tail</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Right tail (z=</span><span class="si">{</span><span class="n">z_alpha_two_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">z_alpha_two_tail</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Left tail (z=-</span><span class="si">{</span><span class="n">z_alpha_two_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add vertical lines for critical z-values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">z_alpha_one_tail</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;z=</span><span class="si">{</span><span class="n">z_alpha_one_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (one-tailed)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">z_alpha_two_tail</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;z=</span><span class="si">{</span><span class="n">z_alpha_two_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (two-tailed)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">z_alpha_two_tail</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="c1"># Labels, legend, and grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tail Probability for Numerically Derived z_alpha Values&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability Density&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Show plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Calculate the tail probability using the complementary error function</span>
-<span class="n">tail_probability_erf</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))))</span>
-
-<span class="c1"># Compare with numerical integration</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
-
-<span class="k">def</span> <span class="nf">standard_normal_pdf</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">tail_probability_integration</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">standard_normal_pdf</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tail probability computed using erf: </span><span class="si">{</span><span class="n">tail_probability_erf</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tail probability computed using numerical integration: </span><span class="si">{</span><span class="n">tail_probability_integration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/47a9f426a4b0930c6542e27c78e40a4df1af4ade3d13bc552fa91ffb10465dde.png" src="_images/47a9f426a4b0930c6542e27c78e40a4df1af4ade3d13bc552fa91ffb10465dde.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tail probability computed using erf: 0.02275013194817921
-Tail probability computed using numerical integration: 0.022750131948175985
-</pre></div>
+<img alt="_images/8458a4a071fc37485d9c40a501f8c8bbdc5e65468eab71e4cf6439ab918a560f.png" src="_images/8458a4a071fc37485d9c40a501f8c8bbdc5e65468eab71e4cf6439ab918a560f.png" />
 </div>
 </div>
-</div>
-</section>
 </section>
 </section>
 </section>
@@ -1263,7 +1431,7 @@ Tail probability computed using numerical integration: 0.022750131948175985
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Functions of Random Variables</p>
+        <p class="prev-next-title">Functions of A Random Variable</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1298,9 +1466,9 @@ Tail probability computed using numerical integration: 0.022750131948175985
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf"><strong>Probability Density Function (PDF)</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Definition</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-probability-density-function"><strong>Properties of the Probability Density Function</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-probability-density-function">Properties of the Probability Density Function</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-the-probability-density-function-pdf">Probability and the Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
@@ -1315,20 +1483,28 @@ Tail probability computed using numerical integration: 0.022750131948175985
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-random-variable">Bernoulli Random Variable</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-resources"><strong>Programming Resources</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-random-variable"><strong>Gaussian Random Variable</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-random-variable">Gaussian Random Variable</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Definition</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-of-the-pdf">Key Parameters of the PDF</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-a-gaussian-rv">CDF of A Gaussian RV</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-to-compute-the-cdf"><strong>Approaches to Compute the CDF</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-forms-for-gaussian-cdf-evaluation">Standard Forms for Gaussian CDF Evaluation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-on-q-function">Discussions on <span class="math notranslate nohighlight">\( Q \)</span>-Function</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-standard-forms">Advantages of Standard Forms</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tail-probability">Tail Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level">Significance Level</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level-alpha">Significance Level <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#one-tailed-test">One-Tailed Test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#two-tailed-test">Two-Tailed Test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-value-using-q-function">Critical Value Using Q-Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-specific-alpha">Example of A Specific <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-in-hypothesis-testing">Interpretation in Hypothesis Testing</a></li>
 </ul>
 </li>
 </ul>
