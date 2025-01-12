@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Set Theory &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c1_s1_set_theory';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Probability Definition" href="pr_c1_s2_probability_definition.html" />
+    <link rel="prev" title="Introduction to Probability Theory" href="pr_c1_s0_probability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Probability Theory</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c1_s0_probability.html">Introduction to Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_functions_of_RV.html">Functions of Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s12_complex_Gaussian_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s15_s21_a_stochastic_process.html">Stochastic Process</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Communication Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Fundamentals of Communication Theory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Detection and Estimation Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c4_s0_intro.html">Signal Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c4_s3_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s7_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s8_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s10_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s13_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s15_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Set Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Set Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset">Subset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-set-and-empty-set">Universal Set and Empty Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement">Complement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-set">Difference Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-sets">Key Properties of Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union-and-intersection">Union and Intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-exclusive-sets">Mutually Exclusive Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operations-on-sets">Boolean Operations on Sets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algebra-of-sets">The Algebra of Sets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-proofs-for-demorgan-s-laws">Mathematical Proofs for DeMorgan’s Laws</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demorgans-first-law">DeMorgan’s First Law:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-given-sets">Using the Given Sets:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demorgans-second-law">DeMorgan’s Second Law:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Proof:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Using the Given Sets:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="set-theory">
+<h1>Set Theory<a class="headerlink" href="#set-theory" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>Set Theory<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Before diving into probability theory, it is essential to review <strong>set theory</strong>, as it forms the <strong>foundation</strong> upon which probabilistic models are built.</p>
+<p>Understanding the concepts of sets, subsets, unions, intersections, and complements is crucial for tackling complex probabilistic scenarios, particularly when calculating the <strong>probability of various combinations of outcomes</strong>.</p>
+<section id="definitions">
+<h3>Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Set</strong><br />
+A set is a <strong>collection of objects or elements</strong>.</p></li>
+<li><p><strong>Elements of a Set</strong><br />
+The objects that make up a set are referred to as its <strong>elements</strong>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( x \)</span> is an element of a set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, it is written as <span class="math notranslate nohighlight">\( x \in \mathbb{A} \)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( y \)</span> is not an element of <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, it is written as <span class="math notranslate nohighlight">\( y \notin \mathbb{A} \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Experiment</strong><br />
+An experiment is a <strong>procedure</strong>—often hypothetical—that is performed to produce some result.</p></li>
+<li><p><strong>Outcome</strong><br />
+An outcome is a <strong>possible result</strong> of an experiment.</p></li>
+</ol>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<p>Based on the given definitions, considering the example of rolling a die:</p>
+<ul class="simple">
+<li><p>For rolling a die, the set is <span class="math notranslate nohighlight">\( \{1, 2, 3, 4, 5, 6\} \)</span>, often referred to as the <strong>sample space</strong>.</p></li>
+<li><p>For example, <span class="math notranslate nohighlight">\( 1 \)</span>, <span class="math notranslate nohighlight">\( 2 \)</span>, <span class="math notranslate nohighlight">\( 3 \)</span>, <span class="math notranslate nohighlight">\( 4 \)</span>, <span class="math notranslate nohighlight">\( 5 \)</span>, and <span class="math notranslate nohighlight">\( 6 \)</span> are the elements of the set <span class="math notranslate nohighlight">\( \{1, 2, 3, 4, 5, 6\} \)</span>.</p></li>
+<li><p>In this case, the experiment is <strong>rolling a die</strong>.</p></li>
+<li><p>For example, rolling a <span class="math notranslate nohighlight">\( 3 \)</span> or a <span class="math notranslate nohighlight">\( 5 \)</span> is a possible outcome of rolling the die.</p></li>
+</ul>
+</section>
+<section id="subset">
+<h3>Subset<a class="headerlink" href="#subset" title="Link to this heading">#</a></h3>
+<p>A set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> is called a <strong>subset</strong> of another set <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> if all elements of <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> are also in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>. This is written as:<br />
+$<span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span>$</p>
+<ul class="simple">
+<li><p><strong>Equal Sets</strong>: If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \subseteq \mathbb{A} \)</span>, then the two sets are equal, meaning they have exactly the same elements.</p></li>
+<li><p><strong>Proper Subset</strong>: If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> but there are elements in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> that are not in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, then <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> is a <strong>proper subset</strong> of <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written as:<br />
+$<span class="math notranslate nohighlight">\( \mathbb{A} \subset \mathbb{B} \)</span>$</p></li>
+</ul>
+</section>
+<section id="universal-set-and-empty-set">
+<h3>Universal Set and Empty Set<a class="headerlink" href="#universal-set-and-empty-set" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Universal Set</strong>: The <strong>universal set</strong>, <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, is the set of all objects being considered in a particular problem.</p></li>
+<li><p><strong>Empty Set</strong>: The <strong>empty set</strong>, <span class="math notranslate nohighlight">\( \varnothing \)</span>, is the set that contains no elements.</p></li>
+</ul>
+<p>These concepts are key building blocks in set theory and are widely used in probability, where subsets represent events, and the universal set represents the sample space.</p>
+</section>
+<section id="complement">
+<h3>Complement<a class="headerlink" href="#complement" title="Link to this heading">#</a></h3>
+<p>The <strong>complement</strong> of a set <span class="math notranslate nohighlight">\( \mathbb{A}, \)</span> written as <span class="math notranslate nohighlight">\( \bar{\mathbb{A}} \)</span>, or <span class="math notranslate nohighlight">\( \mathbb{A}^{c} \)</span>, is the set of all elements in the universal set <span class="math notranslate nohighlight">\( \mathbb{S} \)</span> that are not in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib_venn</span> <span class="kn">import</span> <span class="n">venn2</span>
+
+<span class="c1"># Define sets</span>
+<span class="n">universal_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">complement_A</span> <span class="o">=</span> <span class="n">universal_set</span> <span class="o">-</span> <span class="n">A</span>
+<span class="n">difference_set</span> <span class="o">=</span> <span class="n">B</span> <span class="o">-</span> <span class="n">A</span>
+<span class="n">empty_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c1"># Function to safely label Venn diagram elements</span>
+<span class="k">def</span> <span class="nf">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="n">subset_labels</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">label_id</span><span class="p">,</span> <span class="n">elements</span> <span class="ow">in</span> <span class="n">subset_labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">venn</span><span class="o">.</span><span class="n">get_label_by_id</span><span class="p">(</span><span class="n">label_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">label</span><span class="p">:</span>  <span class="c1"># Check if the subset exists in the diagram</span>
+            <span class="n">label</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">elements</span><span class="p">))</span> <span class="k">if</span> <span class="n">elements</span> <span class="k">else</span> <span class="s1">&#39;∅&#39;</span><span class="p">)</span>
+
+<span class="c1"># Venn diagram for subset and proper subset</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">)),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">B</span> <span class="o">-</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Subset and Proper Subset: A ⊆ B&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Venn diagram for universal set and empty set</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">universal_set</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Universal Set (S)&quot;</span><span class="p">,</span> <span class="s2">&quot;Empty Set (∅)&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">universal_set</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">empty_set</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">empty_set</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Universal Set and Empty Set&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Venn diagram for complement of A</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">complement_A</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;Complement of A (S - A)&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">complement_A</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">empty_set</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Complement of A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/654db7b9645c9480bcd025149f06fa6a9ff2ddcd23eebe64b35fd89bf8ad38ad.png" src="_images/654db7b9645c9480bcd025149f06fa6a9ff2ddcd23eebe64b35fd89bf8ad38ad.png" />
+<img alt="_images/16384c0792edd6aa61564668beac459cbd9e74858b11fa4f1e064ad9924ccefe.png" src="_images/16384c0792edd6aa61564668beac459cbd9e74858b11fa4f1e064ad9924ccefe.png" />
+<img alt="_images/7c0b8753cb75b12cd5814ad929027407ecf4a17e9a4c91a8d09f572bc567fd77.png" src="_images/7c0b8753cb75b12cd5814ad929027407ecf4a17e9a4c91a8d09f572bc567fd77.png" />
+</div>
+</div>
+</section>
+<section id="difference-set">
+<h3>Difference Set<a class="headerlink" href="#difference-set" title="Link to this heading">#</a></h3>
+<p>For two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> where <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span>, the <strong>difference set</strong>, written <span class="math notranslate nohighlight">\( \mathbb{B} - \mathbb{A} \)</span>, consists of elements in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> that are not in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p>
+</section>
+<section id="key-properties-of-sets">
+<h3>Key Properties of Sets<a class="headerlink" href="#key-properties-of-sets" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For any set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>:<br />
+$<span class="math notranslate nohighlight">\( \varnothing \subseteq \mathbb{A} \subseteq \mathbb{S}, \quad \mathbb{A} \subseteq \mathbb{A} \)</span>$</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \subseteq \mathbb{C} \)</span>, then <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{C} \)</span>.</p></li>
+<li><p>The complement of the universal set is the empty set:<br />
+$<span class="math notranslate nohighlight">\( \bar{\mathbb{S}} = \varnothing \)</span>$</p></li>
+</ul>
+</section>
+<section id="union-and-intersection">
+<h3>Union and Intersection<a class="headerlink" href="#union-and-intersection" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <strong>union</strong> of two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written <span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} \)</span>, includes all elements in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, or both.</p></li>
+<li><p>The <strong>intersection</strong> of two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written <span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} \)</span>, includes only the elements common to both sets.</p></li>
+</ul>
+<p>For an element <span class="math notranslate nohighlight">\( x \)</span>:<br />
+$<span class="math notranslate nohighlight">\(
+\mathbb{A} \cup \mathbb{B} = \{x \mid x \in \mathbb{A} \text{ OR } x \in \mathbb{B}\}, \quad  
+\mathbb{A} \cap \mathbb{B} = \{x \mid x \in \mathbb{A} \text{ AND } x \in \mathbb{B}\}
+\)</span><span class="math notranslate nohighlight">\(  
+Here, the symbol \)</span> \mid $ means “such that.”</p>
+<p>These operations form the basis of many concepts in probability and logic, helping to define events and their relationships.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Venn diagram for difference set: B - A</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">)),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">B</span> <span class="o">-</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">})</span>
+<span class="c1"># Highlight only the difference B - A</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>  <span class="c1"># Shade only B - A</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Make A - B transparent</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Make A ∩ B transparent</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Difference Set: B - A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8ea5bdd1f02ae0ff4add0f3d509d460d4e0117e38a3e7d73c48a67cb898d7daf.png" src="_images/8ea5bdd1f02ae0ff4add0f3d509d460d4e0117e38a3e7d73c48a67cb898d7daf.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Venn diagram for union and intersection</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">)),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">B</span> <span class="o">-</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">})</span>
+<span class="c1"># Highlight the union and intersection</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>  <span class="c1"># Shade A - B</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>  <span class="c1"># Shade B - A</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>  <span class="c1"># Shade A ∩ B</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Union and Intersection: A ∪ B, A ∩ B&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dcac8ec3ae1c4f8e89055c808ca28e3ebcadff13ba2f81ce4fe08ea664ead0be.png" src="_images/dcac8ec3ae1c4f8e89055c808ca28e3ebcadff13ba2f81ce4fe08ea664ead0be.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Venn diagram for union between A and C</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">C</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">C</span> <span class="o">-</span> <span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">)),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">-</span> <span class="n">C</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">C</span> <span class="o">-</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">})</span>
+<span class="c1"># Highlight the union with transparency</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>  <span class="c1"># Cyan with transparency</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>  <span class="c1"># Cyan with transparency</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>  <span class="c1"># Cyan, slightly opaque for overlap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Union: A ∪ C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Venn diagram for intersection between A and C</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">C</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">C</span> <span class="o">-</span> <span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">)),</span> <span class="n">set_labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">-</span> <span class="n">C</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">C</span> <span class="o">-</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">})</span>
+<span class="c1"># Highlight the intersection with a different color</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>  <span class="c1"># Red with transparency for A - C</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>  <span class="c1"># Blue with transparency for C - A</span>
+<span class="n">venn</span><span class="o">.</span><span class="n">get_patch_by_id</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>  <span class="c1"># Green, slightly opaque for overlap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Intersection: A ∩ C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9a6fa9d105583d2ddc95694c68a6f313c94375f2ba3065d59e56010999f97d0e.png" src="_images/9a6fa9d105583d2ddc95694c68a6f313c94375f2ba3065d59e56010999f97d0e.png" />
+<img alt="_images/c73064ae06529ca6558d58466d6649b0a5ae514cb35d7fe8e86fe4bd0e7e860f.png" src="_images/c73064ae06529ca6558d58466d6649b0a5ae514cb35d7fe8e86fe4bd0e7e860f.png" />
+</div>
+</div>
+</section>
+<section id="mutually-exclusive-sets">
+<h3>Mutually Exclusive Sets<a class="headerlink" href="#mutually-exclusive-sets" title="Link to this heading">#</a></h3>
+<p>Two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> are <strong>mutually exclusive</strong> or <strong>disjoint</strong> if they have no elements in common. This is expressed as:<br />
+$<span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} = \varnothing \)</span>$</p>
+<p>A collection of sets <span class="math notranslate nohighlight">\( \mathbb{A}_1, \mathbb{A}_2, \ldots, \mathbb{A}_n \)</span> is said to be <strong>exhaustive</strong> if every element in the universal set <span class="math notranslate nohighlight">\( \mathbb{S} \)</span> belongs to at least one of these sets. For exhaustive sets:<br />
+$<span class="math notranslate nohighlight">\( \mathbb{A}_1 \cup \mathbb{A}_2 \cup \ldots \cup \mathbb{A}_n = \mathbb{S} \)</span>$</p>
+</section>
+<section id="boolean-operations-on-sets">
+<h3>Boolean Operations on Sets<a class="headerlink" href="#boolean-operations-on-sets" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Boolean Algebra</strong>: A field of mathematics that focuses on operations involving logical values represented by binary variables (0 or 1).</p></li>
+<li><p><strong>Boolean Operations on Sets</strong>: These operations apply the principles of Boolean algebra to sets, defining relationships like union, intersection, and complement based on logical rules.</p></li>
+</ul>
+<p><strong>Additional Resources</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mathworks.com/help/matlab/logical-operations.html">Logical (Boolean) Operations in MATLAB</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/routines.logic.html">Logic Functions with NumPy</a></p></li>
+</ul>
+</section>
+</section>
+<section id="the-algebra-of-sets">
+<h2>The Algebra of Sets<a class="headerlink" href="#the-algebra-of-sets" title="Link to this heading">#</a></h2>
+<p>The following laws are derived from the basic definitions and operations of set theory:</p>
+<ul class="simple">
+<li><p><strong>Idempotent Laws</strong>:<br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{A} = \mathbb{A} \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{A} = \mathbb{A} \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p></li>
+<li><p><strong>Commutative Laws</strong>:<br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} = \mathbb{B} \cup \mathbb{A} \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} = \mathbb{B} \cap \mathbb{A} \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>.</p></li>
+<li><p><strong>Associative Laws</strong>:<br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cup (\mathbb{B} \cup \mathbb{C}) = (\mathbb{A} \cup \mathbb{B}) \cup \mathbb{C} = \mathbb{A} \cup \mathbb{B} \cup \mathbb{C} \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cap (\mathbb{B} \cap \mathbb{C}) = (\mathbb{A} \cap \mathbb{B}) \cap \mathbb{C} = \mathbb{A} \cap \mathbb{B} \cap \mathbb{C} \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, and <span class="math notranslate nohighlight">\( \mathbb{C} \)</span>.</p></li>
+<li><p><strong>Distributive Laws</strong>:<br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cap (\mathbb{B} \cup \mathbb{C}) = (\mathbb{A} \cap \mathbb{B}) \cup (\mathbb{A} \cap \mathbb{C}) \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cup (\mathbb{B} \cap \mathbb{C}) = (\mathbb{A} \cup \mathbb{B}) \cap (\mathbb{A} \cup \mathbb{C}) \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, and <span class="math notranslate nohighlight">\( \mathbb{C} \)</span>.</p></li>
+<li><p><strong>Consistency (Mutual Equivalence)</strong>:<br />
+The conditions below are consistent or equivalent:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} = \mathbb{A} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} = \mathbb{B} \)</span></p></li>
+</ol>
+</li>
+</ul>
+<p>These laws are foundational for reasoning about sets and form the basis for further exploration in probability and logic.</p>
+<ul class="simple">
+<li><p><strong>Universal Bounds</strong>:<br />
+<span class="math notranslate nohighlight">\( \varnothing \subseteq \mathbb{A} \subseteq \mathbb{S} \)</span> for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p></li>
+<li><p><strong>Product</strong>:<br />
+<span class="math notranslate nohighlight">\( \varnothing \cap \mathbb{A} = \varnothing \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{S} \cap \mathbb{A} = \mathbb{A} \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p></li>
+<li><p><strong>Sum</strong>:<br />
+<span class="math notranslate nohighlight">\( \varnothing \cup \mathbb{A} = \mathbb{A} \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{S} \cup \mathbb{A} = \mathbb{S} \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p></li>
+<li><p><strong>Involution</strong>:<br />
+<span class="math notranslate nohighlight">\( \overline{\overline{\mathbb{A}}} = \mathbb{A} \)</span><br />
+This holds for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p></li>
+<li><p><strong>Complementarity</strong>:<br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cup \overline{\mathbb{A}} = \mathbb{S} \)</span><br />
+<span class="math notranslate nohighlight">\( \mathbb{A} \cap \overline{\mathbb{A}} = \varnothing \)</span><br />
+These hold for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p></li>
+<li><p><strong>DeMorgan’s First Law</strong>:<br />
+<span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}} \)</span><br />
+This holds for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>.</p></li>
+<li><p><strong>DeMorgan’s Second Law</strong>:<br />
+<span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}} \)</span><br />
+This holds for all sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>.</p></li>
+</ul>
+<section id="mathematical-proofs-for-demorgan-s-laws">
+<h3>Mathematical Proofs for DeMorgan’s Laws<a class="headerlink" href="#mathematical-proofs-for-demorgan-s-laws" title="Link to this heading">#</a></h3>
+<section id="demorgans-first-law">
+<h4>DeMorgan’s First Law:<a class="headerlink" href="#demorgans-first-law" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
+\]</div>
+</section>
+<section id="proof">
+<h4>Proof:<a class="headerlink" href="#proof" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>By definition, the complement of a union:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cup \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin (\mathbb{A} \cup \mathbb{B})\}
+\)</span><span class="math notranslate nohighlight">\(
+Using the definition of union:
+\)</span><span class="math notranslate nohighlight">\(
+\mathbb{A} \cup \mathbb{B} = \{x \in \mathbb{S} \mid x \in \mathbb{A} \text{ or } x \in \mathbb{B}\}
+\)</span><span class="math notranslate nohighlight">\(
+Hence:
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cup \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ and } x \notin \mathbb{B}\}
+\)</span>$</p></li>
+<li><p>By the definition of intersection and complements:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A}\} \cap \{x \in \mathbb{S} \mid x \notin \mathbb{B}\}
+\)</span><span class="math notranslate nohighlight">\(
+Which simplifies to:
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ and } x \notin \mathbb{B}\}
+\)</span>$</p></li>
+<li><p>From steps (1) and (2):
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
+\)</span>$</p></li>
+</ol>
+<p>Consider the specific sets <span class="math notranslate nohighlight">\( A = \{1, 2, 3\} \)</span> and <span class="math notranslate nohighlight">\( B = \{1, 2, 3, 4, 6\} \)</span>, we have:</p>
+</section>
+</section>
+<section id="using-the-given-sets">
+<h3>Using the Given Sets:<a class="headerlink" href="#using-the-given-sets" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Universal Set</strong>: <span class="math notranslate nohighlight">\( \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \)</span></p></li>
+<li><p><strong>Set A</strong>: <span class="math notranslate nohighlight">\( \mathbb{A} = \{1, 2, 3\} \)</span></p></li>
+<li><p><strong>Set B</strong>: <span class="math notranslate nohighlight">\( \mathbb{B} = \{1, 2, 3, 4, 6\} \)</span></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\mathbb{A} \cup \mathbb{B} = \{1, 2, 3, 4, 6\}
+\)</span>$</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cup \mathbb{B}} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cup \mathbb{B}} = \mathbb{S} - (\mathbb{A} \cup \mathbb{B}) = \{5\}
+\)</span>$</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \)</span> and <span class="math notranslate nohighlight">\( \overline{\mathbb{B}} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} = \mathbb{S} - \mathbb{A} = \{4, 5, 6\}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{B}} = \mathbb{S} - \mathbb{B} = \{5\}
+\)</span>$</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \cap \overline{\mathbb{B}} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{4, 5, 6\} \cap \{5\} = \{5\}
+\)</span>$</p></li>
+<li><p>Verify Equality:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cup \mathbb{B}} = \{5\}, \quad \overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{5\}
+\)</span><span class="math notranslate nohighlight">\(
+Therefore:
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
+\)</span>$</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complement_A</span> <span class="o">=</span> <span class="n">universal_set</span> <span class="o">-</span> <span class="n">A</span>
+<span class="n">complement_B</span> <span class="o">=</span> <span class="n">universal_set</span> <span class="o">-</span> <span class="n">B</span>
+
+<span class="c1"># DeMorgan&#39;s First Law: \overline{A \cup B} = \overline{A} \cap \overline{B}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">left_side</span> <span class="o">=</span> <span class="n">universal_set</span> <span class="o">-</span> <span class="p">(</span><span class="n">A</span> <span class="o">|</span> <span class="n">B</span><span class="p">)</span>  <span class="c1"># \overline{A \cup B}</span>
+<span class="n">right_side</span> <span class="o">=</span> <span class="p">(</span><span class="n">complement_A</span> <span class="o">&amp;</span> <span class="n">complement_B</span><span class="p">)</span>  <span class="c1"># \overline{A} \cap \overline{B}</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left_side</span> <span class="o">-</span> <span class="n">right_side</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">right_side</span> <span class="o">-</span> <span class="n">left_side</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">left_side</span> <span class="o">&amp;</span> <span class="n">right_side</span><span class="p">)))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">left_side</span> <span class="o">-</span> <span class="n">right_side</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">right_side</span> <span class="o">-</span> <span class="n">left_side</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">left_side</span> <span class="o">&amp;</span> <span class="n">right_side</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;DeMorgan&#39;s First Law&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b240afd280d3f30f4d6ca236e60df808558edc2a574b8ac5b85f7dd1cae72d40.png" src="_images/b240afd280d3f30f4d6ca236e60df808558edc2a574b8ac5b85f7dd1cae72d40.png" />
+</div>
+</div>
+</section>
+<section id="demorgans-second-law">
+<h3>DeMorgan’s Second Law:<a class="headerlink" href="#demorgans-second-law" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
+\]</div>
+<section id="id2">
+<h4>Proof:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>By definition, the complement of an intersection:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cap \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin (\mathbb{A} \cap \mathbb{B})\}
+\)</span><span class="math notranslate nohighlight">\(
+Using the definition of intersection:
+\)</span><span class="math notranslate nohighlight">\(
+\mathbb{A} \cap \mathbb{B} = \{x \in \mathbb{S} \mid x \in \mathbb{A} \text{ and } x \in \mathbb{B}\}
+\)</span><span class="math notranslate nohighlight">\(
+Hence:
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cap \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ or } x \notin \mathbb{B}\}
+\)</span>$</p></li>
+<li><p>By the definition of union and complements:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A}\} \cup \{x \in \mathbb{S} \mid x \notin \mathbb{B}\}
+\)</span><span class="math notranslate nohighlight">\(
+Which simplifies to:
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ or } x \notin \mathbb{B}\}
+\)</span>$</p></li>
+<li><p>From steps (1) and (2):
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
+\)</span>$</p></li>
+</ol>
+<p>Consider the specific sets <span class="math notranslate nohighlight">\( A = \{1, 2, 3\} \)</span> and <span class="math notranslate nohighlight">\( B = \{1, 2, 3, 4, 6\} \)</span>, we have:</p>
+</section>
+</section>
+<section id="id3">
+<h3>Using the Given Sets:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\mathbb{A} \cap \mathbb{B} = \{1, 2, 3\}
+\)</span>$</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cap \mathbb{B}} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cap \mathbb{B}} = \mathbb{S} - (\mathbb{A} \cap \mathbb{B}) = \{4, 5, 6\}
+\)</span>$</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \)</span> and <span class="math notranslate nohighlight">\( \overline{\mathbb{B}} \)</span> (already calculated above):
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} = \{4, 5, 6\}, \quad \overline{\mathbb{B}} = \{5\}
+\)</span>$</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \cup \overline{\mathbb{B}} \)</span>:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{4, 5, 6\} \cup \{5\} = \{4, 5, 6\}
+\)</span>$</p></li>
+<li><p>Verify Equality:
+$<span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cap \mathbb{B}} = \{4, 5, 6\}, \quad \overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{4, 5, 6\}
+\)</span><span class="math notranslate nohighlight">\(
+Therefore:
+\)</span><span class="math notranslate nohighlight">\(
+\overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
+\)</span>$</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DeMorgan&#39;s Second Law: \overline{A \cap B} = \overline{A} \cup \overline{B}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">left_side</span> <span class="o">=</span> <span class="n">universal_set</span> <span class="o">-</span> <span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">)</span>  <span class="c1"># \overline{A \cap B}</span>
+<span class="n">right_side</span> <span class="o">=</span> <span class="p">(</span><span class="n">complement_A</span> <span class="o">|</span> <span class="n">complement_B</span><span class="p">)</span>  <span class="c1"># \overline{A} \cup \overline{B}</span>
+<span class="n">venn</span> <span class="o">=</span> <span class="n">venn2</span><span class="p">(</span><span class="n">subsets</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left_side</span> <span class="o">-</span> <span class="n">right_side</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">right_side</span> <span class="o">-</span> <span class="n">left_side</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">left_side</span> <span class="o">&amp;</span> <span class="n">right_side</span><span class="p">)))</span>
+<span class="n">label_venn_elements</span><span class="p">(</span><span class="n">venn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="n">left_side</span> <span class="o">-</span> <span class="n">right_side</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="n">right_side</span> <span class="o">-</span> <span class="n">left_side</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">:</span> <span class="n">left_side</span> <span class="o">&amp;</span> <span class="n">right_side</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;DeMorgan&#39;s Second Law&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9d88b267b83d80ecc4a5be28536dcf9f47ff87cee753e0b981e6e78ee5083b80.png" src="_images/9d88b267b83d80ecc4a5be28536dcf9f47ff87cee753e0b981e6e78ee5083b80.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c1_s0_probability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Probability Theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pr_c1_s2_probability_definition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Probability Definition</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Set Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset">Subset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-set-and-empty-set">Universal Set and Empty Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement">Complement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-set">Difference Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-sets">Key Properties of Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union-and-intersection">Union and Intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-exclusive-sets">Mutually Exclusive Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operations-on-sets">Boolean Operations on Sets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algebra-of-sets">The Algebra of Sets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-proofs-for-demorgan-s-laws">Mathematical Proofs for DeMorgan’s Laws</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demorgans-first-law">DeMorgan’s First Law:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-given-sets">Using the Given Sets:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demorgans-second-law">DeMorgan’s Second Law:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Proof:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Using the Given Sets:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
