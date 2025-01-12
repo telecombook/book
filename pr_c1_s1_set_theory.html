@@ -66,8 +66,6 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Probability Definition" href="pr_c1_s2_probability_definition.html" />
-    <link rel="prev" title="Introduction to Probability Theory" href="pr_c1_s0_probability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -119,6 +117,8 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,12 +164,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Probability Theory</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c1_s0_probability.html">Introduction to Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Set Theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
-</ul>
-</details></li>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_functions_of_RV.html">Functions of Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="pr_c2_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
 
@@ -215,7 +210,7 @@
 </ul>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Communication Theory</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Fundamentals of Communication Theory</a></li>
 </ul>
@@ -401,11 +396,14 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Set Theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset">Subset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-set-and-empty-set">Universal Set and Empty Set</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement">Complement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-set">Complement Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-set">Difference Set</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-sets">Key Properties of Sets</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union-and-intersection">Union and Intersection</a></li>
@@ -461,9 +459,8 @@ An experiment is a <strong>procedure</strong>—often hypothetical—that is per
 <li><p><strong>Outcome</strong><br />
 An outcome is a <strong>possible result</strong> of an experiment.</p></li>
 </ol>
-</section>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<h4>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
 <p>Based on the given definitions, considering the example of rolling a die:</p>
 <ul class="simple">
 <li><p>For rolling a die, the set is <span class="math notranslate nohighlight">\( \{1, 2, 3, 4, 5, 6\} \)</span>, often referred to as the <strong>sample space</strong>.</p></li>
@@ -472,14 +469,18 @@ An outcome is a <strong>possible result</strong> of an experiment.</p></li>
 <li><p>For example, rolling a <span class="math notranslate nohighlight">\( 3 \)</span> or a <span class="math notranslate nohighlight">\( 5 \)</span> is a possible outcome of rolling the die.</p></li>
 </ul>
 </section>
+</section>
 <section id="subset">
 <h3>Subset<a class="headerlink" href="#subset" title="Link to this heading">#</a></h3>
-<p>A set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> is called a <strong>subset</strong> of another set <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> if all elements of <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> are also in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>. This is written as:<br />
-$<span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span>$</p>
-<ul class="simple">
+<p>A set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> is called a <strong>subset</strong> of another set <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> if all elements of <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> are also in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>. This is written as:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{A} \subseteq \mathbb{B} \]</div>
+<ul>
 <li><p><strong>Equal Sets</strong>: If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \subseteq \mathbb{A} \)</span>, then the two sets are equal, meaning they have exactly the same elements.</p></li>
-<li><p><strong>Proper Subset</strong>: If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> but there are elements in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> that are not in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, then <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> is a <strong>proper subset</strong> of <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written as:<br />
-$<span class="math notranslate nohighlight">\( \mathbb{A} \subset \mathbb{B} \)</span>$</p></li>
+<li><p><strong>Proper Subset</strong>: If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> but there are elements in <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> that are not in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, then <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> is a <strong>proper subset</strong> of <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written as:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{A} \subset \mathbb{B} \]</div>
+</li>
 </ul>
 </section>
 <section id="universal-set-and-empty-set">
@@ -490,9 +491,12 @@ $<span class="math notranslate nohighlight">\( \mathbb{A} \subset \mathbb{B} \)<
 </ul>
 <p>These concepts are key building blocks in set theory and are widely used in probability, where subsets represent events, and the universal set represents the sample space.</p>
 </section>
-<section id="complement">
-<h3>Complement<a class="headerlink" href="#complement" title="Link to this heading">#</a></h3>
+<section id="complement-set">
+<h3>Complement Set<a class="headerlink" href="#complement-set" title="Link to this heading">#</a></h3>
 <p>The <strong>complement</strong> of a set <span class="math notranslate nohighlight">\( \mathbb{A}, \)</span> written as <span class="math notranslate nohighlight">\( \bar{\mathbb{A}} \)</span>, or <span class="math notranslate nohighlight">\( \mathbb{A}^{c} \)</span>, is the set of all elements in the universal set <span class="math notranslate nohighlight">\( \mathbb{S} \)</span> that are not in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>.</p>
+</section>
+<section id="simulation">
+<h3>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -550,12 +554,16 @@ $<span class="math notranslate nohighlight">\( \mathbb{A} \subset \mathbb{B} \)<
 </section>
 <section id="key-properties-of-sets">
 <h3>Key Properties of Sets<a class="headerlink" href="#key-properties-of-sets" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>For any set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>:<br />
-$<span class="math notranslate nohighlight">\( \varnothing \subseteq \mathbb{A} \subseteq \mathbb{S}, \quad \mathbb{A} \subseteq \mathbb{A} \)</span>$</p></li>
+<ul>
+<li><p>For any set <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \varnothing \subseteq \mathbb{A} \subseteq \mathbb{S}, \quad \mathbb{A} \subseteq \mathbb{A} \]</div>
+</li>
 <li><p>If <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{B} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \subseteq \mathbb{C} \)</span>, then <span class="math notranslate nohighlight">\( \mathbb{A} \subseteq \mathbb{C} \)</span>.</p></li>
-<li><p>The complement of the universal set is the empty set:<br />
-$<span class="math notranslate nohighlight">\( \bar{\mathbb{S}} = \varnothing \)</span>$</p></li>
+<li><p>The complement of the universal set is the empty set:</p>
+<div class="math notranslate nohighlight">
+\[ \bar{\mathbb{S}} = \varnothing \]</div>
+</li>
 </ul>
 </section>
 <section id="union-and-intersection">
@@ -564,12 +572,13 @@ $<span class="math notranslate nohighlight">\( \bar{\mathbb{S}} = \varnothing \)
 <li><p>The <strong>union</strong> of two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written <span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} \)</span>, includes all elements in <span class="math notranslate nohighlight">\( \mathbb{A} \)</span>, <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, or both.</p></li>
 <li><p>The <strong>intersection</strong> of two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span>, written <span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} \)</span>, includes only the elements common to both sets.</p></li>
 </ul>
-<p>For an element <span class="math notranslate nohighlight">\( x \)</span>:<br />
-$<span class="math notranslate nohighlight">\(
+<p>For an element <span class="math notranslate nohighlight">\( x \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbb{A} \cup \mathbb{B} = \{x \mid x \in \mathbb{A} \text{ OR } x \in \mathbb{B}\}, \quad  
 \mathbb{A} \cap \mathbb{B} = \{x \mid x \in \mathbb{A} \text{ AND } x \in \mathbb{B}\}
-\)</span><span class="math notranslate nohighlight">\(  
-Here, the symbol \)</span> \mid $ means “such that.”</p>
+\]</div>
+<p>Here, the symbol <span class="math notranslate nohighlight">\( \mid \)</span> means “such that.”</p>
 <p>These operations form the basis of many concepts in probability and logic, helping to define events and their relationships.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -643,10 +652,12 @@ Here, the symbol \)</span> \mid $ means “such that.”</p>
 </section>
 <section id="mutually-exclusive-sets">
 <h3>Mutually Exclusive Sets<a class="headerlink" href="#mutually-exclusive-sets" title="Link to this heading">#</a></h3>
-<p>Two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> are <strong>mutually exclusive</strong> or <strong>disjoint</strong> if they have no elements in common. This is expressed as:<br />
-$<span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} = \varnothing \)</span>$</p>
-<p>A collection of sets <span class="math notranslate nohighlight">\( \mathbb{A}_1, \mathbb{A}_2, \ldots, \mathbb{A}_n \)</span> is said to be <strong>exhaustive</strong> if every element in the universal set <span class="math notranslate nohighlight">\( \mathbb{S} \)</span> belongs to at least one of these sets. For exhaustive sets:<br />
-$<span class="math notranslate nohighlight">\( \mathbb{A}_1 \cup \mathbb{A}_2 \cup \ldots \cup \mathbb{A}_n = \mathbb{S} \)</span>$</p>
+<p>Two sets <span class="math notranslate nohighlight">\( \mathbb{A} \)</span> and <span class="math notranslate nohighlight">\( \mathbb{B} \)</span> are <strong>mutually exclusive</strong> or <strong>disjoint</strong> if they have no elements in common. This is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{A} \cap \mathbb{B} = \varnothing \]</div>
+<p>A collection of sets <span class="math notranslate nohighlight">\( \mathbb{A}_1, \mathbb{A}_2, \ldots, \mathbb{A}_n \)</span> is said to be <strong>exhaustive</strong> if every element in the universal set <span class="math notranslate nohighlight">\( \mathbb{S} \)</span> belongs to at least one of these sets. For exhaustive sets:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{A}_1 \cup \mathbb{A}_2 \cup \ldots \cup \mathbb{A}_n = \mathbb{S} \]</div>
 </section>
 <section id="boolean-operations-on-sets">
 <h3>Boolean Operations on Sets<a class="headerlink" href="#boolean-operations-on-sets" title="Link to this heading">#</a></h3>
@@ -727,32 +738,36 @@ This holds for all sets <span class="math notranslate nohighlight">\( \mathbb{A}
 </section>
 <section id="proof">
 <h4>Proof:<a class="headerlink" href="#proof" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p>By definition, the complement of a union:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cup \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin (\mathbb{A} \cup \mathbb{B})\}
-\)</span><span class="math notranslate nohighlight">\(
-Using the definition of union:
-\)</span><span class="math notranslate nohighlight">\(
-\mathbb{A} \cup \mathbb{B} = \{x \in \mathbb{S} \mid x \in \mathbb{A} \text{ or } x \in \mathbb{B}\}
-\)</span><span class="math notranslate nohighlight">\(
-Hence:
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cup \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ and } x \notin \mathbb{B}\}
-\)</span>$</p></li>
-<li><p>By the definition of intersection and complements:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A}\} \cap \{x \in \mathbb{S} \mid x \notin \mathbb{B}\}
-\)</span><span class="math notranslate nohighlight">\(
-Which simplifies to:
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ and } x \notin \mathbb{B}\}
-\)</span>$</p></li>
-<li><p>From steps (1) and (2):
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
-\)</span>$</p></li>
-</ol>
+<p>By definition, the complement of a union:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cup \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin (\mathbb{A} \cup \mathbb{B})\}
+   \]</div>
+<p>Using the definition of union:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{A} \cup \mathbb{B} = \{x \in \mathbb{S} \mid x \in \mathbb{A} \text{ or } x \in \mathbb{B}\}
+   \]</div>
+<p>Hence:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cup \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ and } x \notin \mathbb{B}\}
+   \]</div>
+<p>By the definition of intersection and complements:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A}\} \cap \{x \in \mathbb{S} \mid x \notin \mathbb{B}\}
+   \]</div>
+<p>which simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ and } x \notin \mathbb{B}\}
+   \]</div>
+<p>Combining above steps, we have</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
+   \]</div>
 <p>Consider the specific sets <span class="math notranslate nohighlight">\( A = \{1, 2, 3\} \)</span> and <span class="math notranslate nohighlight">\( B = \{1, 2, 3, 4, 6\} \)</span>, we have:</p>
 </section>
 </section>
@@ -763,35 +778,40 @@ $<span class="math notranslate nohighlight">\(
 <li><p><strong>Set A</strong>: <span class="math notranslate nohighlight">\( \mathbb{A} = \{1, 2, 3\} \)</span></p></li>
 <li><p><strong>Set B</strong>: <span class="math notranslate nohighlight">\( \mathbb{B} = \{1, 2, 3, 4, 6\} \)</span></p></li>
 </ul>
-<ol class="arabic simple">
-<li><p>Calculate <span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\mathbb{A} \cup \mathbb{B} = \{1, 2, 3, 4, 6\}
-\)</span>$</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cup \mathbb{B}} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cup \mathbb{B}} = \mathbb{S} - (\mathbb{A} \cup \mathbb{B}) = \{5\}
-\)</span>$</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \)</span> and <span class="math notranslate nohighlight">\( \overline{\mathbb{B}} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} = \mathbb{S} - \mathbb{A} = \{4, 5, 6\}
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{B}} = \mathbb{S} - \mathbb{B} = \{5\}
-\)</span>$</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \cap \overline{\mathbb{B}} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{4, 5, 6\} \cap \{5\} = \{5\}
-\)</span>$</p></li>
-<li><p>Verify Equality:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cup \mathbb{B}} = \{5\}, \quad \overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{5\}
-\)</span><span class="math notranslate nohighlight">\(
-Therefore:
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
-\)</span>$</p></li>
-</ol>
+<p>Calculate <span class="math notranslate nohighlight">\( \mathbb{A} \cup \mathbb{B} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{A} \cup \mathbb{B} = \{1, 2, 3, 4, 6\}
+   \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cup \mathbb{B}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cup \mathbb{B}} = \mathbb{S} - (\mathbb{A} \cup \mathbb{B}) = \{5\}
+   \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \)</span> and <span class="math notranslate nohighlight">\( \overline{\mathbb{B}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} = \mathbb{S} - \mathbb{A} = \{4, 5, 6\}
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{B}} = \mathbb{S} - \mathbb{B} = \{5\}
+   \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \cap \overline{\mathbb{B}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{4, 5, 6\} \cap \{5\} = \{5\}
+   \]</div>
+<p>Verify Equality:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cup \mathbb{B}} = \{5\}, \quad \overline{\mathbb{A}} \cap \overline{\mathbb{B}} = \{5\}
+   \]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cup \mathbb{B}} = \overline{\mathbb{A}} \cap \overline{\mathbb{B}}
+   \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complement_A</span> <span class="o">=</span> <span class="n">universal_set</span> <span class="o">-</span> <span class="n">A</span>
@@ -821,63 +841,71 @@ Therefore:
 \]</div>
 <section id="id2">
 <h4>Proof:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p>By definition, the complement of an intersection:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cap \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin (\mathbb{A} \cap \mathbb{B})\}
-\)</span><span class="math notranslate nohighlight">\(
-Using the definition of intersection:
-\)</span><span class="math notranslate nohighlight">\(
-\mathbb{A} \cap \mathbb{B} = \{x \in \mathbb{S} \mid x \in \mathbb{A} \text{ and } x \in \mathbb{B}\}
-\)</span><span class="math notranslate nohighlight">\(
-Hence:
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cap \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ or } x \notin \mathbb{B}\}
-\)</span>$</p></li>
-<li><p>By the definition of union and complements:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A}\} \cup \{x \in \mathbb{S} \mid x \notin \mathbb{B}\}
-\)</span><span class="math notranslate nohighlight">\(
-Which simplifies to:
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ or } x \notin \mathbb{B}\}
-\)</span>$</p></li>
-<li><p>From steps (1) and (2):
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
-\)</span>$</p></li>
-</ol>
+<p>By definition, the complement of an intersection:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cap \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin (\mathbb{A} \cap \mathbb{B})\}
+   \]</div>
+<p>Using the definition of intersection:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{A} \cap \mathbb{B} = \{x \in \mathbb{S} \mid x \in \mathbb{A} \text{ and } x \in \mathbb{B}\}
+   \]</div>
+<p>Hence:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cap \mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ or } x \notin \mathbb{B}\}
+   \]</div>
+<p>By the definition of union and complements:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A}\} \cup \{x \in \mathbb{S} \mid x \notin \mathbb{B}\}
+   \]</div>
+<p>which simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{x \in \mathbb{S} \mid x \notin \mathbb{A} \text{ or } x \notin \mathbb{B}\}
+   \]</div>
+<p>Combining the above steps, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
+   \]</div>
 <p>Consider the specific sets <span class="math notranslate nohighlight">\( A = \{1, 2, 3\} \)</span> and <span class="math notranslate nohighlight">\( B = \{1, 2, 3, 4, 6\} \)</span>, we have:</p>
 </section>
 </section>
 <section id="id3">
 <h3>Using the Given Sets:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>Calculate <span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\mathbb{A} \cap \mathbb{B} = \{1, 2, 3\}
-\)</span>$</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cap \mathbb{B}} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cap \mathbb{B}} = \mathbb{S} - (\mathbb{A} \cap \mathbb{B}) = \{4, 5, 6\}
-\)</span>$</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \)</span> and <span class="math notranslate nohighlight">\( \overline{\mathbb{B}} \)</span> (already calculated above):
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} = \{4, 5, 6\}, \quad \overline{\mathbb{B}} = \{5\}
-\)</span>$</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \cup \overline{\mathbb{B}} \)</span>:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{4, 5, 6\} \cup \{5\} = \{4, 5, 6\}
-\)</span>$</p></li>
-<li><p>Verify Equality:
-$<span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cap \mathbb{B}} = \{4, 5, 6\}, \quad \overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{4, 5, 6\}
-\)</span><span class="math notranslate nohighlight">\(
-Therefore:
-\)</span><span class="math notranslate nohighlight">\(
-\overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
-\)</span>$</p></li>
-</ol>
+<p>Calculate <span class="math notranslate nohighlight">\( \mathbb{A} \cap \mathbb{B} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{A} \cap \mathbb{B} = \{1, 2, 3\}
+   \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A} \cap \mathbb{B}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cap \mathbb{B}} = \mathbb{S} - (\mathbb{A} \cap \mathbb{B}) = \{4, 5, 6\}
+   \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \)</span> and <span class="math notranslate nohighlight">\( \overline{\mathbb{B}} \)</span> (already calculated above):</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} = \{4, 5, 6\}, \quad \overline{\mathbb{B}} = \{5\}
+   \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\( \overline{\mathbb{A}} \cup \overline{\mathbb{B}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{4, 5, 6\} \cup \{5\} = \{4, 5, 6\}
+   \]</div>
+<p>Verify Equality:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cap \mathbb{B}} = \{4, 5, 6\}, \quad \overline{\mathbb{A}} \cup \overline{\mathbb{B}} = \{4, 5, 6\}
+   \]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+   \overline{\mathbb{A} \cap \mathbb{B}} = \overline{\mathbb{A}} \cup \overline{\mathbb{B}}
+   \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DeMorgan&#39;s Second Law: \overline{A \cap B} = \overline{A} \cup \overline{B}</span>
@@ -929,24 +957,6 @@ Therefore:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="pr_c1_s0_probability.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to Probability Theory</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="pr_c1_s2_probability_definition.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability Definition</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -965,11 +975,14 @@ Therefore:
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Set Theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset">Subset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-set-and-empty-set">Universal Set and Empty Set</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement">Complement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-set">Complement Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-set">Difference Set</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-sets">Key Properties of Sets</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union-and-intersection">Union and Intersection</a></li>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example: White Noise Process &#8212; Telecom Book</title>
+    <title>Introduction to Probability Theory &#8212; Telecom Book</title>
   
   
   
@@ -60,14 +60,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c2_s15_s21_b_Gaussian_process_ex_1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c1_s0_probability_intro';</script>
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example: Band-Limited White Gaussian Noise Process" href="pr_c2_s15_s21_c_Gaussian_process_ex_2.html" />
-    <link rel="prev" title="Stochastic Process" href="pr_c2_s15_s21_a_stochastic_process.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -119,6 +115,8 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,7 +162,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Probability Theory</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_functions_of_RV.html">Functions of Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="pr_c2_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
 
@@ -201,8 +199,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c2_s15_s21_a_stochastic_process.html">Stochastic Process</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Example: White Noise Process</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s15_s21_a_stochastic_process.html">Stochastic Process</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="pr_c2_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
 
@@ -385,7 +383,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example: White Noise Process</h1>
+    <h1>Introduction to Probability Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,10 +393,21 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: White Noise Process</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-of-a-white-noise-process">Power Spectral Density of a White Noise Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-meaning-of-a-mathematical-model">Physical Meaning of a Mathematical Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-of-mathematical-models">Characteristics of Mathematical Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-mathematical-models">Classification of Mathematical Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-model">Probabilistic Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-model-in-communication-theory">Probabilistic Model in Communication Theory</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties">Uncertainties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causes-of-uncertainties-in-communication-systems">Causes of Uncertainties in Communication Systems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -409,116 +418,102 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="example-white-noise-process">
-<h1>Example: White Noise Process<a class="headerlink" href="#example-white-noise-process" title="Link to this heading">#</a></h1>
-<p>In this example, based on [B2, Ex 2.2], a white noise process is often defined by its spectral properties, but here we will start by defining it using its <em>autocorrelation function</em>.</p>
-<p>Consider a zero-mean complex white noise process <span class="math notranslate nohighlight">\(\mathbf{z}(t)\)</span>, which has an autocorrelation function given by:</p>
-<div class="math notranslate nohighlight">
-\[
-R_{\mathbf{z}}(\tau) = E\{\mathbf{z}^*(t)\mathbf{z}(t+\tau)\} = 2N_0\delta(\tau)
-\]</div>
-<p>where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(N_0\)</span> is a constant representing the noise power spectral density.</p></li>
-<li><p>For any finite and continuous signal <span class="math notranslate nohighlight">\(s(t)\)</span>, <span class="math notranslate nohighlight">\(\delta(\tau)\)</span> is the Dirac delta function, defined by the integral property:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\int_{-\infty}^{\infty} s(t)\delta(t-t_0) \, dt = s(t_0)
-\]</div>
-<p>The term “white” indicates that the process has a constant power spectral density across all frequencies, analogous to white light containing all colors.</p>
-<p>In theory, no finite energy process can be perfectly white, as such a process would require infinite power. However, in practice, many processes can be well-modeled as white noise because their impact on system modeling, design, and performance is indistinguishable from that of an ideal white noise process. For instance, consider a random square-wave process. If this process is an input to a sampled system with sampling intervals much greater than the random square-wave “chip” time <span class="math notranslate nohighlight">\(T_c\)</span>, then the samples of the output would be statistically independent.</p>
-<p>This statistical independence would make the samples functionally indistinguishable from those of an ideal white noise process, thus allowing the random square-wave process to be treated as a white process in practical scenarios.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="c1"># Parameters</span>
-<span class="n">N0</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">sampling_rate</span> <span class="o">=</span> <span class="mf">1e3</span>  <span class="c1"># 1 kHz</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sampling_rate</span>
-
-<span class="c1"># Generate complex white noise process z(t)</span>
-<span class="n">real_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
-<span class="n">imag_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
-<span class="n">z_t</span> <span class="o">=</span> <span class="n">real_part</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">imag_part</span>
-
-<span class="c1"># Compute empirical autocorrelation</span>
-<span class="n">lags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">num_samples</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
-<span class="n">autocorr_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">z_t</span><span class="p">,</span> <span class="n">z_t</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_samples</span>
-
-<span class="c1"># Theoretical autocorrelation</span>
-<span class="n">autocorr_theoretical</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">N0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span> <span class="k">if</span> <span class="n">tau</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">lags</span><span class="p">])</span>
-
-<span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="n">autocorr_empirical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Autocorrelation&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="n">autocorr_theoretical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Autocorrelation&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical vs Theoretical Autocorrelation of White Noise Process&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag (seconds)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Autocorrelation&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/3fc11ba365467e42f0fb9347801b5c975ea9fcfc0fe13f6f5383c99527dd6c21.png" src="_images/3fc11ba365467e42f0fb9347801b5c975ea9fcfc0fe13f6f5383c99527dd6c21.png" />
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-probability-theory">
+<h1>Introduction to Probability Theory<a class="headerlink" href="#introduction-to-probability-theory" title="Link to this heading">#</a></h1>
+<section id="physical-meaning-of-a-mathematical-model">
+<h2>Physical Meaning of a Mathematical Model<a class="headerlink" href="#physical-meaning-of-a-mathematical-model" title="Link to this heading">#</a></h2>
+<p>Mathematical models serve as essential tools in the physical sciences and engineering for understanding, analyzing, and predicting the behavior of real-world phenomena.</p>
+<p>By translating physical problems into mathematical language, these models provide a structured framework to examine complex systems systematically.</p>
+<p>They allow for simulation, analysis, and optimization, serving as bridges between theoretical concepts and practical applications.</p>
+<section id="characteristics-of-mathematical-models">
+<h3>Characteristics of Mathematical Models<a class="headerlink" href="#characteristics-of-mathematical-models" title="Link to this heading">#</a></h3>
+<p>A mathematical model is fundamentally a <strong>representation</strong> of a physical or abstract system.</p>
+<p>It uses <strong>mathematical language</strong>, such as equations, functions, or algorithms, to simulate system behavior.</p>
+<p>Models provide insights into how systems respond to various inputs, aiding in the design and control of real-world processes.</p>
 </section>
-<section id="power-spectral-density-of-a-white-noise-process">
-<h1>Power Spectral Density of a White Noise Process<a class="headerlink" href="#power-spectral-density-of-a-white-noise-process" title="Link to this heading">#</a></h1>
-<p>The power spectral density (PSD) of a complex process is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-S_{\mathbf{z}}(f) = \int_{-\infty}^{\infty} R_{\mathbf{z}}(\tau) e^{-j2\pi f \tau} d\tau
-\]</div>
-<p>For a zero-mean complex white noise process <span class="math notranslate nohighlight">\(\mathbf{z}(t)\)</span>, with autocorrelation function <span class="math notranslate nohighlight">\(R_{\mathbf{z}}(\tau) = 2 N_0 \delta(\tau)\)</span>, the PSD is given by:</p>
-<div class="math notranslate nohighlight">
-\[
-S_{\mathbf{z}}(f) = \int_{-\infty}^{\infty} 2N_0 \delta(\tau) e^{-j2\pi f \tau} d\tau = 2 N_0, \quad \forall f
-\]</div>
-<p>This result indicates that the process has a constant power spectral density across all frequencies, which is a characteristic feature of white noise. However, such a process would theoretically require infinite power, making it physically impossible.</p>
-<p>In practice, white noise is an idealized concept used to approximate real processes that have a much wider bandwidth than the system of interest. The actual noise is often bandlimited but is modeled as white noise over the bandwidth of interest. When white noise is filtered through a system with bandwidth <span class="math notranslate nohighlight">\( B \)</span>, the resulting finite noise power is given by <span class="math notranslate nohighlight">\( \sigma^2 = 2N_0B \)</span>. This represents the noise power within the system’s bandwidth, providing a practical measure of noise in real-world applications.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span><span class="p">,</span> <span class="n">fftshift</span>
-
-<span class="c1"># Compute empirical Power Spectral Density (PSD) using FFT</span>
-<span class="n">Z_f</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">z_t</span><span class="p">)</span>
-<span class="n">psd_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">Z_f</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">num_samples</span>
-<span class="n">freqs</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">dt</span><span class="p">))</span>
-
-<span class="c1"># Theoretical PSD</span>
-<span class="n">psd_theoretical</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">N0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
-
-<span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_empirical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PSD&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">psd_theoretical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PSD (2 N_0)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical vs Theoretical Power Spectral Density of White Noise Process&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Spectral Density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/3cb4642bd18cefe2a2ce5baca41293b61886f01f8ed07a159b5a16c5928f1ca1.png" src="_images/3cb4642bd18cefe2a2ce5baca41293b61886f01f8ed07a159b5a16c5928f1ca1.png" />
-</div>
-</div>
+<section id="classification-of-mathematical-models">
+<h3>Classification of Mathematical Models<a class="headerlink" href="#classification-of-mathematical-models" title="Link to this heading">#</a></h3>
+<p>Mathematical models are categorized based on the level of certainty or randomness inherent in their predictions:</p>
+<ul class="simple">
+<li><p><strong>Deterministic Models</strong>:<br />
+Deterministic models operate under the assumption of <strong>certainty</strong> in the system’s evolution. Key features include:</p>
+<ul>
+<li><p><strong>Uniquely Determined Outcomes</strong>: For a given set of initial conditions and parameters, these models consistently yield the same results.</p></li>
+<li><p><strong>Predictable Behavior</strong>: Since there is no randomness involved, deterministic models are highly reliable for systems where variability is negligible.</p></li>
+<li><p><strong>Examples</strong>: Newton’s laws of motion, electrical circuit analysis, and classical fluid dynamics.</p></li>
+</ul>
+</li>
+<li><p><strong>Probabilistic Models</strong>:<br />
+Probabilistic models, on the other hand, account for <strong>uncertainty</strong> and <strong>randomness</strong> in their predictions. Their key features include:</p>
+<ul>
+<li><p><strong>Randomness and Variability</strong>: These models incorporate stochastic elements to reflect real-world uncertainties.</p></li>
+<li><p><strong>Prediction of Likelihoods</strong>: Instead of a single outcome, they provide a range of possible outcomes along with associated probabilities.</p></li>
+<li><p><strong>Examples</strong>: Weather forecasting models, stock market analysis, and statistical thermodynamics.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="probabilistic-model">
+<h3>Probabilistic Model<a class="headerlink" href="#probabilistic-model" title="Link to this heading">#</a></h3>
+<p>A <strong>probabilistic model</strong> is a mathematical framework designed to handle randomness and uncertainty.</p>
+<p>Unlike deterministic models, which provide a single exact outcome, probabilistic models predict a range of possible outcomes, each associated with a specific probability.</p>
+<p>These models are particularly valuable in complex systems where unknown factors or inherent randomness make deterministic approaches inadequate.</p>
+<p>By quantifying uncertainty through probabilities, probabilistic models offer a structured method to account for variability in system behavior.</p>
+<section id="probabilistic-model-in-communication-theory">
+<h4>Probabilistic Model in Communication Theory<a class="headerlink" href="#probabilistic-model-in-communication-theory" title="Link to this heading">#</a></h4>
+<p>Probabilistic models play a fundamental role in communication theory, where randomness and uncertainty are inherent in the transmission and reception of signals. These models provide a mathematical framework to analyze and design systems that account for noise, fading, and interference, which are pervasive in wireless communication environments.</p>
+<p>By linking probabilities to system behaviors, probabilistic models help in:</p>
+<ol class="arabic simple">
+<li><p><strong>Signal Detection and Estimation</strong>: Estimating transmitted signals from noisy or distorted observations using statistical techniques like maximum likelihood or Bayesian inference.</p></li>
+<li><p><strong>Channel Modeling</strong>: Representing real-world channels with randomness due to multipath fading or stochastic interference.</p></li>
+<li><p><strong>Performance Metrics</strong>: Evaluating key performance indicators, such as bit error rate (BER) or outage probability, under varying channel conditions.</p></li>
+<li><p><strong>Resource Allocation</strong>: Optimizing system resources like power or bandwidth under uncertain demands and channel states.</p></li>
+</ol>
+<p>Probabilistic modeling thus enables the rigorous analysis and efficient design of communication systems, ensuring reliable performance despite the inherent <em>uncertainties</em> of wireless channels.</p>
+</section>
+</section>
+<section id="uncertainties">
+<h3>Uncertainties<a class="headerlink" href="#uncertainties" title="Link to this heading">#</a></h3>
+<p><strong>Uncertainties</strong> are aspects of a system or environment that are not precisely known or are influenced by <strong>random variability</strong>. In probabilistic modeling, uncertainties are represented mathematically to reflect real-world randomness, enabling better predictions and analysis.</p>
+<section id="causes-of-uncertainties-in-communication-systems">
+<h4>Causes of Uncertainties in Communication Systems<a class="headerlink" href="#causes-of-uncertainties-in-communication-systems" title="Link to this heading">#</a></h4>
+<p>In wireless communication systems, uncertainties can arise from multiple sources, impacting system performance and reliability. The primary causes include:</p>
+<ol class="arabic simple">
+<li><p><strong>Noise</strong></p>
+<ul class="simple">
+<li><p>Internally generated by the thermal agitation of electrons in conductors and electronic components.</p></li>
+<li><p>Acts as a fundamental limitation to signal quality, especially in low-power systems.</p></li>
+</ul>
+</li>
+<li><p><strong>Fading</strong></p>
+<ul class="simple">
+<li><p>Results from multipath propagation, where transmitted signals take multiple paths to reach the receiver.</p></li>
+<li><p>Causes fluctuations in signal strength over time and space, impacting system reliability.</p></li>
+</ul>
+</li>
+<li><p><strong>Interference</strong></p>
+<ul class="simple">
+<li><p>Occurs due to unwanted electromagnetic waves from other communication systems or devices.</p></li>
+<li><p>Disrupts the desired signal and reduces communication efficiency.</p></li>
+</ul>
+</li>
+</ol>
+<p>We can see that each of these sources of uncertainty—noise, fading, and interference—can degrade the <strong>accuracy</strong> of a communication system’s output.</p>
+<p><strong>Probabilistic modeling</strong> is essential in designing and analyzing these systems, allowing engineers to predict and mitigate the effects of uncertainties.</p>
+<p>By incorporating randomness into the models, researchers can develop robust systems that perform reliably under varying conditions.</p>
+</section>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>The contents of the sections in this chapter are based on the following materials.</p>
+<ul class="simple">
+<li><p><strong>[B1]</strong> <em>J. Proakis and M. Salehi</em>, <strong>Digital Communications</strong>, 5th ed. New York, NY: McGraw-Hill Professional, 2007. ISBN: 0072957166, <em>Chapter 2</em>.</p></li>
+<li><p><strong>[B2]</strong> <em>S. Haykin</em>, <strong>Digital Communication Systems</strong>, 1st ed. Nashville, TN: John Wiley &amp; Sons, 2013. ISBN: 0471647357, <em>Chapter 3</em>.</p></li>
+<li><p><strong>[B3]</strong> <em>P. Z. Peebles Jr.</em>, <strong>Probability, Random Variables, and Random Signal Principles</strong>, 4th ed. London, England: McGraw-Hill Publishing, 2000. ISBN: 0073660078, <em>Chapter 2</em>.</p></li>
+<li><p><strong>[X1]</strong> <em>T. Schonhoff and A. Giordano</em>, <strong>Detection and Estimation Theory and its Applications</strong>. Prentice Hall, 2006 , Chapter 1 and Chapter 2</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -551,24 +546,6 @@ S_{\mathbf{z}}(f) = \int_{-\infty}^{\infty} 2N_0 \delta(\tau) e^{-j2\pi f \tau} 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="pr_c2_s15_s21_a_stochastic_process.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Stochastic Process</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="pr_c2_s15_s21_c_Gaussian_process_ex_2.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Example: Band-Limited White Gaussian Noise Process</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -586,10 +563,21 @@ S_{\mathbf{z}}(f) = \int_{-\infty}^{\infty} 2N_0 \delta(\tau) e^{-j2\pi f \tau} 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: White Noise Process</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-of-a-white-noise-process">Power Spectral Density of a White Noise Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-meaning-of-a-mathematical-model">Physical Meaning of a Mathematical Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-of-mathematical-models">Characteristics of Mathematical Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-mathematical-models">Classification of Mathematical Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-model">Probabilistic Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-model-in-communication-theory">Probabilistic Model in Communication Theory</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties">Uncertainties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causes-of-uncertainties-in-communication-systems">Causes of Uncertainties in Communication Systems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
   </nav></div>
 
 </div></div>

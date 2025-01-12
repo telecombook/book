@@ -66,8 +66,6 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Functions of Random Variables" href="pr_c2_s0_functions_of_RV.html" />
-    <link rel="prev" title="Set Theory" href="pr_c1_s1_set_theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -119,6 +117,8 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,12 +164,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Probability Theory</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c1_s0_probability.html">Introduction to Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Probability Definition</a></li>
-</ul>
-</details></li>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_functions_of_RV.html">Functions of Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="pr_c2_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
 
@@ -215,7 +210,7 @@
 </ul>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Communication Theory</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Fundamentals of Communication Theory</a></li>
 </ul>
@@ -594,12 +589,12 @@ Example: <span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>
 </section>
 <section id="probability-measure-pr-a">
 <h2>Probability Measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span><a class="headerlink" href="#probability-measure-pr-a" title="Link to this heading">#</a></h2>
-<ul>
-<li><p><strong>Definition</strong>: A probability measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span> is a function that assigns a numerical value to an event <span class="math notranslate nohighlight">\( A \)</span>, representing the likelihood of its occurrence.</p>
-<p>Other notation: <span class="math notranslate nohighlight">\( P(A) \)</span>.</p>
-<p>Not that it is different from <span class="math notranslate nohighlight">\(p (A)\)</span> which is a value of a probability.</p>
-</li>
-</ul>
+<p><strong>Definition</strong>: A probability measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span> is a function that assigns a numerical value to an event <span class="math notranslate nohighlight">\( A \)</span>, representing the likelihood of its occurrence.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Other notation: $ P(A) $. 
+
+Not that it is different from $p (A)$ which is a value of a probability.
+</pre></div>
+</div>
 <section id="assigning-probabilities">
 <h3>Assigning Probabilities<a class="headerlink" href="#assigning-probabilities" title="Link to this heading">#</a></h3>
 <p>The assignment of probabilities to events is a fundamental task in probability theory.</p>
@@ -688,11 +683,13 @@ To estimate the probability of heads in a coin toss, the coin can be flipped <sp
 <h3>Generalization of Axiom III<a class="headerlink" href="#generalization-of-axiom-iii" title="Link to this heading">#</a></h3>
 <section id="corollary-finite-additivity">
 <h4>Corollary: Finite Additivity<a class="headerlink" href="#corollary-finite-additivity" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Statement</strong>: For <span class="math notranslate nohighlight">\( M \)</span> mutually exclusive events <span class="math notranslate nohighlight">\( A_1, A_2, \ldots, A_M \)</span>, where <span class="math notranslate nohighlight">\( A_i \cap A_j = \varnothing \)</span> for <span class="math notranslate nohighlight">\( i \neq j \)</span>, the probability of their union is the sum of their individual probabilities:
-$<span class="math notranslate nohighlight">\(
-\Pr\left(\bigcup_{i=1}^{M} A_i\right) = \sum_{i=1}^{M} \Pr(A_i).
-\)</span>$</p></li>
+<ul>
+<li><p><strong>Statement</strong>: For <span class="math notranslate nohighlight">\( M \)</span> mutually exclusive events <span class="math notranslate nohighlight">\( A_1, A_2, \ldots, A_M \)</span>, where <span class="math notranslate nohighlight">\( A_i \cap A_j = \varnothing \)</span> for <span class="math notranslate nohighlight">\( i \neq j \)</span>, the probability of their union is the sum of their individual probabilities:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr\left(\bigcup_{i=1}^{M} A_i\right) = \sum_{i=1}^{M} \Pr(A_i).
+  \]</div>
+</li>
 <li><p><strong>Implication</strong>: Extends Axiom III (Additivity) to a finite number of events.</p></li>
 </ul>
 <p>This principle is often applied when analyzing probabilities across a finite number of disjoint scenarios, such as rolling a die or drawing from a shuffled deck.</p>
@@ -934,10 +931,11 @@ As <span class="math notranslate nohighlight">\( n \to \infty \)</span>, the rel
 </section>
 <section id="example-conditional-probability-in-a-rolling-a-dice-experiment">
 <h3>Example: Conditional Probability in a Rolling A Dice Experiment<a class="headerlink" href="#example-conditional-probability-in-a-rolling-a-dice-experiment" title="Link to this heading">#</a></h3>
-<p>Consider the experiment of rolling a fair six-sided die. The sample space is:<br />
-$<span class="math notranslate nohighlight">\(
+<p>Consider the experiment of rolling a fair six-sided die. The sample space is:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbb{S} = \{1, 2, 3, 4, 5, 6\}.
-\)</span>$</p>
+\]</div>
 <p><strong>Events</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Event <span class="math notranslate nohighlight">\( A \)</span></strong>: The outcome is an even number (<span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>).</p></li>
@@ -1143,14 +1141,16 @@ Ensures that the sum of posterior probabilities across all hypotheses equals 1.<
 <li><p>The probabilities of the two events remain unaffected by each other.</p></li>
 </ul>
 <p><strong>Mathematical Implication</strong><br />
-From the definition of conditional probability:
-$<span class="math notranslate nohighlight">\(
+From the definition of conditional probability:</p>
+<div class="math notranslate nohighlight">
+\[
 \Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)},
-\)</span><span class="math notranslate nohighlight">\(
-the condition \)</span> \Pr(A|B) = \Pr(A) <span class="math notranslate nohighlight">\( leads to:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>the condition <span class="math notranslate nohighlight">\( \Pr(A|B) = \Pr(A) \)</span> leads to:</p>
+<div class="math notranslate nohighlight">
+\[
 \Pr(A \cap B) = \Pr(A)\Pr(B).
-\)</span>$</p>
+\]</div>
 <p>This relationship is the defining criterion for <strong>statistical independence</strong>.</p>
 </section>
 <section id="formal-definition">
@@ -1205,11 +1205,13 @@ If <span class="math notranslate nohighlight">\( A \)</span> is independent of <
 </li>
 </ul>
 <p>We can see that:</p>
-<ul class="simple">
-<li><p>Independence simplifies the computation of joint probabilities:
-$<span class="math notranslate nohighlight">\(
-\Pr(A_1, A_2, \dots, A_n) = \Pr(A_1)\Pr(A_2)\dots\Pr(A_n).
-\)</span>$</p></li>
+<ul>
+<li><p>Independence simplifies the computation of joint probabilities:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(A_1, A_2, \dots, A_n) = \Pr(A_1)\Pr(A_2)\dots\Pr(A_n).
+  \]</div>
+</li>
 <li><p>Independence assumptions are practical and frequently used in real-world applications, especially in communication systems, e.g., <em>independent and identically distributed (i.i.d)</em>, and machine learning.</p></li>
 </ul>
 </section>
@@ -1247,24 +1249,6 @@ $<span class="math notranslate nohighlight">\(
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="pr_c1_s1_set_theory.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Set Theory</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="pr_c2_s0_functions_of_RV.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Functions of Random Variables</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
