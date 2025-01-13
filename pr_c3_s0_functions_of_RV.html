@@ -218,7 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Fundamentals of Communication Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Introduction to Communication Theory</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detection and Estimation Theory</span></p>
 <ul class="nav bd-sidenav">
@@ -466,7 +466,9 @@ The probability density function (PDF), <span class="math notranslate nohighligh
 The expected value or mean of a continuous random variable <span class="math notranslate nohighlight">\( X \)</span> is a measure of its central tendency. It is mathematically defined as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mu_X = \mathbb{E}[X] = \int_{-\infty}^{\infty} x f_X(x) dx
+}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -516,7 +518,9 @@ f_X(x) = \sum_{k} p_X(x_k) \delta(x - x_k),
 The expected value, or mean, of a discrete RV <span class="math notranslate nohighlight">\( X \)</span>, is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mathbb{E}[X] = \sum_{k} x_k p_X(x_k),
+}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -541,7 +545,9 @@ The expected value of a random variable exists only if the summation <span class
 <p>This property can be generalized to the sum of multiple random variables using the principle of induction:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mathbb{E}\left[\sum_{i=1}^{n} X_i\right] = \sum_{i=1}^{n} \mathbb{E}[X_i]
+}
 \]</div>
 <p>This interpret that the <strong>expectation operator distributes over addition</strong>, making it a highly convenient tool in statistical analysis. It can be interpret in simple terms:</p>
 <p><em>The expectation of a sum of RVs is equal to the sum of their individual expectations.</em></p>
@@ -560,7 +566,9 @@ The expected value of a random variable exists only if the summation <span class
 <p>This property extends to the product of multiple independent random variables. By induction, for independent <span class="math notranslate nohighlight">\( X_1, X_2, \dots, X_n \)</span>, we have:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mathbb{E}\left[\prod_{i=1}^{n} X_i\right] = \prod_{i=1}^{n} \mathbb{E}[X_i].
+}
 \]</div>
 <p>We can interpret this property as the <strong>expectation of the product of independent RVs equals the product of their individual expectations</strong>.</p>
 <p>This result is foundational in probability theory and has wide applications, particularly in communication systems and machine learning, where independence assumptions often simplify computations.</p>
@@ -570,7 +578,7 @@ The expected value of a random variable exists only if the summation <span class
 <p>The property holds <strong>only when the random variables are statistically independent</strong>, meaning the joint probability distribution of <span class="math notranslate nohighlight">\( X_1, X_2, \dots, X_n \)</span> can be factored into the product of their individual distributions:</p>
 <div class="math notranslate nohighlight">
 \[
-P(X_1, X_2, \dots, X_n) = \prod_{i=1}^{n} P(X_i).
+\Pr(X_1, X_2, \dots, X_n) = \prod_{i=1}^{n} \Pr(X_i).
 \]</div>
 </section>
 </section>
@@ -583,7 +591,9 @@ For a random variable (RV) <span class="math notranslate nohighlight">\( X \)</s
 If <span class="math notranslate nohighlight">\( X \)</span> is a continuous RV with probability density function (PDF) <span class="math notranslate nohighlight">\( f_X(x) \)</span>, the expected value of <span class="math notranslate nohighlight">\( g(X) \)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x) f_X(x) dx.
+}
 \]</div>
 <p><strong>For Discrete RVs</strong><br />
 If <span class="math notranslate nohighlight">\( X \)</span> is a discrete RV with probability mass function (PMF) <span class="math notranslate nohighlight">\( p_X(x_k) \)</span>, the expected value of <span class="math notranslate nohighlight">\( g(X) \)</span> becomes:</p>
@@ -601,7 +611,9 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a discrete RV wi
 For any constants <span class="math notranslate nohighlight">\( a \)</span> and <span class="math notranslate nohighlight">\( b \)</span>, the expected value of a linear transformation <span class="math notranslate nohighlight">\( aX + b \)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mathbb{E}[aX + b] = a\mathbb{E}[X] + b.
+}
 \]</div>
 <p>where</p>
 <ul class="simple">
@@ -861,6 +873,17 @@ H_X(z) = \sum_{k=0}^\infty p_X(k) z^k.
 \[
 h_k = \left. \frac{d^k}{dz^k} H_X(z) \right|_{z=1} = \mathbb{E}[X(X - 1)(X - 2) \cdots (X - k + 1)].
 \]</div>
+<p><strong>Proof</strong>. Differentiating <span class="math notranslate nohighlight">\(k\)</span> times:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^k}{dz^k} H_X(z) = \sum_{n=k}^\infty \frac{n!}{(n-k)!} p_X(n) z^{n-k}.
+\]</div>
+<p>At <span class="math notranslate nohighlight">\(z = 1\)</span>, the result simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+h_k = \sum_{n=k}^\infty \frac{n!}{(n-k)!} p_X(n),
+\]</div>
+<p>which is equivalent to <span class="math notranslate nohighlight">\(\mathbb{E}[X(X-1)\cdots(X-k+1)]\)</span>. <span class="math notranslate nohighlight">\(\hspace{1em} \blacksquare\)</span></p>
 <p>These factorial moments are useful for analyzing higher-order properties of the distribution, such as variability and dispersion.</p>
 <p><strong>Applications</strong></p>
 <ul class="simple">

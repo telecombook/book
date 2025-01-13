@@ -218,7 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Fundamentals of Communication Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Introduction to Communication Theory</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detection and Estimation Theory</span></p>
 <ul class="nav bd-sidenav">
@@ -410,7 +410,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-cdf">Properties of CDF</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-boundedness-of-the-distribution">Property 1: Boundedness of the Distribution</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-monotonicity-of-the-distribution">Property 2: Monotonicity of the Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-the-equality">Note on the Equality</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-the-equality">Notes on the Equality</a></li>
 </ul>
 </li>
 </ul>
@@ -561,8 +561,8 @@ F_X(x_1) \leq F_X(x_2) \quad \text{for } x_1 &lt; x_2
 \]</div>
 <p>This property guarantees that as <span class="math notranslate nohighlight">\( x \)</span> increases, the probability <span class="math notranslate nohighlight">\( \Pr(X \leq x) \)</span> cannot decrease. Intuitively, larger values of <span class="math notranslate nohighlight">\( x \)</span> include more outcomes in the event <span class="math notranslate nohighlight">\( X \leq x \)</span>, leading to a higher or equal probability.</p>
 <p>These two properties are direct consequences of the <strong>definition of the CDF</strong> and ensure its consistency and applicability across various random variable types.</p>
-<section id="note-on-the-equality">
-<h5>Note on the Equality<a class="headerlink" href="#note-on-the-equality" title="Link to this heading">#</a></h5>
+<section id="notes-on-the-equality">
+<h5>Notes on the Equality<a class="headerlink" href="#notes-on-the-equality" title="Link to this heading">#</a></h5>
 <p>An example of a situation where <span class="math notranslate nohighlight">\( x_1 &lt; x_2 \)</span> but <span class="math notranslate nohighlight">\( F_X(x_1) = F_X(x_2) \)</span> occurs when the cumulative distribution function <span class="math notranslate nohighlight">\( F_X(x) \)</span> has a <strong>flat region</strong> due to a probability mass concentrated at a single point (discrete random variable).</p>
 <p>Consider a random variable <span class="math notranslate nohighlight">\( X \)</span> with the following probability mass function:</p>
 <div class="math notranslate nohighlight">
@@ -670,17 +670,17 @@ f_X(x) = \frac{d}{dx}F_X(x) \quad \text{for all } x
 <p>The term <strong>density function</strong> arises from the relationship between the PDF and the probability of events. Specifically, the <strong>probability</strong> of the event <span class="math notranslate nohighlight">\( x_1 &lt; X \leq x_2 \)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-P[x_1 &lt; X \leq x_2] = P[X \leq x_2] - P[X \leq x_1]
+\Pr[x_1 &lt; X \leq x_2] = \Pr[X \leq x_2] - \Pr[X \leq x_1]
 \]</div>
 <p>Using the cumulative distribution function (CDF), <span class="math notranslate nohighlight">\( F_X(x) \)</span>, this can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-P[x_1 &lt; X \leq x_2] = F_X(x_2) - F_X(x_1)
+\Pr[x_1 &lt; X \leq x_2] = F_X(x_2) - F_X(x_1)
 \]</div>
 <p>Since the PDF is the derivative of the CDF, the probability of the interval can also be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-P[x_1 &lt; X \leq x_2] = \int_{x_1}^{x_2} f_X(x) \, dx
+\Pr[x_1 &lt; X \leq x_2] = \int_{x_1}^{x_2} f_X(x) \, dx
 \]</div>
 <p>This interpretation shows that the <strong>probability of an interval</strong> is equivalent to the <strong>area under the PDF</strong> within that interval.</p>
 <section id="relationship-between-the-cdf-and-pdf">
@@ -688,7 +688,9 @@ P[x_1 &lt; X \leq x_2] = \int_{x_1}^{x_2} f_X(x) \, dx
 <p>For a continuous random variable <span class="math notranslate nohighlight">\( X \)</span>, the CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> is defined in terms of the PDF <span class="math notranslate nohighlight">\( f_X(x) \)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 F_X(x) = \int_{-\infty}^{x} f_X(\xi) \, d\xi
+}
 \]</div>
 <p>Here, <span class="math notranslate nohighlight">\( \xi \)</span> is an <strong>arbitrary variable</strong> of integration.</p>
 </section>
@@ -827,17 +829,16 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">cdf_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
 
 <span class="c1"># Visualization</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 
 <span class="c1"># Bernoulli events plot (separate plots for empirical and built-in RVs)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">bernoulli_rv</span><span class="p">[:</span><span class="mi">30</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bernoulli Events (Custom RV)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Index of Events&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Events (0 or 1)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">bernoulli_builtin_rv</span><span class="p">[:</span><span class="mi">30</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Built-in RV&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bernoulli Events (Built-in RV)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Index of Events&#39;</span><span class="p">)</span>
@@ -845,7 +846,7 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Histogram (PMF visualization)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">values</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">bernoulli_rv</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">probabilities</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">N</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
@@ -860,7 +861,7 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
 <span class="c1"># Empirical CDF plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_rv</span><span class="p">,</span> <span class="n">cdf_y</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
 <span class="n">sorted_builtin_rv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">bernoulli_builtin_rv</span><span class="p">)</span>
 <span class="n">cdf_builtin_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
@@ -872,14 +873,14 @@ If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, 
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/42a3ac4ea7fc29fcb0a0571dfd91845760c2e0117abbd352fd60eaeed8c14174.png" src="_images/42a3ac4ea7fc29fcb0a0571dfd91845760c2e0117abbd352fd60eaeed8c14174.png" />
-<img alt="_images/8e49b6838ece72813f95cda82654834a422e4a007ba7ed5f3758be8fb9cdb659.png" src="_images/8e49b6838ece72813f95cda82654834a422e4a007ba7ed5f3758be8fb9cdb659.png" />
+<img alt="_images/79c4cb0765bc6680bd81ba4a9fcac1eedb2db1c1ade642a5901e9f38d52fbe7b.png" src="_images/79c4cb0765bc6680bd81ba4a9fcac1eedb2db1c1ade642a5901e9f38d52fbe7b.png" />
+<img alt="_images/b3e14bc71205d0ff21b026456c01e6003b3124ca1d4b35b779e77c346093f13b.png" src="_images/b3e14bc71205d0ff21b026456c01e6003b3124ca1d4b35b779e77c346093f13b.png" />
+<img alt="_images/2030f9bf3f8c90207a0a9e135835242c6d827a1db2b5b94974c2d9be2f8cb3fe.png" src="_images/2030f9bf3f8c90207a0a9e135835242c6d827a1db2b5b94974c2d9be2f8cb3fe.png" />
+<img alt="_images/4535a48d930631a014279a8b36859b5a8f121c04156aaf39775cd2fadc9112f1.png" src="_images/4535a48d930631a014279a8b36859b5a8f121c04156aaf39775cd2fadc9112f1.png" />
 </div>
 </div>
 </section>
@@ -902,25 +903,25 @@ f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left( -\frac{(x - m)^2}{2\sigma^2} 
 </section>
 <section id="key-parameters-of-the-pdf">
 <h4>Key Parameters of the PDF<a class="headerlink" href="#key-parameters-of-the-pdf" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p><strong>Mean (<span class="math notranslate nohighlight">\( m \)</span>)</strong>:</p>
 <ul class="simple">
+<li><p><strong>Mean (<span class="math notranslate nohighlight">\( m \)</span>)</strong>:</p>
+<ul>
 <li><p>Represents the <strong>central location</strong> or average value of the Gaussian RV.</p></li>
 <li><p>The distribution is symmetric around this point.</p></li>
 </ul>
 </li>
 <li><p><strong>Standard Deviation (<span class="math notranslate nohighlight">\( \sigma \)</span>)</strong>:</p>
-<ul class="simple">
+<ul>
 <li><p>Measures the <strong>spread</strong> or <strong>dispersion</strong> of the distribution.</p></li>
 <li><p>A larger <span class="math notranslate nohighlight">\( \sigma \)</span> results in a wider, flatter distribution, while a smaller <span class="math notranslate nohighlight">\( \sigma \)</span> results in a narrower, sharper peak.</p></li>
 </ul>
 </li>
 <li><p><strong>Variance (<span class="math notranslate nohighlight">\( \sigma^2 \)</span>)</strong>:</p>
-<ul class="simple">
+<ul>
 <li><p>Defined as the square of the standard deviation, it quantifies the <strong>variability</strong> of the RV.</p></li>
 </ul>
 </li>
-</ol>
+</ul>
 <p><strong>Notation</strong><br />
 The Gaussian random variable <span class="math notranslate nohighlight">\( X \)</span> is denoted as:</p>
 <div class="math notranslate nohighlight">
@@ -1034,7 +1035,7 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <span class="n">gaussianRV_sim</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 
 <span class="c1"># Plotting Histogram for Gaussian RV</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Gaussian Random Variable (PDF)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
@@ -1049,7 +1050,7 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <span class="n">gaussianRV_builtin</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
 
 <span class="c1"># Plotting built-in Gaussian RV histogram</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_builtin</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical Gaussian PDF (Built-in)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
@@ -1060,7 +1061,7 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <span class="n">sorted_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">)</span>
 <span class="n">ecdf_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_sim</span><span class="p">,</span> <span class="n">ecdf_sim</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical CDF of Gaussian Random Variable&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
@@ -1071,7 +1072,7 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">theoreticalPDF</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x_values</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF (sampling)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_builtin</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF (Built-in)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalPDF</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
@@ -1097,7 +1098,7 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 <span class="n">theoreticalCDF_q</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">q_function</span><span class="p">((</span><span class="n">x_values</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span>
 
 <span class="c1"># Plotting the CDFs</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_sim</span><span class="p">,</span> <span class="n">ecdf_sim</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical CDF&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalCDF_erf</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical CDF (using erf())&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalCDF_phi</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical CDF (using Phi-function)&#39;</span><span class="p">)</span>
@@ -1111,14 +1112,14 @@ F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/70486b05db1af8c1f3ad0ee7668c6471638eb0023c7861963881b3c01182d2aa.png" src="_images/70486b05db1af8c1f3ad0ee7668c6471638eb0023c7861963881b3c01182d2aa.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices where Gaussian RV &gt; 3: [ 139  404  545 4463 4956 5655 5746 7742 7777 7822 9171 9301]
+<img alt="_images/131673dee443d3b55469df7789e83919bbe0c3de275f4d10943c9694280b415b.png" src="_images/131673dee443d3b55469df7789e83919bbe0c3de275f4d10943c9694280b415b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices where Gaussian RV &gt; 3: [ 280  630 2213 3705 4620 4793 5833 8522]
 </pre></div>
 </div>
-<img alt="_images/9304981d750dce2133d5f715298c38e2511e8544abd4db2a462fbc7c1fe9954f.png" src="_images/9304981d750dce2133d5f715298c38e2511e8544abd4db2a462fbc7c1fe9954f.png" />
-<img alt="_images/69c5771a99652433c82f14af13ab245e39976393b933ffcd6b8f23a7ee3154e0.png" src="_images/69c5771a99652433c82f14af13ab245e39976393b933ffcd6b8f23a7ee3154e0.png" />
-<img alt="_images/17b0e0fd3d8e77612d29fad3f1ad35d36084dd396fd8bd3950e459355e28deeb.png" src="_images/17b0e0fd3d8e77612d29fad3f1ad35d36084dd396fd8bd3950e459355e28deeb.png" />
-<img alt="_images/925f5217e37650d70f665aa22dcd02b67d6f6068d67496da169963d59b2bb6f0.png" src="_images/925f5217e37650d70f665aa22dcd02b67d6f6068d67496da169963d59b2bb6f0.png" />
+<img alt="_images/7d8cda7090c1fce64d70d323170393269c43ece502e8e87cfff48d641cff9138.png" src="_images/7d8cda7090c1fce64d70d323170393269c43ece502e8e87cfff48d641cff9138.png" />
+<img alt="_images/bb382cb11d256826ab74db602b7ba978e0f60ee94d519f80fc9dd3691681c4d1.png" src="_images/bb382cb11d256826ab74db602b7ba978e0f60ee94d519f80fc9dd3691681c4d1.png" />
+<img alt="_images/1931b0707875c134dcf8fb434b3aa5f1abd8aa9fb4306937eb852c28815e3151.png" src="_images/1931b0707875c134dcf8fb434b3aa5f1abd8aa9fb4306937eb852c28815e3151.png" />
+<img alt="_images/cb87713e3c78d5cdba9a66bd0af0b798c2770bef7cbabe949ba457dce2ae16e2.png" src="_images/cb87713e3c78d5cdba9a66bd0af0b798c2770bef7cbabe949ba457dce2ae16e2.png" />
 </div>
 </div>
 </section>
@@ -1210,11 +1211,12 @@ Q(x) = \Pr(X &gt; x) = \int_x^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} 
    Q(-x) = 1 - Q(x)
    \]</div>
 </li>
-<li><p>For small <span class="math notranslate nohighlight">\( x \)</span>, <span class="math notranslate nohighlight">\( Q(x) \)</span> can be approximated as:</p>
+<li><p><span class="math notranslate nohighlight">\( Q(x) \)</span> can be approximated as:</p>
 <div class="math notranslate nohighlight">
 \[
    Q(x) \approx \frac{1}{\sqrt{2\pi}x} e^{-\frac{x^2}{2}}, \quad x \gg 1
    \]</div>
+<p>For large <span class="math notranslate nohighlight">\( x \)</span>, the tail probability of the standard normal distribution can be approximated using an asymptotic expansion.</p>
 </li>
 </ul>
 <p><strong>Examples</strong></p>
@@ -1349,7 +1351,7 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">pdf</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Standard normal PDF</span>
 
 <span class="c1"># Plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Standard normal distribution curve</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Standard Normal Distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
@@ -1379,7 +1381,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8458a4a071fc37485d9c40a501f8c8bbdc5e65468eab71e4cf6439ab918a560f.png" src="_images/8458a4a071fc37485d9c40a501f8c8bbdc5e65468eab71e4cf6439ab918a560f.png" />
+<img alt="_images/fc4dc8606c84d321fab9ba53e47b3ee5541e4cf82bd5fc7b8626ccd0be790f0e.png" src="_images/fc4dc8606c84d321fab9ba53e47b3ee5541e4cf82bd5fc7b8626ccd0be790f0e.png" />
 </div>
 </div>
 </section>
@@ -1461,7 +1463,7 @@ $<span class="math notranslate nohighlight">\(
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-cdf">Properties of CDF</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-boundedness-of-the-distribution">Property 1: Boundedness of the Distribution</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-monotonicity-of-the-distribution">Property 2: Monotonicity of the Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-the-equality">Note on the Equality</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-the-equality">Notes on the Equality</a></li>
 </ul>
 </li>
 </ul>

@@ -218,7 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Fundamentals of Communication Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Introduction to Communication Theory</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detection and Estimation Theory</span></p>
 <ul class="nav bd-sidenav">
@@ -497,14 +497,12 @@
 </section>
 <section id="three-fundamental-components-to-define-a-probability">
 <h3>Three Fundamental Components to Define a Probability<a class="headerlink" href="#three-fundamental-components-to-define-a-probability" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><strong>Sample Space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>)</strong><br />
-The sample space is the universal set of all possible outcomes of a random experiment. For a coin toss, <span class="math notranslate nohighlight">\( \mathbb{S} = \{ \text{Heads}, \text{Tails} \} \)</span>. It serves as the foundational set from which events are defined.</p></li>
-<li><p><strong>Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)</strong><br />
-This is the collection of subsets of the sample space <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>. Each subset represents an event that could be studied. For instance, if <span class="math notranslate nohighlight">\( \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \)</span> for a dice roll, possible events could be <span class="math notranslate nohighlight">\( \{2, 4, 6\} \)</span> (rolling an even number) or <span class="math notranslate nohighlight">\( \{1, 3, 5\} \)</span> (rolling an odd number).</p></li>
-<li><p><strong>Probability Law</strong><br />
-The probability law assigns a value <span class="math notranslate nohighlight">\( \Pr(A) \)</span> to each event <span class="math notranslate nohighlight">\( A \)</span>, quantifying how likely the event is to occur. It adheres to specific axioms, ensuring that probabilities are non-negative, sum to 1 across all possible outcomes, and are additive for disjoint events.</p></li>
-</ol>
+<p><strong>Sample Space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>)</strong><br />
+The sample space is the universal set of all possible outcomes of a random experiment. For a coin toss, <span class="math notranslate nohighlight">\( \mathbb{S} = \{ \text{Heads}, \text{Tails} \} \)</span>. It serves as the foundational set from which events are defined.</p>
+<p><strong>Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)</strong><br />
+This is the collection of subsets of the sample space <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>. Each subset represents an event that could be studied. For instance, if <span class="math notranslate nohighlight">\( \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \)</span> for a dice roll, possible events could be <span class="math notranslate nohighlight">\( \{2, 4, 6\} \)</span> (rolling an even number) or <span class="math notranslate nohighlight">\( \{1, 3, 5\} \)</span> (rolling an odd number).</p>
+<p><strong>Probability Law</strong><br />
+The probability law assigns a value <span class="math notranslate nohighlight">\( \Pr(A) \)</span> to each event <span class="math notranslate nohighlight">\( A \)</span>, quantifying how likely the event is to occur. It adheres to specific axioms, ensuring that probabilities are non-negative, sum to 1 across all possible outcomes, and are additive for disjoint events.</p>
 </section>
 <section id="special-types-of-events">
 <h3>Special Types of Events<a class="headerlink" href="#special-types-of-events" title="Link to this heading">#</a></h3>
@@ -527,80 +525,69 @@ This refers to the empty set (<span class="math notranslate nohighlight">\( \var
 <section id="examples-of-events">
 <h3>Examples of Events<a class="headerlink" href="#examples-of-events" title="Link to this heading">#</a></h3>
 <p>An <strong>event</strong> is any subset of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, which can be:</p>
-<ol class="arabic simple">
-<li><p><strong>Single-Outcome Events</strong>:</p>
+<p><strong>Single-Outcome Events</strong>:</p>
 <ul class="simple">
 <li><p>Rolling a 3: <span class="math notranslate nohighlight">\( A = \{3\} \)</span></p></li>
 <li><p>Rolling a 5: <span class="math notranslate nohighlight">\( B = \{5\} \)</span></p></li>
 </ul>
-</li>
-<li><p><strong>Multi-Outcome Events</strong>:</p>
+<p><strong>Multi-Outcome Events</strong>:</p>
 <ul class="simple">
 <li><p>Rolling an even number: <span class="math notranslate nohighlight">\( C = \{2, 4, 6\} \)</span></p></li>
 <li><p>Rolling an odd number: <span class="math notranslate nohighlight">\( D = \{1, 3, 5\} \)</span></p></li>
 <li><p>Rolling a number less than 4: <span class="math notranslate nohighlight">\( E = \{1, 2, 3\} \)</span></p></li>
 </ul>
-</li>
-<li><p><strong>Compound Events</strong>:</p>
+<p><strong>Compound Events</strong>:</p>
 <ul class="simple">
 <li><p>Rolling a number greater than 4 or even: <span class="math notranslate nohighlight">\( F = \{4, 5, 6\} \)</span></p></li>
 <li><p>Rolling a prime number (prime numbers on a die: <span class="math notranslate nohighlight">\( 2, 3, 5 \)</span>): <span class="math notranslate nohighlight">\( G = \{2, 3, 5\} \)</span></p></li>
 </ul>
-</li>
-<li><p><strong>Complementary Events</strong>:</p>
+<p><strong>Complementary Events</strong>:</p>
 <ul class="simple">
 <li><p>The complement of rolling a 6: <span class="math notranslate nohighlight">\( H = \{1, 2, 3, 4, 5\} \)</span></p></li>
 </ul>
-</li>
-<li><p><strong>Null Event</strong>:</p>
+<p><strong>Null Event</strong>:</p>
 <ul class="simple">
 <li><p>Rolling a 7 on a six-sided die: <span class="math notranslate nohighlight">\( I = \varnothing \)</span></p></li>
 </ul>
-</li>
-<li><p><strong>Sure Event</strong>:</p>
+<p><strong>Sure Event</strong>:</p>
 <ul class="simple">
 <li><p>Rolling any number: <span class="math notranslate nohighlight">\( J = \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \)</span></p></li>
 </ul>
-</li>
-</ol>
 </section>
 <section id="class-of-events-mathsf-e">
 <h3>Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)<a class="headerlink" href="#class-of-events-mathsf-e" title="Link to this heading">#</a></h3>
 <p>The class of events is the collection of subsets of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, i.e., all subsets of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, from the null set to the entire sample space.</p>
 <p>For this example, <span class="math notranslate nohighlight">\( \mathsf{E} \)</span> includes all possible subsets of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, including:</p>
-<ol class="arabic simple">
-<li><p><strong>Single-Outcome Subsets</strong>:<br />
-<span class="math notranslate nohighlight">\(\{1\}, \{2\}, \{3\}, \{4\}, \{5\}, \{6\}\)</span></p></li>
-<li><p><strong>Multi-Outcome Subsets</strong>:<br />
-<span class="math notranslate nohighlight">\(\{1, 2\}, \{1, 3, 5\}, \{2, 4, 6\}, \{1, 2, 3, 4\}\)</span>, etc.</p></li>
-<li><p><strong>Special Subsets</strong>:</p>
+<p><strong>Single-Outcome Subsets</strong>:<br />
+<span class="math notranslate nohighlight">\(\{1\}, \{2\}, \{3\}, \{4\}, \{5\}, \{6\}\)</span></p>
+<p><strong>Multi-Outcome Subsets</strong>:<br />
+<span class="math notranslate nohighlight">\(\{1, 2\}, \{1, 3, 5\}, \{2, 4, 6\}, \{1, 2, 3, 4\}\)</span>, etc.</p>
+<p><strong>Special Subsets</strong>:</p>
 <ul class="simple">
 <li><p>The empty set (<span class="math notranslate nohighlight">\( \varnothing \)</span>), corresponding to the null event.</p></li>
 <li><p>The entire sample space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>), corresponding to the sure event.</p></li>
 </ul>
-</li>
-</ol>
 <section id="properties-of-mathsf-e">
 <h4>Properties of <span class="math notranslate nohighlight">\( \mathsf{E} \)</span><a class="headerlink" href="#properties-of-mathsf-e" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
+<p>A set is said to be <strong>closed</strong> under an operation if applying that operation to elements of the set results in an element that is <em>also in</em> the set.</p>
+<ul class="simple">
 <li><p><strong>Closed Under Union</strong>: If <span class="math notranslate nohighlight">\( A, B \in \mathsf{E} \)</span>, then <span class="math notranslate nohighlight">\( A \cup B \in \mathsf{E} \)</span>.<br />
 Example: <span class="math notranslate nohighlight">\( A = \{2, 4\} \)</span>, <span class="math notranslate nohighlight">\( B = \{3, 5\} \)</span>, so <span class="math notranslate nohighlight">\( A \cup B = \{2, 3, 4, 5\} \)</span>.</p></li>
 <li><p><strong>Closed Under Intersection</strong>: If <span class="math notranslate nohighlight">\( A, B \in \mathsf{E} \)</span>, then <span class="math notranslate nohighlight">\( A \cap B \in \mathsf{E} \)</span>.<br />
 Example: <span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>, <span class="math notranslate nohighlight">\( B = \{4, 5, 6\} \)</span>, so <span class="math notranslate nohighlight">\( A \cap B = \{4, 6\} \)</span>.</p></li>
 <li><p><strong>Closed Under Complement</strong>: If <span class="math notranslate nohighlight">\( A \in \mathsf{E} \)</span>, then <span class="math notranslate nohighlight">\( A^c \in \mathsf{E} \)</span>, where <span class="math notranslate nohighlight">\( A^c = \mathbb{S} \setminus A \)</span>.<br />
 Example: <span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>, <span class="math notranslate nohighlight">\( A^c = \{1, 3, 5\} \)</span>.</p></li>
-</ol>
+</ul>
 </section>
 </section>
 </section>
 <section id="probability-measure-pr-a">
 <h2>Probability Measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span><a class="headerlink" href="#probability-measure-pr-a" title="Link to this heading">#</a></h2>
 <p><strong>Definition</strong>: A probability measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span> is a function that assigns a numerical value to an event <span class="math notranslate nohighlight">\( A \)</span>, representing the likelihood of its occurrence.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Other notation: $ P(A) $. 
-
-Not that it is different from $p (A)$ which is a value of a probability.
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>Other notation: <span class="math notranslate nohighlight">\( P(A) \)</span>.</p></li>
+<li><p>Not that it is different from <span class="math notranslate nohighlight">\(p (A)\)</span> which is a value of a probability.</p></li>
+</ul>
 <section id="assigning-probabilities">
 <h3>Assigning Probabilities<a class="headerlink" href="#assigning-probabilities" title="Link to this heading">#</a></h3>
 <p>The assignment of probabilities to events is a fundamental task in probability theory.</p>
@@ -820,7 +807,7 @@ Using the formula for the union of two events:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(33274, 0.33274)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(33175, 0.33175)
 </pre></div>
 </div>
 </div>
@@ -856,7 +843,7 @@ As <span class="math notranslate nohighlight">\( n \to \infty \)</span>, the rel
 <p>These properties provide essential tools for reasoning about and calculating probabilities.</p>
 <section id="property-1-probability-of-an-impossible-event">
 <h3>Property 1: Probability of an Impossible Event<a class="headerlink" href="#property-1-probability-of-an-impossible-event" title="Link to this heading">#</a></h3>
-<p>The probability of an impossible event is always zero:</p>
+<p>The probability of an <em>impossible event</em> is always zero:</p>
 <div class="math notranslate nohighlight">
 \[
 \Pr(\varnothing) = 0.
@@ -1003,7 +990,7 @@ The conditional probability <span class="math notranslate nohighlight">\( \Pr(A|
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.33480193776041145
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.33829458608308427
 </pre></div>
 </div>
 </div>
@@ -1167,12 +1154,12 @@ From the definition of conditional probability:</p>
 \Pr(A \cap B) = \Pr(A)\Pr(B).
 \]</div>
 <p>Note that:</p>
-<ol class="arabic simple">
+<ul class="simple">
 <li><p><strong>Special Case When <span class="math notranslate nohighlight">\( \Pr(B) = 0 \)</span></strong>:<br />
 Independence still holds, even if <span class="math notranslate nohighlight">\( \Pr(B) = 0 \)</span>, as conditional probabilities <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span> are undefined in this case. The definition <span class="math notranslate nohighlight">\( \Pr(A \cap B) = \Pr(A)\Pr(B) \)</span> remains valid.</p></li>
 <li><p><strong>Symmetry of Independence</strong>:<br />
 If <span class="math notranslate nohighlight">\( A \)</span> is independent of <span class="math notranslate nohighlight">\( B \)</span>, then <span class="math notranslate nohighlight">\( B \)</span> is also independent of <span class="math notranslate nohighlight">\( A \)</span>. Independence is a symmetric property.</p></li>
-</ol>
+</ul>
 <p>We can see that:</p>
 <ul class="simple">
 <li><p>Independence implies no probabilistic influence between events.</p></li>

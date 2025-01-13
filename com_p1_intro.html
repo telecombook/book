@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fundamentals of Communication Theory &#8212; Telecom Book</title>
+    <title>Introduction to Communication Theory &#8212; Telecom Book</title>
   
   
   
@@ -218,7 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fundamentals of Communication Theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Communication Theory</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detection and Estimation Theory</span></p>
 <ul class="nav bd-sidenav">
@@ -391,7 +391,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Fundamentals of Communication Theory</h1>
+    <h1>Introduction to Communication Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,15 +431,9 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-models-for-communication-channels">Mathematical Models for Communication Channels</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-additive-noise-channel">The Additive Noise Channel</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-the-model">Key Features of the Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-of-the-model">Significance of the Model</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-additive-noise-channel">Simulation of Additive Noise Channel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-filter-channel">The Linear Filter Channel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-time-variant-filter-channel">The Linear Time-Variant Filter Channel</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-time-variant-filter-channel-with-multipath">The Linear Time-Variant Filter Channel with Multipath</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
@@ -454,14 +448,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="fundamentals-of-communication-theory">
-<h1>Fundamentals of Communication Theory<a class="headerlink" href="#fundamentals-of-communication-theory" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-communication-theory">
+<h1>Introduction to Communication Theory<a class="headerlink" href="#introduction-to-communication-theory" title="Link to this heading">#</a></h1>
 <section id="overview-of-a-communication-system">
 <h2>Overview of A Communication System<a class="headerlink" href="#overview-of-a-communication-system" title="Link to this heading">#</a></h2>
 <section id="fundamental-components">
 <h3>Fundamental Components<a class="headerlink" href="#fundamental-components" title="Link to this heading">#</a></h3>
 <p>In a communication system, the fundamental components include the <strong>transmitter</strong>, the <strong>communication channel</strong>, and the <strong>receiver</strong>.</p>
-<p><img alt="Elements of a communication system" src="Figures/ele6703_p1_fig_tx_rx_com_system.png" /></p>
 </section>
 <section id="transmitter-communication-channel-and-receiver">
 <h3>Transmitter, Communication Channel, and Receiver<a class="headerlink" href="#transmitter-communication-channel-and-receiver" title="Link to this heading">#</a></h3>
@@ -501,10 +494,12 @@
 </section>
 <section id="modes-of-communications">
 <h3>Modes of Communications<a class="headerlink" href="#modes-of-communications" title="Link to this heading">#</a></h3>
-<p>Communication systems can be broadly categorized into two fundamental modes: <strong>Broadcasting</strong> and <strong>Point-to-Point Communication</strong>. These modes define the structure and flow of information within a network, depending on the requirements of the application.</p>
+<p>Communication systems can be broadly categorized into two fundamental modes: <strong>Broadcasting</strong> and <strong>Point-to-Point Communication</strong>.</p>
+<p>These modes define the structure and flow of information within a network, depending on the requirements of the application.</p>
 <section id="broadcasting">
 <h4>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h4>
-<p>Broadcasting is a communication mode in which a single, powerful transmitter is used to send information-bearing signals to multiple receivers simultaneously. This approach is particularly effective for applications where the same message needs to reach a large audience, such as radio or television broadcasts.</p>
+<p>Broadcasting is a communication mode in which a single, powerful transmitter is used to send information-bearing signals to multiple receivers simultaneously.</p>
+<p>This approach is particularly effective for applications where the same message needs to reach a large audience, such as radio or television broadcasts.</p>
 <p>Key characteristics of broadcasting include:</p>
 <ul class="simple">
 <li><p><strong>Unidirectional Communication</strong>: The information flows in one direction only, from the transmitter to the receivers. The receivers do not send any signals back to the transmitter.</p></li>
@@ -514,22 +509,23 @@
 </section>
 <section id="point-to-point-communication">
 <h4>Point-to-Point Communication<a class="headerlink" href="#point-to-point-communication" title="Link to this heading">#</a></h4>
-<p>Point-to-point communication involves the exchange of information over a dedicated link between a single transmitter and a single receiver. Unlike broadcasting, this mode allows for two-way communication, enabling both entities to send and receive signals.</p>
+<p>Point-to-point communication involves the exchange of information over a dedicated link between a single transmitter and a single receiver.</p>
+<p>Unlike broadcasting, this mode allows for two-way communication, enabling both entities to send and receive signals.</p>
 <p>Key features of point-to-point communication include:</p>
 <ul class="simple">
 <li><p><strong>Bidirectional Flow of Information</strong>: The communication is not limited to one direction; signals can flow back and forth between the transmitter and receiver.</p></li>
 <li><p><strong>Use of Transceivers</strong>: To enable bidirectional communication, each end of the link is equipped with a transceiver, a device that can function both as a transmitter and a receiver.</p></li>
 </ul>
 <p>This mode is widely used in applications requiring secure and individualized communication, such as telephone calls or data transfers between computers.</p>
-<p>By understanding these modes, communication systems can be tailored to meet the specific needs of different applications, whether it be reaching a broad audience or facilitating a private exchange of information.</p>
 </section>
 </section>
 <section id="types-of-communication-channels">
 <h3>Types of Communication Channels<a class="headerlink" href="#types-of-communication-channels" title="Link to this heading">#</a></h3>
-<p>A <strong>communication channel</strong> is the medium that connects a transmitter and a receiver, enabling the transfer of information. Depending on the application and environment, different types of channels are employed, each with unique characteristics and advantages. These include:</p>
+<p>A <strong>communication channel</strong> is the medium that connects a transmitter and a receiver, enabling the transfer of information.</p>
+<p>Depending on the application and environment, different types of channels are employed, each with unique characteristics and advantages. These include:</p>
 <section id="wireline-channels">
 <h4>Wireline Channels<a class="headerlink" href="#wireline-channels" title="Link to this heading">#</a></h4>
-<p>Wireline channels are physical connections that use electrical signals to transmit information. Common examples include twisted-pair cables, coaxial cables, and telephone lines. These channels are widely used in the telephone network for transmitting voice signals, as well as for data and video communication.</p>
+<p>Wireline channels are physical connections that use electrical signals to transmit information. Common examples include twisted-pair cables, coaxial cables, and telephone lines.</p>
 <p>Key features:</p>
 <ul class="simple">
 <li><p>Reliable transmission for short to medium distances.</p></li>
@@ -538,7 +534,8 @@
 </section>
 <section id="fiber-optic-channels">
 <h4>Fiber-Optic Channels<a class="headerlink" href="#fiber-optic-channels" title="Link to this heading">#</a></h4>
-<p>Fiber-optic channels use light to carry information through optical fibers, providing an extremely high-bandwidth medium. These channels offer far greater capacity compared to traditional coaxial cables, making them ideal for high-speed internet, long-distance data transmission, and modern telecommunication systems.</p>
+<p>Fiber-optic channels use light to carry information through optical fibers, providing an extremely high-bandwidth medium.</p>
+<p>These channels offer far greater capacity compared to traditional coaxial cables, making them ideal for high-speed internet, long-distance data transmission, and modern telecommunication systems.</p>
 <p>Key features:</p>
 <ul class="simple">
 <li><p>Immense bandwidth capacity.</p></li>
@@ -547,7 +544,8 @@
 </section>
 <section id="wireless-electromagnetic-channels">
 <h4>Wireless Electromagnetic Channels<a class="headerlink" href="#wireless-electromagnetic-channels" title="Link to this heading">#</a></h4>
-<p>Wireless channels transmit information using electromagnetic waves through the air or space. The energy is radiated into the propagation medium by an antenna. Wireless channels are foundational to systems such as mobile communications, satellite links, and Wi-Fi networks.</p>
+<p>Wireless channels transmit information using electromagnetic waves through the air or space. The energy is radiated into the propagation medium by an antenna.</p>
+<p>Wireless channels are foundational to systems such as mobile communications, satellite links, and Wi-Fi networks.</p>
 <p>Key features:</p>
 <ul class="simple">
 <li><p>No need for physical infrastructure, enabling mobility.</p></li>
@@ -556,7 +554,8 @@
 </section>
 <section id="underwater-acoustic-channels">
 <h4>Underwater Acoustic Channels<a class="headerlink" href="#underwater-acoustic-channels" title="Link to this heading">#</a></h4>
-<p>Underwater acoustic channels facilitate communication through sound waves in water, as electromagnetic waves do not propagate well in underwater environments. These channels are vital for applications such as ocean exploration, submarine communication, and underwater sensor networks.</p>
+<p>Underwater <em>acoustic</em> channels facilitate communication through <em>sound waves</em> in water, as electromagnetic waves do not propagate well in underwater environments.</p>
+<p>These channels are vital for applications such as ocean exploration, submarine communication, and underwater sensor networks.</p>
 <p>Key features:</p>
 <ul class="simple">
 <li><p>Operates effectively in water despite its unique challenges, such as slow propagation speed and multipath effects.</p></li>
@@ -565,7 +564,7 @@
 </section>
 <section id="storage-channels">
 <h4>Storage Channels<a class="headerlink" href="#storage-channels" title="Link to this heading">#</a></h4>
-<p>Storage channels are not traditional communication channels but play a critical role in storing and retrieving information for later use. Examples include magnetic tapes, hard drives, and flash memory. These systems handle vast amounts of data daily, enabling efficient data processing and management.</p>
+<p>Storage channels are not traditional communication channels but play a critical role in storing and retrieving information for later use. Examples include magnetic tapes, hard drives, and flash memory.</p>
 <p>Key features:</p>
 <ul class="simple">
 <li><p>High reliability and durability for long-term data preservation.</p></li>
@@ -576,8 +575,9 @@
 </section>
 <section id="key-components-of-a-digital-communication-system">
 <h3>Key Components of a Digital Communication System<a class="headerlink" href="#key-components-of-a-digital-communication-system" title="Link to this heading">#</a></h3>
-<p>A digital communication system is composed of several functional elements that work together to facilitate the reliable transmission and reception of information. The following are the key components typically represented in the block diagram of a digital communication system:</p>
-<p><img alt="fig system block" src="Figures/ele6703_p1_fig_com_system_blocks.png" /></p>
+<p>A digital communication system is composed of several functional elements that work together to facilitate the reliable transmission and reception of information.</p>
+<p>The following are the key components typically represented in the block diagram of a digital communication system:</p>
+<p><img alt="Elements of a communication system" src="_images/com_p1_fig_com_system_blocks.png" /></p>
 <section id="information-sequence">
 <h4>Information Sequence<a class="headerlink" href="#information-sequence" title="Link to this heading">#</a></h4>
 <p>The communication process begins with an information sequence, which represents the raw message or data originating from the source. This sequence can take two primary forms:</p>
@@ -597,27 +597,34 @@
 </section>
 <section id="channel-encoder">
 <h4>Channel Encoder<a class="headerlink" href="#channel-encoder" title="Link to this heading">#</a></h4>
-<p>The channel encoder plays a critical role in ensuring the robustness of the communication system. It introduces <strong>controlled redundancy</strong> to the binary information sequence, which helps mitigate the adverse effects of noise and interference. This redundancy enables the system to detect and correct errors that may arise during the transmission of signals through the communication channel, thereby enhancing reliability.</p>
+<p>The channel encoder plays a critical role in ensuring the robustness of the communication system. It introduces <strong>controlled redundancy</strong> to the binary information sequence, which helps mitigate the adverse effects of noise and interference.</p>
+<p>This redundancy enables the system to detect and correct errors that may arise during the transmission of signals through the communication channel, thereby enhancing reliability.</p>
 </section>
 <section id="modulator">
 <h4>Modulator<a class="headerlink" href="#modulator" title="Link to this heading">#</a></h4>
-<p>The modulator is responsible for transforming the binary sequence from the channel encoder into signal <strong>waveforms</strong> suitable for transmission. These waveforms are designed to be compatible with the physical characteristics of the communication channel, ensuring efficient utilization of the channel’s bandwidth. The modulator also prepares the signal for propagation by converting it into an appropriate format, such as amplitude, frequency, or phase variations.</p>
+<p>The modulator is responsible for transforming the binary sequence from the channel encoder into signal <strong>waveforms</strong> suitable for transmission.</p>
+<p>These waveforms are designed to be compatible with the physical characteristics of the communication channel, ensuring efficient utilization of the channel’s bandwidth.</p>
+<p>The modulator also prepares the signal for propagation by converting it into an appropriate format, such as amplitude, frequency, or phase variations.</p>
 </section>
 <section id="communication-channel">
 <h4>Communication Channel<a class="headerlink" href="#communication-channel" title="Link to this heading">#</a></h4>
-<p>The communication channel represents the <strong>physical medium</strong> through which the signal travels from the transmitter to the receiver. This medium can vary widely depending on the application and environment and may include wireline cables, fiber optics, electromagnetic waves, or acoustic waves. The channel may introduce challenges such as noise, interference, and attenuation, which must be addressed by the communication system’s design to ensure accurate and reliable signal delivery.</p>
+<p>The communication channel represents the <strong>physical medium</strong> through which the signal travels from the transmitter to the receiver. This medium can vary widely depending on the application and environment and may include wireline cables, fiber optics, electromagnetic waves, or acoustic waves.</p>
+<p>The channel may introduce challenges such as noise, interference, and attenuation, which must be addressed by the communication system’s design to ensure accurate and reliable signal delivery.</p>
 </section>
 <section id="demodulator">
 <h4>Demodulator<a class="headerlink" href="#demodulator" title="Link to this heading">#</a></h4>
-<p>The demodulator is the first component to process the received signal at the receiver’s end. Its role is to handle the <strong>channel-corrupted transmitted waveform</strong> and convert it into a sequence of numbers. These numbers serve as estimates of the transmitted data symbols, effectively reversing the modulation process applied at the transmitter. This step is crucial for extracting the transmitted information despite the presence of noise and distortions introduced by the communication channel.</p>
+<p>The demodulator is the first component to process the received signal at the receiver’s end. Its role is to handle the <strong>channel-corrupted transmitted waveform</strong> and convert it into a sequence of numbers.</p>
+<p>These numbers serve as estimates of the transmitted data symbols (indices of demodulated symbol), effectively reversing the modulation process applied at the transmitter.</p>
 </section>
 <section id="channel-decoder">
 <h4>Channel Decoder<a class="headerlink" href="#channel-decoder" title="Link to this heading">#</a></h4>
-<p>The channel decoder uses the redundancy introduced by the channel encoder to <strong>reconstruct the original information sequence</strong>. By leveraging knowledge of the encoding scheme, the channel decoder can detect and correct errors that occurred during transmission, ensuring that the receiver obtains an accurate representation of the transmitted data.</p>
+<p>The channel decoder uses the redundancy introduced by the channel encoder to <strong>reconstruct the original information sequence</strong>.</p>
+<p>By leveraging knowledge of the encoding scheme, the channel decoder can detect and correct errors that occurred during transmission, ensuring that the receiver obtains an accurate representation of the transmitted data.</p>
 </section>
 <section id="source-decoder">
 <h4>Source Decoder<a class="headerlink" href="#source-decoder" title="Link to this heading">#</a></h4>
-<p>The source decoder is the final step in the digital communication system. It processes the sequence provided by the channel decoder, applying its knowledge of the source encoding method to <strong>reconstruct the original signal</strong>. This stage ensures that the data presented to the destination closely matches the original information generated by the source, thus completing the communication process.</p>
+<p>The source decoder is the final step in the digital communication system. It processes the sequence provided by the channel decoder, applying its knowledge of the source encoding method to <strong>reconstruct the original signal</strong>.</p>
+<p>This stage ensures that the data presented to the destination closely matches the original information generated by the source, thus completing the communication process.</p>
 </section>
 </section>
 <section id="mathematical-models-for-communication-channels">
@@ -654,10 +661,8 @@ When <span class="math notranslate nohighlight">\( n(t) \)</span> is Gaussian, t
 <li><p><strong>Attenuation</strong>:<br />
 As the signal <span class="math notranslate nohighlight">\( s(t) \)</span> travels through the channel, its power often <strong>decreases</strong> due to attenuation. This phenomenon is captured by the <strong>attenuation factor <span class="math notranslate nohighlight">\( \alpha \)</span></strong>, which scales the transmitted signal before it reaches the receiver.</p></li>
 </ul>
-</section>
-<section id="significance-of-the-model">
-<h4>Significance of the Model<a class="headerlink" href="#significance-of-the-model" title="Link to this heading">#</a></h4>
-<p>The additive noise channel provides a fundamental framework for analyzing and designing communication systems. By understanding the impact of noise and attenuation on the transmitted signal, engineers can develop techniques to enhance signal reliability, such as error-correction coding, signal amplification, and optimal modulation schemes.</p>
+<p><strong>Significance of the Model</strong><br />
+The additive noise channel provides a fundamental framework for analyzing and designing communication systems. By understanding the impact of noise and attenuation on the transmitted signal, engineers can develop techniques to enhance signal reliability, such as source coding algorithms, error-correction coding (codes), optimal modulation schemes.</p>
 </section>
 </section>
 <section id="simulation-of-additive-noise-channel">
@@ -726,78 +731,9 @@ As the signal <span class="math notranslate nohighlight">\( s(t) \)</span> trave
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83b28560be10ede1d9143cdf9a0219401acc5d1a3ae3cb28b636083f3c84dbc5.png" src="_images/83b28560be10ede1d9143cdf9a0219401acc5d1a3ae3cb28b636083f3c84dbc5.png" />
+<img alt="_images/933e9612812bee527c039a71e3f22fd660ec1a37b3611e22f2aada8e054abfeb.png" src="_images/933e9612812bee527c039a71e3f22fd660ec1a37b3611e22f2aada8e054abfeb.png" />
 </div>
 </div>
-</section>
-<section id="the-linear-filter-channel">
-<h3>The Linear Filter Channel<a class="headerlink" href="#the-linear-filter-channel" title="Link to this heading">#</a></h3>
-<p><strong>Bandwidth Limitations and Interference</strong><br />
-Filters are implemented in physical channels to restrict transmitted signals within specific <strong>bandwidth limits</strong>, ensuring that signals do not interfere with those in adjacent frequency bands.</p>
-<p><strong>Mathematical Characterization</strong><br />
-These channels are modeled as <strong>linear filter channels with additive noise</strong>, combining the effects of filtering and random disturbances on the transmitted signal.</p>
-<p><strong>Input-Output Relationship</strong><br />
-For a linear filter channel, the output signal <span class="math notranslate nohighlight">\( r(t) \)</span> is expressed as:</p>
-<div class="math notranslate nohighlight">
-\[
-   r(t) = s(t) \circledast c(t) + n(t)
-   \]</div>
-<p>where, <span class="math notranslate nohighlight">\( s(t) \)</span> is the input signal, <span class="math notranslate nohighlight">\( c(t) \)</span> is the <strong>impulse response</strong> of the filter, <span class="math notranslate nohighlight">\( n(t) \)</span> is additive noise, and <span class="math notranslate nohighlight">\( \circledast \)</span> represents <strong>convolution</strong>.</p>
-<p><strong>Convolution Operation</strong><br />
-The convolution integral:</p>
-<div class="math notranslate nohighlight">
-\[
-   r(t) = \int_{-\infty}^{\infty} c(\tau)s(t - \tau) d\tau + n(t)
-   \]</div>
-<p>describes how the filter <span class="math notranslate nohighlight">\( c(t) \)</span> shapes the input signal <span class="math notranslate nohighlight">\( s(t) \)</span>, with <span class="math notranslate nohighlight">\( n(t) \)</span> accounting for noise effects.</p>
-</section>
-<section id="the-linear-time-variant-filter-channel">
-<h3>The Linear Time-Variant Filter Channel<a class="headerlink" href="#the-linear-time-variant-filter-channel" title="Link to this heading">#</a></h3>
-<p><strong>Time-Variant Multipath Propagation</strong><br />
-Channels such as underwater acoustic or ionospheric radio channels exhibit <strong>time-variant multipath propagation</strong>, where the channel properties fluctuate over time. These are modeled as <strong>time-variant linear filters</strong> to capture the dynamic nature of the medium.</p>
-<p><strong>Time-Variant Impulse Response</strong><br />
-The channel is characterized by a <strong>time-variant impulse response</strong> <span class="math notranslate nohighlight">\( c(\tau; t) \)</span>, which describes the channel’s response at time <span class="math notranslate nohighlight">\( t \)</span> to an impulse applied at time <span class="math notranslate nohighlight">\( t - \tau \)</span>. This response accounts for the time-varying behavior of multipath effects.</p>
-<p><strong>Input-Output Relationship</strong><br />
-For an input signal <span class="math notranslate nohighlight">\( s(t) \)</span>, the output <span class="math notranslate nohighlight">\( r(t) \)</span> is given by:</p>
-<div class="math notranslate nohighlight">
-\[
-   r(t) = s(t) \circledast c(\tau; t) + n(t)
-   \]</div>
-<p>where <span class="math notranslate nohighlight">\( \circledast \)</span> denotes <strong>convolution</strong>. Expanding the convolution integral:</p>
-<div class="math notranslate nohighlight">
-\[
-   r(t) = \int_{-\infty}^{\infty} c(\tau; t) s(t - \tau) d\tau + n(t)
-   \]</div>
-<p>This formulation captures both the time-varying filtering effect <span class="math notranslate nohighlight">\( c(\tau; t) \)</span> and the additive noise <span class="math notranslate nohighlight">\( n(t) \)</span>.</p>
-<section id="the-linear-time-variant-filter-channel-with-multipath">
-<h4>The Linear Time-Variant Filter Channel with Multipath<a class="headerlink" href="#the-linear-time-variant-filter-channel-with-multipath" title="Link to this heading">#</a></h4>
-<p><strong>Multipath Signal Propagation</strong><br />
-In physical channels exhibiting <strong>multipath propagation</strong>, the time-variant impulse response <span class="math notranslate nohighlight">\( c(\tau; t) \)</span> is modeled as:</p>
-<div class="math notranslate nohighlight">
-\[
-   c(\tau; t) = \sum_{k=1}^{L} a_k(t)\delta(\tau - \tau_k)
-   \]</div>
-<p>where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( a_k(t) \)</span>: Time-variant <strong>attenuation factor</strong> for the <span class="math notranslate nohighlight">\( k^{th} \)</span> path.</p></li>
-<li><p><span class="math notranslate nohighlight">\( \tau_k \)</span>: Time delay associated with the <span class="math notranslate nohighlight">\( k^{th} \)</span> path.</p></li>
-<li><p><span class="math notranslate nohighlight">\( L \)</span>: Total number of propagation paths.</p></li>
-</ul>
-<p>This representation accounts for the dynamic nature of the channel, where the signal propagates along multiple paths, each subject to unique attenuation and delay characteristics.</p>
-<p><strong>Received Signal Representation</strong><br />
-The received signal <span class="math notranslate nohighlight">\( r(t) \)</span> resulting from the multipath propagation is expressed as:</p>
-<div class="math notranslate nohighlight">
-\[
-   r(t) = \sum_{k=1}^{L} a_k(t)s(t - \tau_k) + n(t)
-   \]</div>
-<p>This equation highlights:</p>
-<ul class="simple">
-<li><p>The <strong>superposition of <span class="math notranslate nohighlight">\( L \)</span> multipath components</strong>.</p></li>
-<li><p>Each component is delayed by <span class="math notranslate nohighlight">\( \tau_k \)</span> and attenuated by <span class="math notranslate nohighlight">\( a_k(t) \)</span>.</p></li>
-<li><p>The additive noise <span class="math notranslate nohighlight">\( n(t) \)</span> introduces further distortion.</p></li>
-</ul>
-<p>This formulation underscores the complexity of multipath channels and provides a foundation for analyzing signal behavior and designing mitigation techniques such as equalization or diversity reception.</p>
-</section>
 </section>
 </section>
 <section id="references">
@@ -905,15 +841,9 @@ The received signal <span class="math notranslate nohighlight">\( r(t) \)</span>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-models-for-communication-channels">Mathematical Models for Communication Channels</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-additive-noise-channel">The Additive Noise Channel</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-the-model">Key Features of the Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-of-the-model">Significance of the Model</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-additive-noise-channel">Simulation of Additive Noise Channel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-filter-channel">The Linear Filter Channel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-time-variant-filter-channel">The Linear Time-Variant Filter Channel</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-time-variant-filter-channel-with-multipath">The Linear Time-Variant Filter Channel with Multipath</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
