@@ -522,7 +522,7 @@
 <li><p><strong>Analog Mapping:</strong> This complex symbol is then converted into a time-domain <em>analog signal waveform</em>. This waveform is what gets transmitted over the physical communication channel (e.g., radio waves, optical fibers).</p></li>
 </ul>
 <p><strong>Definition: Signaling Interval</strong><br />
-Each signal <span class="math notranslate nohighlight">\( s_m(t) \in \mathbb{S} \)</span> is transmitted every <span class="math notranslate nohighlight">\( T_s \)</span> seconds, where <span class="math notranslate nohighlight">\( T_s \)</span> is known as the <strong>signaling interval</strong>.</p>
+Each signal <span class="math notranslate nohighlight">\( s_m(t) \in \mathbb{S} \)</span> is transmitted every <span class="math notranslate nohighlight">\( T_s \)</span> seconds, where <span class="math notranslate nohighlight">\( T_s \)</span> [s] is known as the <strong>signaling interval</strong>.</p>
 <p>This implies that in one second, <span class="math notranslate nohighlight">\( R_s \)</span> symbols are transmitted, where:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -540,13 +540,14 @@ SER = \frac{\text{Number of symbol errors}}{\text{Total number of transmitted sy
 \]</div>
 <p>Since each symbol may represent multiple bits, <strong>SER is related to Bit Error Rate (BER)</strong>, but <strong>BER accounts for individual bit errors</strong>, whereas SER considers errors at the symbol level. The relationship between SER and BER depends on the modulation scheme.</p>
 <p>Thus, in your content, the <strong>symbol</strong> refers to the modulated signal unit, which is directly relevant when analyzing SER as a performance metric.</p>
-<p><strong>Definition: Bit Interval and Bit Rate</strong><br />
-Since each transmitted signal carries <span class="math notranslate nohighlight">\( k \)</span> bits of information, the <strong>bit interval</strong> <span class="math notranslate nohighlight">\( T_b \)</span>—the time duration in which <strong>one bit</strong> is transmitted—is given by:</p>
+<p><strong>Definition: Bit Interval</strong><br />
+Since each transmitted signal carries <span class="math notranslate nohighlight">\( k \)</span> bits of information, the <strong>bit interval</strong> <span class="math notranslate nohighlight">\( T_b \)</span> [s], the time duration in which <strong>one bit</strong> is transmitted, is given by:</p>
 <div class="math notranslate nohighlight">
 \[
 T_b = \frac{T_s}{k} = \frac{T}{\log_2 M}
 \]</div>
-<p>The <strong>bit rate</strong> <span class="math notranslate nohighlight">\( R \)</span>, which represents the number of bits transmitted per second, is given by:</p>
+<p><strong>Definition: Bit Rate</strong><br />
+The <strong>bit rate</strong> <span class="math notranslate nohighlight">\( R \)</span> [bits/s], which represents the number of bits transmitted per second, is given by:</p>
 <div class="math notranslate nohighlight">
 \[
 R = k R_s = R_s \log_2 M
@@ -611,25 +612,25 @@ P = R E_b
 <li><p>In an <strong>AWGN (Additive White Gaussian Noise) channel</strong>, the modulated signal is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-  s(t) = \Re\{u(t)e^{j2\pi f_c t}\}
+  x_{bp}(t) = \Re\{x_{lp}(t)e^{j2\pi f_c t}\}
   \]</div>
-<p>Before reception, this signal is corrupted by <strong>additive noise</strong> <span class="math notranslate nohighlight">\( n(t) \)</span>, which is a <strong>white Gaussian random process</strong> with zero mean and a <strong>power spectral density</strong> of <span class="math notranslate nohighlight">\( N_0/2 \)</span>.<br />
+<p>Before reception, this signal is corrupted by <strong>additive noise</strong> <span class="math notranslate nohighlight">\( n_{bp}(t) \)</span>, which is a <strong>white Gaussian random process</strong> with zero mean and a <strong>power spectral density</strong> of <span class="math notranslate nohighlight">\( N_0/2 \)</span>.<br />
 The <strong>received signal</strong> is thus:</p>
 <div class="math notranslate nohighlight">
 \[
-  r(t) = s(t) + n(t)
+  r_{bp}(t) = x_{bp}(t) + n_{bp}(t)
   \]</div>
 </li>
-<li><p>The <strong>signal-to-noise power ratio (SNR)</strong> at the receiver is defined as the ratio of the <strong>received signal power</strong> <span class="math notranslate nohighlight">\( P_r \)</span> to the <strong>noise power</strong> within the bandwidth of the transmitted signal <span class="math notranslate nohighlight">\( s(t) \)</span>.</p></li>
+<li><p>The <strong>signal-to-noise power ratio (SNR)</strong> at the receiver is defined as the ratio of the <strong>received signal power</strong> <span class="math notranslate nohighlight">\( P_r \)</span> to the <strong>noise power</strong> within the bandwidth of the transmitted signal <span class="math notranslate nohighlight">\( x_{bp}(t) \)</span>.</p></li>
 <li><p>The <strong>received power</strong> <span class="math notranslate nohighlight">\( P_r \)</span> depends on the <strong>transmitted power</strong> and various channel characteristics, including <strong>path loss, shadowing, and multipath fading</strong>.</p></li>
-<li><p>The <strong>noise power</strong> is influenced by the <strong>bandwidth of the transmitted signal</strong> and the spectral properties of <span class="math notranslate nohighlight">\( n(t) \)</span>.</p></li>
+<li><p>The <strong>noise power</strong> is influenced by the <strong>bandwidth of the transmitted signal</strong> and the spectral properties of <span class="math notranslate nohighlight">\( n_{bp}(t) \)</span>.</p></li>
 </ul>
 </section>
 <section id="snr-and-sinr">
 <h3>SNR and SINR<a class="headerlink" href="#snr-and-sinr" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>If the bandwidth of the <strong>complex envelope</strong> <span class="math notranslate nohighlight">\( u(t) \)</span> of <span class="math notranslate nohighlight">\( s(t) \)</span> is <span class="math notranslate nohighlight">\( B \)</span>, then the <strong>bandwidth of the transmitted signal</strong> <span class="math notranslate nohighlight">\( s(t) \)</span> is <strong><span class="math notranslate nohighlight">\( 2B \)</span></strong>.</p></li>
-<li><p>Since the noise <span class="math notranslate nohighlight">\( n(t) \)</span> has a <strong>uniform power spectral density</strong> of <span class="math notranslate nohighlight">\( N_0/2 \)</span>, the <strong>total noise power</strong> within the bandwidth <span class="math notranslate nohighlight">\( 2B \)</span> is:</p>
+<li><p>If the bandwidth of the <strong>complex envelope</strong> <span class="math notranslate nohighlight">\( x_{lp}(t) \)</span> is <span class="math notranslate nohighlight">\( B \)</span>, then the <strong>bandwidth of the transmitted signal</strong> <span class="math notranslate nohighlight">\( x_{bp}(t) \)</span> is <strong><span class="math notranslate nohighlight">\( 2B \)</span></strong>.</p></li>
+<li><p>Since the noise <span class="math notranslate nohighlight">\( n_{bp}(t) \)</span> has a <strong>uniform power spectral density</strong> of <span class="math notranslate nohighlight">\( N_0/2 \)</span>, the <strong>total noise power</strong> within the bandwidth <span class="math notranslate nohighlight">\( 2B \)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
   N_{bp, tot} = \frac{N_0}{2} \times 2B = N_0B
@@ -666,8 +667,8 @@ If the <strong>interference statistics</strong> approximate those of <strong>Gau
 \]</div>
 <p>where:</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\( T_s \)</span> is the <strong>symbol duration</strong></p></li>
-<li><p><span class="math notranslate nohighlight">\( T_b \)</span> is the <strong>bit duration</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\( T_s \)</span> is the <strong>symbol duration</strong> (or <strong>signaling interval</strong>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( T_b \)</span> is the <strong>bit duration</strong>  (or <strong>bit interval</strong>)</p></li>
 <li><p>For <strong>binary modulation</strong>, <span class="math notranslate nohighlight">\( T_s = T_b \)</span> and <span class="math notranslate nohighlight">\( E_s = E_b \)</span>.</p></li>
 <li><p>For data pulses where <span class="math notranslate nohighlight">\( T_s = 1/B \)</span> (e.g., raised cosine pulses with <strong>roll-off factor</strong> <span class="math notranslate nohighlight">\( \beta = 1 \)</span>), we obtain:</p>
 <ul class="simple">

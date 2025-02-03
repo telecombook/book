@@ -444,31 +444,48 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pam-waveform">PAM Waveform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-amplitude-levels-in-pam">Discrete Amplitude Levels in PAM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waveform-shape-and-spectral-influence">Waveform Shape and Spectral Influence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-pam-signal">Energy of the PAM Signal</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-and-bandpass-pam">Baseband and Bandpass PAM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-pam">Baseband PAM</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-and-carrier-modulation">Bandpass PAM and Carrier Modulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-pam-signal">Energy of the PAM Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-signal-s-m-t">Energy of Signal <span class="math notranslate nohighlight">\( s_m(t) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-of-all-signals-in-the-pam-constellation">Average Energy of All Signals in the PAM Constellation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalize-average-energy-at-bit-level">Normalize Average Energy at Bit-level</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-and-equivalent-baseband-lowpass">Bandpass PAM and Equivalent Baseband (Lowpass)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-representation-of-bandpass-pam">Mathematical Representation of Bandpass PAM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-and-amplitude-shift-keying-ask">Bandpass PAM and Amplitude-Shift Keying (ASK)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-based-on-mathcal-e-g-of-g-t">Energy based on <span class="math notranslate nohighlight">\(\mathcal{E}_g\)</span> of <span class="math notranslate nohighlight">\(g(t)\)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-pam-signals-using-basis-functions">Representing PAM Signals Using Basis Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-of-pam-signals">Dimensionality of PAM Signals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-pam-basis-function">Baseband PAM Basis Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-basis-function">Bandpass PAM Basis Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-function-based-on-bandpass-pulse-shape-p-t">Basis Function based on bandpass Pulse Shape <span class="math notranslate nohighlight">\(p(t)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-function-based-on-baseband-pulse-shape-g-t">Basis Function based on Baseband Pulse Shape <span class="math notranslate nohighlight">\(g(t)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-and-binary-coding-in-pam">Gray Coding and Binary Coding in PAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-and-binary-coding">Gray Coding and Binary Coding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-information-bits-to-signal-amplitudes">Mapping Information Bits to Signal Amplitudes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-minimizing-bit-errors">Gray Coding: Minimizing Bit Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding">Gray Coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-coding">Binary Coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-in-pam">Gray Coding in PAM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-gray-coding-in-demodulation">Importance of Gray Coding in Demodulation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-of-pam">Signal Space of PAM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance-in-pam">Euclidean Distance in PAM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-the-pam-constellation">Minimum Distance in the PAM Constellation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sideband-dsb-and-single-sideband-ssb-pam-signals">Double-Sideband (DSB) and Single-Sideband (SSB) PAM Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sideband-dsb-pam-signal">Double-Sideband (DSB) PAM Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth-of-dsb-pam">Bandwidth of DSB PAM</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-sideband-ssb-pam-signal">Single-Sideband (SSB) PAM Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth-of-ssb-pam">Bandwidth of SSB PAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -488,11 +505,12 @@
 <p>In digital PAM, the transmitted signal waveforms can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = A_m p(t), \quad 1 \leq m \leq M
+\boxed{
+s_m(t) = A_m p(t),} \quad 1 \leq m \leq M
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( p(t) \)</span> represents a <strong>pulse waveform</strong> with a duration <span class="math notranslate nohighlight">\( T \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( p(t) \)</span> represents a <strong>bandpass, real-valued pulse waveform</strong> with a duration <span class="math notranslate nohighlight">\( T \)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( \{A_m, 1 \leq m \leq M\} \)</span> is a set of <span class="math notranslate nohighlight">\( M \)</span> possible <strong>amplitudes</strong>, which correspond to  <strong><span class="math notranslate nohighlight">\( M \)</span> distinct symbols</strong> (or constellation points) in the modulation scheme, and each of these symbols corresponds to a unique <strong><span class="math notranslate nohighlight">\( k \)</span>-bit binary sequence</strong>.</p></li>
 </ul>
 <p>Specifically:</p>
@@ -519,8 +537,8 @@ s_m(t) = A_m p(t), \quad 1 \leq m \leq M
 <h3>Discrete Amplitude Levels in PAM<a class="headerlink" href="#discrete-amplitude-levels-in-pam" title="Link to this heading">#</a></h3>
 <p>The amplitude levels <span class="math notranslate nohighlight">\( A_m \)</span> in a typical PAM system take <strong>discrete values</strong>, commonly represented as:</p>
 <div class="math notranslate nohighlight">
-\[
-A_m = 2m - 1 - M, \quad m = 1, 2, \dots, M
+\[ \boxed{
+A_m = 2m - 1 - M,} \quad m = 1, 2, \dots, M
 \]</div>
 <p>This formulation results in symmetric amplitude levels around zero, meaning the signal amplitudes are distributed as:</p>
 <div class="math notranslate nohighlight">
@@ -531,56 +549,126 @@ A_m = 2m - 1 - M, \quad m = 1, 2, \dots, M
 </section>
 <section id="waveform-shape-and-spectral-influence">
 <h3>Waveform Shape and Spectral Influence<a class="headerlink" href="#waveform-shape-and-spectral-influence" title="Link to this heading">#</a></h3>
-<p>The waveform <span class="math notranslate nohighlight">\( p(t) \)</span> is a <strong>real-valued pulse signal</strong>, and its shape significantly impacts the spectral characteristics of the transmitted PAM signal. The choice of <span class="math notranslate nohighlight">\( p(t) \)</span> determines the <strong>bandwidth</strong> and <strong>spectral efficiency</strong> of the transmission. Common choices for <span class="math notranslate nohighlight">\( p(t) \)</span> include:</p>
+<p>The waveform <span class="math notranslate nohighlight">\( p(t) \)</span> is also termed as a <strong>real-valued pulse signal</strong>, and its shape significantly impacts the spectral characteristics of the transmitted PAM signal. The choice of <span class="math notranslate nohighlight">\( p(t) \)</span> determines the <strong>bandwidth</strong> and <strong>spectral efficiency</strong> of the transmission. Common choices for <span class="math notranslate nohighlight">\( p(t) \)</span> include:</p>
 <ul class="simple">
 <li><p><strong>Rectangular pulses</strong>: Simple but spectrally inefficient.</p></li>
 <li><p><strong>Raised cosine pulses</strong>: Used to control intersymbol interference (ISI).</p></li>
 </ul>
 </section>
+</section>
 <section id="energy-of-the-pam-signal">
-<h3>Energy of the PAM Signal<a class="headerlink" href="#energy-of-the-pam-signal" title="Link to this heading">#</a></h3>
+<h2>Energy of the PAM Signal<a class="headerlink" href="#energy-of-the-pam-signal" title="Link to this heading">#</a></h2>
+<section id="energy-of-signal-s-m-t">
+<h3>Energy of Signal <span class="math notranslate nohighlight">\( s_m(t) \)</span><a class="headerlink" href="#energy-of-signal-s-m-t" title="Link to this heading">#</a></h3>
 <p>The <strong>energy</strong> associated with a transmitted PAM signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-E_m = \int_{-\infty}^{\infty} A_m^2 p^2(t) \, dt
-= A_m^2 E_p
+\mathcal{E}_m = \int_{-\infty}^{\infty} A_m^2 p^2(t) \, dt
 \]</div>
-<p>where <span class="math notranslate nohighlight">\( E_p \)</span> represents the energy contained in the pulse waveform <span class="math notranslate nohighlight">\( p(t) \)</span>. This equation shows that the total signal energy is dependent on both the amplitude level <span class="math notranslate nohighlight">\( A_m \)</span> and the energy of the underlying pulse shape <span class="math notranslate nohighlight">\( p(t) \)</span>.</p>
-</section>
-</section>
-<section id="baseband-and-bandpass-pam">
-<h2>Baseband and Bandpass PAM<a class="headerlink" href="#baseband-and-bandpass-pam" title="Link to this heading">#</a></h2>
-<section id="baseband-pam">
-<h3>Baseband PAM<a class="headerlink" href="#baseband-pam" title="Link to this heading">#</a></h3>
-<p>Pulse Amplitude Modulation (PAM) can be classified into <strong>baseband</strong> and <strong>bandpass</strong> forms based on whether a carrier frequency is used.</p>
-<ul class="simple">
-<li><p>If the pulse waveform <span class="math notranslate nohighlight">\( p(t) \)</span> is a <strong>baseband signal</strong>, then we have <strong>baseband PAM</strong>.</p></li>
-<li><p>In baseband PAM, there is <strong>no carrier modulation</strong>, meaning the signal is transmitted at low frequencies, directly representing the amplitude variations of the symbols.</p></li>
-</ul>
-</section>
-<section id="bandpass-pam-and-carrier-modulation">
-<h3>Bandpass PAM and Carrier Modulation<a class="headerlink" href="#bandpass-pam-and-carrier-modulation" title="Link to this heading">#</a></h3>
-<p>In many practical applications, PAM signals are transmitted as <strong>carrier-modulated bandpass signals</strong>. This means that the information-bearing signal is modulated onto a high-frequency carrier for efficient transmission over the channel.</p>
-<ul>
-<li><p>A <strong>lowpass equivalent</strong> representation of the PAM signal can be expressed as:</p>
+<p>Since the pulse <span class="math notranslate nohighlight">\( p(t) \)</span> is common for all <span class="math notranslate nohighlight">\( s_m(t) \)</span>, its energy is given as:</p>
 <div class="math notranslate nohighlight">
 \[
-  A_m g(t)
+\mathcal{E}_p = \int_{-\infty}^{\infty} p^2(t) \, dt
+\]</div>
+<p>Thus, the energy of the signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathcal{E}_m = A_m^2 \mathcal{E}_p
+}
+\]</div>
+</section>
+<section id="average-energy-of-all-signals-in-the-pam-constellation">
+<h3>Average Energy of All Signals in the PAM Constellation<a class="headerlink" href="#average-energy-of-all-signals-in-the-pam-constellation" title="Link to this heading">#</a></h3>
+<p>For a PAM system with <span class="math notranslate nohighlight">\( M \)</span> levels, the average energy is the mean of the energies of all <span class="math notranslate nohighlight">\( M \)</span> possible signals:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{1}{M} \sum_{m=1}^{M} \mathcal{E}_m
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( \mathcal{E}_m = A_m^2 \mathcal{E}_p \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{\mathcal{E}_p}{M} \sum_{m=1}^{M} A_m^2
+\]</div>
+<p><strong>Summing the Amplitude Levels</strong></p>
+<p>The amplitude levels <span class="math notranslate nohighlight">\( A_m \)</span> are given by:</p>
+<div class="math notranslate nohighlight">
+\[
+A_m = 2m - 1 - M, \quad m = 1, 2, \dots, M
+\]</div>
+<p>The square of these levels is:</p>
+<div class="math notranslate nohighlight">
+\[
+A_m^2 = (2m - 1 - M)^2
+\]</div>
+<p>Using symmetry in PAM levels (as shown earlier), this reduces to:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{m=1}^{M} A_m^2 = 2 \big(1^2 + 3^2 + 5^2 + \dots + (M-1)^2\big)
+\]</div>
+<p>The series <span class="math notranslate nohighlight">\( 1^2 + 3^2 + \dots + (M-1)^2 \)</span> is a sum of squares of odd numbers. Using the formula for the sum of squares of the first <span class="math notranslate nohighlight">\( n \)</span> odd numbers:</p>
+<div class="math notranslate nohighlight">
+\[
+1^2 + 3^2 + 5^2 + \dots + (M-1)^2 = \frac{M(M^2 - 1)}{6}
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{m=1}^{M} A_m^2 = 2 \cdot \frac{M(M^2 - 1)}{6} = \frac{M(M^2 - 1)}{3}
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( \sum_{m=1}^{M} A_m^2 \)</span> into the average energy expression:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{\mathcal{E}_p}{M} \cdot \frac{M(M^2 - 1)}{3}
+\]</div>
+<p>Simplify:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathcal{E}_{\text{avg}} = \frac{(M^2 - 1) \mathcal{E}_p}{3}
+}
+\]</div>
+</section>
+<section id="normalize-average-energy-at-bit-level">
+<h3>Normalize Average Energy at Bit-level<a class="headerlink" href="#normalize-average-energy-at-bit-level" title="Link to this heading">#</a></h3>
+<p>For a PAM system with <span class="math notranslate nohighlight">\( M \)</span> levels, each symbol represents <span class="math notranslate nohighlight">\( \log_2 M \)</span> bits. The <strong>average energy per bit</strong> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M}
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} = \frac{(M^2 - 1) \mathcal{E}_p}{3} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathcal{E}_{\text{b,avg}} = \frac{(M^2 - 1) \mathcal{E}_p}{3 \log_2 M}
+}
+\]</div>
+</section>
+</section>
+<section id="bandpass-pam-and-equivalent-baseband-lowpass">
+<h2>Bandpass PAM and Equivalent Baseband (Lowpass)<a class="headerlink" href="#bandpass-pam-and-equivalent-baseband-lowpass" title="Link to this heading">#</a></h2>
+<p>Pulse Amplitude Modulation (PAM) can be classified into <strong>baseband</strong> and <strong>bandpass</strong> forms based on what pulse shape is used.</p>
+<ul>
+<li><p>If the pulse waveform <span class="math notranslate nohighlight">\( p(t) \)</span> is a <strong>bandpass signal</strong>, then we have <strong>bandpass PAM</strong>.</p></li>
+<li><p>A <strong>lowpass equivalent</strong> representation of the PAM signal can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+  s_{m,lp}(t) = A_m g(t)
+  }
   \]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A_m \)</span> represents the discrete amplitude levels of the PAM signal.</p></li>
-<li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is a <strong>real-valued pulse waveform</strong> that determines the spectral characteristics of the transmitted signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is a <strong>lowpass, real-valued pulse waveform</strong> that determines the spectral characteristics of the transmitted signal.</p></li>
 </ul>
 </li>
 </ul>
-</section>
 <section id="mathematical-representation-of-bandpass-pam">
 <h3>Mathematical Representation of Bandpass PAM<a class="headerlink" href="#mathematical-representation-of-bandpass-pam" title="Link to this heading">#</a></h3>
 <p>For a bandpass signal, the transmitted PAM waveform is obtained by modulating the baseband equivalent onto a <strong>carrier frequency</strong> <span class="math notranslate nohighlight">\( f_c \)</span>. This is expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = \Re \left\{ s_{ml}(t)e^{j2\pi f_c t} \right\}
+s_m(t) = \Re \left\{ s_{m,lp}(t)e^{j2\pi f_c t} \right\}
 \]</div>
 <p>Since the lowpass equivalent is given by <span class="math notranslate nohighlight">\( A_m g(t) \)</span>, we can rewrite:</p>
 <div class="math notranslate nohighlight">
@@ -590,12 +678,14 @@ s_m(t) = \Re \left\{ A_m g(t)e^{j2\pi f_c t} \right\}
 <p>Expanding the real part:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 s_m(t) = A_m g(t) \cos(2\pi f_c t)
+}
 \]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( f_c \)</span> is the <strong>carrier frequency</strong>, determining the central frequency of the transmitted signal.</p></li>
-<li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is the baseband pulse shape.</p></li>
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is the <strong>baseband</strong> (<strong>lowpass</strong>) pulse shape.</p></li>
 </ul>
 </section>
 <section id="bandpass-pam-and-amplitude-shift-keying-ask">
@@ -604,12 +694,39 @@ s_m(t) = A_m g(t) \cos(2\pi f_c t)
 <li><p>If the transmitted PAM signal is of the <strong>generic form</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
+  \boxed{
   p(t) = g(t) \cos(2\pi f_c t)
+  }
   \]</div>
 <p>then the system is classified as <strong>bandpass PAM</strong>.</p>
 </li>
 <li><p>In digital communications, <strong>bandpass PAM</strong> is commonly referred to as <strong>Amplitude-Shift Keying (ASK)</strong>. This is because the amplitude of the carrier is varied in discrete steps according to the digital data being transmitted.</p></li>
 </ul>
+</section>
+<section id="energy-based-on-mathcal-e-g-of-g-t">
+<h3>Energy based on <span class="math notranslate nohighlight">\(\mathcal{E}_g\)</span> of <span class="math notranslate nohighlight">\(g(t)\)</span><a class="headerlink" href="#energy-based-on-mathcal-e-g-of-g-t" title="Link to this heading">#</a></h3>
+<p>We denote the pulse energy <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\(g(t)\)</span> is lowpass signal, while <span class="math notranslate nohighlight">\(p(t)\)</span> is bandpass signal, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_p = \frac{1}{2}\mathcal{E}_g
+\]</div>
+<p>Thus, we have</p>
+<p><strong>Energy of a single signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_m = A_m^2 \mathcal{E}_p = \frac{A_m^2}{2} \mathcal{E}_g
+\]</div>
+<p><strong>Average energy across all signals</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{(M^2 - 1)\mathcal{E}_g}{6}
+\]</div>
+<p><strong>Average energy per bit</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{b,avg}} = \frac{(M^2 - 1)\mathcal{E}_g}{6 \log_2 M}
+\]</div>
 </section>
 </section>
 <section id="representing-pam-signals-using-basis-functions">
@@ -618,68 +735,113 @@ s_m(t) = A_m g(t) \cos(2\pi f_c t)
 <h3>Dimensionality of PAM Signals<a class="headerlink" href="#dimensionality-of-pam-signals" title="Link to this heading">#</a></h3>
 <p>Pulse Amplitude Modulation (PAM) signals are fundamentally <strong>one-dimensional</strong> (<span class="math notranslate nohighlight">\(N = 1\)</span>), meaning that all possible signal waveforms can be represented as <strong>scaled versions of a single basic function</strong>.</p>
 </section>
-<section id="baseband-pam-basis-function">
-<h3>Baseband PAM Basis Function<a class="headerlink" href="#baseband-pam-basis-function" title="Link to this heading">#</a></h3>
-<p>For baseband PAM, the <strong>basis function</strong> is defined as:</p>
+<section id="basis-function-based-on-bandpass-pulse-shape-p-t">
+<h3>Basis Function based on bandpass Pulse Shape <span class="math notranslate nohighlight">\(p(t)\)</span><a class="headerlink" href="#basis-function-based-on-bandpass-pulse-shape-p-t" title="Link to this heading">#</a></h3>
+<p>Using the bandpass <span class="math notranslate nohighlight">\(p(t)\)</span>, the <strong>basis function</strong> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\phi(t) = \frac{p(t)}{\sqrt{E_p}}
+\phi(t) = \frac{p(t)}{\sqrt{\mathcal{E}_p}}
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( p(t) \)</span> is the <strong>pulse shape</strong> of the baseband PAM signal.</p></li>
-<li><p><span class="math notranslate nohighlight">\( E_p \)</span> is the <strong>energy</strong> of the pulse.</p></li>
+<li><p><span class="math notranslate nohighlight">\( p(t) \)</span> is the <strong>pulse shape</strong> of the bandpass PAM signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_p \)</span> is the <strong>energy</strong> of <span class="math notranslate nohighlight">\(p(t)\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( \phi(t) \)</span> is a <strong>normalized function</strong>, ensuring that the energy of <span class="math notranslate nohighlight">\( \phi(t) \)</span> is <strong>1</strong>.</p></li>
 </ul>
-<p>Using this basis function, any baseband PAM signal can be represented as:</p>
+<p>Using this basis function, any bandpass PAM signal can be represented as:</p>
 <div class="math notranslate nohighlight">
-\[
-s_m(t) = A_m \sqrt{E_p} \phi(t)
+\[ \boxed{
+s_m(t) = A_m \sqrt{\mathcal{E}_p} \phi(t)
+}
 \]</div>
-<p>This formulation shows that the PAM signal is simply a weighted version of the basis function, where <span class="math notranslate nohighlight">\( A_m \)</span> represents the amplitude levels of the transmitted symbols.</p>
 </section>
-<section id="bandpass-pam-basis-function">
-<h3>Bandpass PAM Basis Function<a class="headerlink" href="#bandpass-pam-basis-function" title="Link to this heading">#</a></h3>
-<p>For <strong>bandpass PAM</strong>, the basis function takes a different form due to the presence of a carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>. The <strong>normalized basis function</strong> for bandpass PAM is:</p>
+<section id="basis-function-based-on-baseband-pulse-shape-g-t">
+<h3>Basis Function based on Baseband Pulse Shape <span class="math notranslate nohighlight">\(g(t)\)</span><a class="headerlink" href="#basis-function-based-on-baseband-pulse-shape-g-t" title="Link to this heading">#</a></h3>
+<p>Using the baseband <span class="math notranslate nohighlight">\(g(t)\)</span>, the basis function takes a different form due to the presence of a carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>. The <strong>normalized basis function</strong> for <em>bandpass</em> PAM is:</p>
 <div class="math notranslate nohighlight">
 \[
-\phi(t) = \sqrt{\frac{2}{E_g}} g(t) \cos(2\pi f_c t)
+\phi(t) = \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos(2\pi f_c t)
 \]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is the baseband pulse shape.</p></li>
-<li><p><span class="math notranslate nohighlight">\( E_g \)</span> is the energy of <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
-<li><p>The factor <span class="math notranslate nohighlight">\( \sqrt{2} \)</span> ensures proper energy normalization in bandpass signaling.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> is the energy of <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+<li><p>The factor <span class="math notranslate nohighlight">\( \sqrt{2} \)</span> ensures proper energy normalization in bandpass signaling, i.e., <span class="math notranslate nohighlight">\(\mathcal{E}_p = \mathcal{E}_g/2\)</span></p></li>
 </ul>
 <p>Using this basis function, the bandpass PAM signal is expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = A_m \sqrt{\frac{E_g}{2}} \phi(t)
+\boxed{
+s_m(t) = A_m \sqrt{\frac{\mathcal{E}_g}{2}} \phi(t)
+}
 \]</div>
-<p>This equation shows that a bandpass PAM signal is similarly a <strong>scaled version</strong> of the basis function, but with a different normalization factor due to the carrier modulation.</p>
+<p><strong>DISCUSSIONS</strong></p>
+<p>In <strong>both cases</strong>, <span class="math notranslate nohighlight">\( \phi(t) \)</span> is a <strong>bandpass basis function</strong>.</p>
+<p>Specifically:</p>
+<p><strong>Case 1: Basis Function Using Bandpass <span class="math notranslate nohighlight">\( p(t) \)</span></strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \phi(t) = \frac{p(t)}{\sqrt{\mathcal{E}_p}} \)</span>, where <span class="math notranslate nohighlight">\( p(t) \)</span> is the bandpass pulse <span class="math notranslate nohighlight">\( g(t) \cos(2\pi f_c t) \)</span>.</p></li>
+<li><p>Since <span class="math notranslate nohighlight">\( p(t) \)</span> is inherently a bandpass signal (due to the modulation by <span class="math notranslate nohighlight">\( \cos(2\pi f_c t) \)</span>), <span class="math notranslate nohighlight">\( \phi(t) \)</span> is also bandpass.</p></li>
+</ul>
+<p><strong>Case 2: Basis Function Using Baseband <span class="math notranslate nohighlight">\( g(t) \)</span></strong></p>
+<ul class="simple">
+<li><p>The basis function in this case is explicitly modulated to a bandpass form: <span class="math notranslate nohighlight">\(\phi(t) = \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos(2\pi f_c t)\)</span></p></li>
+<li><p>Although <span class="math notranslate nohighlight">\( g(t) \)</span> is a baseband (lowpass) signal, the inclusion of <span class="math notranslate nohighlight">\( \cos(2\pi f_c t) \)</span> shifts it to the bandpass spectrum.</p></li>
+<li><p>Therefore, <span class="math notranslate nohighlight">\( \phi(t) \)</span> is still a <strong>bandpass function</strong>.</p></li>
+</ul>
+<p><strong>Why is <span class="math notranslate nohighlight">\( \phi(t) \)</span> Always Bandpass?</strong></p>
+<p>The goal of bandpass PAM is to represent signals in the <strong>bandpass spectrum</strong>, centered around the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>.</p>
+<p><strong>Energy Normalization in Both Cases</strong></p>
+<p>The normalization ensures that <span class="math notranslate nohighlight">\( \phi(t) \)</span> has unit energy (<span class="math notranslate nohighlight">\( \int_{-\infty}^\infty \phi^2(t) dt = 1 \)</span>) regardless of how it is constructed</p>
 </section>
 </section>
-<section id="gray-coding-and-binary-coding-in-pam">
-<h2>Gray Coding and Binary Coding in PAM<a class="headerlink" href="#gray-coding-and-binary-coding-in-pam" title="Link to this heading">#</a></h2>
+<section id="gray-coding-and-binary-coding">
+<h2>Gray Coding and Binary Coding<a class="headerlink" href="#gray-coding-and-binary-coding" title="Link to this heading">#</a></h2>
 <section id="mapping-information-bits-to-signal-amplitudes">
 <h3>Mapping Information Bits to Signal Amplitudes<a class="headerlink" href="#mapping-information-bits-to-signal-amplitudes" title="Link to this heading">#</a></h3>
 <p>In Pulse Amplitude Modulation (PAM), a set of <span class="math notranslate nohighlight">\( k \)</span> information bits must be mapped to one of <span class="math notranslate nohighlight">\( M = 2^k \)</span> possible signal amplitudes. The choice of how these bits are assigned to amplitude levels significantly impacts the system’s performance, particularly in the presence of noise.</p>
 </section>
-<section id="gray-coding-minimizing-bit-errors">
-<h3>Gray Coding: Minimizing Bit Errors<a class="headerlink" href="#gray-coding-minimizing-bit-errors" title="Link to this heading">#</a></h3>
-<p>One of the most effective ways to assign bit sequences to amplitude levels is <strong>Gray coding</strong>. In <strong>Gray coding</strong>, adjacent amplitude levels differ by only <strong>one binary digit</strong>. This property is crucial because:</p>
+<section id="gray-coding">
+<h3>Gray Coding<a class="headerlink" href="#gray-coding" title="Link to this heading">#</a></h3>
+<p>Gray coding is a binary numeral system in which <strong>consecutive values differ by exactly one bit</strong>.</p>
+<p><strong>Example:</strong><br />
+Convert decimal values <span class="math notranslate nohighlight">\(0, 1, 2, 3, 4\)</span> to Gray code (3 bits):</p>
 <ul class="simple">
-<li><p>In the presence of noise, the most likely demodulation errors occur when the receiver selects an adjacent signal amplitude instead of the correct one.</p></li>
-<li><p>Since adjacent amplitudes differ by only <strong>one bit</strong>, an erroneous decision results in <strong>only a single-bit error</strong>, reducing the impact of noise-induced errors.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0 \to 000\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(1 \to 001\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2 \to 011\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(3 \to 010\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(4 \to 110\)</span></p></li>
 </ul>
-<p>This is <strong>advantageous compared to binary coding</strong>, where adjacent symbols may differ by <strong>multiple bits</strong>, leading to a higher bit error rate (BER) for the same symbol error rate (SER).</p>
+<p><strong>1-bit difference example:</strong> Transition from <span class="math notranslate nohighlight">\(2 \to 3\)</span>: <span class="math notranslate nohighlight">\(011 \to 010\)</span>. Only the second bit changes.</p>
+</section>
+<section id="binary-coding">
+<h3>Binary Coding<a class="headerlink" href="#binary-coding" title="Link to this heading">#</a></h3>
+<p>Binary coding is a natural representation of numbers in the binary numeral system, where each number is represented by a unique binary sequence. Consecutive values may differ by multiple bits.</p>
+<p><strong>Example:</strong><br />
+Convert decimal values <span class="math notranslate nohighlight">\(0, 1, 2, 3, 4\)</span> to Binary code (3 bits):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0 \to 000\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(1 \to 001\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2 \to 010\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(3 \to 011\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(4 \to 100\)</span></p></li>
+</ul>
+<p><strong>Multi-bit difference example:</strong> Transition from <span class="math notranslate nohighlight">\(3 \to 4\)</span>: <span class="math notranslate nohighlight">\(011 \to 100\)</span>. Three bits change.</p>
+</section>
+<section id="gray-coding-in-pam">
+<h3>Gray Coding in PAM<a class="headerlink" href="#gray-coding-in-pam" title="Link to this heading">#</a></h3>
+<p>One of the most effective ways to assign bit sequences to amplitude levels is <strong>Gray coding</strong>.</p>
+<p>In <strong>Gray coding</strong> for PAM, adjacent amplitude levels differ by only <strong>one binary digit</strong>.</p>
 </section>
 <section id="importance-of-gray-coding-in-demodulation">
 <h3>Importance of Gray Coding in Demodulation<a class="headerlink" href="#importance-of-gray-coding-in-demodulation" title="Link to this heading">#</a></h3>
 <p>During <strong>demodulation</strong>, received signals are often affected by noise, causing occasional misclassification of symbols. If <strong>Gray coding</strong> is used:</p>
 <ul class="simple">
-<li><p>A <strong>symbol error</strong> (selecting the wrong amplitude) results in a <strong>single-bit error</strong>.</p></li>
-<li><p>In contrast, with <strong>binary coding</strong>, a symbol error may lead to <strong>multiple bit errors</strong>, increasing the overall bit error rate (BER).</p></li>
+<li><p>In the presence of noise, the most likely demodulation errors occur when the receiver selects an adjacent signal amplitude instead of the correct one.</p></li>
+<li><p>Since adjacent amplitudes differ by only <strong>one bit</strong>, an erroneous decision results in <strong>only a single-bit error</strong>, reducing the impact of noise-induced errors.</p></li>
+<li><p>In another word, in case of <strong>symbol error</strong> (selecting the wrong amplitude) results in a <strong>single-bit error</strong>.</p></li>
+<li><p>In contrast, with <strong>binary coding</strong>, a symbol error may lead to <strong>multiple bit errors</strong>, leading to a higher bit error rate (BER) for the <em>same</em> symbol error rate (SER).</p></li>
 </ul>
 </section>
 </section>
@@ -689,59 +851,154 @@ s_m(t) = A_m \sqrt{\frac{E_g}{2}} \phi(t)
 As established earlier, <strong>Pulse Amplitude Modulation (PAM) signals are one-dimensional</strong>, meaning that each signal can be represented as a <strong>single scalar value</strong> in signal space. The transmitted signals take the form:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m = A_m \sqrt{E_p}, \quad A_m = \pm1, \pm3, \dots, \pm(M - 1)
+\vec{s}_m = [\ldots,A_m \sqrt{\mathcal{E}_p}, \ldots], \quad A_m = \pm1, \pm3, \dots, \pm(M - 1)
 \]</div>
-<p>for <strong>baseband PAM</strong>, and:</p>
+<p>when using bandpass pulse signal <span class="math notranslate nohighlight">\(p(t)\)</span>, and:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m = A_m \sqrt{\frac{E_g}{2}}, \quad A_m = \pm1, \pm3, \dots, \pm(M - 1)
+\vec{s}_m = [\ldots,A_m \sqrt{\frac{\mathcal{E}_g}{2}}, \ldots], \quad A_m = \pm1, \pm3, \dots, \pm(M - 1)
 \]</div>
-<p>for <strong>bandpass PAM</strong>, where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( A_m \)</span> represents the discrete amplitude levels of the PAM constellation.</p></li>
-<li><p><span class="math notranslate nohighlight">\( E_p \)</span> is the energy associated with the baseband pulse <span class="math notranslate nohighlight">\( p(t) \)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\( E_g \)</span> is the energy of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span> in bandpass PAM.</p></li>
-</ul>
+<p>when using lowpass pulse signal <span class="math notranslate nohighlight">\(g(t)\)</span>.</p>
 </section>
 <section id="euclidean-distance-in-pam">
 <h2>Euclidean Distance in PAM<a class="headerlink" href="#euclidean-distance-in-pam" title="Link to this heading">#</a></h2>
 <p>The <strong>Euclidean distance</strong> between any two transmitted symbols <span class="math notranslate nohighlight">\( s_m \)</span> and <span class="math notranslate nohighlight">\( s_n \)</span> in the PAM constellation is given by:</p>
 <div class="math notranslate nohighlight">
-\[
+\[\boxed{
 d_{mn} = \sqrt{\|\boldsymbol{\rm s}_m - \boldsymbol{\rm s}_n\|^2}
+}
 \]</div>
 <p>Substituting the PAM signal representation:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{mn} = |A_m - A_n| \sqrt{E_p}
+d_{mn} = |A_m - A_n| \sqrt{\mathcal{E}_p}
 \]</div>
-<p>for <strong>baseband PAM</strong>, and</p>
+<p>for using <strong>bandpass</strong> pulse, and</p>
 <div class="math notranslate nohighlight">
 \[
-d_{mn} = |A_m - A_n| \sqrt{\frac{E_g}{2}}
+d_{mn} = |A_m - A_n| \sqrt{\frac{\mathcal{E}_g}{2}}
 \]</div>
-<p>for <strong>bandpass PAM</strong>.</p>
+<p>for using <strong>baseband</strong> pulse.</p>
 <p>This distance metric is critical in determining the <strong>error performance</strong> of the modulation scheme. The probability of symbol detection errors is heavily influenced by the spacing between constellation points: <strong>larger distances result in fewer errors</strong>, as the receiver can more reliably distinguish between different symbols.</p>
 </section>
 <section id="minimum-distance-in-the-pam-constellation">
 <h2>Minimum Distance in the PAM Constellation<a class="headerlink" href="#minimum-distance-in-the-pam-constellation" title="Link to this heading">#</a></h2>
-<p>For <strong>adjacent signal points</strong>, the amplitude difference is:</p>
+<p>For <strong>adjacent signal points</strong> in a PAM constellation, the amplitude levels are separated by:</p>
 <div class="math notranslate nohighlight">
 \[
 |A_m - A_n| = 2
 \]</div>
-<p>Thus, the <strong>minimum Euclidean distance</strong> (which determines the robustness of the PAM system against noise) is:</p>
+<p>where <span class="math notranslate nohighlight">\( A_m, A_n \in \{\pm1, \pm3, \dots, \pm(M - 1)\} \)</span>.</p>
+<p>The <strong>minimum Euclidean distance</strong> between adjacent signal points in the PAM constellation is determined by the pulse shape used:</p>
+<ul>
+<li><p><strong>For Bandpass Pulse <span class="math notranslate nohighlight">\( p(t) \)</span>:</strong></p>
+<p>The minimum Euclidean distance is:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+   d_{\text{min}} = 2 \sqrt{\mathcal{E}_p}
+   }
+   \]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( \mathcal{E}_p = \frac{\mathcal{E}_g}{2} \)</span>, we get:</p>
+</li>
+<li><p><strong>For Baseband Pulse <span class="math notranslate nohighlight">\( g(t) \)</span>:</strong></p>
+<p>The energy of the baseband pulse is <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span>, and the minimum Euclidean distance is directly:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+    d_{\text{min}} = \sqrt{2\mathcal{E}_g}
+    }
+    \]</div>
+</li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(\mathcal{E}_{\text{b,avg}} = \frac{(M^2 - 1)\mathcal{E}_g}{6 \log_2 M}\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = 2\sqrt{E_p}
+\boxed{
+d_{\text{min}} = \sqrt{\frac{12 \log_2 M}{M^2 - 1} \mathcal{E}_{\text{b,avg}}}
+}
 \]</div>
-<p>for <strong>baseband PAM</strong>, and:</p>
+<p>This expression shows how <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> depends on the constellation size <span class="math notranslate nohighlight">\( M \)</span>, the average bit energy <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span>, and the logarithm of the number of symbols.</p>
+<p><strong>Significance</strong><br />
+The minimum distance <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> is a critical parameter for determining the <strong>bit error rate (BER)</strong> in a noisy channel:</p>
+<ul class="simple">
+<li><p><strong>Larger <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>:</strong> Implies <strong>better noise immunity</strong>, reducing the likelihood of symbol misclassification at the receiver.</p></li>
+<li><p><strong>Smaller <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>:</strong> Increases sensitivity to noise, resulting in higher error rates.</p></li>
+</ul>
+</section>
+<section id="double-sideband-dsb-and-single-sideband-ssb-pam-signals">
+<h2>Double-Sideband (DSB) and Single-Sideband (SSB) PAM Signals<a class="headerlink" href="#double-sideband-dsb-and-single-sideband-ssb-pam-signals" title="Link to this heading">#</a></h2>
+<section id="double-sideband-dsb-pam-signal">
+<h3>Double-Sideband (DSB) PAM Signal<a class="headerlink" href="#double-sideband-dsb-pam-signal" title="Link to this heading">#</a></h3>
+<p>As we defined above, the equation for a <strong>Double-Sideband (DSB)</strong> PAM signal is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{2E_g}
+s_m(t) = A_m g(t) \cos(2\pi f_c t),
 \]</div>
-<p>for <strong>bandpass PAM</strong>.</p>
-<p>This minimum distance is crucial for determining the <strong>bit error rate (BER)</strong> in a noisy channel. A larger <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> implies <strong>better noise immunity</strong>, reducing the probability of symbol misclassification at the receiver.</p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span>: Amplitude level of the signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span>: Baseband pulse shape.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \cos(2\pi f_c t) \)</span>: Carrier signal modulating <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_c \)</span>: Carrier frequency.</p></li>
+</ul>
+<section id="bandwidth-of-dsb-pam">
+<h4>Bandwidth of DSB PAM<a class="headerlink" href="#bandwidth-of-dsb-pam" title="Link to this heading">#</a></h4>
+<p>When <span class="math notranslate nohighlight">\( g(t) \)</span> is modulated onto the carrier <span class="math notranslate nohighlight">\( \cos(2\pi f_c t) \)</span>, the spectrum of the resulting DSB signal contains:</p>
+<ul class="simple">
+<li><p>A <strong>lower sideband</strong> centered at <span class="math notranslate nohighlight">\( f_c - B \)</span>,</p></li>
+<li><p>An <strong>upper sideband</strong> centered at <span class="math notranslate nohighlight">\( f_c + B \)</span>,
+where <span class="math notranslate nohighlight">\( B \)</span> is the bandwidth of the baseband signal <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+</ul>
+<p>Since the DSB signal includes <strong>both sidebands</strong>, it requires <strong>twice the bandwidth</strong> of the baseband signal <span class="math notranslate nohighlight">\( g(t) \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bandwidth of DSB PAM} = 2B.
+\]</div>
+</section>
+</section>
+<section id="single-sideband-ssb-pam-signal">
+<h3>Single-Sideband (SSB) PAM Signal<a class="headerlink" href="#single-sideband-ssb-pam-signal" title="Link to this heading">#</a></h3>
+<p>The SSB PAM signal is derived by suppressing one of the sidebands (either the upper or lower sideband) in the modulated signal. The equation for an SSB PAM signal is:</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t) = \Re \left\{ A_m \left[ g(t) \pm j \hat{g}(t) \right] e^{j2\pi f_c t} \right\},
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span>: Baseband pulse shape.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \hat{g}(t) \)</span>: Hilbert transform of <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\( \pm \)</span> sign selects the <strong>upper sideband (USB)</strong> or <strong>lower sideband (LSB)</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( e^{j2\pi f_c t} \)</span>: Complex carrier modulation.</p></li>
+</ul>
+<section id="bandwidth-of-ssb-pam">
+<h4>Bandwidth of SSB PAM<a class="headerlink" href="#bandwidth-of-ssb-pam" title="Link to this heading">#</a></h4>
+<p>The SSB signal retains only one of the two sidebands (either upper or lower).</p>
+<p>Therefore, it requires <strong>only the bandwidth of the baseband signal <span class="math notranslate nohighlight">\( g(t) \)</span></strong>.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Bandwidth of SSB PAM} = B.
+\]</div>
+<p>Here, we have:</p>
+<ul class="simple">
+<li><p><strong>Hilbert Transform</strong>:</p>
+<ul>
+<li><p>The term <span class="math notranslate nohighlight">\( \hat{g}(t) \)</span> (Hilbert transform of <span class="math notranslate nohighlight">\( g(t) \)</span>) is used to construct a complex representation of the signal, allowing for single-sideband modulation.</p></li>
+</ul>
+</li>
+<li><p><strong>Bandwidth Comparison</strong>:</p>
+<ul>
+<li><p><strong>DSB PAM</strong>: Uses both sidebands, requiring <span class="math notranslate nohighlight">\( 2B \)</span> bandwidth.</p></li>
+<li><p><strong>SSB PAM</strong>: Uses only one sideband, requiring <span class="math notranslate nohighlight">\( B \)</span> bandwidth.</p></li>
+</ul>
+</li>
+<li><p><strong>Efficiency</strong>:</p>
+<ul>
+<li><p>SSB PAM is more bandwidth-efficient than DSB PAM but may be more complex to implement due to the requirement of the Hilbert transform and precise sideband suppression.</p></li>
+</ul>
+</li>
+</ul>
+<p>The choice between DSB and SSB PAM depends on the trade-off between bandwidth efficiency and implementation complexity. DSB is simpler but uses twice the bandwidth, while SSB achieves better bandwidth utilization by halving the required bandwidth.</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -813,31 +1070,48 @@ d_{\text{min}} = \sqrt{2E_g}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pam-waveform">PAM Waveform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-amplitude-levels-in-pam">Discrete Amplitude Levels in PAM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waveform-shape-and-spectral-influence">Waveform Shape and Spectral Influence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-pam-signal">Energy of the PAM Signal</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-and-bandpass-pam">Baseband and Bandpass PAM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-pam">Baseband PAM</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-and-carrier-modulation">Bandpass PAM and Carrier Modulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-the-pam-signal">Energy of the PAM Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-signal-s-m-t">Energy of Signal <span class="math notranslate nohighlight">\( s_m(t) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-of-all-signals-in-the-pam-constellation">Average Energy of All Signals in the PAM Constellation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalize-average-energy-at-bit-level">Normalize Average Energy at Bit-level</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-and-equivalent-baseband-lowpass">Bandpass PAM and Equivalent Baseband (Lowpass)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-representation-of-bandpass-pam">Mathematical Representation of Bandpass PAM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-and-amplitude-shift-keying-ask">Bandpass PAM and Amplitude-Shift Keying (ASK)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-based-on-mathcal-e-g-of-g-t">Energy based on <span class="math notranslate nohighlight">\(\mathcal{E}_g\)</span> of <span class="math notranslate nohighlight">\(g(t)\)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-pam-signals-using-basis-functions">Representing PAM Signals Using Basis Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-of-pam-signals">Dimensionality of PAM Signals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-pam-basis-function">Baseband PAM Basis Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-pam-basis-function">Bandpass PAM Basis Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-function-based-on-bandpass-pulse-shape-p-t">Basis Function based on bandpass Pulse Shape <span class="math notranslate nohighlight">\(p(t)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-function-based-on-baseband-pulse-shape-g-t">Basis Function based on Baseband Pulse Shape <span class="math notranslate nohighlight">\(g(t)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-and-binary-coding-in-pam">Gray Coding and Binary Coding in PAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-and-binary-coding">Gray Coding and Binary Coding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-information-bits-to-signal-amplitudes">Mapping Information Bits to Signal Amplitudes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-minimizing-bit-errors">Gray Coding: Minimizing Bit Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding">Gray Coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-coding">Binary Coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gray-coding-in-pam">Gray Coding in PAM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-gray-coding-in-demodulation">Importance of Gray Coding in Demodulation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-of-pam">Signal Space of PAM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance-in-pam">Euclidean Distance in PAM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-the-pam-constellation">Minimum Distance in the PAM Constellation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sideband-dsb-and-single-sideband-ssb-pam-signals">Double-Sideband (DSB) and Single-Sideband (SSB) PAM Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sideband-dsb-pam-signal">Double-Sideband (DSB) PAM Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth-of-dsb-pam">Bandwidth of DSB PAM</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-sideband-ssb-pam-signal">Single-Sideband (SSB) PAM Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth-of-ssb-pam">Bandwidth of SSB PAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

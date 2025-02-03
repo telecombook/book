@@ -503,7 +503,7 @@ s_m(t) = g(t) \cos \left( \frac{2\pi(m-1)}{M} \right) \cos(2\pi f_c t) - g(t) \s
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is the <strong>signal pulse shape</strong>, which influences the bandwidth and spectral characteristics.</p></li>
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span> is the <strong>lowpass, real-valued, signal pulse shape</strong>, which influences the bandwidth and spectral characteristics.</p></li>
 <li><p><span class="math notranslate nohighlight">\( \theta_m = \frac{2\pi(m - 1)}{M} \)</span> represents the <strong><span class="math notranslate nohighlight">\( M \)</span> possible discrete phase values</strong> that encode information.</p></li>
 <li><p><span class="math notranslate nohighlight">\( f_c \)</span> is the <strong>carrier frequency</strong>.</p></li>
 </ul>
@@ -528,16 +528,16 @@ s_m(t) = g(t) \cos \left( \frac{2\pi(m-1)}{M} \right) \cos(2\pi f_c t) - g(t) \s
 <p>The <strong>average symbol energy</strong> for phase-modulated signals is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{avg}} = E_m = \frac{1}{2}E_g
+\mathcal{E}_{\text{avg}} = \mathcal{E}_m = \frac{1}{2}\mathcal{E}_g
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( E_g \)</span> represents the total pulse energy.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> represents the total pulse energy.</p></li>
 </ul>
 <p>The <strong>average bit energy</strong> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{bavg}} = \frac{E_g}{2 \log_2 M}
+\mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_g}{2 \log_2 M}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -547,7 +547,7 @@ E_{\text{bavg}} = \frac{E_g}{2 \log_2 M}
 <p>For convenience, we often use the <strong>notations</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-E = E_{\text{avg}}, \quad E_b = E_{\text{bavg}}
+\mathcal{E} = \mathcal{E}_{\text{avg}}, \quad \mathcal{E}_b = \mathcal{E}_{\text{b,avg}}
 \]</div>
 <p>which simplify further derivations.</p>
 </section>
@@ -564,15 +564,15 @@ g(t) \cos(2\pi f_c t) \quad \text{and} \quad g(t) \sin(2\pi f_c t)
 <p>Using these functions, we define the <strong>basis functions</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\phi_1(t) = \sqrt{\frac{2}{E_g}} g(t) \cos 2\pi f_c t
+\phi_1(t) = \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos 2\pi f_c t
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\phi_2(t) = -\sqrt{\frac{2}{E_g}} g(t) \sin 2\pi f_c t
+\phi_2(t) = -\sqrt{\frac{2}{\mathcal{E}_g}} g(t) \sin 2\pi f_c t
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> are <strong>unit-energy basis functions</strong>, ensuring that they form an <strong>orthonormal basis</strong> for the signal space.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> are <strong>bandpass, unit-energy basis functions</strong>, ensuring that they form an <strong>orthonormal basis</strong> for the signal space.</p></li>
 </ul>
 </section>
 <section id="signal-representation-in-terms-of-basis-functions">
@@ -580,8 +580,8 @@ g(t) \cos(2\pi f_c t) \quad \text{and} \quad g(t) \sin(2\pi f_c t)
 <p>Using the defined basis functions, any <strong>phase-modulated signal</strong> can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = \sqrt{\frac{E_g}{2}} \cos \left( \frac{2\pi}{M} (m - 1) \right) \phi_1(t)
-+ \sqrt{\frac{E_g}{2}} \sin \left( \frac{2\pi}{M} (m - 1) \right) \phi_2(t)
+s_m(t) = \sqrt{\frac{\mathcal{E}_g}{2}} \cos \left( \frac{2\pi}{M} (m - 1) \right) \phi_1(t)
++ \sqrt{\frac{\mathcal{E}_g}{2}} \sin \left( \frac{2\pi}{M} (m - 1) \right) \phi_2(t)
 \]</div>
 <p>This equation shows that each <strong>PSK symbol is represented as a linear combination</strong> of the two orthogonal basis functions, with coefficients that depend on the phase angle.</p>
 </section>
@@ -591,8 +591,8 @@ s_m(t) = \sqrt{\frac{E_g}{2}} \cos \left( \frac{2\pi}{M} (m - 1) \right) \phi_1(
 <div class="math notranslate nohighlight">
 \[
 \vec{s}_m = \left( 
-\sqrt{\frac{E_g}{2}} \cos \left( \frac{2\pi}{M} (m - 1) \right), 
-\sqrt{\frac{E_g}{2}} \sin \left( \frac{2\pi}{M} (m - 1) \right)
+\sqrt{\frac{\mathcal{E}_g}{2}} \cos \left( \frac{2\pi}{M} (m - 1) \right), 
+\sqrt{\frac{\mathcal{E}_g}{2}} \sin \left( \frac{2\pi}{M} (m - 1) \right)
 \right), \quad m = 1, 2, \ldots, M
 \]</div>
 <p>This represents the <strong>constellation points</strong> of PSK as vectors in a <strong>two-dimensional Euclidean space</strong>.</p>
@@ -639,11 +639,11 @@ d_{mn} = \sqrt{\|\boldsymbol{\rm s}_m - \boldsymbol{\rm s}_n\|^2}
 <p>For PSK, this simplifies to:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{mn} = \sqrt{E_g \left[ 1 - \cos \left( \frac{2\pi}{M} (m - n) \right) \right]}
+d_{mn} = \sqrt{\mathcal{E}_g \left[ 1 - \cos \left( \frac{2\pi}{M} (m - n) \right) \right]}
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( E_g \)</span> is the energy of the signal pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> is the energy of the signal pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( M \)</span> is the number of PSK constellation points (e.g., <span class="math notranslate nohighlight">\( M = 2, 4, 8 \)</span>).</p></li>
 <li><p><span class="math notranslate nohighlight">\( m \)</span> and <span class="math notranslate nohighlight">\( n \)</span> are the indices of the signal points being compared.</p></li>
 </ul>
@@ -660,21 +660,21 @@ d_{mn} = \sqrt{E_g \left[ 1 - \cos \left( \frac{2\pi}{M} (m - n) \right) \right]
 <p>The <strong>minimum distance</strong> <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> between adjacent constellation points (when <span class="math notranslate nohighlight">\( |m - n| = 1 \)</span>) in <span class="math notranslate nohighlight">\( M \)</span>-PSK is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{E_g \left( 1 - \cos \frac{2\pi}{M} \right)}
+d_{\text{min}} = \sqrt{\mathcal{E}_g \left( 1 - \cos \frac{2\pi}{M} \right)}
 \]</div>
 <p>Using the trigonometric identity <span class="math notranslate nohighlight">\( 1 - \cos x = 2 \sin^2 \frac{x}{2} \)</span>, this can be rewritten as:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{2E_g \sin^2 \frac{\pi}{M}}
+d_{\text{min}} = \sqrt{2\mathcal{E}_g \sin^2 \frac{\pi}{M}}
 \]</div>
-<p>This formula highlights how <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> depends on the pulse energy <span class="math notranslate nohighlight">\( E_g \)</span> and the number of symbols <span class="math notranslate nohighlight">\( M \)</span>. Larger <span class="math notranslate nohighlight">\( M \)</span> results in smaller angular separation between points, reducing <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>.</p>
+<p>This formula highlights how <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> depends on the pulse energy <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> and the number of symbols <span class="math notranslate nohighlight">\( M \)</span>. Larger <span class="math notranslate nohighlight">\( M \)</span> results in smaller angular separation between points, reducing <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>.</p>
 </section>
 <section id="relating-d-text-min-to-energy-per-bit">
 <h3>Relating <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> to Energy Per Bit<a class="headerlink" href="#relating-d-text-min-to-energy-per-bit" title="Link to this heading">#</a></h3>
-<p>Using the relationship between <span class="math notranslate nohighlight">\( E_g \)</span> (pulse energy) and <span class="math notranslate nohighlight">\( E_b \)</span> (energy per bit), we can express <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> as:</p>
+<p>Using the relationship between <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> (pulse energy) and <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> (energy per bit), we can express <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = 2 \sqrt{\left( \log_2 M \times \sin^2 \frac{\pi}{M} \right) E_b}
+d_{\text{min}} = 2 \sqrt{\left( \log_2 M \times \sin^2 \frac{\pi}{M} \right) \mathcal{E}_b}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -684,28 +684,22 @@ d_{\text{min}} = 2 \sqrt{\left( \log_2 M \times \sin^2 \frac{\pi}{M} \right) E_b
 </section>
 <section id="asymptotic-approximation-for-large-m">
 <h3>Asymptotic Approximation for Large <span class="math notranslate nohighlight">\( M \)</span><a class="headerlink" href="#asymptotic-approximation-for-large-m" title="Link to this heading">#</a></h3>
-<p>For large <span class="math notranslate nohighlight">\( M \)</span>, the approximation <span class="math notranslate nohighlight">\( \sin \frac{\pi}{M} \approx \frac{\pi}{M} \)</span> simplifies the minimum distance to:</p>
-<div class="math notranslate nohighlight">
-\[
-d_{\text{min}} \approx 2 \sqrt{\frac{\pi^2 \log_2 M}{M^2} E_b}
-\]</div>
-<p>This shows that as <span class="math notranslate nohighlight">\( M \)</span> increases, the minimum distance decreases approximately as <span class="math notranslate nohighlight">\( \frac{1}{M} \)</span>, making higher-order PSK constellations more sensitive to noise.</p>
 <p><strong>Definition of Asymptotic Approximation</strong><br />
 An approximation is referred to as <strong>asymptotic</strong> if it becomes increasingly accurate as a certain parameter approaches a limiting value — in this case, as <span class="math notranslate nohighlight">\( M \to \infty \)</span>.</p>
 <p>For <span class="math notranslate nohighlight">\( M \)</span>-PSK, the minimum Euclidean distance is:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{2E_g \sin^2 \frac{\pi}{M}}
+d_{\text{min}} = \sqrt{2\mathcal{E}_g \sin^2 \frac{\pi}{M}}
 \]</div>
 <p>For large <span class="math notranslate nohighlight">\( M \)</span>, we use the approximation <span class="math notranslate nohighlight">\( \sin \frac{\pi}{M} \approx \frac{\pi}{M} \)</span>, valid when <span class="math notranslate nohighlight">\( \frac{\pi}{M} \)</span> is small (i.e., <span class="math notranslate nohighlight">\( M \)</span> is large). Substituting this into the expression for <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>, we get:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} \approx \sqrt{2E_g \left(\frac{\pi}{M}\right)^2} = \sqrt{\frac{2\pi^2 E_g}{M^2}}
+d_{\text{min}} \approx \sqrt{2\mathcal{E}_g \left(\frac{\pi}{M}\right)^2} = \sqrt{\frac{2\pi^2 \mathcal{E}_g}{M^2}}
 \]</div>
-<p>Expressing <span class="math notranslate nohighlight">\( E_g \)</span> in terms of <span class="math notranslate nohighlight">\( E_b \)</span> (energy per bit):</p>
+<p>Expressing <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> in terms of <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> (energy per bit):</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} \approx 2 \sqrt{\frac{\pi^2 \log_2 M}{M^2} E_b}
+d_{\text{min}} \approx 2 \sqrt{\frac{\pi^2 \log_2 M}{M^2} \mathcal{E}_b}
 \]</div>
 <p><strong>Asymptotic Nature</strong></p>
 <ul class="simple">

@@ -463,7 +463,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-per-bit-in-qam">Energy Per Bit in QAM</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-e-text-bavg">Minimum Distance in Terms of <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-mathcal-e-text-b-avg">Minimum Distance in Terms of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unifying-bandpass-pam-psk-and-qam-signaling-schemes">Unifying Bandpass PAM, PSK, and QAM Signaling Schemes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form-of-bandpass-signaling">General Form of Bandpass Signaling</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-a-m-for-different-schemes">Definition of <span class="math notranslate nohighlight">\( A_m \)</span> for Different Schemes</a></li>
@@ -604,8 +604,8 @@ s_m(t) = r_m \cos \left( 2\pi f_c t + \theta_m \right)
 <p>Similar to Phase-Shift Keying (PSK), Quadrature Amplitude Modulation (QAM) signals can be expanded using an <strong>orthonormal basis</strong>. The basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>, defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\phi_1(t) = \sqrt{\frac{2}{E_g}} g(t) \cos(2\pi f_c t),
-\quad \phi_2(t) = -\sqrt{\frac{2}{E_g}} g(t) \sin(2\pi f_c t),
+\phi_1(t) = \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos(2\pi f_c t),
+\quad \phi_2(t) = -\sqrt{\frac{2}{\mathcal{E}_g}} g(t) \sin(2\pi f_c t),
 \]</div>
 <p>are used to represent QAM signals. These functions are orthogonal, ensuring no interference between the in-phase (<span class="math notranslate nohighlight">\( \cos \)</span>) and quadrature (<span class="math notranslate nohighlight">\( \sin \)</span>) components.</p>
 <p><strong>Signal Space Dimensionality</strong></p>
@@ -619,13 +619,13 @@ s_m(t) = r_m \cos \left( 2\pi f_c t + \theta_m \right)
 <p>Using the orthonormal basis, any QAM signal can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = A_{mi} \sqrt{\frac{E_g}{2}} \phi_1(t) + A_{mq} \sqrt{\frac{E_g}{2}} \phi_2(t),
+s_m(t) = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}} \phi_1(t) + A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}} \phi_2(t),
 \]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A_{mi} \)</span>: Amplitude of the <strong>in-phase component</strong>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( A_{mq} \)</span>: Amplitude of the <strong>quadrature component</strong>.</p></li>
-<li><p><span class="math notranslate nohighlight">\( E_g \)</span>: Total energy of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span>: Total energy of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
 </ul>
 </section>
 <section id="vector-representation-of-qam-signals">
@@ -638,7 +638,7 @@ s_m(t) = A_{mi} \sqrt{\frac{E_g}{2}} \phi_1(t) + A_{mq} \sqrt{\frac{E_g}{2}} \ph
 <p>where:</p>
 <div class="math notranslate nohighlight">
 \[
-s_{m1} = A_{mi} \sqrt{\frac{E_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{E_g}{2}}.
+s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}.
 \]</div>
 <p>Each QAM symbol corresponds to a unique point in the two-dimensional constellation diagram, with coordinates <span class="math notranslate nohighlight">\( (s_{m1}, s_{m2}) \)</span>.</p>
 </section>
@@ -647,7 +647,7 @@ s_{m1} = A_{mi} \sqrt{\frac{E_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{E_g}{2}}
 <p>The energy of a QAM signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is given by the squared norm of its vector representation:</p>
 <div class="math notranslate nohighlight">
 \[
-E_m = \| \vec{s}_m \|^2 = \frac{E_g}{2} \left( A_{mi}^2 + A_{mq}^2 \right).
+\mathcal{E}_m = \| \vec{s}_m \|^2 = \frac{\mathcal{E}_g}{2} \left( A_{mi}^2 + A_{mq}^2 \right).
 \]</div>
 <p>This expression shows that the total energy of the signal is equally distributed between the in-phase and quadrature components.</p>
 </section>
@@ -658,13 +658,13 @@ E_m = \| \vec{s}_m \|^2 = \frac{E_g}{2} \left( A_{mi}^2 + A_{mq}^2 \right).
 <div class="math notranslate nohighlight">
 \[
 d_{mn} = \sqrt{\|\vec{s}_m - \vec{s}_n\|^2}
-= \sqrt{\frac{E_g}{2} \left[ (A_{mi} - A_{ni})^2 + (A_{mq} - A_{nq})^2 \right]}
+= \sqrt{\frac{\mathcal{E}_g}{2} \left[ (A_{mi} - A_{ni})^2 + (A_{mq} - A_{nq})^2 \right]}
 \]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span>: In-phase and quadrature amplitudes of symbol <span class="math notranslate nohighlight">\( m \)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( A_{ni} \)</span> and <span class="math notranslate nohighlight">\( A_{nq} \)</span>: In-phase and quadrature amplitudes of symbol <span class="math notranslate nohighlight">\( n \)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\( E_g \)</span>: Energy of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span>: Energy of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
 </ul>
 <section id="special-case-rectangular-constellation">
 <h3>Special Case: Rectangular Constellation<a class="headerlink" href="#special-case-rectangular-constellation" title="Link to this heading">#</a></h3>
@@ -676,7 +676,7 @@ A_m = \pm1, \pm3, \ldots, \pm(M - 1).
 <p>The <strong>minimum distance</strong> between adjacent constellation points is:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{2E_g},
+d_{\text{min}} = \sqrt{2\mathcal{E}_g},
 \]</div>
 <p>which is the same as for PAM. This indicates that the spacing between neighboring points in the constellation determines noise resilience.</p>
 </section>
@@ -685,12 +685,12 @@ d_{\text{min}} = \sqrt{2E_g},
 <p>For a rectangular QAM constellation with <span class="math notranslate nohighlight">\( M = 2^{2k_1} \)</span> (e.g., <span class="math notranslate nohighlight">\( M = 4, 16, 64, 256, \ldots \)</span>) and amplitudes <span class="math notranslate nohighlight">\( \pm 1, \pm 3, \ldots, \pm (\sqrt{M} - 1) \)</span> in both directions:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{avg}} = \frac{1}{M} \frac{E_g}{2} \sum_{m=1}^{\sqrt{M}} \sum_{n=1}^{\sqrt{M}} \left(A_m^2 + A_n^2\right).
+\mathcal{E}_{\text{avg}} = \frac{1}{M} \frac{\mathcal{E}_g}{2} \sum_{m=1}^{\sqrt{M}} \sum_{n=1}^{\sqrt{M}} \left(A_m^2 + A_n^2\right).
 \]</div>
 <p>Substituting and simplifying:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{avg}} = \frac{E_g}{2M} \times 2M \frac{(M - 1)}{3} = \frac{M - 1}{3} E_g.
+\mathcal{E}_{\text{avg}} = \frac{\mathcal{E}_g}{2M} \times 2M \frac{(M - 1)}{3} = \frac{M - 1}{3} \mathcal{E}_g.
 \]</div>
 </section>
 <section id="energy-per-bit-in-qam">
@@ -698,16 +698,16 @@ E_{\text{avg}} = \frac{E_g}{2M} \times 2M \frac{(M - 1)}{3} = \frac{M - 1}{3} E_
 <p>The average energy per bit in QAM is:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{bavg}} = \frac{E_{\text{avg}}}{\log_2 M} = \frac{(M - 1)}{3 \log_2 M} E_g.
+\mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M} = \frac{(M - 1)}{3 \log_2 M} \mathcal{E}_g.
 \]</div>
 </section>
 </section>
-<section id="minimum-distance-in-terms-of-e-text-bavg">
-<h2>Minimum Distance in Terms of <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span><a class="headerlink" href="#minimum-distance-in-terms-of-e-text-bavg" title="Link to this heading">#</a></h2>
-<p>Using <span class="math notranslate nohighlight">\( d_{\text{min}} = \sqrt{2E_g} \)</span> and substituting <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span>, the minimum distance can be expressed as:</p>
+<section id="minimum-distance-in-terms-of-mathcal-e-text-b-avg">
+<h2>Minimum Distance in Terms of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span><a class="headerlink" href="#minimum-distance-in-terms-of-mathcal-e-text-b-avg" title="Link to this heading">#</a></h2>
+<p>Using <span class="math notranslate nohighlight">\( d_{\text{min}} = \sqrt{2\mathcal{E}_g} \)</span> and substituting <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span>, the minimum distance can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{\frac{6 \log_2 M}{M - 1} E_{\text{bavg}}}.
+d_{\text{min}} = \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}}.
 \]</div>
 </section>
 <section id="unifying-bandpass-pam-psk-and-qam-signaling-schemes">
@@ -801,39 +801,39 @@ where \)</span> A_{mi} <span class="math notranslate nohighlight">\( and \)</spa
 <tr class="row-odd"><th class="head"><p><strong>Signaling Scheme</strong></p></th>
 <th class="head"><p><strong>Signal Expression <span class="math notranslate nohighlight">\( s_m(t) \)</span></strong></p></th>
 <th class="head"><p><strong>Vector Representation <span class="math notranslate nohighlight">\( s_m \)</span></strong></p></th>
-<th class="head"><p><strong>Average Energy <span class="math notranslate nohighlight">\( E_{\text{avg}} \)</span></strong></p></th>
-<th class="head"><p><strong>Energy per Bit <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span></strong></p></th>
+<th class="head"><p><strong>Average Energy <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} \)</span></strong></p></th>
+<th class="head"><p><strong>Energy per Bit <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></strong></p></th>
 <th class="head"><p><strong>Minimum Distance <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span></strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Baseband PAM</strong></p></td>
+<tr class="row-even"><td><p><strong>PAM</strong> using <span class="math notranslate nohighlight">\(p(t)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\( A_m p(t) \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( A_m \sqrt{E_p} \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{2(M^2 - 1)}{3} E_p \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{2(M^2 - 1)}{3 \log_2 M} E_p \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( 2 \sqrt{E_p} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_m \sqrt{\mathcal{E}_p} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{2(M^2 - 1)}{3} \mathcal{E}_p \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{2(M^2 - 1)}{3 \log_2 M} \mathcal{E}_p \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( 2 \sqrt{\mathcal{E}_p} \)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Bandpass PAM</strong></p></td>
+<tr class="row-odd"><td><p><strong>PAM</strong> using <span class="math notranslate nohighlight">\(g(t)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\( A_m g(t) \cos(2\pi f_c t) \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( A_m \sqrt{\frac{E_g}{2}} \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{M^2 - 1}{3} E_g \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{M^2 - 1}{3 \log_2 M} E_g \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \sqrt{2 E_g} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_m \sqrt{\frac{\mathcal{E}_g}{2}} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{M^2 - 1}{3} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{M^2 - 1}{3 \log_2 M} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{2 \mathcal{E}_g} \)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>PSK</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\( g(t) \cos \left[ 2\pi f_c t + \frac{2\pi}{M} (m - 1) \right] \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{E_g}{2}} \left[ \cos \frac{2\pi(m-1)}{M}, \sin \frac{2\pi(m-1)}{M} \right] \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( E_g \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{E_g}{\log_2 M} \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( 2 \sqrt{\log_2 M \sin^2 \frac{\pi}{M} E_{\text{bavg}}} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{\mathcal{E}_g}{2}} \left[ \cos \frac{2\pi(m-1)}{M}, \sin \frac{2\pi(m-1)}{M} \right] \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{\mathcal{E}_g}{\log_2 M} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( 2 \sqrt{\log_2 M \sin^2 \frac{\pi}{M} \mathcal{E}_{\text{b,avg}}} \)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QAM</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\( A_{mi} g(t) \cos(2\pi f_c t) - A_{mq} g(t) \sin(2\pi f_c t) \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{E_g}{2}} \left[ A_{mi}, A_{mq} \right] \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{M - 1}{3} E_g \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \frac{(M - 1)}{3 \log_2 M} E_g \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{6 \log_2 M}{M - 1} E_{\text{bavg}}} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{\mathcal{E}_g}{2}} \left[ A_{mi}, A_{mq} \right] \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{M - 1}{3} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{(M - 1)}{3 \log_2 M} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}} \)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -842,8 +842,8 @@ where \)</span> A_{mi} <span class="math notranslate nohighlight">\( and \)</spa
 <ul class="simple">
 <li><p><strong>Signal Expression <span class="math notranslate nohighlight">\( s_m(t) \)</span></strong>: The time-domain representation of the transmitted signal.</p></li>
 <li><p><strong>Vector Representation <span class="math notranslate nohighlight">\( s_m \)</span></strong>: The signal’s representation in signal space, with dimensionality dependent on the scheme.</p></li>
-<li><p><strong>Average Energy <span class="math notranslate nohighlight">\( E_{\text{avg}} \)</span></strong>: Average energy per symbol.</p></li>
-<li><p><strong>Energy per Bit <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span></strong>: Derived by dividing <span class="math notranslate nohighlight">\( E_{\text{avg}} \)</span> by the number of bits per symbol (<span class="math notranslate nohighlight">\( \log_2 M \)</span>).</p></li>
+<li><p><strong>Average Energy <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} \)</span></strong>: Average energy per symbol.</p></li>
+<li><p><strong>Energy per Bit <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></strong>: Derived by dividing <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} \)</span> by the number of bits per symbol (<span class="math notranslate nohighlight">\( \log_2 M \)</span>).</p></li>
 <li><p><strong>Minimum Distance <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span></strong>: The minimum Euclidean distance between constellation points, which determines noise resilience.</p></li>
 </ul>
 </section>
@@ -937,7 +937,7 @@ where \)</span> A_{mi} <span class="math notranslate nohighlight">\( and \)</spa
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-per-bit-in-qam">Energy Per Bit in QAM</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-e-text-bavg">Minimum Distance in Terms of <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-mathcal-e-text-b-avg">Minimum Distance in Terms of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unifying-bandpass-pam-psk-and-qam-signaling-schemes">Unifying Bandpass PAM, PSK, and QAM Signaling Schemes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form-of-bandpass-signaling">General Form of Bandpass Signaling</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-a-m-for-different-schemes">Definition of <span class="math notranslate nohighlight">\( A_m \)</span> for Different Schemes</a></li>
