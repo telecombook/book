@@ -729,30 +729,36 @@ s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M,
 <section id="definition-of-a-m-for-different-schemes">
 <h3>Definition of <span class="math notranslate nohighlight">\( A_m \)</span> for Different Schemes<a class="headerlink" href="#definition-of-a-m-for-different-schemes" title="Link to this heading">#</a></h3>
 <p>The parameter <span class="math notranslate nohighlight">\( A_m \)</span> distinguishes the signaling schemes:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><strong>PAM (Pulse Amplitude Modulation)</strong>:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>real</strong> and typically takes values:
-$<span class="math notranslate nohighlight">\(
-A_m = \pm1, \pm3, \ldots, \pm(M - 1).
-\)</span>$</p></li>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>real</strong> and typically takes values:</p>
+<div class="math notranslate nohighlight">
+\[
+     A_m = \pm1, \pm3, \ldots, \pm(M - 1).
+     \]</div>
+</li>
 </ul>
 </li>
 <li><p><strong>PSK (<span class="math notranslate nohighlight">\( M \)</span>-ary Phase Shift Keying)</strong>:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>complex</strong> and represents a phase shift:
-$<span class="math notranslate nohighlight">\(
-A_m = e^{j \frac{2\pi}{M} (m-1)}.
-\)</span>$</p></li>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>complex</strong> and represents a phase shift:</p>
+<div class="math notranslate nohighlight">
+\[
+     A_m = e^{j \frac{2\pi}{M} (m-1)}.
+     \]</div>
+</li>
 </ul>
 </li>
 <li><p><strong>QAM (Quadrature Amplitude Modulation)</strong>:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is a general <strong>complex number</strong>, representing both amplitude and phase:
-$<span class="math notranslate nohighlight">\(
-A_m = A_{mi} + jA_{mq},
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span> A_{mi} <span class="math notranslate nohighlight">\( and \)</span> A_{mq} $ are the in-phase and quadrature components, respectively.</p></li>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is a general <strong>complex number</strong>, representing both amplitude and phase:</p>
+<div class="math notranslate nohighlight">
+\[
+     A_m = A_{mi} + jA_{mq},
+     \]</div>
+<p>where <span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span> are the in-phase and quadrature components, respectively.</p>
+</li>
 </ul>
 </li>
 </ol>
