@@ -266,6 +266,15 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
 </ul>
 </details></li>
 </ul>
@@ -451,7 +460,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-per-bit">Average Energy per Bit</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-e-b-n-0">SNR and <span class="math notranslate nohighlight">\( E_b/N_0 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-mathcal-e-b-n-0">SNR and <span class="math notranslate nohighlight">\( \mathcal{E}_b/N_0 \)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-sinr">SNR and SINR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-expressions-and-performance-metrics">SNR Expressions and Performance Metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-in-terms-of-energy-per-bit-and-energy-per-symbol">SNR in Terms of Energy per Bit and Energy per Symbol</a></li>
@@ -536,10 +545,10 @@ The parameter <span class="math notranslate nohighlight">\( R_s \)</span> is ref
 <p>The <strong>Symbol Error Rate (SER)</strong> measures the probability that a transmitted <strong>symbol</strong> is received incorrectly due to <strong>channel noise, interference, or distortion</strong>. It is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-SER = \frac{\text{Number of symbol errors}}{\text{Total number of transmitted symbols}}
+\text{SER} = \frac{\text{Number of symbol errors}}{\text{Total number of transmitted symbols}}
 \]</div>
 <p>Since each symbol may represent multiple bits, <strong>SER is related to Bit Error Rate (BER)</strong>, but <strong>BER accounts for individual bit errors</strong>, whereas SER considers errors at the symbol level. The relationship between SER and BER depends on the modulation scheme.</p>
-<p>Thus, in your content, the <strong>symbol</strong> refers to the modulated signal unit, which is directly relevant when analyzing SER as a performance metric.</p>
+<p>Thus, in our content, the <strong>symbol</strong> refers to the modulated signal unit, which is directly relevant when analyzing SER as a performance metric.</p>
 <p><strong>Definition: Bit Interval</strong><br />
 Since each transmitted signal carries <span class="math notranslate nohighlight">\( k \)</span> bits of information, the <strong>bit interval</strong> <span class="math notranslate nohighlight">\( T_b \)</span> [s], the time duration in which <strong>one bit</strong> is transmitted, is given by:</p>
 <div class="math notranslate nohighlight">
@@ -557,10 +566,10 @@ R = k R_s = R_s \log_2 M
 <h3>Energy of Waveforms<a class="headerlink" href="#energy-of-waveforms" title="Link to this heading">#</a></h3>
 <section id="average-signal-energy">
 <h4>Average Signal Energy<a class="headerlink" href="#average-signal-energy" title="Link to this heading">#</a></h4>
-<p>If the <strong>energy content</strong> of a transmitted signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is denoted by <span class="math notranslate nohighlight">\( E_m \)</span>, then the <strong>average signal energy</strong> across all possible signals is given by:</p>
+<p>If the <strong>energy content</strong> of a transmitted signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is denoted by <span class="math notranslate nohighlight">\( \mathcal{E}_m \)</span>, then the <strong>average signal energy</strong> across all possible signals is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{avg}} = \sum_{m=1}^{M} p_m E_m
+\mathcal{E}_{\text{avg}} = \sum_{m=1}^{M} p_m \mathcal{E}_m
 \]</div>
 <p>where <span class="math notranslate nohighlight">\( p_m \)</span> represents the probability of transmitting the <strong><span class="math notranslate nohighlight">\( m \)</span>-th signal</strong> (<strong>message probability</strong>).</p>
 </section>
@@ -574,40 +583,40 @@ p_m = \frac{1}{M}
 <p>Thus, the <strong>average signal energy</strong> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{avg}} = \frac{1}{M} \sum_{m=1}^{M} E_m
+\mathcal{E}_{\text{avg}} = \frac{1}{M} \sum_{m=1}^{M} \mathcal{E}_m
 \]</div>
 </section>
 <section id="average-energy-per-bit">
 <h4>Average Energy per Bit<a class="headerlink" href="#average-energy-per-bit" title="Link to this heading">#</a></h4>
-<p>If all signals have the same energy, then <span class="math notranslate nohighlight">\( E_m = E \)</span>, and consequently,</p>
+<p>If all signals have the same energy, then <span class="math notranslate nohighlight">\( \mathcal{E}_m = \mathcal{E} \)</span>, and consequently,</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{avg}} = E
+\mathcal{E}_{\text{avg}} = \mathcal{E}
 \]</div>
 <p>The <strong>average energy per bit</strong>—which represents the energy required for transmitting one bit of information—when signals are equiprobable is:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{\text{bavg}} = \frac{E_{\text{avg}}}{k} = \frac{E_{\text{avg}}}{\log_2 M}
+\mathcal{E}_{\text{bavg}} = \frac{\mathcal{E}_{\text{avg}}}{k} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M}
 \]</div>
-<p>If all signals have equal energy <span class="math notranslate nohighlight">\( E_{sig} \)</span>, then the energy per bit simplifies to:</p>
+<p>If all signals have equal energy <span class="math notranslate nohighlight">\( \mathcal{E}_{sig} \)</span>, then the energy per bit simplifies to:</p>
 <div class="math notranslate nohighlight">
 \[
-E_b = \frac{E_{sig}}{k} = \frac{E_{sig}}{\log_2 M}
+\mathcal{E}_b = \frac{\mathcal{E}_{sig}}{k} = \frac{\mathcal{E}_{sig}}{\log_2 M}
 \]</div>
-<p>If a communication system transmits an <strong>average energy per bit</strong> of <span class="math notranslate nohighlight">\( E_{\text{bavg}} \)</span> and each bit takes <span class="math notranslate nohighlight">\( T_b \)</span> seconds to be transmitted, then the <strong>average power</strong> sent by the transmitter is given by:</p>
+<p>If a communication system transmits an <strong>average energy per bit</strong> of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{bavg}} \)</span> and each bit takes <span class="math notranslate nohighlight">\( T_b \)</span> seconds to be transmitted, then the <strong>average power</strong> sent by the transmitter is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-P_{\text{avg}} = \frac{E_{\text{bavg}}}{T_b} = R E_{\text{bavg}}
+P_{\text{avg}} = \frac{\mathcal{E}_{\text{bavg}}}{T_b} = R \mathcal{E}_{\text{bavg}}
 \]</div>
 <p>For the case where all signals have <strong>equal energy</strong>, this simplifies to:</p>
 <div class="math notranslate nohighlight">
 \[
-P = R E_b
+P = R \mathcal{E}_b
 \]</div>
 </section>
 </section>
-<section id="snr-and-e-b-n-0">
-<h3>SNR and <span class="math notranslate nohighlight">\( E_b/N_0 \)</span><a class="headerlink" href="#snr-and-e-b-n-0" title="Link to this heading">#</a></h3>
+<section id="snr-and-mathcal-e-b-n-0">
+<h3>SNR and <span class="math notranslate nohighlight">\( \mathcal{E}_b/N_0 \)</span><a class="headerlink" href="#snr-and-mathcal-e-b-n-0" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>In an <strong>AWGN (Additive White Gaussian Noise) channel</strong>, the modulated signal is given by:</p>
 <div class="math notranslate nohighlight">
@@ -659,27 +668,27 @@ If the <strong>interference statistics</strong> approximate those of <strong>Gau
 <section id="snr-in-terms-of-energy-per-bit-and-energy-per-symbol">
 <h4>SNR in Terms of Energy per Bit and Energy per Symbol<a class="headerlink" href="#snr-in-terms-of-energy-per-bit-and-energy-per-symbol" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>The <strong>signal-to-noise ratio (SNR)</strong> is often expressed using the <strong>signal energy per bit</strong> <span class="math notranslate nohighlight">\( E_b \)</span> or <strong>per symbol</strong> <span class="math notranslate nohighlight">\( E_s \)</span>:</p></li>
+<li><p>The <strong>signal-to-noise ratio (SNR)</strong> is often expressed using the <strong>signal energy per bit</strong> <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> or <strong>per symbol</strong> <span class="math notranslate nohighlight">\( \mathcal{E}_s \)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\text{SNR} = \frac{P_r}{N_0B} = \frac{E_s}{N_0B T_s} = \frac{E_b}{N_0B T_b}
+\text{SNR} = \frac{P_r}{N_0B} = \frac{\mathcal{E}_s}{N_0B T_s} = \frac{\mathcal{E}_b}{N_0B T_b}
 \]</div>
 <p>where:</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\( T_s \)</span> is the <strong>symbol duration</strong> (or <strong>signaling interval</strong>)</p></li>
 <li><p><span class="math notranslate nohighlight">\( T_b \)</span> is the <strong>bit duration</strong>  (or <strong>bit interval</strong>)</p></li>
-<li><p>For <strong>binary modulation</strong>, <span class="math notranslate nohighlight">\( T_s = T_b \)</span> and <span class="math notranslate nohighlight">\( E_s = E_b \)</span>.</p></li>
+<li><p>For <strong>binary modulation</strong>, <span class="math notranslate nohighlight">\( T_s = T_b \)</span> and <span class="math notranslate nohighlight">\( \mathcal{E}_s = \mathcal{E}_b \)</span>.</p></li>
 <li><p>For data pulses where <span class="math notranslate nohighlight">\( T_s = 1/B \)</span> (e.g., raised cosine pulses with <strong>roll-off factor</strong> <span class="math notranslate nohighlight">\( \beta = 1 \)</span>), we obtain:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \text{SNR} = \frac{E_s}{N_0} \)</span> for <strong>multilevel signaling</strong></p></li>
-<li><p><span class="math notranslate nohighlight">\( \text{SNR} = \frac{E_b}{N_0} \)</span> for <strong>binary signaling</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\( \text{SNR} = \frac{\mathcal{E}_s}{N_0} \)</span> for <strong>multilevel signaling</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\( \text{SNR} = \frac{\mathcal{E}_b}{N_0} \)</span> for <strong>binary signaling</strong></p></li>
 </ul>
 </li>
 <li><p>For general pulse shapes, <span class="math notranslate nohighlight">\( T_s = k/B \)</span> for some constant <span class="math notranslate nohighlight">\( k \)</span>, leading to:</p>
 <div class="math notranslate nohighlight">
 \[
-  k \cdot \text{SNR} = \frac{E_s}{N_0}
+  k \cdot \text{SNR} = \frac{\mathcal{E}_s}{N_0}
   \]</div>
 </li>
 </ul>
@@ -690,8 +699,8 @@ If the <strong>interference statistics</strong> approximate those of <strong>Gau
 <ul>
 <li><p>The quantities:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \gamma_s = \frac{E_s}{N_0} \)</span> (<strong>SNR per symbol</strong>)</p></li>
-<li><p><span class="math notranslate nohighlight">\( \gamma_b = \frac{E_b}{N_0} \)</span> (<strong>SNR per bit</strong>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \gamma_s = \frac{\mathcal{E}_s}{N_0} \)</span> (<strong>SNR per symbol</strong>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \gamma_b = \frac{\mathcal{E}_b}{N_0} \)</span> (<strong>SNR per bit</strong>)</p></li>
 </ul>
 <p>are frequently used in system performance analysis.</p>
 </li>
@@ -785,7 +794,7 @@ If the <strong>interference statistics</strong> approximate those of <strong>Gau
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-per-bit">Average Energy per Bit</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-e-b-n-0">SNR and <span class="math notranslate nohighlight">\( E_b/N_0 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-mathcal-e-b-n-0">SNR and <span class="math notranslate nohighlight">\( \mathcal{E}_b/N_0 \)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-sinr">SNR and SINR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-expressions-and-performance-metrics">SNR Expressions and Performance Metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-in-terms-of-energy-per-bit-and-energy-per-symbol">SNR in Terms of Energy per Bit and Energy per Symbol</a></li>

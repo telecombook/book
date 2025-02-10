@@ -266,6 +266,15 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
 </ul>
 </details></li>
 </ul>
@@ -463,34 +472,29 @@
 <p>Memoryless modulation schemes transmit each symbol independently without relying on previous symbols. These schemes are fundamental in digital communications, enabling efficient and reliable data transmission by varying specific signal parameters.</p>
 <section id="waveform">
 <h2>Waveform<a class="headerlink" href="#waveform" title="Link to this heading">#</a></h2>
+<p><strong>Definition of <span class="math notranslate nohighlight">\( s_m(t) \)</span></strong></p>
 <ul class="simple">
-<li><p><strong>Definition of <span class="math notranslate nohighlight">\( s_m(t) \)</span>:</strong></p>
-<ul>
 <li><p>In digital communication systems, <span class="math notranslate nohighlight">\( s_m(t) \)</span> represents the <strong>signal waveform</strong> corresponding to the <span class="math notranslate nohighlight">\( m \)</span>-th symbol in a modulation scheme.</p></li>
 <li><p>Each symbol <span class="math notranslate nohighlight">\( m \)</span> encodes a specific sequence of binary bits, and <span class="math notranslate nohighlight">\( s_m(t) \)</span> is the time-domain representation of that symbol used for transmission over the communication channel.</p></li>
 </ul>
-</li>
-<li><p><strong>Characteristics of <span class="math notranslate nohighlight">\( s_m(t) \)</span>:</strong></p>
-<ul>
+<p><strong>Characteristics of <span class="math notranslate nohighlight">\( s_m(t) \)</span></strong></p>
+<ul class="simple">
 <li><p><strong>Real-Valued:</strong> Typically, <span class="math notranslate nohighlight">\( s_m(t) \)</span> is a <strong>real-valued</strong> function because it represents physical electrical signals, such as <em>voltage</em> or <em>current</em>, that vary over time.</p></li>
 <li><p><strong>Bandpass Signal:</strong></p>
 <ul>
-<li><p><strong>Bandpass Characteristics:</strong> Most practical communication systems use <strong>bandpass signals</strong>, meaning <span class="math notranslate nohighlight">\( s_m(t) \)</span> occupies a specific frequency band centered around a carrier frequency. This is essential for efficient transmission over mediums like radio frequencies.</p></li>
+<li><p>Most practical communication systems use <strong>bandpass signals</strong>, meaning <span class="math notranslate nohighlight">\( s_m(t) \)</span> occupies a specific frequency band centered around a carrier frequency. This is essential for efficient transmission over mediums like radio frequencies (RF).</p></li>
 <li><p>Bandpass signals allow multiple communication channels to coexist without interference and are compatible with antenna transmission, which inherently operates in the bandpass domain.</p></li>
 </ul>
 </li>
-<li><p><strong>General Form:</strong><br />
-Waveforms <span class="math notranslate nohighlight">\( s_m(t) \)</span> used for transmission can take <strong>any form</strong>.</p></li>
-<li><p><strong>Typical Parameters:</strong><br />
+</ul>
+<p><strong>Form of Waveform</strong><br />
+Waveforms <span class="math notranslate nohighlight">\( s_m(t) \)</span> used for transmission can take <strong>any form</strong>.</p>
+<p><strong>Typical Parameters</strong><br />
 Typically, these are <strong>bandpass signals</strong> that vary based on one or more of the following parameters:</p>
-<ul>
+<ul class="simple">
 <li><p>Amplitude</p></li>
 <li><p>Phase</p></li>
 <li><p>Frequency</p></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 <section id="forms-of-waveform">
 <h3>Forms of Waveform<a class="headerlink" href="#forms-of-waveform" title="Link to this heading">#</a></h3>
@@ -597,18 +601,12 @@ Typically, these are <strong>bandpass signals</strong> that vary based on one or
 </section>
 <section id="error-probability">
 <h2>Error Probability<a class="headerlink" href="#error-probability" title="Link to this heading">#</a></h2>
-<p><strong>Definition:</strong><br />
-In an <strong>equiprobable</strong> <span class="math notranslate nohighlight">\( M \)</span>-ary signaling scheme, where each of the <span class="math notranslate nohighlight">\( M \)</span> symbols is equally likely, the <strong>error probability</strong> <span class="math notranslate nohighlight">\( P_e \)</span> is the average likelihood that a transmitted symbol is incorrectly detected:</p>
+<p>In an <strong>equiprobable</strong> <span class="math notranslate nohighlight">\( M \)</span>-ary signaling scheme, where each of the <span class="math notranslate nohighlight">\( M \)</span> symbols is equally likely, the <strong>error probability</strong> <span class="math notranslate nohighlight">\( P_e \)</span> is the average likelihood that a transmitted symbol is incorrectly detected:</p>
 <div class="math notranslate nohighlight">
 \[
 P_e = \frac{1}{M} \sum_{m=1}^{M} \Pr \left( \text{Error} \mid m \text{ sent} \right)
 \]</div>
-<p><strong>Key Points:</strong></p>
-<ul class="simple">
-<li><p><strong><span class="math notranslate nohighlight">\( M \)</span>-ary Signaling:</strong> Utilizes <span class="math notranslate nohighlight">\( M \)</span> distinct symbols for data representation.</p></li>
-<li><p><strong>Equiprobable:</strong> Each symbol has an equal probability of being transmitted.</p></li>
-<li><p><strong>Error Probability:</strong> Measures the reliability of the communication system, influenced by noise and interference.</p></li>
-</ul>
+<p>The error probability measures the <strong>reliability</strong> of the communication system, influenced by noise and interference.</p>
 </section>
 </section>
 
