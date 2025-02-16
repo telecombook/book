@@ -66,7 +66,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Optimal Receivers" href="com_c3_s0_Optimal_Receivers.html" />
+    <link rel="next" title="Signaling Schemes with Memory" href="com_c2_s9_Signaling_with_Memory.html" />
     <link rel="prev" title="Frequency-Shift Keying (FSK)" href="com_c2_s7_FSK.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -274,11 +274,16 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
 </ul>
 </details></li>
 </ul>
@@ -505,14 +510,14 @@ s_m(t), \quad m = 1, 2, \ldots, M.
 <li><p>If <span class="math notranslate nohighlight">\(c_{mj} = 1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-    \text{Signal for bit }1: \quad +\sqrt{\frac{2E_c}{T_c}}\cos\bigl(2\pi f_c t\bigr), 
+    \text{Signal for bit }1: \quad +\sqrt{\frac{2\mathcal{E}_c}{T_c}}\cos\bigl(2\pi f_c t\bigr), 
     \quad 0 \le t \le T_c,
   \]</div>
 </li>
 <li><p>If <span class="math notranslate nohighlight">\(c_{mj} = 0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-    \text{Signal for bit }0: \quad -\sqrt{\frac{2E_c}{T_c}}\cos\bigl(2\pi f_c t\bigr), 
+    \text{Signal for bit }0: \quad -\sqrt{\frac{2\mathcal{E}_c}{T_c}}\cos\bigl(2\pi f_c t\bigr), 
     \quad 0 \le t \le T_c.
   \]</div>
 </li>
@@ -555,14 +560,14 @@ This produces one continuous waveform <span class="math notranslate nohighlight"
 <li><p><strong>Mapping Codewords to Waveforms (BPSK):</strong></p>
 <ul>
 <li><p>We use Binary Phase Shift Keying (BPSK) for each bit.</p></li>
-<li><p>Each bit <span class="math notranslate nohighlight">\(c_{mj}\in \{0,1\}\)</span> is mapped to <span class="math notranslate nohighlight">\(\pm \sqrt{\tfrac{\mathcal{E}}{N}}\)</span>, which in the continuous‐time domain becomes <span class="math notranslate nohighlight">\(\pm \sqrt{\frac{2E_c}{T_c}}\cos(2\pi f_c t)\)</span> over one chip interval.</p></li>
+<li><p>Each bit <span class="math notranslate nohighlight">\(c_{mj}\in \{0,1\}\)</span> is mapped to <span class="math notranslate nohighlight">\(\pm \sqrt{\tfrac{\mathcal{E}}{N}}\)</span>, which in the continuous‐time domain becomes <span class="math notranslate nohighlight">\(\pm \sqrt{\frac{2\mathcal{E}_c}{T_c}}\cos(2\pi f_c t)\)</span> over one chip interval.</p></li>
 <li><p>Therefore, <em>each</em> of the <span class="math notranslate nohighlight">\(2^N\)</span> binary sequences can be turned into a <em>unique</em> <span class="math notranslate nohighlight">\(N\)</span>-symbol BPSK waveform.</p></li>
 </ul>
 </li>
 <li><p><strong>Subset Selection (<span class="math notranslate nohighlight">\(M &lt; 2^N\)</span>):</strong></p>
 <ul>
 <li><p>In some applications, we might not need or want all <span class="math notranslate nohighlight">\(2^N\)</span> possible waveforms. Instead, we may select a subset of size <span class="math notranslate nohighlight">\(M\)</span> (<span class="math notranslate nohighlight">\(M \le 2^N\)</span>).</p></li>
-<li><p>This subset becomes our <em>signal set</em>, and each codeword in that subset represents one of our <span class="math notranslate nohighlight">\(M\)</span> “messages.”</p></li>
+<li><p>This subset becomes our <em>signal set</em>, and each codeword in that subset represents one of our <span class="math notranslate nohighlight">\(M\)</span> <em>messages</em>.</p></li>
 <li><p>For instance, we might choose a smaller code (fewer than <span class="math notranslate nohighlight">\(2^N\)</span> codewords) with better error‐correcting properties, or in radar, we might use only some special PN (Pseudo‐Noise) sequences out of all possible sequences.</p></li>
 </ul>
 </li>
@@ -597,9 +602,9 @@ This produces one continuous waveform <span class="math notranslate nohighlight"
 </li>
 </ol>
 <p><strong>Vector / Block Representation</strong></p>
-<ol class="arabic">
+<ul>
 <li><p><strong>Discrete vector form</strong><br />
-Because each waveform is just a sequence of <span class="math notranslate nohighlight">\(N\)</span> BPSK “chips,” we can represent it in an <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector form:</p>
+Because each waveform is just a sequence of <span class="math notranslate nohighlight">\(N\)</span> BPSK <strong>chips</strong>, we can represent it in an <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector form:</p>
 <div class="math notranslate nohighlight">
 \[
      \vec{s}_m = [\, s_{m1},\, s_{m2},\, \ldots,\, s_{mN}\,],
@@ -608,20 +613,18 @@ Because each waveform is just a sequence of <span class="math notranslate nohigh
 </li>
 <li><p><strong>Block length</strong><br />
 The parameter <span class="math notranslate nohighlight">\(N\)</span> is called the block length of the code, denoting how many bits (or BPSK symbols) are used to represent one entire codeword.</p></li>
-</ol>
+</ul>
 <p>Thus, in an <strong><span class="math notranslate nohighlight">\(N\)</span>-dimensional signal space</strong>, each waveform <span class="math notranslate nohighlight">\(s_m\)</span> is a vector with entries <span class="math notranslate nohighlight">\(\pm \sqrt{\frac{\mathcal{E}}{N}}\)</span>. Two different codewords <span class="math notranslate nohighlight">\(c_m\)</span> and <span class="math notranslate nohighlight">\(c_{m'}\)</span> differ in at least one bit, leading to at least one symbol sign flip, and hence produce different vectors (and therefore different waveforms in time).</p>
 </section>
 <section id="waveform-energy">
 <h2>Waveform Energy<a class="headerlink" href="#waveform-energy" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Equal Energy per Symbol</strong></p>
 <ul>
+<li><p><strong>Equal Energy per Symbol</strong></p>
+<ul class="simple">
 <li><p>By design, each dimension (each bit’s sub‐signal) has an energy of <span class="math notranslate nohighlight">\(\frac{\mathcal{E}}{N}\)</span>.</p></li>
 <li><p>This means that for each dimension we have amplitude <span class="math notranslate nohighlight">\(\pm \sqrt{\frac{\mathcal{E}}{N}}\)</span>.</p></li>
 </ul>
 </li>
-</ul>
-<ol class="arabic" start="2">
 <li><p><strong>Total Energy of <span class="math notranslate nohighlight">\(\mathcal{E}\)</span></strong></p>
 <ul>
 <li><p>In vector form, the waveform can be written as:</p>
@@ -642,17 +645,15 @@ The parameter <span class="math notranslate nohighlight">\(N\)</span> is called 
 <li><p>Hence <em>every</em> such BPSK waveform in this <span class="math notranslate nohighlight">\(N\)</span>-dimensional set has the same total energy, <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>.</p></li>
 </ul>
 </li>
-</ol>
-<ul class="simple">
 <li><p><strong>Constant Energy Constellations</strong></p>
-<ul>
+<ul class="simple">
 <li><p>Having each possible signal point at the same distance from the origin means the constellation is a <em>constant‐energy</em> code.</p></li>
 <li><p>This is beneficial in many contexts (e.g., power efficiency and simpler detection metrics, because the detector typically only has to measure differences in sign/polarity rather than amplitude).</p></li>
 </ul>
 </li>
 </ul>
 <p><strong>Key Waveform Parameters</strong></p>
-<ol class="arabic">
+<ul>
 <li><p><strong>Symbol/Chip duration</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -663,12 +664,12 @@ The parameter <span class="math notranslate nohighlight">\(N\)</span> is called 
 <li><p><strong>Energy per bit</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-     E_c = \frac{\mathcal{E}}{N},
+     \mathcal{E}_c = \frac{\mathcal{E}}{N},
    \]</div>
-<p>meaning if the total energy allocated to transmit an entire codeword is <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>, then each bit‐interval has energy <span class="math notranslate nohighlight">\(E_c\)</span>. In other words, over the duration <span class="math notranslate nohighlight">\(T_c\)</span> of each BPSK symbol, the signal power integrates to <span class="math notranslate nohighlight">\(E_c\)</span>.</p>
+<p>meaning if the total energy allocated to transmit an entire codeword is <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>, then each bit‐interval has energy <span class="math notranslate nohighlight">\(\mathcal{E}_c\)</span>. In other words, over the duration <span class="math notranslate nohighlight">\(T_c\)</span> of each BPSK symbol, the signal power integrates to <span class="math notranslate nohighlight">\(\mathcal{E}_c\)</span>.</p>
 </li>
-</ol>
-<p>Putting these together, we see that the amplitude is chosen as <span class="math notranslate nohighlight">\(\sqrt{\frac{2E_c}{T_c}}\)</span> so that each bit has the correct energy <span class="math notranslate nohighlight">\(E_c\)</span> when integrated over the interval <span class="math notranslate nohighlight">\([0, T_c]\)</span>.</p>
+</ul>
+<p>Thus, we can see that the amplitude is chosen as <span class="math notranslate nohighlight">\(\sqrt{\frac{2\mathcal{E}_c}{T_c}}\)</span> so that each bit has the correct energy <span class="math notranslate nohighlight">\(\mathcal{E}_c\)</span> when integrated over the interval <span class="math notranslate nohighlight">\([0, T_c]\)</span>.</p>
 </section>
 <section id="minimum-distance">
 <h2>Minimum Distance<a class="headerlink" href="#minimum-distance" title="Link to this heading">#</a></h2>
@@ -680,16 +681,15 @@ Each <span class="math notranslate nohighlight">\(N\)</span>-bit codeword is map
 <div class="math notranslate nohighlight">
 \[
     s_m = \bigl[s_{m1},\, s_{m2},\,\dots,\, s_{mN}\bigr]
-    \quad\text{where}\quad 
-    s_{mj} \in \bigl\{ +\sqrt{\mathcal{E}/N},\,-\sqrt{\mathcal{E}/N}\bigr\}.
   \]</div>
+<p>where <span class="math notranslate nohighlight">\(s_{mj} \in \bigl\{ +\sqrt{\mathcal{E}/N},\,-\sqrt{\mathcal{E}/N}\bigr\}\)</span></p>
 </li>
 <li><p><strong>Total of <span class="math notranslate nohighlight">\(2^N\)</span> Possible Vectors</strong><br />
 Because each of the <span class="math notranslate nohighlight">\(N\)</span> components can be <span class="math notranslate nohighlight">\(\pm \sqrt{\mathcal{E}/N}\)</span>, there are <span class="math notranslate nohighlight">\(2^N\)</span> possible signal vectors (waveforms).</p></li>
 <li><p><strong>Selecting a Subset</strong><br />
 In practice, we might only pick <span class="math notranslate nohighlight">\(M \le 2^N\)</span> of these vectors as our actual codebook/signaling set. The <em>cross‐correlation</em> between any two chosen waveforms depends on how many coordinates (bits) they differ in.</p></li>
 </ul>
-<p><strong>Key Point</strong>: The <em>cross‐correlation</em> between two BPSK waveforms is proportional to their <em>dot product</em> in <span class="math notranslate nohighlight">\(N\)</span>-dimensional space. The dot product depends on how many matching or differing signs there are across their <span class="math notranslate nohighlight">\(N\)</span> coordinates.</p>
+<p>It is noted that the <em>cross‐correlation</em> between two BPSK waveforms is proportional to their <em>dot product</em> in <span class="math notranslate nohighlight">\(N\)</span>-dimensional space. The dot product depends on how many matching or differing signs there are across their <span class="math notranslate nohighlight">\(N\)</span> coordinates.</p>
 <p><strong>Cross‐Correlation Coefficient (<span class="math notranslate nohighlight">\(\rho\)</span>) for Adjacent Points</strong></p>
 <ul>
 <li><p><strong>Definition of Adjacent</strong><br />
@@ -739,7 +739,7 @@ Each vector <span class="math notranslate nohighlight">\(s_m\)</span> has length
 </ul>
 <p>Hence, two waveforms that differ in exactly one bit have cross‐correlation coefficient <span class="math notranslate nohighlight">\(\rho = \frac{N-2}{N}\)</span>.</p>
 <p><strong>Note</strong>:<br />
-If waveforms differ in more than one bit, the dot product will change accordingly. The <em>minimum correlation</em> occurs when many bits differ (the vectors are more “opposite”), and the <em>maximum correlation</em> occurs when they match in most bits.</p>
+If waveforms differ in more than one bit, the dot product will change accordingly. The <em>minimum correlation</em> occurs when many bits differ (the vectors are more <em>opposite</em>), and the <em>maximum correlation</em> occurs when they match in most bits.</p>
 </section>
 <section id="minimum-distance-between-adjacent-points">
 <h3>Minimum Distance Between Adjacent Points<a class="headerlink" href="#minimum-distance-between-adjacent-points" title="Link to this heading">#</a></h3>
@@ -776,8 +776,6 @@ The distance between two points <span class="math notranslate nohighlight">\(s_m
                  = \sqrt{\tfrac{4\,\mathcal{E}}{N}}.
    \]</div>
 </li>
-</ul>
-<ol class="arabic" start="3">
 <li><p><strong>Alternate Expression via Cross‐Correlation</strong><br />
 The formula given is</p>
 <div class="math notranslate nohighlight">
@@ -803,7 +801,7 @@ The formula given is</p>
    \]</div>
 <p>which matches the direct geometric derivation.</p>
 </li>
-</ol>
+</ul>
 </section>
 </section>
 </section>
@@ -848,11 +846,11 @@ The formula given is</p>
       </div>
     </a>
     <a class="right-next"
-       href="com_c3_s0_Optimal_Receivers.html"
+       href="com_c2_s9_Signaling_with_Memory.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Optimal Receivers</p>
+        <p class="prev-next-title">Signaling Schemes with Memory</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

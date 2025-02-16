@@ -274,11 +274,16 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Frequency-Shift Keying (FSK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
 </ul>
 </details></li>
 </ul>
@@ -488,13 +493,14 @@
                   
   <section id="frequency-shift-keying-fsk">
 <h1>Frequency-Shift Keying (FSK)<a class="headerlink" href="#frequency-shift-keying-fsk" title="Link to this heading">#</a></h1>
-<p>Frequency-Shift Keying (FSK) is a digital modulation technique in which the frequency of a carrier signal is varied to represent distinct symbol states. Each symbol is associated with a specific carrier frequency.</p>
+<p>Frequency-Shift Keying (FSK) is a digital modulation technique in which the frequency of a carrier signal is varied to represent distinct symbol states. Each symbol is associated with a specific (sub) carrier frequency.</p>
 <section id="fsk-waveform">
 <h2>FSK Waveform<a class="headerlink" href="#fsk-waveform" title="Link to this heading">#</a></h2>
 <p>The FSK signal can be expressed as</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f\, t \bigr),
+\boxed{
+s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f\, t \bigr),}
 \quad 1 \le m \le M,\quad 0 \le t \le T,
 \]</div>
 <p>where:</p>
@@ -508,24 +514,12 @@ s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f\, 
 <p>The <strong>lowpass equivalent</strong> of <span class="math notranslate nohighlight">\(s_m(t)\)</span>, denoted <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span>, is given by</p>
 <div class="math notranslate nohighlight">
 \[
-s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}} \, e^{j 2\pi m \Delta f \, t}.
-\]</div>
-<p>Note that, <span class="math notranslate nohighlight">\(s_m(t)\)</span> in the form</p>
-<div class="math notranslate nohighlight">
-\[
 \boxed{
-s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m\,\Delta f \, t\bigr)
+s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}} \, e^{j 2\pi m \Delta f \, t}
 }
 \]</div>
-<p>is a <strong>real-valued, bandpass</strong> waveform (a cosine at frequency <span class="math notranslate nohighlight">\(f_c + m\,\Delta f\)</span>).</p>
-<p>By contrast, the <strong>lowpass-equivalent</strong> signal</p>
-<div class="math notranslate nohighlight">
-\[
-\boxed{
-s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}}\, e^{j2\pi m\,\Delta f\, t}
-}
-\]</div>
-<p>is <strong>complex-valued</strong>, capturing the in-phase and quadrature components of the bandpass signal at baseband.</p>
+<p>Note that, <span class="math notranslate nohighlight">\(s_m(t)\)</span> is a <strong>real-valued, bandpass</strong> waveform (a cosine at frequency <span class="math notranslate nohighlight">\(f_c + m\,\Delta f\)</span>).</p>
+<p>By contrast, the <strong>lowpass-equivalent</strong> signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> is <strong>complex-valued</strong>, capturing the in-phase and quadrature components of the bandpass signal at baseband.</p>
 </section>
 <section id="orthogonality-of-fsk-signals">
 <h2>Orthogonality of FSK Signals<a class="headerlink" href="#orthogonality-of-fsk-signals" title="Link to this heading">#</a></h2>
@@ -563,7 +557,7 @@ e^{\,j\,2\pi\,(m-n)\,\Delta f\,t}\,\mathrm{d}t.
 }
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathrm{sinc}(x) \equiv \dfrac{\sin(\pi x)}{\pi x}\)</span>.</p>
-<p>Proof: See Appendix.</p>
+<p><strong>Proof</strong>: See Appendix.</p>
 </section>
 <section id="condition-for-orthogonality">
 <h3>Condition for Orthogonality<a class="headerlink" href="#condition-for-orthogonality" title="Link to this heading">#</a></h3>
@@ -664,10 +658,10 @@ e^{j\,2\pi\,(m-n)\,\Delta f\,t} = \mathcal{E}^{j\,2\pi\,(0)\,\Delta f\,t} = 1,
 = 2\mathcal{E}.
 \]</div>
 <p>Thus, when <span class="math notranslate nohighlight">\(m=n\)</span>,</p>
-<ol class="arabic simple">
+<ul class="simple">
 <li><p>The correlation is <strong>nonzero</strong> and equals the signal energy <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p></li>
 <li><p>This makes sense physically: the energy of the signal over one symbol interval is <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span> (based on the factor <span class="math notranslate nohighlight">\(\sqrt{\tfrac{2\mathcal{E}}{T}}\)</span> in the signal definition).</p></li>
-</ol>
+</ul>
 <p>Hence, <strong>orthogonality</strong> pertains only to the case <span class="math notranslate nohighlight">\(m\neq n\)</span>. When <span class="math notranslate nohighlight">\(m=n\)</span>, the “correlation with itself” is simply the (nonzero) autocorrelation/energy of that signal.</p>
 <section id="direct-derivation-of-the-energy-of-the-bandpass-waveform">
 <h3>Direct Derivation of the Energy of the Bandpass Waveform<a class="headerlink" href="#direct-derivation-of-the-energy-of-the-bandpass-waveform" title="Link to this heading">#</a></h3>
@@ -699,7 +693,7 @@ The energy of the <em>complex</em> lowpass signal <span class="math notranslate 
    \;=\;
    2\mathcal{E}.
    \]</div>
-<p>Thus, its \textit{complex} representation has total energy <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p>
+<p>Thus, its <em>complex</em> representation has total energy <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p>
 <p><strong>Energy of <span class="math notranslate nohighlight">\(s_m(t)\)</span></strong><br />
 The <em>real</em> bandpass signal is</p>
 <div class="math notranslate nohighlight">
@@ -730,7 +724,7 @@ The <em>real</em> bandpass signal is</p>
    \;=\;
    \frac{2\mathcal{E}}{T} \,\times \frac{T}{2}
    \;=\;
-   E.
+   \mathcal{E}.
    \]</div>
 <p>So the passband signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> has total energy <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>.</p>
 <p><strong>Interpretation</strong></p>
@@ -802,7 +796,7 @@ m=1,2,\dots, M,
 \[
 \int_0^T \phi_k^2(t)\,\mathrm{d}t
 \;=\;
-1.
+1
 \]</div>
 <p>(This follows from the factor <span class="math notranslate nohighlight">\(\sqrt{2/T}\)</span> in front of a <span class="math notranslate nohighlight">\(\cos^2\)</span> function, which integrates to <span class="math notranslate nohighlight">\(T/2\)</span> over the interval.)</p>
 <p>Hence, <span class="math notranslate nohighlight">\(\{\phi_k(t)\}_{k=1}^M\)</span> is an <em>orthonormal</em> set in the real signal space.</p>
@@ -857,7 +851,7 @@ s_m(t)
 \[
 x(t) \;=\; \sum_{k=1}^M \alpha_k\,\phi_k(t).
 \]</div>
-<ol class="arabic">
+<ul>
 <li><p>The <strong>coordinate</strong> of <span class="math notranslate nohighlight">\(x(t)\)</span> in this <span class="math notranslate nohighlight">\(M\)</span>‐dimensional space is<br />
 <span class="math notranslate nohighlight">\(\bigl(\alpha_1,\,\alpha_2,\,\dots,\,\alpha_M\bigr)\)</span>.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(x(t) = s_m(t)\)</span>, then all but the <span class="math notranslate nohighlight">\(m\)</span>th coordinate will be zero, and that <span class="math notranslate nohighlight">\(m\)</span>th coordinate will be <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. Symbolically,</p>
@@ -878,7 +872,7 @@ x(t) \;=\; \sum_{k=1}^M \alpha_k\,\phi_k(t).
    s_M(t) \;\longmapsto\; (0,\,0,\,\dots,\,0,\,\sqrt{\mathcal{E}}).
    \]</div>
 </li>
-</ol>
+</ul>
 <p>Therefore, <strong>orthogonal M‐FSK</strong> can be viewed geometrically as placing each symbol at a vertex of an <span class="math notranslate nohighlight">\(M\)</span>‐dimensional simplex whose edges have length <span class="math notranslate nohighlight">\(\sqrt{2\,\mathcal{E}}\)</span>. Each symbol waveform is “one basis function turned on” (multiplied by <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>).</p>
 </section>
 <section id="euclidean-and-minimum-distance">
@@ -900,7 +894,7 @@ m = 1, 2, \ldots, M,
 <div class="math notranslate nohighlight">
 \[
 \int_{0}^{T} s_m^2(t)\,\mathrm{d}t
-\;=\; E.
+\;=\; \mathcal{E}.
 \]</div>
 <p>(As discussed previously, the factor <span class="math notranslate nohighlight">\(\sqrt{\tfrac{2\mathcal{E}}{T}}\)</span> in front of a cosine means each real passband signal integrates to <span class="math notranslate nohighlight">\(\mathcal{E}\)</span> over the interval <span class="math notranslate nohighlight">\([0,T]\)</span>.)</p>
 <p>We assume <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen so that the signals <span class="math notranslate nohighlight">\(\{s_m(t)\}\)</span> are <strong>orthogonal</strong>—i.e.,</p>
@@ -1041,7 +1035,6 @@ d_{\min}
 <li><p>In <strong>nonlinear modulation schemes</strong> like FSK, this is not true because the frequencies used in FSK are distinct, and the sum of two FSK signals does not belong to the same scheme.</p></li>
 </ul>
 </section>
-<hr class="docutils" />
 <section id="appendix-derivation-of-the-correlation-of-two-fsk-signals">
 <h2>Appendix: Derivation of The Correlation of Two FSK Signals<a class="headerlink" href="#appendix-derivation-of-the-correlation-of-two-fsk-signals" title="Link to this heading">#</a></h2>
 <p>We have two lowpass signals:</p>
