@@ -183,6 +183,10 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
@@ -339,10 +343,6 @@
 <li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
-
-
-
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -571,7 +571,7 @@ P(E) = \frac{1}{2} \, \text{erfc} \left( \sqrt{\frac{\mathcal{E} (1 - \cos \beta
     <span class="k">return</span> <span class="n">empirical_error</span><span class="p">,</span> <span class="n">theo_error</span><span class="p">,</span> <span class="n">received_subset</span><span class="p">,</span> <span class="n">hypotheses_subset</span><span class="p">,</span> <span class="n">decisions_subset</span>
 
 <span class="c1"># Plot settings</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">beta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">beta_values</span><span class="p">):</span>
     <span class="n">empirical_error</span><span class="p">,</span> <span class="n">theo_error</span><span class="p">,</span> <span class="n">received_subset</span><span class="p">,</span> <span class="n">hypotheses_subset</span><span class="p">,</span> <span class="n">decisions_subset</span> <span class="o">=</span> <span class="n">simulate_matched_filter</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
@@ -629,14 +629,14 @@ P(E) = \frac{1}{2} \, \text{erfc} \left( \sqrt{\frac{\mathcal{E} (1 - \cos \beta
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Beta = 0.7853981633974483 radians
 Theoretical Error Rate: 0.2942
-Empirical Error Rate: 0.2939
+Empirical Error Rate: 0.2941
 
 Beta = 3.141592653589793 radians
 Theoretical Error Rate: 0.0786
-Empirical Error Rate: 0.0784
+Empirical Error Rate: 0.0777
 </pre></div>
 </div>
-<img alt="_images/d5cc66c45d3bf9e09fc3cbffd5bb218231aad565f15ac859f5f7a699a232d33c.png" src="_images/d5cc66c45d3bf9e09fc3cbffd5bb218231aad565f15ac859f5f7a699a232d33c.png" />
+<img alt="_images/f06c509c773b484e24af8332b68952fdda98d267534cb7fb18ab3f5bdf4262c2.png" src="_images/f06c509c773b484e24af8332b68952fdda98d267534cb7fb18ab3f5bdf4262c2.png" />
 </div>
 </div>
 </section>
@@ -704,7 +704,7 @@ Empirical Error Rate: 0.0784
     <span class="k">return</span> <span class="n">empirical_error</span><span class="p">,</span> <span class="n">theo_error</span><span class="p">,</span> <span class="n">received_subset</span><span class="p">,</span> <span class="n">hypotheses_subset</span><span class="p">,</span> <span class="n">decisions_subset</span>
 
 <span class="c1"># Plot settings</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">beta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">beta_values</span><span class="p">):</span>
     <span class="n">empirical_error</span><span class="p">,</span> <span class="n">theo_error</span><span class="p">,</span> <span class="n">received_subset</span><span class="p">,</span> <span class="n">hypotheses_subset</span><span class="p">,</span> <span class="n">decisions_subset</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
@@ -758,14 +758,14 @@ Empirical Error Rate: 0.0784
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Beta = 1.5707963267948966 radians
 Theoretical Error Rate: 0.1587
-Empirical Error Rate: 0.1581
+Empirical Error Rate: 0.1589
 
 Beta = 3.141592653589793 radians
 Theoretical Error Rate: 0.0786
-Empirical Error Rate: 0.0781
+Empirical Error Rate: 0.0787
 </pre></div>
 </div>
-<img alt="_images/fef755d15c3b14214f2eb87c91c8258c118fa2abbb9f6ce72da7ae45a21737ce.png" src="_images/fef755d15c3b14214f2eb87c91c8258c118fa2abbb9f6ce72da7ae45a21737ce.png" />
+<img alt="_images/dcdd3d6b2dedcfcd8eae50d734ab80b90289a033920cf6f22ffb75c8aa228bbe.png" src="_images/dcdd3d6b2dedcfcd8eae50d734ab80b90289a033920cf6f22ffb75c8aa228bbe.png" />
 </div>
 </div>
 </section>

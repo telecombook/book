@@ -183,6 +183,10 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
@@ -339,10 +343,6 @@
 <li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
-
-
-
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -769,6 +769,8 @@ a = \frac{\sum_{i=1}^k y_i s_i}{\mathcal{E} + \frac{\sigma^2}{\sigma_a^2}}
 <li><p>The numerator <span class="math notranslate nohighlight">\( \sum_{i=1}^k y_i s_i \)</span> represents the correlation between the received signal <span class="math notranslate nohighlight">\( y_i \)</span> and the known signal <span class="math notranslate nohighlight">\( s_i \)</span>.</p></li>
 <li><p>The denominator <span class="math notranslate nohighlight">\( \mathcal{E} + \frac{\sigma^2}{\sigma_a^2} \)</span> combines the symbol energy and the impact of the prior knowledge about <span class="math notranslate nohighlight">\( a \)</span> (its variance <span class="math notranslate nohighlight">\( \sigma_a^2 \)</span>).</p></li>
 </ul>
+<p><img alt="" src="_images/fig_11_2.png" />
+<img alt="" src="_images/fig_11_3.png" /></p>
 </section>
 </section>
 <section id="mse-and-mae-estimations">
@@ -1069,7 +1071,7 @@ E\{\hat{a}_{MAP}\} = \frac{E\{a\} \mathcal{E}}{\mathcal{E} + \sigma^2 / \sigma_a
 <section id="estimating-structures">
 <h2>Estimating Structures<a class="headerlink" href="#estimating-structures" title="Link to this heading">#</a></h2>
 <p>The MAP and ML estimating structures, are depicted in Figures 11.2 and 11.3 [B2], respectively.</p>
-<p><img alt="" src="_images/fig_11_2_3.png" /></p>
+<p><img alt="" src="Figures/fig_11_2_3.png" /></p>
 <p>The MAP estimate is</p>
 <div class="math notranslate nohighlight">
 \[

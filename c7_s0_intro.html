@@ -67,7 +67,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Parameter Estimation in White Gaussian Noise" href="c7_s1_parameter_estimation.html" />
-    <link rel="prev" title="Rician Random Variable" href="c6_extra_rician.html" />
+    <link rel="prev" title="Unknown Delay" href="c6_s6_unknown_delay.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -183,6 +183,10 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
@@ -339,10 +343,6 @@
 <li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
-
-
-
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Estimation of Specific Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -465,26 +465,15 @@
   <section class="tex2jax_ignore mathjax_ignore" id="estimation-of-specific-parameters">
 <h1>Estimation of Specific Parameters<a class="headerlink" href="#estimation-of-specific-parameters" title="Link to this heading">#</a></h1>
 <p><strong>Estimation of Single Specific Parameter</strong></p>
-<p>This chapter focuses on the estimation of key parameters, including amplitude, phase, time of arrival (delay), and frequency.</p>
-<p>Both individual parameter estimation and joint estimation of multiple parameters are explored in depth.</p>
-<p>Building on the foundational concepts introduced in Chapter 3 (Introduction to Estimation), this chapter applies general estimation theory to specific signal parameters such as amplitude and phase, considering cases where the noise is white Gaussian.</p>
-<p>The emphasis is on Maximum A Posteriori (MAP) and Maximum Likelihood (ML) estimation techniques.</p>
-<p>We begin by examining the case of a signal within additive white Gaussian noise (WGN), where the parameter is embedded in the signal.</p>
-<p>Following this, we specialize these results to signal amplitude estimation within WGN for both coherent and noncoherent signals, presenting both MAP and ML estimation approaches.</p>
-<p>Note that noncoherent estimation refers to estimation with an unknown signal phase.</p>
-<p>Subsequent sections cover phase and time-delay estimation in WGN, as well as an initial approach to frequency estimation, focusing on estimating a single frequency in WGN.</p>
-<p>In more typical scenarios, the exact number of signals and noise characteristics may be unknown.</p>
-<p>The chapter then addresses the simultaneous estimation of multiple parameters in WGN (time permitting).</p>
-<p>The Cramér-Rao bound is derived, expressed in terms of the Fisher information matrix, whose inverse provides insights into the covariance elements of the estimators.</p>
+<p>This chapter addresses the estimation of several critical signal parameters, such as amplitude, phase, time of arrival (delay), and frequency. It explores both the estimation of individual parameters and the simultaneous estimation of multiple parameters in considerable detail.</p>
+<p>Building on the fundamental ideas discussed in Chapter: Introduction to Estimation, the chapter applies general estimation theory to specific parameters like amplitude and phase, under the assumption of white Gaussian noise. The primary estimation methods employed are Maximum A Posteriori (MAP) and Maximum Likelihood (ML).</p>
+<p>The discussion begins by examining the situation where a known signal is observed in additive white Gaussian noise (WGN), with the parameter of interest embedded in that signal. From this general perspective, the analysis then specializes to the estimation of signal amplitude in WGN, covering both coherent (known phase) and noncoherent (unknown phase) scenarios and presenting MAP and ML approaches for each.</p>
+<p>Subsequent sections cover phase estimation and time-delay (time of arrival) estimation within WGN, followed by an introductory treatment of frequency estimation focused on determining a single frequency in WGN. In more realistic situations, the exact number of signals or the noise properties may be uncertain, leading to further investigation of joint estimation scenarios (as time permits).</p>
+<p>The Cramér-Rao bound is derived and expressed in terms of the Fisher information matrix. By inverting this matrix, one obtains the covariance elements associated with the estimators, providing a fundamental performance benchmark.</p>
 <p><strong>Estimation of Multiple Parameters</strong></p>
-<p>Next, the single-parameter estimation problem, introduced previously sections, is extended to the case of multiple-parameter estimation, where almost all of the operations are linear.</p>
-<p>Both ML (Maximum Likelihood) and MAP (Maximum A Posteriori) estimates are computed using a discrete linear observation model that is constructed from the parameters to be estimated.</p>
-<p>We provide computations for an ML estimate where, in general, the noise is zero mean but not white, and is characterized by its covariance matrix.</p>
-<p>From the Cramér-Rao bound, the ML estimate is found to be unbiased and minimum variance.</p>
-<p>We consider the case where the parameters are random with a Gaussian probability distribution.</p>
-<p>The Fisher information matrix is then derived, and the MAP estimate is shown to be unbiased and minimum variance.</p>
-<p>Modern estimation techniques are often concerned with providing estimates before all of the data have been observed. This motivates the discussion on sequential estimation in Gaussian noise, which considers the case where an estimate is formed after each new observation, using the current observation and a prior estimate, rather than waiting for all the observations to occur.</p>
-<p>It is pointed out that this formulation is actually a simple version of the Kalman filter.</p>
+<p>Having introduced single-parameter estimation in the previous sections, the text next extends the analysis to cases involving multiple-parameter estimation, where most operations are linear. Both the Maximum Likelihood (ML) and Maximum A Posteriori (MAP) estimators are obtained by applying a discrete linear observation model that incorporates the parameters of interest.</p>
+<p>The ML estimator is derived for the general case in which noise has zero mean but may be non-white, characterized by a known covariance matrix. Based on the Cramér-Rao bound, this ML estimator is shown to be unbiased and to achieve the minimum possible variance. The scenario where the parameters themselves follow a Gaussian distribution is then examined, leading to a derivation of the Fisher information matrix and showing that the resulting MAP estimator is also unbiased and of minimum variance.</p>
+<p>Modern estimation problems frequently require generating estimates before all observations are collected. This motivates a discussion of sequential estimation in Gaussian noise, in which each new measurement is used together with the previous estimate to form an updated parameter estimate, rather than waiting for the entire data record. It is noted that this sequential framework essentially represents a simplified version of the Kalman filter.</p>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p>The contents of the sections in this chapter are based on the following materials.</p>
@@ -527,12 +516,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="c6_extra_rician.html"
+       href="c6_s6_unknown_delay.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Rician Random Variable</p>
+        <p class="prev-next-title">Unknown Delay</p>
       </div>
     </a>
     <a class="right-next"

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fundamentals of Estimation Theory &#8212; Telecom Book</title>
+    <title>Rician Random Variable &#8212; Telecom Book</title>
   
   
   
@@ -62,12 +62,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s0';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c3_s4_Rician_RV';</script>
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Parameter Estimation" href="c3_s3_parameter_estimation.html" />
-    <link rel="prev" title="Perfomance Comaprison" href="c2_x3_comparison.html" />
+    <link rel="next" title="Tail Probability" href="pr_c4_s0_tail_probability.html" />
+    <link rel="prev" title="Rayleigh Random Variable" href="pr_c3_s3_Rayleigh_RV.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -164,7 +164,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
@@ -177,13 +177,13 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Rician Random Variable</a></li>
 
 
 
@@ -283,7 +283,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
@@ -296,7 +296,7 @@
 <li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
 
 
@@ -440,7 +440,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Fundamentals of Estimation Theory</h1>
+    <h1>Rician Random Variable</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -450,8 +450,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Rician Random Variable</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-pdf">Simulation of PDF</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-cdf">Simulation of CDF</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -462,47 +466,163 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="fundamentals-of-estimation-theory">
-<h1>Fundamentals of Estimation Theory<a class="headerlink" href="#fundamentals-of-estimation-theory" title="Link to this heading">#</a></h1>
-<p>Applications of estimation theory typically require obtaining an <strong>estimate</strong> either of</p>
+  <section id="rician-random-variable">
+<h1>Rician Random Variable<a class="headerlink" href="#rician-random-variable" title="Link to this heading">#</a></h1>
+<p>A Rician random variable is closely related to the Rayleigh random variable (in fact, the Rayleigh distribution is a special case of the Rician distribution).</p>
+<p>The probability density function (PDF) of a Rician random variable is given (for any <span class="math notranslate nohighlight">\(a &gt; 0\)</span> and any <span class="math notranslate nohighlight">\(\sigma &gt; 0\)</span>) by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \frac{x}{\sigma^2} \exp \left( -\frac{x^2 + a^2}{2\sigma^2} \right) I_0\left( \frac{ax}{\sigma^2} \right) u(x)
+\]</div>
+<p>In this expression, the function <span class="math notranslate nohighlight">\(I_0(x)\)</span> is the modified Bessel function of the first kind of order zero, which is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+I_0(x) = \frac{1}{2\pi} \int_0^{2\pi} e^{x \cos(\theta)} d\theta
+\]</div>
+<p>In the context of the <strong>Rician distribution</strong>, the parameters <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> have the following names and interpretations:</p>
+<p><strong>Non-Centrality Parameter <span class="math notranslate nohighlight">\(a\)</span></strong></p>
 <ul class="simple">
-<li><p>a specific parameter</p></li>
-<li><p>a desired waveform.</p></li>
+<li><p>This is the <strong>signal amplitude parameter</strong> or the <strong>non-centrality parameter</strong>.</p></li>
+<li><p>It represents the deterministic component of the signal or the mean of the underlying complex Gaussian random variable.</p></li>
+<li><p>Physically, in communication systems, <span class="math notranslate nohighlight">\(a\)</span> often represents the strength of the line-of-sight (LOS) component of a signal.</p></li>
 </ul>
-<p>In <strong>parameter estimation</strong>, we consider two cases:</p>
+<p><strong>Scale Parameter <span class="math notranslate nohighlight">\(\sigma\)</span></strong></p>
 <ul class="simple">
-<li><p>known distribution</p></li>
-<li><p>unknown distributions
-of the observables.</p></li>
+<li><p>This is the <strong>scale parameter</strong> or the <strong>standard deviation</strong> of the underlying Gaussian noise components.</p></li>
+<li><p>It represents the spread or variance of the random (non-LOS) components of the signal, which arise from scattering or noise.</p></li>
 </ul>
-<p>We also study properties of <strong>estimators</strong>, which characterize the performance and behavior of the estimates.</p>
-<p>We will consider various estimation methods on estimating:</p>
-<ul class="simple">
-<li><p>single deterministic parameter</p></li>
-<li><p>vector deterministic parameters</p></li>
-<li><p>random single parameter</p></li>
-<li><p>random vector parameters
-In each of these cases, knowledge of specific distributions is presumed.</p></li>
-</ul>
-<p>Observables are used to produce an estimate of the parameters of interest</p>
-<p>An important question to resolve is: <strong>How good is the estimate?</strong></p>
-<p>To answer the question of the quality of the estimate, it is important to understand properties associated with a good estimate, such as</p>
-<ul class="simple">
-<li><p>unbiased</p></li>
-<li><p>consistent</p></li>
-<li><p>invariant</p></li>
-<li><p>minimum variance</p></li>
-<li><p>efficient</p></li>
-</ul>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p>The contents of the sections in this chapter are based on the following materials.</p>
-<ul class="simple">
-<li><p>T. Schonhoff and A. Giordano, <em>Detection and Estimation Theory and its Applications</em>. Prentice Hall, 2006 , Chapter 10</p></li>
-</ul>
+<p>Together, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> characterize the <strong>Rician fading environment</strong>, where <span class="math notranslate nohighlight">\(a = 0\)</span> corresponds to the special case of the <strong>Rayleigh distribution</strong> (pure non-LOS signal).</p>
+<p>Like the Gaussian random variable, the cumulative distribution function (CDF) of a Rician random variable cannot be written in closed form.</p>
+<p>Similar to the Q-function used to describe the Gaussian CDF, there is another function known as Marcum’s Q-function, which describes the CDF of a Rician random variable. It is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+Q(\alpha, \beta) = \int_\beta^\infty z \exp \left( -\frac{z^2 + \alpha^2}{2} \right) I_0(\alpha z) dz
+\]</div>
+<p>The CDF of the Rician random variable is then given by:</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(x) = 1 - Q\left( \frac{a}{\sigma}, \frac{x}{\sigma} \right)
+\]</div>
 </section>
-<div class="toctree-wrapper compound">
+<section id="simulation-of-pdf">
+<h1>Simulation of PDF<a class="headerlink" href="#simulation-of-pdf" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rice</span><span class="p">,</span> <span class="n">rayleigh</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">i0</span>
+
+<span class="c1"># Define the theoretical Rician PDF</span>
+<span class="k">def</span> <span class="nf">rician_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">i0</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># Number of samples for empirical PDF</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># X-axis for PDF</span>
+<span class="n">a_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># Different a values</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Fixed sigma for simplicity</span>
+
+<span class="c1"># Plot PDFs for different a values and Rayleigh</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_values</span><span class="p">:</span>
+    <span class="c1"># Simulate Rician random variable</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">rice</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
+
+    <span class="c1"># Compute empirical PDF</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">bin_centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># Compute theoretical PDF</span>
+    <span class="n">theoretical_pdf</span> <span class="o">=</span> <span class="n">rician_pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+    <span class="c1"># Plot empirical PDF</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">hist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Empirical PDF (a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="c1"># Plot theoretical PDF</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoretical_pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Theoretical PDF (a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add the Rayleigh distribution (special case of Rician when a=0)</span>
+<span class="n">rayleigh_pdf</span> <span class="o">=</span> <span class="n">rayleigh</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">rayleigh_pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Rayleigh PDF&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashdot&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="c1"># Customize plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Empirical vs Theoretical PDF of Rician Distribution with Rayleigh PDF&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PDF&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2e9865ea3cbe478b90ca86a79582f4847c4e5fbf74a9c15843375e5ab03f0ef8.png" src="_images/2e9865ea3cbe478b90ca86a79582f4847c4e5fbf74a9c15843375e5ab03f0ef8.png" />
+</div>
+</div>
+</section>
+<section id="simulation-of-cdf">
+<h1>Simulation of CDF<a class="headerlink" href="#simulation-of-cdf" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">marcumq</span> <span class="kn">import</span> <span class="n">marcumq</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rice</span>
+
+<span class="c1"># Define the theoretical CDF of the Rician distribution</span>
+<span class="k">def</span> <span class="nf">rician_cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">a_temp</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="n">b_temp</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">marcumq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">a_temp</span><span class="p">,</span> <span class="n">b_temp</span><span class="p">)</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">a_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># Different a values for CDF</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># Number of samples for empirical CDF</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># X-axis for CDF</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Fixed sigma</span>
+
+<span class="c1"># Plot CDFs for different a</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_values</span><span class="p">:</span>
+    <span class="c1"># Simulate Rician random variable</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">rice</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
+
+    <span class="c1"># Compute empirical CDF using a histogram (bar representation)</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">hist</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>  <span class="c1"># Normalize by bin width for proper CDF</span>
+
+    <span class="c1"># Compute theoretical CDF</span>
+    <span class="n">theoretical_cdf</span> <span class="o">=</span> <span class="p">[</span><span class="n">rician_cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_values</span><span class="p">]</span>
+
+    <span class="c1"># Plot empirical CDF as a bar plot</span>
+    <span class="n">bin_centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Empirical CDF (a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot theoretical CDF</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoretical_cdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Theoretical CDF (a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Customize plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Empirical vs Theoretical CDF of Rician Distribution&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;CDF&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/717d12d29a385c495bd063048b4238953e5e892b3ae00df0e6813df0436af099.png" src="_images/717d12d29a385c495bd063048b4238953e5e892b3ae00df0e6813df0436af099.png" />
+</div>
+</div>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>P. Z. Peebles Jr., “Probability, Random Variables, and Random Signal Principles,” 4rd Edition, McGraw-Hill Book Co., 2001.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -536,20 +656,20 @@ In each of these cases, knowledge of specific distributions is presumed.</p></li
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="c2_x3_comparison.html"
+       href="pr_c3_s3_Rayleigh_RV.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Perfomance Comaprison</p>
+        <p class="prev-next-title">Rayleigh Random Variable</p>
       </div>
     </a>
     <a class="right-next"
-       href="c3_s3_parameter_estimation.html"
+       href="pr_c4_s0_tail_probability.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Parameter Estimation</p>
+        <p class="prev-next-title">Tail Probability</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -570,8 +690,12 @@ In each of these cases, knowledge of specific distributions is presumed.</p></li
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Rician Random Variable</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-pdf">Simulation of PDF</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-cdf">Simulation of CDF</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
