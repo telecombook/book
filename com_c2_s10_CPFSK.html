@@ -66,7 +66,7 @@
     <link rel="icon" href="_static/web_favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Power Spectral Density" href="com_c2_s11_PSD_a.html" />
+    <link rel="next" title="Power Spectral Density" href="com_c2_s11_PSD.html" />
     <link rel="prev" title="Signaling Schemes with Memory" href="com_c2_s9_Signaling_with_Memory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -465,7 +465,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-procedure">Modulation Procedure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-derive-v-t-from-s-t">Discussion: Derive <span class="math notranslate nohighlight">\(v(t)\)</span> from <span class="math notranslate nohighlight">\(s(t)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-the-derivation-of-v-t-from-s-t">Appendix: The Derivation of <span class="math notranslate nohighlight">\(v(t)\)</span> from <span class="math notranslate nohighlight">\(s(t)\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -508,7 +508,9 @@
 <p>The CPFSK signal begins with a <strong>Pulse Amplitude Modulation (PAM)</strong> signal, defined as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 d(t) = \sum_{n} I_n g(t - nT)
+}
 \]</div>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(I_n\)</span></strong>: Sequence of amplitudes derived by mapping <span class="math notranslate nohighlight">\(k\)</span>-bit binary blocks into amplitude levels such as <span class="math notranslate nohighlight">\(\pm 1, \pm 3, \dots, \pm (M-1)\)</span>.</p></li>
@@ -521,7 +523,9 @@ d(t) = \sum_{n} I_n g(t - nT)
 <p>The lowpass equivalent waveform <span class="math notranslate nohighlight">\(v(t)\)</span> is expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 v(t) = \sqrt{\frac{2\mathcal{E}}{T}} e^{j\left[4\pi T f_d \int_{-\infty}^{t} d(\tau)d\tau + \phi_0\right]}
+}
 \]</div>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(\mathcal{E}\)</span></strong>: Signal energy.</p></li>
@@ -535,7 +539,9 @@ v(t) = \sqrt{\frac{2\mathcal{E}}{T}} e^{j\left[4\pi T f_d \int_{-\infty}^{t} d(\
 <p>The carrier-modulated CPFSK signal <span class="math notranslate nohighlight">\(s(t)\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 s(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\left[2\pi f_c t + \phi(t; I) + \phi_0\right] 
+}
 \]</div>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(f_c\)</span></strong>: Carrier frequency.</p></li>
@@ -613,31 +619,37 @@ q(t) =
 <li><p>The PAM signal <span class="math notranslate nohighlight">\(d(t)\)</span> is constructed by mapping <span class="math notranslate nohighlight">\(k\)</span>-bit blocks into amplitude levels and applying a rectangular pulse <span class="math notranslate nohighlight">\(g(t)\)</span>.</p></li>
 </ul>
 <p><strong>Use <span class="math notranslate nohighlight">\(d(t)\)</span> to Modulate the Phase</strong></p>
-<ul class="simple">
+<ul>
 <li><p>The PAM signal <span class="math notranslate nohighlight">\(d(t)\)</span> is integrated to determine the time-varying phase <span class="math notranslate nohighlight">\(\phi(t;I)\)</span>.</p></li>
 <li><p>This step directly affects the lowpass equivalent signal <span class="math notranslate nohighlight">\(v(t)\)</span>.</p></li>
-<li><p>The phase is given by:<br />
-$<span class="math notranslate nohighlight">\(
-\phi(t;I) = 4\pi T f_d \int_{-\infty}^{t} d(\tau)d\tau
-\)</span>$</p></li>
+<li><p>The phase is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+     \phi(t;I) = 4\pi T f_d \int_{-\infty}^{t} d(\tau)d\tau
+     \]</div>
+</li>
 </ul>
 <p><strong>Construct the Lowpass Equivalent Signal <span class="math notranslate nohighlight">\(v(t)\)</span></strong></p>
-<ul class="simple">
-<li><p>Once we have <span class="math notranslate nohighlight">\(\phi(t;I)\)</span>, we directly obtain the lowpass equivalent signal <span class="math notranslate nohighlight">\(v(t)\)</span>:<br />
-$<span class="math notranslate nohighlight">\(
-v(t) = \sqrt{\frac{2\mathcal{E}}{T}} e^{j\left[ \phi(t;I) + \phi_0 \right]}
-\)</span>$</p></li>
+<ul>
+<li><p>Once we have <span class="math notranslate nohighlight">\(\phi(t;I)\)</span>, we directly obtain the lowpass equivalent signal <span class="math notranslate nohighlight">\(v(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     v(t) = \sqrt{\frac{2\mathcal{E}}{T}} e^{j\left[ \phi(t;I) + \phi_0 \right]}
+     \]</div>
+</li>
 </ul>
 <p><strong>Obtain the Carrier-Modulated Signal <span class="math notranslate nohighlight">\(s(t)\)</span></strong></p>
-<ul class="simple">
-<li><p>Finally, <span class="math notranslate nohighlight">\(v(t)\)</span> is used to produce the passband signal <span class="math notranslate nohighlight">\(s(t)\)</span> by modulating it onto a carrier frequency <span class="math notranslate nohighlight">\(f_c\)</span>:<br />
-$<span class="math notranslate nohighlight">\(
-s(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\left[2\pi f_c t + \phi(t;I) + \phi_0\right]
-\)</span>$</p></li>
+<ul>
+<li><p>Finally, <span class="math notranslate nohighlight">\(v(t)\)</span> is used to produce the passband signal <span class="math notranslate nohighlight">\(s(t)\)</span> by modulating it onto a carrier frequency <span class="math notranslate nohighlight">\(f_c\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     s(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\left[2\pi f_c t + \phi(t;I) + \phi_0\right]
+     \]</div>
+</li>
 </ul>
 </section>
-<section id="discussion-derive-v-t-from-s-t">
-<h2>Discussion: Derive <span class="math notranslate nohighlight">\(v(t)\)</span> from <span class="math notranslate nohighlight">\(s(t)\)</span><a class="headerlink" href="#discussion-derive-v-t-from-s-t" title="Link to this heading">#</a></h2>
+<section id="appendix-the-derivation-of-v-t-from-s-t">
+<h2>Appendix: The Derivation of <span class="math notranslate nohighlight">\(v(t)\)</span> from <span class="math notranslate nohighlight">\(s(t)\)</span><a class="headerlink" href="#appendix-the-derivation-of-v-t-from-s-t" title="Link to this heading">#</a></h2>
 <p>To derive the expression of the <strong>equivalent lowpass waveform</strong> <span class="math notranslate nohighlight">\( v(t) \)</span> from <span class="math notranslate nohighlight">\( d(t) \)</span>, which is an inverse process.</p>
 <p><strong>Given:</strong></p>
 <ul class="simple">
@@ -756,7 +768,7 @@ v(t) = \sqrt{\frac{2\mathcal{E}}{T}}e^{j\left[4\pi T f_d \int_{-\infty}^{t} d(\t
       </div>
     </a>
     <a class="right-next"
-       href="com_c2_s11_PSD_a.html"
+       href="com_c2_s11_PSD.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -791,7 +803,7 @@ v(t) = \sqrt{\frac{2\mathcal{E}}{T}}e^{j\left[4\pi T f_d \int_{-\infty}^{t} d(\t
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-procedure">Modulation Procedure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-derive-v-t-from-s-t">Discussion: Derive <span class="math notranslate nohighlight">\(v(t)\)</span> from <span class="math notranslate nohighlight">\(s(t)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-the-derivation-of-v-t-from-s-t">Appendix: The Derivation of <span class="math notranslate nohighlight">\(v(t)\)</span> from <span class="math notranslate nohighlight">\(s(t)\)</span></a></li>
 </ul>
   </nav></div>
 

@@ -67,7 +67,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Optimal Detection in a General Vector Channel Model" href="com_c3_s1_General_Vector_Channel_Model.html" />
-    <link rel="prev" title="Power Spectral Density (continued)" href="com_c2_s11_PSD_b.html" />
+    <link rel="prev" title="Power Spectral Density" href="com_c2_s11_PSD.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Optimal Receivers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -495,7 +495,7 @@
 <p>Consider a communication system in which a transmitter sends one of <span class="math notranslate nohighlight">\( M \)</span> possible signals through a channel that adds noise. The channel output is given by</p>
 <div class="math notranslate nohighlight">
 \[
-r(t) = s_m(t) + n(t),
+r(t) = s_m(t) + n(t)
 \]</div>
 <p>where:</p>
 <ul>
@@ -503,12 +503,12 @@ r(t) = s_m(t) + n(t),
 The signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is one of the <span class="math notranslate nohighlight">\( M \)</span> possible waveforms:</p>
 <div class="math notranslate nohighlight">
 \[
-  s_m(t) \in \{ s_1(t), s_2(t), \ldots, s_M(t) \}.
+  s_m(t) \in \{ s_1(t), s_2(t), \ldots, s_M(t) \}
   \]</div>
 <p>Each signal is assumed to have finite energy,</p>
 <div class="math notranslate nohighlight">
 \[
-  E_m = \int_{-\infty}^{\infty} s_m^2(t)\,dt &lt; \infty,
+  E_m = \int_{-\infty}^{\infty} s_m^2(t)\,dt &lt; \infty
   \]</div>
 <p>and is typically designed to satisfy certain criteria (e.g., orthogonality or energy constraints) for efficient transmission.</p>
 </li>
@@ -516,7 +516,7 @@ The signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is one
 The noise process <span class="math notranslate nohighlight">\( n(t) \)</span> is modeled as a zero-mean white Gaussian noise process with the following properties:</p>
 <div class="math notranslate nohighlight">
 \[
-  \mathbb{E}[n(t)] = 0, \quad \text{and} \quad \mathbb{E}[n(t)n(\tau)] = \frac{N_0}{2}\delta(t-\tau).
+  \mathbb{E}[n(t)] = 0, \quad \text{and} \quad \mathbb{E}[n(t)n(\tau)] = \frac{N_0}{2}\delta(t-\tau)
   \]</div>
 <p>Here, <span class="math notranslate nohighlight">\( \delta(t-\tau) \)</span> is the Dirac delta function, and <span class="math notranslate nohighlight">\( \frac{N_0}{2} \)</span> represents the noise power spectral density (PSD), indicating that the noise is spectrally flat (white) across all frequencies.</p>
 </li>
@@ -532,12 +532,12 @@ The waveform <span class="math notranslate nohighlight">\( r(t) \)</span> is the
 <p>Assuming that the <span class="math notranslate nohighlight">\( M \)</span> messages are equally likely, the optimal receiver employs the <strong>maximum likelihood (ML) decision rule</strong>. The likelihood function for each hypothesis <span class="math notranslate nohighlight">\( m \)</span> is proportional to</p>
 <div class="math notranslate nohighlight">
 \[
-p\bigl(r(t) \mid s_m(t)\bigr) \propto \exp\left\{-\frac{1}{N_0}\int_{-\infty}^{\infty} \left[r(t) - s_m(t)\right]^2 dt \right\}.
+p\bigl(r(t) \mid s_m(t)\bigr) \propto \exp\left\{-\frac{1}{N_0}\int_{-\infty}^{\infty} \left[r(t) - s_m(t)\right]^2 dt \right\}
 \]</div>
 <p>Maximizing this likelihood is equivalent to minimizing the Euclidean distance between the received waveform and the candidate signals. Thus, the decision rule, <em>using continuos-time waveform</em>, can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = \arg \min_{1 \le m \le M} \int_{-\infty}^{\infty} \left[r(t) - s_m(t)\right]^2 dt.
+\hat{m} = \arg \min_{1 \le m \le M} \int_{-\infty}^{\infty} \left[r(t) - s_m(t)\right]^2 dt
 \]</div>
 </section>
 </section>
@@ -551,18 +551,18 @@ p\bigl(r(t) \mid s_m(t)\bigr) \propto \exp\left\{-\frac{1}{N_0}\int_{-\infty}^{\
 <p>Given an orthonormal set of basis functions <span class="math notranslate nohighlight">\(\{\phi_k(t)\}_{k=1}^{N}\)</span>, any finite-energy signal <span class="math notranslate nohighlight">\( x(t) \)</span> can be expressed as a linear combination of these basis functions:</p>
 <div class="math notranslate nohighlight">
 \[
-x(t) = \sum_{k=1}^{N} x_k \phi_k(t),
+x(t) = \sum_{k=1}^{N} x_k \phi_k(t)
 \]</div>
 <p>where the coefficients <span class="math notranslate nohighlight">\( x_k \)</span> are obtained by projecting <span class="math notranslate nohighlight">\( x(t) \)</span> onto the basis functions:</p>
 <div class="math notranslate nohighlight">
 \[
-x_k = \int_{-\infty}^{\infty} x(t)\phi_k(t)\,dt, \quad k = 1, 2, \ldots, N.
+x_k = \int_{-\infty}^{\infty} x(t)\phi_k(t)\,dt, \quad k = 1, 2, \ldots, N
 \]</div>
 <p><strong>Vector Representation:</strong></p>
 <p>Once the projection is complete, the signal <span class="math notranslate nohighlight">\( x(t) \)</span> is represented by the vector:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\vec{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}.
+\vec{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}
 \end{split}\]</div>
 <p>This procedure is applied similarly to the transmitted signal <span class="math notranslate nohighlight">\( s_m(t) \)</span>, the noise <span class="math notranslate nohighlight">\( n(t) \)</span>, and the received signal <span class="math notranslate nohighlight">\( r(t) \)</span>.</p>
 </section>
@@ -571,17 +571,17 @@ x_k = \int_{-\infty}^{\infty} x(t)\phi_k(t)\,dt, \quad k = 1, 2, \ldots, N.
 <p>For each signal, define the projection coefficients as follows:</p>
 <div class="math notranslate nohighlight">
 \[
-r_k = \int_{-\infty}^{\infty} r(t)\phi_k(t)\,dt, \quad s_{m,k} = \int_{-\infty}^{\infty} s_m(t)\phi_k(t)\,dt, \quad n_k = \int_{-\infty}^{\infty} n(t)\phi_k(t)\,dt.
+r_k = \int_{-\infty}^{\infty} r(t)\phi_k(t)\,dt, \quad s_{m,k} = \int_{-\infty}^{\infty} s_m(t)\phi_k(t)\,dt, \quad n_k = \int_{-\infty}^{\infty} n(t)\phi_k(t)\,dt
 \]</div>
 <p>Thus, the waveform model <span class="math notranslate nohighlight">\( r(t) = s_m(t) + n(t) \)</span> can be equivalently expressed in vector form as:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{r} = \vec{s}_m + \vec{n},
+\vec{r} = \vec{s}_m + \vec{n}
 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\vec{r} = \begin{bmatrix} r_1 \\ r_2 \\ \vdots \\ r_N \end{bmatrix}, \quad \vec{s}_m = \begin{bmatrix} s_{m,1} \\ s_{m,2} \\ \vdots \\ s_{m,N} \end{bmatrix}, \quad \vec{n} = \begin{bmatrix} n_1 \\ n_2 \\ \vdots \\ n_N \end{bmatrix}.
+\vec{r} = \begin{bmatrix} r_1 \\ r_2 \\ \vdots \\ r_N \end{bmatrix}, \quad \vec{s}_m = \begin{bmatrix} s_{m,1} \\ s_{m,2} \\ \vdots \\ s_{m,N} \end{bmatrix}, \quad \vec{n} = \begin{bmatrix} n_1 \\ n_2 \\ \vdots \\ n_N \end{bmatrix}
 \end{split}\]</div>
 </section>
 <section id="expansion-of-the-noise-process">
@@ -589,28 +589,28 @@ r_k = \int_{-\infty}^{\infty} r(t)\phi_k(t)\,dt, \quad s_{m,k} = \int_{-\infty}^
 <p>The noise process <span class="math notranslate nohighlight">\(n(t)\)</span> is modeled as a zero-mean white Gaussian process with power spectral density <span class="math notranslate nohighlight">\(N_0/2\)</span>. A fundamental property of white Gaussian noise is that its projection onto any orthonormal basis yields independent and identically distributed (iid) Gaussian random variables. Specifically, when <span class="math notranslate nohighlight">\(n(t)\)</span> is expanded in the same basis,</p>
 <div class="math notranslate nohighlight">
 \[
-n(t) = \sum_{j=1}^N n_j \phi_j(t),
+n(t) = \sum_{j=1}^N n_j \phi_j(t)
 \]</div>
 <p>the coefficients</p>
 <div class="math notranslate nohighlight">
 \[
-n_j = \int_{-\infty}^{\infty} n(t) \phi_j(t) \, dt, \quad 1 \leq j \leq N,
+n_j = \int_{-\infty}^{\infty} n(t) \phi_j(t) \, dt, \quad 1 \leq j \leq N
 \]</div>
 <p>are iid with</p>
 <div class="math notranslate nohighlight">
 \[
-n_j \sim \mathcal{N}\left(0, \frac{N_0}{2}\right).
+n_j \sim \mathcal{N}\left(0, \frac{N_0}{2}\right)
 \]</div>
 <p>Thus, the noise process can be represented as the vector</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{n} = [n_1, n_2, \dots, n_N]^T.
+\vec{n} = [n_1, n_2, \dots, n_N]^T
 \]</div>
 <p>Thus, we can say that from the noise process <span class="math notranslate nohighlight">\( n(t) \)</span>, which is white and Gaussian, the projected noise components <span class="math notranslate nohighlight">\( \{n_k\} \)</span> are independent Gaussian random variables with:</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-n_k \sim \mathcal{N}\left(0, \frac{N_0}{2}\right), \quad k = 1,2,\ldots,N.
+n_k \sim \mathcal{N}\left(0, \frac{N_0}{2}\right), \quad k = 1,2,\ldots,N
 }
 \]</div>
 </section>
@@ -619,13 +619,13 @@ n_k \sim \mathcal{N}\left(0, \frac{N_0}{2}\right), \quad k = 1,2,\ldots,N.
 <p>The original waveform channel model is given by</p>
 <div class="math notranslate nohighlight">
 \[
-r(t) = s_m(t) + n(t).
+r(t) = s_m(t) + n(t)
 \]</div>
 <p>By projecting <span class="math notranslate nohighlight">\(r(t)\)</span> onto the same set of basis functions, we obtain the vectorized representation of the received signal:</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\vec{r} = \vec{s}_m + \vec{n},
+\vec{r} = \vec{s}_m + \vec{n}
 }
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\vec{r}\)</span>, <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>, and <span class="math notranslate nohighlight">\(\vec{n}\)</span> are <span class="math notranslate nohighlight">\(N\)</span>-dimensional vectors. In this formulation, the noise vector <span class="math notranslate nohighlight">\(\vec{n}\)</span> has components that are iid zero-mean Gaussian random variables with variance <span class="math notranslate nohighlight">\(N_0/2\)</span>.</p>
@@ -638,7 +638,7 @@ r(t) = s_m(t) + n(t).
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-P_e = \Pr[\hat{m} \neq m].
+P_e = \Pr[\hat{m} \neq m]
 }
 \]</div>
 <p>The design of the decision rule is thus focused on minimizing <span class="math notranslate nohighlight">\(P_e\)</span>.</p>
@@ -648,7 +648,7 @@ P_e = \Pr[\hat{m} \neq m].
 <p>Consider the ML receiver above, in the vector formulation, the optimal detection problem reduces to selecting the signal vector <span class="math notranslate nohighlight">\( \vec{s}_m \)</span> that is closest to the received vector <span class="math notranslate nohighlight">\( \vec{r} \)</span> in terms of Euclidean distance. Mathematically, the decision rule, using <em>equivalent finite-dimensional vector form</em>, becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = \arg \min_{1 \le m \le M} \|\vec{r} - \vec{s}_m\|^2,
+\hat{m} = \arg \min_{1 \le m \le M} \|\vec{r} - \vec{s}_m\|^2
 \]</div>
 <p>which is entirely equivalent to the decision rule derived in the continuous-time framework.</p>
 </section>
@@ -689,12 +689,12 @@ P_e = \Pr[\hat{m} \neq m].
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="com_c2_s11_PSD_b.html"
+       href="com_c2_s11_PSD.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Power Spectral Density (continued)</p>
+        <p class="prev-next-title">Power Spectral Density</p>
       </div>
     </a>
     <a class="right-next"

@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -945,7 +945,7 @@ The minimum distance <span class="math notranslate nohighlight">\( d_{\text{min}
 <p>As we defined above, the equation for a <strong>Double-Sideband (DSB)</strong> PAM signal is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = A_m g(t) \cos(2\pi f_c t),
+s_m(t) = A_m g(t) \cos(2\pi f_c t)
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -965,7 +965,7 @@ where <span class="math notranslate nohighlight">\( B \)</span> is the bandwidth
 <p>Since the DSB signal includes <strong>both sidebands</strong>, it requires <strong>twice the bandwidth</strong> of the baseband signal <span class="math notranslate nohighlight">\( g(t) \)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
-\text{Bandwidth of DSB PAM} = 2B.
+\text{Bandwidth of DSB PAM} = 2B
 \]</div>
 </section>
 </section>
@@ -974,7 +974,7 @@ where <span class="math notranslate nohighlight">\( B \)</span> is the bandwidth
 <p>The SSB PAM signal is derived by suppressing one of the sidebands (either the upper or lower sideband) in the modulated signal. The equation for an SSB PAM signal is:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = \Re \left\{ A_m \left[ g(t) \pm j \hat{g}(t) \right] e^{j2\pi f_c t} \right\},
+s_m(t) = \Re \left\{ A_m \left[ g(t) \pm j \hat{g}(t) \right] e^{j2\pi f_c t} \right\}
 \]</div>
 <p>where:</p>
 <ul class="simple">

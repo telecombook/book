@@ -273,11 +273,11 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -629,7 +629,7 @@ The Cartesian coordinate system is one common way to represent points in <span c
 The Cartesian system is characterized by its three mutually perpendicular (orthogonal) axes. This orthogonality simplifies calculations, such as computing distances:</p>
 <div class="math notranslate nohighlight">
 \[
-  d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}.
+  d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
   \]</div>
 </li>
 </ul>
@@ -785,7 +785,7 @@ Besides Cartesian coordinates, <span class="math notranslate nohighlight">\(\mat
 <li><p>Transmit <span class="math notranslate nohighlight">\(s_1 = 3\)</span> using a cosine carrier:</p>
 <div class="math notranslate nohighlight">
 \[
-    x_{1, f_1}(t) = 3\cos(2\pi f_1 t), \quad 0 \leq t &lt; T.
+    x_{1, f_1}(t) = 3\cos(2\pi f_1 t), \quad 0 \leq t &lt; T
     \]</div>
 </li>
 </ul>
@@ -795,7 +795,7 @@ Besides Cartesian coordinates, <span class="math notranslate nohighlight">\(\mat
 <li><p>Transmit <span class="math notranslate nohighlight">\(s_2 = -3\)</span> using a cosine carrier:</p>
 <div class="math notranslate nohighlight">
 \[
-    x_{1, f_2}(t) = -3\cos(2\pi f_2 t), \quad 0 \leq t &lt; T.
+    x_{1, f_2}(t) = -3\cos(2\pi f_2 t), \quad 0 \leq t &lt; T
     \]</div>
 </li>
 </ul>
@@ -808,7 +808,7 @@ Besides Cartesian coordinates, <span class="math notranslate nohighlight">\(\mat
 <li><p>Transmit <span class="math notranslate nohighlight">\(s_3 = 1\)</span> using a cosine carrier:</p>
 <div class="math notranslate nohighlight">
 \[
-    x_{2, f_1}(t) = 1\cos(2\pi f_1 t), \quad T \leq t &lt; 2T.
+    x_{2, f_1}(t) = 1\cos(2\pi f_1 t), \quad T \leq t &lt; 2T
     \]</div>
 </li>
 </ul>
@@ -818,7 +818,7 @@ Besides Cartesian coordinates, <span class="math notranslate nohighlight">\(\mat
 <li><p>Transmit <span class="math notranslate nohighlight">\(s_4 = -1\)</span> using a cosine carrier:</p>
 <div class="math notranslate nohighlight">
 \[
-    x_{2, f_2}(t) = -1\cos(2\pi f_2 t), \quad T \leq t &lt; 2T.
+    x_{2, f_2}(t) = -1\cos(2\pi f_2 t), \quad T \leq t &lt; 2T
     \]</div>
 </li>
 </ul>
@@ -831,7 +831,7 @@ Besides Cartesian coordinates, <span class="math notranslate nohighlight">\(\mat
 x(t) =
 \begin{cases}
 3\cos(2\pi f_1 t) - 3\cos(2\pi f_2 t), &amp; 0 \leq t &lt; T, \\
-1\cos(2\pi f_1 t) - 1\cos(2\pi f_2 t), &amp; T \leq t &lt; 2T.
+1\cos(2\pi f_1 t) - 1\cos(2\pi f_2 t), &amp; T \leq t &lt; 2T
 \end{cases}
 \end{split}\]</div>
 <p><strong>Resource Allocation</strong></p>
@@ -939,31 +939,30 @@ x(t) =
 <span class="p">)</span>
 
 <span class="c1"># Plotting the waveforms</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="c1"># Time Division</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">time_division</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time Division&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
 
 <span class="c1"># Frequency Division</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">frequency_division</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Frequency Division&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
 
 <span class="c1"># Quadrature Modulation</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">quadrature_modulation</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Quadrature Modulation&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
 
 <span class="c1"># Hybrid Time-Frequency Division</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">hybrid_time_frequency</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hybrid Time-Frequency Division&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
@@ -975,7 +974,10 @@ x(t) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fe3a59fdd61028ef5a8865485ee0ee5b75f78b1ab4c9c14feca6d987de635a17.png" src="_images/fe3a59fdd61028ef5a8865485ee0ee5b75f78b1ab4c9c14feca6d987de635a17.png" />
+<img alt="_images/841c53791df72f74f89d097907bee8c355a6b32c112c42a7e4edbe70d28afbce.png" src="_images/841c53791df72f74f89d097907bee8c355a6b32c112c42a7e4edbe70d28afbce.png" />
+<img alt="_images/096ff0006874b54d5baa0493b84e8adfaf914c6e17662a122b8493f274eaad82.png" src="_images/096ff0006874b54d5baa0493b84e8adfaf914c6e17662a122b8493f274eaad82.png" />
+<img alt="_images/a81e9a37bd155926698bc7cbf3189fd4790a82fc7705fcc9f202291741e1e646.png" src="_images/a81e9a37bd155926698bc7cbf3189fd4790a82fc7705fcc9f202291741e1e646.png" />
+<img alt="_images/0213a391460ac22b32d9a4d9fdaf067ac9304111bcc62062994c1d45a1f881fd.png" src="_images/0213a391460ac22b32d9a4d9fdaf067ac9304111bcc62062994c1d45a1f881fd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -996,31 +998,30 @@ x(t) =
 <span class="n">xf_hybrid</span><span class="p">,</span> <span class="n">yf_hybrid</span> <span class="o">=</span> <span class="n">compute_fft</span><span class="p">(</span><span class="n">hybrid_time_frequency</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
 
 <span class="c1"># Plot frequency domain</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="c1"># Time Division</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_time</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_time</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time Division (Frequency Domain)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
 
 <span class="c1"># Frequency Division</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_freq</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_freq</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Frequency Division (Frequency Domain)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
 
 <span class="c1"># Quadrature Modulation</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_quad</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_quad</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Quadrature Modulation (Frequency Domain)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
 
 <span class="c1"># Hybrid Time-Frequency Division</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_hybrid</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_hybrid</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hybrid Time-Frequency Division (Frequency Domain)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
@@ -1032,7 +1033,10 @@ x(t) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e9abbbd58cf183a1fb6953020c3d93e5c50f831c682660ef80311f422606ffe.png" src="_images/8e9abbbd58cf183a1fb6953020c3d93e5c50f831c682660ef80311f422606ffe.png" />
+<img alt="_images/3cb6f1e87432ff6725311a0cf80b84f2f0aff668d0a23bc522f006c326e65c25.png" src="_images/3cb6f1e87432ff6725311a0cf80b84f2f0aff668d0a23bc522f006c326e65c25.png" />
+<img alt="_images/144900c3bcfd4936959f5e815ad4152a338744140c9a0bebc30910c82a5d350c.png" src="_images/144900c3bcfd4936959f5e815ad4152a338744140c9a0bebc30910c82a5d350c.png" />
+<img alt="_images/e7ba9b37d4fb381d766ba94c109c34165a82bc3d03928f1249514156aacab80a.png" src="_images/e7ba9b37d4fb381d766ba94c109c34165a82bc3d03928f1249514156aacab80a.png" />
+<img alt="_images/613669af8a1c378c9144fc99779c4893b8c1051069c50987ee3e461f0855d48f.png" src="_images/613669af8a1c378c9144fc99779c4893b8c1051069c50987ee3e461f0855d48f.png" />
 </div>
 </div>
 </section>

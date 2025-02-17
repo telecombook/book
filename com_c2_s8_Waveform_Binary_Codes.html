@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -495,14 +495,14 @@
 <div class="math notranslate nohighlight">
 \[
 c_m = [c_{m1} \, c_{m2} \,\dots\, c_{mN}],
-\quad m=1,2,\ldots,M.
+\quad m=1,2,\ldots,M
 \]</div>
 <p>Each <span class="math notranslate nohighlight">\(c_{mj}\)</span> is a symbol from a finite <strong>alphabet</strong> (in our example, bits <span class="math notranslate nohighlight">\(\{0,1\}\)</span>).</p>
 <p><strong>Constructing a Waveform</strong></p>
 <p>To transmit codeword <span class="math notranslate nohighlight">\(c_m\)</span>, we <em>map</em> each symbol <span class="math notranslate nohighlight">\(c_{mj}\)</span> to a sub‐signal (e.g., a BPSK pulse of length <span class="math notranslate nohighlight">\(T_c\)</span> with + or − amplitude, or a segment of a chirp, etc.). we concatenate these sub‐signals (for <span class="math notranslate nohighlight">\(j=1 \ldots N\)</span>) to form the <strong>full waveform</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t), \quad m = 1, 2, \ldots, M.
+s_m(t), \quad m = 1, 2, \ldots, M
 \]</div>
 <p>In doing so, we ensure that <strong>every codeword <span class="math notranslate nohighlight">\(c_m\)</span> corresponds uniquely</strong> to one distinct waveform <span class="math notranslate nohighlight">\(s_m(t)\)</span>.</p>
 <p>Each bit <span class="math notranslate nohighlight">\(c_{mj}\)</span> (0 or 1) is mapped to one of two possible phase‐reversed waveforms of duration <span class="math notranslate nohighlight">\(T_c\)</span>. Concretely:</p>
@@ -511,14 +511,14 @@ s_m(t), \quad m = 1, 2, \ldots, M.
 <div class="math notranslate nohighlight">
 \[
     \text{Signal for bit }1: \quad +\sqrt{\frac{2\mathcal{E}_c}{T_c}}\cos\bigl(2\pi f_c t\bigr), 
-    \quad 0 \le t \le T_c,
+    \quad 0 \le t \le T_c
   \]</div>
 </li>
 <li><p>If <span class="math notranslate nohighlight">\(c_{mj} = 0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     \text{Signal for bit }0: \quad -\sqrt{\frac{2\mathcal{E}_c}{T_c}}\cos\bigl(2\pi f_c t\bigr), 
-    \quad 0 \le t \le T_c.
+    \quad 0 \le t \le T_c
   \]</div>
 </li>
 </ul>
@@ -535,7 +535,7 @@ The system does not merge codewords or split them further at the waveform level.
 Two codewords <span class="math notranslate nohighlight">\(c_m\)</span> and <span class="math notranslate nohighlight">\(c_{m'}\)</span> can only correspond to the <em>same</em> waveform if they are identical (which they’re not by definition of being two different codewords). Hence, the mapping is a bijection (one‐to‐one and onto).</p></li>
 </ul>
 <p>Thus, we end up with <span class="math notranslate nohighlight">\(M\)</span> possible (and <em>only</em> <span class="math notranslate nohighlight">\(M\)</span> possible) transmitted waveforms—exactly matching the <span class="math notranslate nohighlight">\(M\)</span> codewords.</p>
-<p><strong>Formation of the M Waveforms</strong></p>
+<p><strong>Formation of the <span class="math notranslate nohighlight">\(M\)</span>-Waveforms</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Concatenate bit‐waveforms in time</strong><br />
 To transmit the <span class="math notranslate nohighlight">\(m\)</span>‐th codeword <span class="math notranslate nohighlight">\(c_m\)</span>, we send the <em>sequence</em> of BPSK symbols corresponding to each bit <span class="math notranslate nohighlight">\(c_{m1}, c_{m2}, \dots, c_{mN}\)</span> in back‐to‐back intervals of length <span class="math notranslate nohighlight">\(T_c\)</span>.</p></li>
@@ -545,7 +545,7 @@ This produces one continuous waveform <span class="math notranslate nohighlight"
 <p>Hence, we get <span class="math notranslate nohighlight">\(M\)</span> distinct waveforms (one for each codeword),</p>
 <div class="math notranslate nohighlight">
 \[
-  \{s_m(t)\}, \quad m = 1, 2, \ldots, M.
+  \{s_m(t)\}, \quad m = 1, 2, \ldots, M
 \]</div>
 <section id="number-of-possible-waveforms">
 <h3>Number of Possible Waveforms<a class="headerlink" href="#number-of-possible-waveforms" title="Link to this heading">#</a></h3>
@@ -607,7 +607,7 @@ This produces one continuous waveform <span class="math notranslate nohighlight"
 Because each waveform is just a sequence of <span class="math notranslate nohighlight">\(N\)</span> BPSK <strong>chips</strong>, we can represent it in an <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector form:</p>
 <div class="math notranslate nohighlight">
 \[
-     \vec{s}_m = [\, s_{m1},\, s_{m2},\, \ldots,\, s_{mN}\,],
+     \vec{s}_m = [\, s_{m1},\, s_{m2},\, \ldots,\, s_{mN}\,]
    \]</div>
 <p>where each component <span class="math notranslate nohighlight">\(s_{mj}\in \Bigl\{ +\sqrt{\frac{\mathcal{E}}{N}},\,-\sqrt{\frac{\mathcal{E}}{N}}\Bigr\}\)</span>.</p>
 </li>
@@ -631,7 +631,7 @@ The parameter <span class="math notranslate nohighlight">\(N\)</span> is called 
 <div class="math notranslate nohighlight">
 \[
        \vec{s}_m = \Bigl[s_{m1}, s_{m2}, \ldots, s_{mN}\Bigr], 
-       \quad s_{mj} \in \Bigl\{+\sqrt{\tfrac{\mathcal{E}}{N}}, -\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr\}.
+       \quad s_{mj} \in \Bigl\{+\sqrt{\tfrac{\mathcal{E}}{N}}, -\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr\}
      \]</div>
 </li>
 <li><p>The energy of this signal (sum of squares of coordinates) is:</p>
@@ -639,7 +639,7 @@ The parameter <span class="math notranslate nohighlight">\(N\)</span> is called 
 \[
        \sum_{j=1}^N \Bigl(\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr)^2 
        \;=\; \sum_{j=1}^N \tfrac{\mathcal{E}}{N} 
-       \;=\; \mathcal{E}.
+       \;=\; \mathcal{E}
      \]</div>
 </li>
 <li><p>Hence <em>every</em> such BPSK waveform in this <span class="math notranslate nohighlight">\(N\)</span>-dimensional set has the same total energy, <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>.</p></li>
@@ -657,14 +657,14 @@ The parameter <span class="math notranslate nohighlight">\(N\)</span> is called 
 <li><p><strong>Symbol/Chip duration</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-     T_c = \frac{T}{N},
+     T_c = \frac{T}{N}
    \]</div>
 <p>so that the total block time <span class="math notranslate nohighlight">\(T\)</span> (for transmitting <span class="math notranslate nohighlight">\(N\)</span> bits in the codeword) is split into <span class="math notranslate nohighlight">\(N\)</span> smaller intervals. Each bit occupies one interval of length <span class="math notranslate nohighlight">\(T_c\)</span>.</p>
 </li>
 <li><p><strong>Energy per bit</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-     \mathcal{E}_c = \frac{\mathcal{E}}{N},
+     \mathcal{E}_c = \frac{\mathcal{E}}{N}
    \]</div>
 <p>meaning if the total energy allocated to transmit an entire codeword is <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>, then each bit‐interval has energy <span class="math notranslate nohighlight">\(\mathcal{E}_c\)</span>. In other words, over the duration <span class="math notranslate nohighlight">\(T_c\)</span> of each BPSK symbol, the signal power integrates to <span class="math notranslate nohighlight">\(\mathcal{E}_c\)</span>.</p>
 </li>
@@ -702,7 +702,7 @@ Consider two vectors <span class="math notranslate nohighlight">\(s_m\)</span> a
     \quad
     s_{m'j} = -\sqrt{\tfrac{\mathcal{E}}{N}}, 
     \quad\text{and } 
-    s_{mk} = s_{m'k} \; \forall k \neq j.
+    s_{mk} = s_{m'k} \; \forall k \neq j
   \]</div>
 </li>
 </ul>
@@ -714,7 +714,7 @@ Since the two vectors differ in only the <span class="math notranslate nohighlig
 \[
      s_m \cdot s_{m'} 
      \;=\; \underbrace{\sum_{k \neq j} \Bigl(\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr)^2}_{(N-1)\times(\tfrac{\mathcal{E}}{N})} 
-         \;+\; \underbrace{\Bigl(+\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr)\Bigl(-\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr)}_{-\,(\tfrac{\mathcal{E}}{N})}.
+         \;+\; \underbrace{\Bigl(+\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr)\Bigl(-\sqrt{\tfrac{\mathcal{E}}{N}}\Bigr)}_{-\,(\tfrac{\mathcal{E}}{N})}
    \]</div>
 <ul class="simple">
 <li><p>For the <span class="math notranslate nohighlight">\(N-1\)</span> identical coordinates, each contributes <span class="math notranslate nohighlight">\(+\frac{\mathcal{E}}{N}\)</span>.</p></li>
@@ -724,7 +724,7 @@ Since the two vectors differ in only the <span class="math notranslate nohighlig
 <div class="math notranslate nohighlight">
 \[
      s_m \cdot s_{m'} = (N-1)\,\tfrac{\mathcal{E}}{N} \;-\;\tfrac{\mathcal{E}}{N}
-                       = (N-2)\,\tfrac{\mathcal{E}}{N}.
+                       = (N-2)\,\tfrac{\mathcal{E}}{N}
    \]</div>
 </li>
 <li><p><strong>Normalization</strong><br />
@@ -733,7 +733,7 @@ Each vector <span class="math notranslate nohighlight">\(s_m\)</span> has length
 \[
      \rho = \frac{s_m \cdot s_{m'}}{\|s_m\|\;\|s_{m'}\|} 
            = \frac{(N-2)\tfrac{\mathcal{E}}{N}}{\mathcal{E}}
-           = \frac{N-2}{N}.
+           = \frac{N-2}{N}
    \]</div>
 </li>
 </ul>
@@ -748,7 +748,7 @@ If waveforms differ in more than one bit, the dot product will change accordingl
 The distance between two points <span class="math notranslate nohighlight">\(s_m\)</span> and <span class="math notranslate nohighlight">\(s_{m'}\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
-     d = \|s_m - s_{m'}\|.
+     d = \|s_m - s_{m'}\|
    \]</div>
 </li>
 <li><p><strong>Case: Adjacent Points Differing in One Bit</strong></p>
@@ -759,7 +759,7 @@ The distance between two points <span class="math notranslate nohighlight">\(s_m
        s_{mj} - s_{m'j} 
        = \bigl(\!+\!\sqrt{\tfrac{\mathcal{E}}{N}}\bigr) 
          - \bigl(\!-\!\sqrt{\tfrac{\mathcal{E}}{N}}\bigr)
-       = 2\,\sqrt{\tfrac{\mathcal{E}}{N}}.
+       = 2\,\sqrt{\tfrac{\mathcal{E}}{N}}
      \]</div>
 </li>
 <li><p>In the other <span class="math notranslate nohighlight">\(N-1\)</span> coordinates, the difference is zero (since they’re the same).</p></li>
@@ -767,13 +767,13 @@ The distance between two points <span class="math notranslate nohighlight">\(s_m
 <p>Thus, the squared distance is</p>
 <div class="math notranslate nohighlight">
 \[
-     d^2 = \bigl(2\,\sqrt{\tfrac{\mathcal{E}}{N}}\bigr)^2 = 4\,\tfrac{\mathcal{E}}{N}.
+     d^2 = \bigl(2\,\sqrt{\tfrac{\mathcal{E}}{N}}\bigr)^2 = 4\,\tfrac{\mathcal{E}}{N}
    \]</div>
 <p>Taking the square root:</p>
 <div class="math notranslate nohighlight">
 \[
      d_{\min} \;=\; 2\,\sqrt{\tfrac{\mathcal{E}}{N}} 
-                 = \sqrt{\tfrac{4\,\mathcal{E}}{N}}.
+                 = \sqrt{\tfrac{4\,\mathcal{E}}{N}}
    \]</div>
 </li>
 <li><p><strong>Alternate Expression via Cross‐Correlation</strong><br />
@@ -782,14 +782,14 @@ The formula given is</p>
 \[
      d_{\min} 
      = \sqrt{2\,\mathcal{E}\,(1-\rho)} 
-     \quad\text{where}\; \rho = \frac{N-2}{N}.
+     \quad\text{where}\; \rho = \frac{N-2}{N}
    \]</div>
 <p>Substituting <span class="math notranslate nohighlight">\(\rho\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
      1 - \rho 
      = 1 - \frac{N-2}{N} 
-     = \frac{2}{N}.
+     = \frac{2}{N}
    \]</div>
 <p>Hence,</p>
 <div class="math notranslate nohighlight">

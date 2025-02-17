@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -514,14 +514,14 @@
 <p>The goal of an optimal receiver is to decide which message <span class="math notranslate nohighlight">\( m \)</span> was transmitted based on the observation of the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>. One common approach is to maximize the a posteriori probability, leading to the <strong>Maximum a Posteriori Probability (MAP) receiver</strong>, which we mentioned earlier, i.e.:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr (\vec{s}_m|\vec{r}).
+\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr (\vec{s}_m|\vec{r})
 \]</div>
 <section id="bayes-rule">
 <h3>Bayes’ Rule<a class="headerlink" href="#bayes-rule" title="Link to this heading">#</a></h3>
 <p>Using Bayes’ Rule, the a posteriori probability of message <span class="math notranslate nohighlight">\( m \)</span> given the observation <span class="math notranslate nohighlight">\(\vec{r}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(m|\vec{r}) = \frac{P_m \, p(\vec{r}|\vec{s}_m)}{p(\vec{r})},
+\Pr(m|\vec{r}) = \frac{P_m \, p(\vec{r}|\vec{s}_m)}{p(\vec{r})}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -536,19 +536,19 @@
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, \Pr(m|\vec{r}).
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, \Pr(m|\vec{r})
 }
 \]</div>
 <p>Substituting the expression from Bayes’ Rule, we have</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, \frac{P_m\, p(\vec{r}|\vec{s}_m)}{p(\vec{r})}.
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, \frac{P_m\, p(\vec{r}|\vec{s}_m)}{p(\vec{r})}
 \]</div>
 <p>Because the denominator <span class="math notranslate nohighlight">\( p(\vec{r}) \)</span> is independent of <span class="math notranslate nohighlight">\( m \)</span> (it is simply a normalizing constant ensuring that the probabilities sum to one), it does <em>not</em> affect the maximization. Thus, the decision rule can be simplified to</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, P_m\, p(\vec{r}|\vec{s}_m).
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, P_m\, p(\vec{r}|\vec{s}_m)
 }
 \]</div>
 <p>This formulation is particularly convenient because both the prior probabilities <span class="math notranslate nohighlight">\( P_m \)</span> and the likelihood <span class="math notranslate nohighlight">\( p(\vec{r}|\vec{s}_m) \)</span> are usually known or can be computed from the system model. In practice, the receiver computes the product <span class="math notranslate nohighlight">\( P_m\, p(\vec{r}|\vec{s}_m) \)</span> for each message <span class="math notranslate nohighlight">\( m \)</span> and selects the message corresponding to the largest value.</p>
@@ -558,14 +558,14 @@
 <h2>Maximum-Likelihood (ML) Receivers<a class="headerlink" href="#maximum-likelihood-ml-receivers" title="Link to this heading">#</a></h2>
 <p>When designing a receiver, our objective is to decide which message <span class="math notranslate nohighlight">\( m \)</span> was transmitted based on the observed vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>. In general, the optimal decision rule according to the Maximum a Posteriori (MAP) criterion is given by
 <span class="math notranslate nohighlight">\(
-\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, P_m \, p(\vec{r}|\vec{s}_m).
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, P_m \, p(\vec{r}|\vec{s}_m)
 \)</span></p>
 <section id="equiprobable-messages">
 <h3>Equiprobable Messages<a class="headerlink" href="#equiprobable-messages" title="Link to this heading">#</a></h3>
 <p>In many practical systems, it is often assumed that the messages are equiprobable. This means that</p>
 <div class="math notranslate nohighlight">
 \[
-P_m = \frac{1}{M} \quad \text{for all } m = 1, 2, \dots, M.
+P_m = \frac{1}{M} \quad \text{for all } m = 1, 2, \dots, M
 \]</div>
 </section>
 <section id="maximum-likelihood-ml-decision-rule">
@@ -573,7 +573,7 @@ P_m = \frac{1}{M} \quad \text{for all } m = 1, 2, \dots, M.
 <p>When this assumption holds, the prior probability <span class="math notranslate nohighlight">\( P_m \)</span> becomes a constant across all messages. Since a constant factor does not affect the argmax operation, the MAP decision rule simplifies to</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, p(\vec{r}|\vec{s}_m).
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, p(\vec{r}|\vec{s}_m)
 \]</div>
 <p>The term <span class="math notranslate nohighlight">\( p(\vec{r}|\vec{s}_m) \)</span> is known as the <strong>likelihood</strong> of message <span class="math notranslate nohighlight">\( m \)</span>. Consequently, the decision rule that selects the message <span class="math notranslate nohighlight">\( m \)</span> with the highest likelihood is called the <strong>Maximum-Likelihood (ML) receiver</strong>.</p>
 <p>Note that this rule is optimal (i.e., it minimizes the probability of error) <em>only</em> when all messages are equiprobable.</p>
@@ -595,7 +595,7 @@ P_m = \frac{1}{M} \quad \text{for all } m = 1, 2, \dots, M.
 Let <span class="math notranslate nohighlight">\( g: \mathbb{R}^N \to \{1, 2, \ldots, M\} \)</span> be a decision function that maps each received <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> to a message index. Then, the <strong>decision region</strong> for message <span class="math notranslate nohighlight">\(m\)</span>, denoted by <span class="math notranslate nohighlight">\( D_m \)</span>, is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-D_m = \{\vec{r} \in \mathbb{R}^N : g(\vec{r}) = m\}.
+D_m = \{\vec{r} \in \mathbb{R}^N : g(\vec{r}) = m\}
 \]</div>
 <p>Each decision region <span class="math notranslate nohighlight">\(D_m\)</span> is the set of all possible outputs (or received vectors) that the detector maps to the message <span class="math notranslate nohighlight">\(m\)</span>. In other words, <span class="math notranslate nohighlight">\(D_m\)</span> contains every <span class="math notranslate nohighlight">\(\vec{r}\)</span> for which the detector “believes” message <span class="math notranslate nohighlight">\(m\)</span> was transmitted.</p>
 <ul>
@@ -603,7 +603,7 @@ D_m = \{\vec{r} \in \mathbb{R}^N : g(\vec{r}) = m\}.
 The basic idea is that if the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> falls into a particular region <span class="math notranslate nohighlight">\(D_m\)</span>, then the detector decides in favor of message <span class="math notranslate nohighlight">\(m\)</span>; that is, the decision function <span class="math notranslate nohighlight">\(g(\vec{r})\)</span> yields</p>
 <div class="math notranslate nohighlight">
 \[
-  \hat{m} = g(\vec{r}) = m \quad \text{if } \vec{r} \in D_m.
+  \hat{m} = g(\vec{r}) = m \quad \text{if } \vec{r} \in D_m
   \]</div>
 </li>
 </ul>
@@ -613,7 +613,7 @@ The basic idea is that if the received vector <span class="math notranslate nohi
 <p>For a MAP receiver, the decision region corresponding to message <span class="math notranslate nohighlight">\(m\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-D_m = \left\{ \vec{r} \in \mathbb{R}^N : \Pr[m|\vec{r}] &gt; \Pr[m'|\vec{r}], \quad \text{for all } m' \neq m \right\}.
+D_m = \left\{ \vec{r} \in \mathbb{R}^N : \Pr[m|\vec{r}] &gt; \Pr[m'|\vec{r}], \quad \text{for all } m' \neq m \right\}
 \]</div>
 <p>This expression means that if the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> is such that the a posteriori probability <span class="math notranslate nohighlight">\(\Pr[m|\vec{r}]\)</span> is higher than the a posteriori probability for any other message <span class="math notranslate nohighlight">\(m'\)</span>, then <span class="math notranslate nohighlight">\(\vec{r}\)</span> is assigned to <span class="math notranslate nohighlight">\(D_m\)</span>, and the detector declares that message <span class="math notranslate nohighlight">\(m\)</span> was sent.</p>
 <p><strong>Ambiguities</strong><br />
@@ -641,7 +641,7 @@ This is a mathematical model of all possible <span class="math notranslate nohig
 These regions are defined as a partition of the output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> based on the detection rule (such as the MAP or ML rule). The decision regions are designed <em>a priori</em>—that is, before or independently of any particular received signal—based on the known or assumed statistical properties of the channel and the signal set. For example, in a MAP detector, each region <span class="math notranslate nohighlight">\(D_m\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-D_m = \left\{ \vec{r} \in \mathbb{R}^N : \Pr(m|\vec{r}) &gt; \Pr(m'|\vec{r}), \quad \forall m' \neq m \right\}.
+D_m = \left\{ \vec{r} \in \mathbb{R}^N : \Pr(m|\vec{r}) &gt; \Pr(m'|\vec{r}), \quad \forall m' \neq m \right\}
 \]</div>
 <p>The probabilities <span class="math notranslate nohighlight">\(\Pr(m|\vec{r})\)</span> and <span class="math notranslate nohighlight">\(\Pr(m'|\vec{r})\)</span> are computed using the statistical models of the channel and the prior information about the messages. Once these posterior probabilities are derived theoretically (typically via Bayes’ rule), the decision regions <span class="math notranslate nohighlight">\(D_m\)</span> can be determined.  These regions are established based on the theoretical analysis of the channel’s statistics and are then used in the detection process for any new received signal.</p>
 <p><strong>Design and Usage</strong></p>
@@ -661,14 +661,14 @@ When a new received signal <span class="math notranslate nohighlight">\(\vec{r}\
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-P_{e|m} = \Pr\left[\vec{r} \notin D_m \,\middle|\, \vec{s}_m \text{ sent}\right].
+P_{e|m} = \Pr\left[\vec{r} \notin D_m \,\middle|\, \vec{s}_m \text{ sent}\right]
 }
 \]</div>
 <p>Since the decision regions <span class="math notranslate nohighlight">\(\{D_m\}\)</span> form a partition of the output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>, the complement of <span class="math notranslate nohighlight">\(D_m\)</span>, denoted <span class="math notranslate nohighlight">\(D_m^c\)</span>, is the union of the decision regions corresponding to all other messages. Thus, we can write:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 P_{e|m} = \int_{D_m^c} p(\vec{r}|\vec{s}_m) \, d\vec{r} 
-= \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} \int_{D_{m'}} p(\vec{r}|\vec{s}_m) \, d\vec{r},
+= \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} \int_{D_{m'}} p(\vec{r}|\vec{s}_m) \, d\vec{r}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_m)\)</span> is the likelihood of receiving <span class="math notranslate nohighlight">\(\vec{r}\)</span> given that <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> was transmitted.</p>
 </section>
@@ -678,13 +678,13 @@ P_{e|m} = \int_{D_m^c} p(\vec{r}|\vec{s}_m) \, d\vec{r}
 <div class="math notranslate nohighlight">
 \[
 P_e = \sum_{m=1}^{M} P_m \, \Pr\left[\vec{r} \notin D_m \,\middle|\, \vec{s}_m \text{ sent}\right] 
-= \sum_{m=1}^{M} P_m \, P_{e|m}.
+= \sum_{m=1}^{M} P_m \, P_{e|m}
 \]</div>
 <p>Substituting the expression for <span class="math notranslate nohighlight">\(P_{e|m}\)</span>, we obtain:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boxed{
-P_e = \sum_{m=1}^{M} P_m \left( \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} \int_{D_{m'}} p(\vec{r}|\vec{s}_m) \, d\vec{r} \right).
+P_e = \sum_{m=1}^{M} P_m \left( \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} \int_{D_{m'}} p(\vec{r}|\vec{s}_m) \, d\vec{r} \right)
 }
 \end{split}\]</div>
 </section>
@@ -696,7 +696,7 @@ P_e = \sum_{m=1}^{M} P_m \left( \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} 
 <p>The Total Probability Theorem states that if <span class="math notranslate nohighlight">\(\{A_m\}\)</span> is a partition of the sample space, then for any event <span class="math notranslate nohighlight">\(B\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(B) = \sum_{m} \Pr(B | A_m) \, \Pr(A_m).
+\Pr(B) = \sum_{m} \Pr(B | A_m) \, \Pr(A_m)
 \]</div>
 <p>In the context of symbol error probability, the events <span class="math notranslate nohighlight">\(A_m\)</span> correspond to the different messages being transmitted, and the event <span class="math notranslate nohighlight">\(B\)</span> is the occurrence of an error (i.e., the receiver making an incorrect decision). Specifically:</p>
 <ul class="simple">
@@ -710,7 +710,7 @@ P_e = \sum_{m=1}^{M} P_m \left( \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} 
 <div class="math notranslate nohighlight">
 \[
 P_e = \sum_{m=1}^{M} \Pr\left[ \text{error} \mid \vec{s}_m \text{ sent} \right] \Pr(m)
-= \sum_{m=1}^{M} P_{e|m} \, P_m.
+= \sum_{m=1}^{M} P_{e|m} \, P_m
 \]</div>
 <p>This completes the proof. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
 </section>
@@ -737,13 +737,13 @@ In symmetric constellations, the structure of the constellation can simplify the
 <p>Consider a modulation scheme where each symbol represents <span class="math notranslate nohighlight">\(k\)</span> bits, so that the number of symbols is <span class="math notranslate nohighlight">\(M = 2^k\)</span>. When a symbol error occurs, at least one bit error must occur. In the worst-case scenario, a symbol error might result in all <span class="math notranslate nohighlight">\(k\)</span> bits being in error. Therefore, the following bounds hold:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{P_e}{k} \leq P_b \leq P_e,
+\frac{P_e}{k} \leq P_b \leq P_e
 \]</div>
 <p>or, equivalently, since <span class="math notranslate nohighlight">\(k = \log_2 M\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\frac{P_e}{\log_2 M} \leq P_b \leq P_e.
+\frac{P_e}{\log_2 M} \leq P_b \leq P_e
 }
 \]</div>
 <ul class="simple">
@@ -761,15 +761,15 @@ This bound represents the worst-case scenario where every symbol error results i
 <p>Consider two equiprobable message signals:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{s}_1 = (0,0) \quad \text{and} \quad \vec{s}_2 = (1,1).
+\vec{s}_1 = (0,0) \quad \text{and} \quad \vec{s}_2 = (1,1)
 \]</div>
 <p>The channel adds independent noise components <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> to the transmitted signal. Each noise component has an exponential probability density function (PDF):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 p(n) = 
 \begin{cases}
-e^{-n}, &amp; n \geq 0, \\
-0, &amp; n &lt; 0.
+e^{-n} &amp; n \geq 0 \\
+0, &amp; n &lt; 0
 \end{cases}
 \end{split}\]</div>
 <p>Since the noise components are independent, the joint PDF of the noise vector <span class="math notranslate nohighlight">\(\vec{n} = (n_1, n_2)\)</span> is</p>
@@ -777,8 +777,8 @@ e^{-n}, &amp; n \geq 0, \\
 \[\begin{split}
 p_{\vec{n}}(n_1,n_2) =
 \begin{cases}
-e^{-n_1-n_2}, &amp; n_1 \ge 0,\; n_2 \ge 0, \\
-0, &amp; \text{otherwise}.
+e^{-n_1-n_2} &amp; n_1 \ge 0,\; n_2 \ge 0 \\
+0, &amp; \text{otherwise}
 \end{cases}
 \end{split}\]</div>
 <section id="maximum-likelihood-ml-detection">
@@ -786,17 +786,17 @@ e^{-n_1-n_2}, &amp; n_1 \ge 0,\; n_2 \ge 0, \\
 <p>Because the messages are equiprobable, the Maximum a Posteriori (MAP) detector reduces to the Maximum-Likelihood (ML) detector. The ML rule chooses the message <span class="math notranslate nohighlight">\(m\)</span> that maximizes the likelihood <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_m)\)</span>. The decision region for message <span class="math notranslate nohighlight">\(m\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-D_m = \{ \vec{r} \in \mathbb{R}^2 : p(\vec{r}|\vec{s}_m) &gt; p(\vec{r}|\vec{s}_{m'}), \; \forall\, m' \neq m \}.
+D_m = \{ \vec{r} \in \mathbb{R}^2 : p(\vec{r}|\vec{s}_m) &gt; p(\vec{r}|\vec{s}_{m'}), \; \forall\, m' \neq m \}
 \]</div>
 <p>Since the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{r} = \vec{s}_m + \vec{n},
+\vec{r} = \vec{s}_m + \vec{n}
 \]</div>
 <p>we can write</p>
 <div class="math notranslate nohighlight">
 \[
-p(\vec{r}|\vec{s}_m) = p(\vec{n} = \vec{r} - \vec{s}_m).
+p(\vec{r}|\vec{s}_m) = p(\vec{n} = \vec{r} - \vec{s}_m)
 \]</div>
 </section>
 <section id="determining-the-decision-regions">
@@ -806,7 +806,7 @@ p(\vec{r}|\vec{s}_m) = p(\vec{n} = \vec{r} - \vec{s}_m).
 The likelihood function is</p>
 <div class="math notranslate nohighlight">
 \[
-   p(\vec{r}|\vec{s}_1) = p(n_1 = r_1,\, n_2 = r_2) = e^{-r_1-r_2},
+   p(\vec{r}|\vec{s}_1) = p(n_1 = r_1,\, n_2 = r_2) = e^{-r_1-r_2}
    \]</div>
 <p>provided <span class="math notranslate nohighlight">\(r_1 \geq 0\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 0\)</span>.</p>
 </li>
@@ -814,12 +814,12 @@ The likelihood function is</p>
 The likelihood is</p>
 <div class="math notranslate nohighlight">
 \[
-   p(\vec{r}|\vec{s}_2) = p(n_1 = r_1-1,\, n_2 = r_2-1).
+   p(\vec{r}|\vec{s}_2) = p(n_1 = r_1-1,\, n_2 = r_2-1)
    \]</div>
 <p>This is nonzero only if <span class="math notranslate nohighlight">\(r_1-1 \ge 0\)</span> and <span class="math notranslate nohighlight">\(r_2-1 \ge 0\)</span>; that is, when <span class="math notranslate nohighlight">\(r_1 \geq 1\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 1\)</span>. In this case,</p>
 <div class="math notranslate nohighlight">
 \[
-   p(\vec{r}|\vec{s}_2) = e^{-(r_1-1)-(r_2-1)} = e^{-r_1-r_2+2}.
+   p(\vec{r}|\vec{s}_2) = e^{-(r_1-1)-(r_2-1)} = e^{-r_1-r_2+2}
    \]</div>
 </li>
 <li><p><strong>Comparison of Likelihoods:</strong></p>
@@ -828,29 +828,29 @@ The likelihood is</p>
 For such <span class="math notranslate nohighlight">\(\vec{r}\)</span>, note that at least one of <span class="math notranslate nohighlight">\(r_1-1\)</span> or <span class="math notranslate nohighlight">\(r_2-1\)</span> is negative, which makes <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_2) = 0\)</span> (because the noise PDF is zero for negative arguments). However, <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_1)\)</span> is positive (since <span class="math notranslate nohighlight">\(r_1, r_2 \ge 0\)</span>). Therefore, when either coordinate is less than 1, we have</p>
 <div class="math notranslate nohighlight">
 \[
-     p(\vec{r}|\vec{s}_1) &gt; p(\vec{r}|\vec{s}_2),
+     p(\vec{r}|\vec{s}_1) &gt; p(\vec{r}|\vec{s}_2)
      \]</div>
 <p>and the ML detector will decide in favor of message 1. Thus,</p>
 <div class="math notranslate nohighlight">
 \[
-     D_1 \supset \{ \vec{r} \in \mathbb{R}^2 : r_1 \ge 0,\; r_2 \ge 0,\; \text{and either } r_1 &lt; 1 \text{ or } r_2 &lt; 1 \}.
+     D_1 \supset \{ \vec{r} \in \mathbb{R}^2 : r_1 \ge 0,\; r_2 \ge 0,\; \text{and either } r_1 &lt; 1 \text{ or } r_2 &lt; 1 \}
      \]</div>
 </li>
 <li><p><strong>If <span class="math notranslate nohighlight">\(r_1 \geq 1\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 1\)</span>:</strong><br />
 Both likelihoods are positive. In this region,</p>
 <div class="math notranslate nohighlight">
 \[
-     p(\vec{r}|\vec{s}_1) = e^{-r_1-r_2} \quad \text{and} \quad p(\vec{r}|\vec{s}_2) = e^{-r_1-r_2+2}.
+     p(\vec{r}|\vec{s}_1) = e^{-r_1-r_2} \quad \text{and} \quad p(\vec{r}|\vec{s}_2) = e^{-r_1-r_2+2}
      \]</div>
 <p>Since <span class="math notranslate nohighlight">\(e^{-r_1-r_2+2} = e^2 \, e^{-r_1-r_2}\)</span> and <span class="math notranslate nohighlight">\(e^2 &gt; 1\)</span>, it follows that</p>
 <div class="math notranslate nohighlight">
 \[
-     p(\vec{r}|\vec{s}_2) &gt; p(\vec{r}|\vec{s}_1).
+     p(\vec{r}|\vec{s}_2) &gt; p(\vec{r}|\vec{s}_1)
      \]</div>
 <p>Hence, for <span class="math notranslate nohighlight">\(\vec{r}\)</span> satisfying <span class="math notranslate nohighlight">\(r_1 \geq 1\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 1\)</span>, the ML detector selects message 2. Thus,</p>
 <div class="math notranslate nohighlight">
 \[
-     D_2 = \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 1,\; r_2 \geq 1 \}.
+     D_2 = \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 1,\; r_2 \geq 1 \}
      \]</div>
 </li>
 </ul>
@@ -860,8 +860,8 @@ Both likelihoods are positive. In this region,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-D_2 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 1,\; r_2 \geq 1 \}, \\
-D_1 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 0,\; r_2 \geq 0,\; \text{and either } r_1 &lt; 1 \text{ or } r_2 &lt; 1 \}.
+D_2 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 1,\; r_2 \geq 1 \} \\
+D_1 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 0,\; r_2 \geq 0,\; \text{and either } r_1 &lt; 1 \text{ or } r_2 &lt; 1 \}
 \end{aligned}
 \end{split}\]</div>
 </section>
@@ -870,32 +870,32 @@ D_1 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 0,\; r_2 \geq 0,\; \text{and e
 <p>Since the messages are equiprobable, the probability of error is determined by the event that an error occurs when message 1 is transmitted (because an error only occurs when <span class="math notranslate nohighlight">\(\vec{s}_1\)</span> is sent and the received vector falls in <span class="math notranslate nohighlight">\(D_2\)</span>). That is,</p>
 <div class="math notranslate nohighlight">
 \[
-P_e = \frac{1}{2} \Pr\big[\vec{r} \in D_2 \mid \vec{s}_1 \text{ sent}\big].
+P_e = \frac{1}{2} \Pr\big[\vec{r} \in D_2 \mid \vec{s}_1 \text{ sent}\big]
 \]</div>
 <p>When <span class="math notranslate nohighlight">\(\vec{s}_1 = (0,0)\)</span> is transmitted, the received vector is</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{r} = (n_1, n_2),
+\vec{r} = (n_1, n_2)
 \]</div>
 <p>with <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> being independent and exponentially distributed. The event <span class="math notranslate nohighlight">\(\vec{r} \in D_2\)</span> corresponds to</p>
 <div class="math notranslate nohighlight">
 \[
-n_1 \geq 1 \quad \text{and} \quad n_2 \geq 1.
+n_1 \geq 1 \quad \text{and} \quad n_2 \geq 1
 \]</div>
 <p>For an exponential random variable with PDF <span class="math notranslate nohighlight">\(e^{-n}\)</span> for <span class="math notranslate nohighlight">\(n \geq 0\)</span>, the probability that <span class="math notranslate nohighlight">\(n \geq 1\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(n \ge 1) = \int_1^\infty e^{-n} \, dn = e^{-1}.
+\Pr(n \ge 1) = \int_1^\infty e^{-n} \, dn = e^{-1}
 \]</div>
 <p>Because <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> are independent,</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(n_1 \ge 1,\, n_2 \ge 1) = e^{-1} \cdot e^{-1} = e^{-2}.
+\Pr(n_1 \ge 1,\, n_2 \ge 1) = e^{-1} \cdot e^{-1} = e^{-2}
 \]</div>
 <p>Thus, the error probability is</p>
 <div class="math notranslate nohighlight">
 \[
-P_e = \frac{1}{2} e^{-2} \approx \frac{1}{2} \cdot 0.1353 \approx 0.06765 \approx 0.068.
+P_e = \frac{1}{2} e^{-2} \approx \frac{1}{2} \cdot 0.1353 \approx 0.06765 \approx 0.068
 \]</div>
 <p><span class="math notranslate nohighlight">\(\square\)</span></p>
 </section>

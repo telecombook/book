@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -455,6 +455,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Frequency-Shift Keying (FSK)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsk-waveform">FSK Waveform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-fsk-signals">Orthogonality of FSK Signals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-two-signals">Correlation of Two Signals</a></li>
@@ -481,6 +482,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-vs-nonlinear-modulation">Linear vs. Nonlinear Modulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-derivation-of-the-correlation-of-two-fsk-signals">Appendix: Derivation of The Correlation of Two FSK Signals</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr">We now want
+$$
+\mathrm{Re} \Bigl[\langle s_{m,lp}(t),  s_{n,lp}(t)\rangle\Bigr]</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -500,8 +507,8 @@
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f\, t \bigr),}
-\quad 1 \le m \le M,\quad 0 \le t \le T,
+s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f  t \bigr),}
+\quad 1 \le m \le M,\quad 0 \le t \le T
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -515,10 +522,10 @@ s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f\, 
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}} \, e^{j 2\pi m \Delta f \, t}
+s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}}   e^{j 2\pi m \Delta f   t}
 }
 \]</div>
-<p>Note that, <span class="math notranslate nohighlight">\(s_m(t)\)</span> is a <strong>real-valued, bandpass</strong> waveform (a cosine at frequency <span class="math notranslate nohighlight">\(f_c + m\,\Delta f\)</span>).</p>
+<p>Note that, <span class="math notranslate nohighlight">\(s_m(t)\)</span> is a <strong>real-valued, bandpass</strong> waveform (a cosine at frequency <span class="math notranslate nohighlight">\(f_c + m \Delta f\)</span>).</p>
 <p>By contrast, the <strong>lowpass-equivalent</strong> signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> is <strong>complex-valued</strong>, capturing the in-phase and quadrature components of the bandpass signal at baseband.</p>
 </section>
 <section id="orthogonality-of-fsk-signals">
@@ -528,32 +535,32 @@ s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}} \, e^{j 2\pi m \Delta f \, t}
 <p>The correlation of the <strong>lowpass equivalents</strong> <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> and <span class="math notranslate nohighlight">\(s_{n,lp}(t)\)</span> is calculated as</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_{m,lp}(t),\,s_{n,lp}(t)\rangle
-\;=\;
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = 
 \int_0^T 
-s_{m,lp}(t)\,s_{n,lp}^*(t)\,\mathrm{d}t
-\;=\;
+s_{m,lp}(t) s_{n,lp}^*(t) \mathrm{d}t
+ = 
 \frac{2\mathcal{E}}{T}\int_{0}^{T} 
-e^{\,j\,2\pi\,(m-n)\,\Delta f\,t}\,\mathrm{d}t.
+e^{ j 2\pi (m-n) \Delta f t} \mathrm{d}t
 \]</div>
 <p>Evaluating this integral yields:</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_{m,lp}(t),\,s_{n,lp}(t)\rangle
-\;=\;
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = 
 \frac{2\mathcal{E}}{T}
-\,\frac{\sin\!\bigl(\pi\,T\,(m-n)\,\Delta f\bigr)}
-{\pi\,(m-n)\,\Delta f}
-\,\mathcal{E}^{\,j\,\pi\,T\,(m-n)\,\Delta f}.
+ \frac{\sin \bigl(\pi T (m-n) \Delta f\bigr)}
+{\pi (m-n) \Delta f}
+ \mathcal{E}^{ j \pi T (m-n) \Delta f}
 \]</div>
 <p>Taking its <strong>real part</strong>, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\mathrm{Re}\!\bigl[\langle s_{m,lp}(t),s_{n,lp}(t)\rangle\bigr]
-\;=\;
+\mathrm{Re} \bigl[\langle s_{m,lp}(t),s_{n,lp}(t)\rangle\bigr]
+ = 
 \frac{2\mathcal{E}}{T}
-\,\mathrm{sinc}\!\bigl(2\,T\,(m-n)\,\Delta f\bigr),
+ \mathrm{sinc} \bigl(2 T (m-n) \Delta f\bigr)
 }
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathrm{sinc}(x) \equiv \dfrac{\sin(\pi x)}{\pi x}\)</span>.</p>
@@ -564,18 +571,18 @@ e^{\,j\,2\pi\,(m-n)\,\Delta f\,t}\,\mathrm{d}t.
 <p>For <strong>orthogonality</strong>, we need this inner product to be zero for <span class="math notranslate nohighlight">\(m \neq n\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{Re}\!\bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
-\;=\;
-\frac{2\mathcal{E}}{T}\,
-\mathrm{sinc}\!\bigl(2\,T\,(m-n)\,\Delta f\bigr)
-\;=\;0.
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{2\mathcal{E}}{T} 
+\mathrm{sinc} \bigl(2 T (m-n) \Delta f\bigr)
+ = 0
 \]</div>
 <p>Since the nonzero constant <span class="math notranslate nohighlight">\(\tfrac{2\mathcal{E}}{T}\)</span> just scales the expression, the condition boils down to</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{sinc}\!\bigl(2\,T\,(m-n)\,\Delta f\bigr) = 0,
+\mathrm{sinc} \bigl(2 T (m-n) \Delta f\bigr) = 0,
 \quad
-\text{for all } m \neq n.
+\text{for all } m \neq n
 \]</div>
 <p><strong>Zeros of the Sinc Function</strong></p>
 <p>Recall that</p>
@@ -586,14 +593,14 @@ e^{\,j\,2\pi\,(m-n)\,\Delta f\,t}\,\mathrm{d}t.
 <p>has zeros at <strong>all nonzero integer</strong> values of <span class="math notranslate nohighlight">\(x\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
-x = \pm 1,\;\pm 2,\;\pm 3,\dots
+x = \pm 1, \pm 2, \pm 3,\dots
 \]</div>
 <p>Hence</p>
 <div class="math notranslate nohighlight">
 \[
-2\,T\,(m-n)\,\Delta f = k
+2 T (m-n) \Delta f = k
 \quad
-\text{for } k \in \{\pm1, \pm2, \pm3, \ldots\},\; k \neq 0.
+\text{for } k \in \{\pm1, \pm2, \pm3, \ldots\},  k \neq 0
 \]</div>
 </section>
 <section id="minimum-frequency-separation">
@@ -602,9 +609,9 @@ x = \pm 1,\;\pm 2,\;\pm 3,\dots
 For <span class="math notranslate nohighlight">\(M\)</span>-FSK, the frequencies are typically spaced in increments of <span class="math notranslate nohighlight">\(\Delta f\)</span>. Adjacent signals correspond to <span class="math notranslate nohighlight">\((m-n)=1\)</span>. So the simplest (lowest nonzero) orthogonality condition is</p>
 <div class="math notranslate nohighlight">
 \[
-   2\,T\,(m-n)\,\Delta f = 2\,T\,\Delta f = k=1
+   2 T (m-n) \Delta f = 2 T \Delta f = k=1
    \quad\Longrightarrow\quad
-   \Delta f = \frac{1}{2T}.
+   \Delta f = \frac{1}{2T}
    \]</div>
 <p>In other words, for <strong>adjacent</strong> frequency indices <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(m+1\)</span>, the separation must be</p>
 <div class="math notranslate nohighlight">
@@ -616,7 +623,7 @@ For <span class="math notranslate nohighlight">\(M\)</span>-FSK, the frequencies
 More generally, we could choose</p>
 <div class="math notranslate nohighlight">
 \[
-   2\,T\,\Delta f = k
+   2 T \Delta f = k
    \quad\Longrightarrow\quad
    \Delta f = \frac{k}{2T}, \quad k=1,2,3,\dots
    \]</div>
@@ -624,7 +631,7 @@ More generally, we could choose</p>
 <div class="math notranslate nohighlight">
 \[
    \boxed{
-   \Delta f_{\min} \;=\;\frac{1}{2T}.
+   \Delta f_{\min}  = \frac{1}{2T}
    }
    \]</div>
 </section>
@@ -633,7 +640,7 @@ More generally, we could choose</p>
 <p>Because the bandpass signals <span class="math notranslate nohighlight">\(s_{m}(t)\)</span> differ by frequency increments of <span class="math notranslate nohighlight">\(\Delta f\)</span>, their <strong>lowpass equivalents</strong> differ by the same increments in baseband (just “shifted” from the carrier). The condition</p>
 <div class="math notranslate nohighlight">
 \[
-2\,T\,(m-n)\,\Delta f \;\in\;\mathbb{Z}
+2 T (m-n) \Delta f  \in \mathbb{Z}
 \]</div>
 <p>ensures <strong>pairwise orthogonality</strong> of <span class="math notranslate nohighlight">\(\{s_{m,lp}(t)\}\)</span>. It equally implies the real bandpass signals <span class="math notranslate nohighlight">\(\{s_{m}(t)\}\)</span> are orthogonal (their integrals over one symbol period vanish). Thus, no symbol‐to‐symbol interference occurs when <span class="math notranslate nohighlight">\(\Delta f\)</span> meets or exceeds that minimum value.</p>
 </section>
@@ -643,19 +650,19 @@ More generally, we could choose</p>
 <p>When <span class="math notranslate nohighlight">\(m = n\)</span>, we are effectively taking the <strong>autocorrelation</strong> of the same signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> with itself. In that case, the exponential term inside the integral becomes</p>
 <div class="math notranslate nohighlight">
 \[
-e^{j\,2\pi\,(m-n)\,\Delta f\,t} = \mathcal{E}^{j\,2\pi\,(0)\,\Delta f\,t} = 1,
+e^{j 2\pi (m-n) \Delta f t} = \mathcal{E}^{j 2\pi (0) \Delta f t} = 1
 \]</div>
 <p>so the integral simplifies to</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{0}^{T} 1 \,\mathrm{d}t = T.
+\int_{0}^{T} 1  \mathrm{d}t = T
 \]</div>
 <p>Given the factor <span class="math notranslate nohighlight">\(\frac{2\mathcal{E}}{T}\)</span> out front, the correlation becomes</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_{m,lp}(t),\,s_{m,lp}(t)\rangle 
-= \frac{2\mathcal{E}}{T}\,\times T
-= 2\mathcal{E}.
+\langle s_{m,lp}(t), s_{m,lp}(t)\rangle 
+= \frac{2\mathcal{E}}{T} \times T
+= 2\mathcal{E}
 \]</div>
 <p>Thus, when <span class="math notranslate nohighlight">\(m=n\)</span>,</p>
 <ul class="simple">
@@ -670,14 +677,14 @@ e^{j\,2\pi\,(m-n)\,\Delta f\,t} = \mathcal{E}^{j\,2\pi\,(0)\,\Delta f\,t} = 1,
 <li><p><strong>Bandpass FSK signal</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-     s_m(t) \;=\; \sqrt{\frac{2\mathcal{E}}{T}} \,\cos\!\bigl(2\pi f_c t \;+\; 2\pi m\,\Delta f\,t\bigr),
-     \quad 0 \le t \le T.
+     s_m(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  \cos \bigl(2\pi f_c t  +  2\pi m \Delta f t\bigr),
+     \quad 0 \le t \le T
      \]</div>
 </li>
 <li><p><strong>Complex baseband equivalent</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-     s_{m,lp}(t) \;=\; \sqrt{\frac{2\mathcal{E}}{T}}\;e^{\,j\,2\pi\,m\,\Delta f\,t}.
+     s_{m,lp}(t)  =  \sqrt{\frac{2\mathcal{E}}{T}} e^{ j 2\pi m \Delta f t}
      \]</div>
 </li>
 </ul>
@@ -685,46 +692,46 @@ e^{j\,2\pi\,(m-n)\,\Delta f\,t} = \mathcal{E}^{j\,2\pi\,(0)\,\Delta f\,t} = 1,
 The energy of the <em>complex</em> lowpass signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-   \int_{0}^{T} \bigl|s_{m,lp}(t)\bigr|^2\,dt
-   \;=\;
-   \int_{0}^{T} \left(\sqrt{\frac{2\mathcal{E}}{T}}\right)^2 \,dt
-   \;=\;
-   \int_{0}^{T} \frac{2\mathcal{E}}{T}\,\mathrm{d}t
-   \;=\;
-   2\mathcal{E}.
+   \int_{0}^{T} \bigl|s_{m,lp}(t)\bigr|^2 dt
+    = 
+   \int_{0}^{T} \left(\sqrt{\frac{2\mathcal{E}}{T}}\right)^2  dt
+    = 
+   \int_{0}^{T} \frac{2\mathcal{E}}{T} \mathrm{d}t
+    = 
+   2\mathcal{E}
    \]</div>
 <p>Thus, its <em>complex</em> representation has total energy <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p>
 <p><strong>Energy of <span class="math notranslate nohighlight">\(s_m(t)\)</span></strong><br />
 The <em>real</em> bandpass signal is</p>
 <div class="math notranslate nohighlight">
 \[
-   s_m(t) \;=\; \sqrt{\frac{2\mathcal{E}}{T}} \,\cos\!\bigl(\omega t + \phi\bigr),
+   s_m(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  \cos \bigl(\omega t + \phi\bigr)
    \]</div>
-<p>where <span class="math notranslate nohighlight">\(\omega = 2\pi (f_c + m\,\Delta f)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\omega = 2\pi (f_c + m \Delta f)\)</span>.</p>
 <p>To find its energy over <span class="math notranslate nohighlight">\(t \in [0, T]\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-   \int_{0}^{T} s_m^2(t)\,\mathrm{d}t
-   \;=\;
+   \int_{0}^{T} s_m^2(t) \mathrm{d}t
+    = 
    \int_{0}^{T} \left(\sqrt{\frac{2\mathcal{E}}{T}}\right)^2 
-                \cos^2(\omega t + \phi)\,\mathrm{d}t.
+                \cos^2(\omega t + \phi) \mathrm{d}t
    \]</div>
 <p>Inside the integral, <span class="math notranslate nohighlight">\(\cos^2(\omega t + \phi)\)</span> has an average value of <span class="math notranslate nohighlight">\(1/2\)</span> over an integer number of cycles.  For FSK over one symbol interval <span class="math notranslate nohighlight">\(T\)</span>, we typically choose <span class="math notranslate nohighlight">\(\omega\)</span> (or <span class="math notranslate nohighlight">\(\Delta f\)</span>) so that the signal completes an integer number of half‐cycles or full cycles, making</p>
 <div class="math notranslate nohighlight">
 \[
-   \int_0^T \cos^2(\omega t + \phi)\,dt \;=\; \frac{T}{2}.
+   \int_0^T \cos^2(\omega t + \phi) dt  =  \frac{T}{2}
    \]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight">
 \[
-   \int_{0}^{T} s_m^2(t)\,dt 
-   \;=\;
+   \int_{0}^{T} s_m^2(t) dt 
+    = 
    \int_{0}^{T}
-   \frac{2\mathcal{E}}{T} \cdot \cos^2(\omega t + \phi)\,\mathrm{d}t
-   \;=\;
-   \frac{2\mathcal{E}}{T} \,\times \frac{T}{2}
-   \;=\;
-   \mathcal{E}.
+   \frac{2\mathcal{E}}{T} \cdot \cos^2(\omega t + \phi) \mathrm{d}t
+    = 
+   \frac{2\mathcal{E}}{T}  \times \frac{T}{2}
+    = 
+   \mathcal{E}
    \]</div>
 <p>So the passband signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> has total energy <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>.</p>
 <p><strong>Interpretation</strong></p>
@@ -741,20 +748,20 @@ The <em>real</em> bandpass signal is</p>
 <p>We assume that the frequency separation <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen so that the signals <span class="math notranslate nohighlight">\( \{s_m(t)\} \)</span> are pairwise orthogonal over the symbol interval <span class="math notranslate nohighlight">\([0, T]\)</span>. In particular, the <em>minimum</em> spacing ensuring orthogonality of adjacent frequencies is</p>
 <div class="math notranslate nohighlight">
 \[
-\Delta f \;=\;\frac{1}{2T}.
+\Delta f  = \frac{1}{2T}
 \]</div>
 <p><strong>Definition of the FSK Signals</strong></p>
 <p>We start with the real, bandpass M‐FSK signals:</p>
 <div class="math notranslate nohighlight">
 \[
 s_m(t)
-\;=\;
+ = 
 \sqrt{\frac{2\mathcal{E}}{T}}
-\;\cos\!\Bigl(2\pi f_c\,t + 2\pi\,m\,\Delta f\,t\Bigr),
+ \cos \Bigl(2\pi f_c t + 2\pi m \Delta f t\Bigr),
 \quad
 m=1,2,\dots, M,
 \quad
-0 \le t \le T.
+0 \le t \le T
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -768,34 +775,34 @@ m=1,2,\dots, M,
 <div class="math notranslate nohighlight">
 \[
 \phi_k(t)
-\;=\;
-\sqrt{\frac{2}{T}}\;\cos\!\Bigl(2\pi f_c\,t + 2\pi\,(k-1)\,\Delta f\,t\Bigr),
+ = 
+\sqrt{\frac{2}{T}} \cos \Bigl(2\pi f_c t + 2\pi (k-1) \Delta f t\Bigr),
 \quad
-0 \le t \le T.
+0 \le t \le T
 \]</div>
 <p><strong>Orthogonality</strong></p>
 <p>Consider the inner product over one symbol interval,</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \phi_k,\,\phi_\ell \rangle
-\;=\;
+\langle \phi_k, \phi_\ell \rangle
+ = 
 \int_{0}^{T} 
-\phi_k(t)\;\phi_\ell(t)\,\mathrm{d}t.
+\phi_k(t) \phi_\ell(t) \mathrm{d}t
 \]</div>
 <p>By design—assuming <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen such that different tones are orthogonal—these basis functions satisfy</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \phi_k,\,\phi_\ell \rangle 
-\;=\;
-\delta_{k\ell},
+\langle \phi_k, \phi_\ell \rangle 
+ = 
+\delta_{k\ell}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\delta_{k\ell}\)</span> is the Kronecker delta (1 if <span class="math notranslate nohighlight">\(k=\ell\)</span>, 0 otherwise).</p>
 <p><strong>Normalization</strong></p>
 <p>Each <span class="math notranslate nohighlight">\(\phi_k(t)\)</span> has unit energy:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_0^T \phi_k^2(t)\,\mathrm{d}t
-\;=\;
+\int_0^T \phi_k^2(t) \mathrm{d}t
+ = 
 1
 \]</div>
 <p>(This follows from the factor <span class="math notranslate nohighlight">\(\sqrt{2/T}\)</span> in front of a <span class="math notranslate nohighlight">\(\cos^2\)</span> function, which integrates to <span class="math notranslate nohighlight">\(T/2\)</span> over the interval.)</p>
@@ -805,15 +812,15 @@ m=1,2,\dots, M,
 <div class="math notranslate nohighlight">
 \[
 s_m(t)
-\;=\;
-\sqrt{\frac{2\mathcal{E}}{T}}\;\cos\!\Bigl(2\pi f_c\,t + 2\pi\,m\,\Delta f\,t\Bigr).
+ = 
+\sqrt{\frac{2\mathcal{E}}{T}} \cos \Bigl(2\pi f_c t + 2\pi m \Delta f t\Bigr)
 \]</div>
 <p>Compare this with</p>
 <div class="math notranslate nohighlight">
 \[
 \phi_m(t)
-\;=\;
-\sqrt{\frac{2}{T}}\;\cos\!\Bigl(2\pi f_c\,t + 2\pi\,(m-1)\,\Delta f\,t\Bigr).
+ = 
+\sqrt{\frac{2}{T}} \cos \Bigl(2\pi f_c t + 2\pi (m-1) \Delta f t\Bigr)
 \]</div>
 <p>If we choose the index consistently (say we shift <span class="math notranslate nohighlight">\(m\to m-1\)</span> in the definition of <span class="math notranslate nohighlight">\(\phi\)</span> or vice versa), each <span class="math notranslate nohighlight">\(s_m(t)\)</span> differs from its corresponding <span class="math notranslate nohighlight">\(\phi_m(t)\)</span> <em>only</em> by an amplitude factor <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. Indeed:</p>
 <div class="math notranslate nohighlight">
@@ -821,25 +828,24 @@ s_m(t)
 \phi_m(t)
 =
 \sqrt{\frac{2}{T}}
-\;\cos\!\Bigl(2\pi f_c\,t + 2\pi\,(m-1)\,\Delta f\,t\Bigr).
+ \cos \Bigl(2\pi f_c t + 2\pi (m-1) \Delta f t\Bigr)
 \]</div>
 <p>But if we re‐label or if we define</p>
 <div class="math notranslate nohighlight">
 \[
 s_{m}(t) 
-\;=\;
-\sqrt{\mathcal{E}}\,\phi_{m+1}(t),
+ = 
+\sqrt{\mathcal{E}} \phi_{m+1}(t)
 \]</div>
 <p>(depending on indexing), we get exactly the same waveform shape with amplitude <span class="math notranslate nohighlight">\(\sqrt{2\mathcal{E}/T}\)</span>. The key takeaway is:</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
 s_m(t)
-\;=\;
-\sqrt{\mathcal{E}}\;\phi_m(t)
+ = 
+\sqrt{\mathcal{E}} \phi_m(t)}
 \quad
-\text{(up to a small frequency‐index shift)}.
-}
+\text{(up to a small frequency‐index shift)}
 \]</div>
 <p>Hence, each FSK signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> is essentially <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span> times one of the orthonormal basis functions <span class="math notranslate nohighlight">\(\phi_m(t)\)</span>.</p>
 </section>
@@ -849,19 +855,19 @@ s_m(t)
 <p>Once we have an orthonormal set <span class="math notranslate nohighlight">\(\{\phi_k(t)\}_{k=1}^M\)</span>, <strong>any</strong> signal <span class="math notranslate nohighlight">\(x(t)\)</span> living in the span can be written uniquely as:</p>
 <div class="math notranslate nohighlight">
 \[
-x(t) \;=\; \sum_{k=1}^M \alpha_k\,\phi_k(t).
+x(t)  =  \sum_{k=1}^M \alpha_k \phi_k(t)
 \]</div>
 <ul>
 <li><p>The <strong>coordinate</strong> of <span class="math notranslate nohighlight">\(x(t)\)</span> in this <span class="math notranslate nohighlight">\(M\)</span>‐dimensional space is<br />
-<span class="math notranslate nohighlight">\(\bigl(\alpha_1,\,\alpha_2,\,\dots,\,\alpha_M\bigr)\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(\bigl(\alpha_1, \alpha_2, \dots, \alpha_M\bigr)\)</span>.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(x(t) = s_m(t)\)</span>, then all but the <span class="math notranslate nohighlight">\(m\)</span>th coordinate will be zero, and that <span class="math notranslate nohighlight">\(m\)</span>th coordinate will be <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. Symbolically,</p>
 <div class="math notranslate nohighlight">
 \[
-   s_1(t) \;\longmapsto\; (\sqrt{\mathcal{E}},\,0,\,0,\dots, 0),
+   s_1(t)  \longmapsto  (\sqrt{\mathcal{E}}, 0, 0,\dots, 0)
    \]</div>
 <div class="math notranslate nohighlight">
 \[
-   s_2(t) \;\longmapsto\; (0,\,\sqrt{\mathcal{E}},\,0,\dots, 0),
+   s_2(t)  \longmapsto  (0, \sqrt{\mathcal{E}}, 0,\dots, 0)
    \]</div>
 <div class="math notranslate nohighlight">
 \[
@@ -869,11 +875,11 @@ x(t) \;=\; \sum_{k=1}^M \alpha_k\,\phi_k(t).
    \]</div>
 <div class="math notranslate nohighlight">
 \[
-   s_M(t) \;\longmapsto\; (0,\,0,\,\dots,\,0,\,\sqrt{\mathcal{E}}).
+   s_M(t)  \longmapsto  (0, 0, \dots, 0, \sqrt{\mathcal{E}})
    \]</div>
 </li>
 </ul>
-<p>Therefore, <strong>orthogonal M‐FSK</strong> can be viewed geometrically as placing each symbol at a vertex of an <span class="math notranslate nohighlight">\(M\)</span>‐dimensional simplex whose edges have length <span class="math notranslate nohighlight">\(\sqrt{2\,\mathcal{E}}\)</span>. Each symbol waveform is “one basis function turned on” (multiplied by <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>).</p>
+<p>Therefore, <strong>orthogonal M‐FSK</strong> can be viewed geometrically as placing each symbol at a vertex of an <span class="math notranslate nohighlight">\(M\)</span>‐dimensional simplex whose edges have length <span class="math notranslate nohighlight">\(\sqrt{2 \mathcal{E}}\)</span>. Each symbol waveform is “one basis function turned on” (multiplied by <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>).</p>
 </section>
 <section id="euclidean-and-minimum-distance">
 <h2>Euclidean and Minimum Distance<a class="headerlink" href="#euclidean-and-minimum-distance" title="Link to this heading">#</a></h2>
@@ -883,26 +889,26 @@ x(t) \;=\; \sum_{k=1}^M \alpha_k\,\phi_k(t).
 <div class="math notranslate nohighlight">
 \[
 s_m(t) 
-\;=\;
-\sqrt{\frac{2\mathcal{E}}{T}}\;\cos\!\Bigl(2\pi\,\bigl(f_c + m\,\Delta f\bigr)\,t\Bigr),
+ = 
+\sqrt{\frac{2\mathcal{E}}{T}} \cos \Bigl(2\pi \bigl(f_c + m \Delta f\bigr) t\Bigr),
 \quad
 m = 1, 2, \ldots, M,
 \quad
-0 \le t \le T.
+0 \le t \le T
 \]</div>
 <p>Each signal has energy</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{0}^{T} s_m^2(t)\,\mathrm{d}t
-\;=\; \mathcal{E}.
+\int_{0}^{T} s_m^2(t) \mathrm{d}t
+ =  \mathcal{E}
 \]</div>
 <p>(As discussed previously, the factor <span class="math notranslate nohighlight">\(\sqrt{\tfrac{2\mathcal{E}}{T}}\)</span> in front of a cosine means each real passband signal integrates to <span class="math notranslate nohighlight">\(\mathcal{E}\)</span> over the interval <span class="math notranslate nohighlight">\([0,T]\)</span>.)</p>
 <p>We assume <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen so that the signals <span class="math notranslate nohighlight">\(\{s_m(t)\}\)</span> are <strong>orthogonal</strong>—i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{0}^{T} s_m(t)\,s_n(t)\,\mathrm{d}t 
-\;=\; 0,
-\quad m \neq n.
+\int_{0}^{T} s_m(t) s_n(t) \mathrm{d}t 
+ =  0,
+\quad m \neq n
 \]</div>
 <section id="euclidean-distance-between-two-fsk-signals">
 <h3>Euclidean Distance Between Two FSK Signals<a class="headerlink" href="#euclidean-distance-between-two-fsk-signals" title="Link to this heading">#</a></h3>
@@ -910,49 +916,49 @@ m = 1, 2, \ldots, M,
 <div class="math notranslate nohighlight">
 \[
 d^2(m,n)
-\;=\;
-\int_{0}^{T} \Bigl[s_m(t) \;-\; s_n(t)\Bigr]^{2}\,\mathrm{d}t.
+ = 
+\int_{0}^{T} \Bigl[s_m(t)  -  s_n(t)\Bigr]^{2} \mathrm{d}t
 \]</div>
 <p>Expanding this:</p>
 <div class="math notranslate nohighlight">
 \[
 d^2(m,n)
-\;=\;
-\int_{0}^{T} \Bigl[s_m^2(t)\;-\;2\,s_m(t)\,s_n(t)\;+\;s_n^2(t)\Bigr]\,\mathrm{d}t.
+ = 
+\int_{0}^{T} \Bigl[s_m^2(t) - 2 s_m(t) s_n(t) + s_n^2(t)\Bigr] \mathrm{d}t
 \]</div>
 <p>Using orthogonality, we have:</p>
 <div class="math notranslate nohighlight">
-\[\displaystyle \int_{0}^{T} s_m^2(t)\,\mathrm{d}t = \mathcal{E}.\]</div>
+\[\displaystyle \int_{0}^{T} s_m^2(t) \mathrm{d}t = \mathcal{E}\]</div>
 <div class="math notranslate nohighlight">
-\[ \displaystyle \int_{0}^{T} s_n^2(t)\,\mathrm{d}t = \mathcal{E}.\]</div>
+\[ \displaystyle \int_{0}^{T} s_n^2(t) \mathrm{d}t = \mathcal{E}\]</div>
 <div class="math notranslate nohighlight">
-\[ \displaystyle \int_{0}^{T} s_m(t)\,s_n(t)\,\mathrm{d}t = 0\quad \text{for }m \neq n.\]</div>
+\[ \displaystyle \int_{0}^{T} s_m(t) s_n(t) \mathrm{d}t = 0\quad \text{for }m \neq n\]</div>
 <p>Hence,</p>
 <div class="math notranslate nohighlight">
 \[
 d^2(m,n)
-\;=\;
-\mathcal{E} \;+\; \mathcal{E} \;-\; 2 \times 0
-\;=\;
-2\,\mathcal{E}.
+ = 
+\mathcal{E}  +  \mathcal{E}  -  2 \times 0
+ = 
+2 \mathcal{E}
 \]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight">
 \[
-d(m,n) \;=\; \sqrt{2\,\mathcal{E}}.
+d(m,n)  =  \sqrt{2 \mathcal{E}}
 \]</div>
 </section>
 <section id="minimum-distance">
 <h3>Minimum Distance<a class="headerlink" href="#minimum-distance" title="Link to this heading">#</a></h3>
-<p>Because <strong>all</strong> pairs of distinct signals are orthogonal and have the same energy <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>, their pairwise distances are all the same, namely <span class="math notranslate nohighlight">\(\sqrt{2\,\mathcal{E}}\)</span>. Therefore, the <strong>minimum distance</strong> (among all possible pairs) is</p>
+<p>Because <strong>all</strong> pairs of distinct signals are orthogonal and have the same energy <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>, their pairwise distances are all the same, namely <span class="math notranslate nohighlight">\(\sqrt{2 \mathcal{E}}\)</span>. Therefore, the <strong>minimum distance</strong> (among all possible pairs) is</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
 d_{\min} 
-\;=\; \sqrt{2\,\mathcal{E}}.
+ =  \sqrt{2 \mathcal{E}}
 }
 \]</div>
-<p>In an <span class="math notranslate nohighlight">\(M\)</span>-FSK constellation (with ideal orthogonality), every pair of signals is separated by the same distance <span class="math notranslate nohighlight">\(\sqrt{2\,\mathcal{E}}\)</span>.</p>
+<p>In an <span class="math notranslate nohighlight">\(M\)</span>-FSK constellation (with ideal orthogonality), every pair of signals is separated by the same distance <span class="math notranslate nohighlight">\(\sqrt{2 \mathcal{E}}\)</span>.</p>
 </section>
 </section>
 <section id="geometric-interpretation">
@@ -960,11 +966,11 @@ d_{\min}
 <p>When mapped into an <span class="math notranslate nohighlight">\(M\)</span>-dimensional orthonormal basis (each basis vector corresponding to one frequency tone), the signals <span class="math notranslate nohighlight">\(s_m(t)\)</span> simply become vectors whose coordinates are all zero except for the <span class="math notranslate nohighlight">\(m\)</span>th entry, which is <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. For example:</p>
 <div class="math notranslate nohighlight">
 \[
-s_1(t) \;\longmapsto\; (\sqrt{\mathcal{E}},\,0,\,0,\,\dots)
+s_1(t)  \longmapsto  (\sqrt{\mathcal{E}}, 0, 0, \dots)
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-s_2(t) \;\longmapsto\; (0,\,\sqrt{\mathcal{E}},\,0,\,\dots)
+s_2(t)  \longmapsto  (0, \sqrt{\mathcal{E}}, 0, \dots)
 \]</div>
 <div class="math notranslate nohighlight">
 \[
@@ -972,13 +978,13 @@ s_2(t) \;\longmapsto\; (0,\,\sqrt{\mathcal{E}},\,0,\,\dots)
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-s_M(t) \;\longmapsto\; (0,\,0,\,\dots,\,\sqrt{\mathcal{E}}).
+s_M(t)  \longmapsto  (0, 0, \dots, \sqrt{\mathcal{E}})
 \]</div>
 <p>Each vector thus has length <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. The distance between any two distinct vertices in this orthonormal “simplex” is</p>
 <div class="math notranslate nohighlight">
 \[
 \sqrt{(\sqrt{\mathcal{E}} - 0)^2 + (0 - \sqrt{\mathcal{E}})^2 + \dots} 
-\;=\; \sqrt{\mathcal{E} + \mathcal{E}} = \sqrt{2\,\mathcal{E}}.
+ =  \sqrt{\mathcal{E} + \mathcal{E}} = \sqrt{2 \mathcal{E}}
 \]</div>
 <section id="minimum-distance-in-terms-of-mathcal-e-b">
 <h3>Minimum Distance in terms of <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span><a class="headerlink" href="#minimum-distance-in-terms-of-mathcal-e-b" title="Link to this heading">#</a></h3>
@@ -987,7 +993,7 @@ s_M(t) \;\longmapsto\; (0,\,0,\,\dots,\,\sqrt{\mathcal{E}}).
 <p>For an <span class="math notranslate nohighlight">\(M\)</span>‐ary scheme, each symbol carries <span class="math notranslate nohighlight">\(\log_2(M)\)</span> bits. If <span class="math notranslate nohighlight">\(\mathcal{E}_s\)</span> denotes the energy to send one symbol, and <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span> denotes the energy to send one bit, the relationship is:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E}_s \;=\; (\log_2 M)\,\mathcal{E}_b.
+\mathcal{E}_s  =  (\log_2 M) \mathcal{E}_b
 \]</div>
 <p>This simply says that the energy for a symbol of <span class="math notranslate nohighlight">\(\log_2(M)\)</span> bits is <span class="math notranslate nohighlight">\(\log_2(M)\)</span> times the energy per bit.</p>
 <p><strong>Minimum Distance of Orthogonal M‐FSK in Terms of <span class="math notranslate nohighlight">\(\mathcal{E}_s\)</span></strong></p>
@@ -995,35 +1001,35 @@ s_M(t) \;\longmapsto\; (0,\,0,\,\dots,\,\sqrt{\mathcal{E}}).
 <div class="math notranslate nohighlight">
 \[
 d(m,n)
-\;=\;
+ = 
 \sqrt{
-  \int_0^T \bigl[s_m(t) - s_n(t)\bigr]^2\,\mathrm{d}t
+  \int_0^T \bigl[s_m(t) - s_n(t)\bigr]^2 \mathrm{d}t
 }
-\;=\;
-\sqrt{\,2\,\mathcal{E}_s\,}.
+ = 
+\sqrt{ 2 \mathcal{E}_s }
 \]</div>
 <p>Because all signals are mutually orthogonal, <strong>all pairs</strong> have the same distance <span class="math notranslate nohighlight">\(\sqrt{2\mathcal{E}_s}\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\min} = \sqrt{2\,\mathcal{E}_s}.
+d_{\min} = \sqrt{2 \mathcal{E}_s}
 \]</div>
 <p><strong>Expressing <span class="math notranslate nohighlight">\(d_{\min}\)</span> in Terms of <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span></strong></p>
-<p>Using <span class="math notranslate nohighlight">\(\mathcal{E}_s = (\log_2 M)\,\mathcal{E}_b\)</span>, substitute into <span class="math notranslate nohighlight">\(d_{\min} = \sqrt{2\,\mathcal{E}_s}\)</span>:</p>
+<p>Using <span class="math notranslate nohighlight">\(\mathcal{E}_s = (\log_2 M) \mathcal{E}_b\)</span>, substitute into <span class="math notranslate nohighlight">\(d_{\min} = \sqrt{2 \mathcal{E}_s}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 d_{\min} 
-\;=\;
-\sqrt{2 \,(\log_2 M)\,\mathcal{E}_b}
-\;=\;
-\sqrt{2\,\log_2(M)}\;\sqrt{\mathcal{E}_b}.
+ = 
+\sqrt{2  (\log_2 M) \mathcal{E}_b}
+ = 
+\sqrt{2 \log_2(M)} \sqrt{\mathcal{E}_b}
 \]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
 d_{\min}
-\;=\;
-\sqrt{2\,\log_2(M)\,\mathcal{E}_b}.
+ = 
+\sqrt{2 \log_2(M) \mathcal{E}_b}
 }
 \]</div>
 </section>
@@ -1040,190 +1046,191 @@ d_{\min}
 <p>We have two lowpass signals:</p>
 <div class="math notranslate nohighlight">
 \[
-s_{m,lp}(t) \;=\; \sqrt{\frac{2\mathcal{E}}{T}}\; e^{\,j\,2\pi\,m\,\Delta f\,t},
+s_{m,lp}(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  e^{ j 2\pi m \Delta f t},
 \quad
-s_{n,lp}(t) \;=\; \sqrt{\frac{2\mathcal{E}}{T}}\; e^{\,j\,2\pi\,n\,\Delta f\,t}.
+s_{n,lp}(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  e^{ j 2\pi n \Delta f t}
 \]</div>
 <p>The correlation (inner product) over <span class="math notranslate nohighlight">\(0\le t \le T\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_{m,lp}(t),\,s_{n,lp}(t)\rangle
-\;=\;\int_{0}^{T} s_{m,lp}(t)\,\bigl(s_{n,lp}(t)\bigr)^{*}\,\mathrm{d}t.
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = \int_{0}^{T} s_{m,lp}(t) \bigl(s_{n,lp}(t)\bigr)^{*} \mathrm{d}t
 \]</div>
 <p>Since
-<span class="math notranslate nohighlight">\(\bigl(s_{n,lp}(t)\bigr)^{*} = \sqrt{\tfrac{2\mathcal{E}}{T}}\; e^{-\,j\,2\pi\,n\,\Delta f\,t},\)</span><br />
+<span class="math notranslate nohighlight">\(\bigl(s_{n,lp}(t)\bigr)^{*} = \sqrt{\tfrac{2\mathcal{E}}{T}}  e^{- j 2\pi n \Delta f t},\)</span><br />
 we get</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_{m,lp}(t),\,s_{n,lp}(t)\rangle
-\;=\;\int_{0}^{T} 
-\sqrt{\frac{2\mathcal{E}}{T}}\, e^{j\,2\pi\,m\,\Delta f\,t}
-\,\sqrt{\frac{2\mathcal{E}}{T}}\, e^{-\,j\,2\pi\,n\,\Delta f\,t}\;\mathrm{d}t 
-\;=\;\frac{2\mathcal{E}}{T}\int_0^T e^{j\,2\pi\,(m-n)\,\Delta f\,t}\;\mathrm{d}t.
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = \int_{0}^{T} 
+\sqrt{\frac{2\mathcal{E}}{T}}  e^{j 2\pi m \Delta f t}
+ \sqrt{\frac{2\mathcal{E}}{T}}  e^{- j 2\pi n \Delta f t} \mathrm{d}t 
+ = \frac{2\mathcal{E}}{T}\int_0^T e^{j 2\pi (m-n) \Delta f t} \mathrm{d}t
 \]</div>
 <p>Thus, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \langle s_{m,lp}(t), s_{n,lp}(t)\rangle 
-\;=\;\frac{2\mathcal{E}}{T}\int_0^T e^{j\,2\pi\,(m-n)\,\Delta f\,t}\;\mathrm{d}t 
+ = \frac{2\mathcal{E}}{T}\int_0^T e^{j 2\pi (m-n) \Delta f t} \mathrm{d}t 
 \]</div>
 <p>Next, we evaluate</p>
 <div class="math notranslate nohighlight">
 \[
 I 
-\;=\;\int_0^T e^{j\,2\pi\,(m-n)\,\Delta f\,t}\;\mathrm{d}t 
-\;=\;
+ = \int_0^T e^{j 2\pi (m-n) \Delta f t} \mathrm{d}t 
+ = 
 \left.
-\frac{\,\mathcal{E}^{\,j\,2\pi\,(m-n)\,\Delta f\,t}\,}{\,j\,2\pi\,(m-n)\,\Delta f\,}
-\right\rvert_{\,0}^{\,T}.
+\frac{ \mathcal{E}^{ j 2\pi (m-n) \Delta f t} }{ j 2\pi (m-n) \Delta f }
+\right\rvert_{ 0}^{ T}
 \]</div>
 <p>That is,</p>
 <div class="math notranslate nohighlight">
 \[
 I
-= \frac{\,\mathcal{E}^{\,j\,2\pi\,(m-n)\,\Delta f\,T} - 1\,}
-       {\,j\,2\pi\,(m-n)\,\Delta f\,}.
+= \frac{ \mathcal{E}^{ j 2\pi (m-n) \Delta f T} - 1 }
+       { j 2\pi (m-n) \Delta f }
 \]</div>
 <p>A common way to rewrite <span class="math notranslate nohighlight">\(e^{j\alpha} - 1\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 e^{j\alpha} - 1
-\;=\;
-e^{\,j\,\tfrac{\alpha}{2}}
-\Bigl(e^{\,j\,\tfrac{\alpha}{2}} - e^{-\,j\,\tfrac{\alpha}{2}}\Bigr)
-\;=\;
-2\,j\,\mathcal{E}^{\,j\,\tfrac{\alpha}{2}}\;\sin\!\Bigl(\tfrac{\alpha}{2}\Bigr).
+ = 
+e^{ j \tfrac{\alpha}{2}}
+\Bigl(e^{ j \tfrac{\alpha}{2}} - e^{- j \tfrac{\alpha}{2}}\Bigr)
+ = 
+2 j \mathcal{E}^{ j \tfrac{\alpha}{2}} \sin \Bigl(\tfrac{\alpha}{2}\Bigr)
 \]</div>
-<p>Let <span class="math notranslate nohighlight">\(\alpha = 2\pi (m-n)\Delta f \,T.\)</span> Then</p>
+<p>Let <span class="math notranslate nohighlight">\(\alpha = 2\pi (m-n)\Delta f  T.\)</span> Then</p>
 <div class="math notranslate nohighlight">
 \[
 e^{j\alpha} - 1
-= 2\,j\,\mathcal{E}^{\,j\,\alpha/2}\;\sin\!\Bigl(\tfrac{\alpha}{2}\Bigr)
-= 2\,j\,\mathcal{E}^{\,j\,\pi\,T\,(m-n)\,\Delta f}\;\sin\Bigl(\pi\,T\,(m-n)\,\Delta f\Bigr).
+= 2 j \mathcal{E}^{ j \alpha/2} \sin \Bigl(\tfrac{\alpha}{2}\Bigr)
+= 2 j \mathcal{E}^{ j \pi T (m-n) \Delta f} \sin\Bigl(\pi T (m-n) \Delta f\Bigr)
 \]</div>
 <p>Hence,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
 I
-&amp;= \frac{\,2\,j\,\mathcal{E}^{\,j\,\pi\,T\,(m-n)\,\Delta f}\;\sin\bigl(\,\pi\,T\,(m-n)\,\Delta f\bigr)\,}
-       {\,j\,2\pi\,(m-n)\,\Delta f\,} \\
+&amp;= \frac{ 2 j \mathcal{E}^{ j \pi T (m-n) \Delta f} \sin\bigl( \pi T (m-n) \Delta f\bigr) }
+       { j 2\pi (m-n) \Delta f } \\
 &amp;= 
-\frac{\,\mathcal{E}^{\,j\,\pi\,T\,(m-n)\,\Delta f}\;\sin\bigl(\,\pi\,T\,(m-n)\,\Delta f\bigr)\,}
-     {\,\pi\,(m-n)\,\Delta f\,}.
+\frac{ \mathcal{E}^{ j \pi T (m-n) \Delta f} \sin\bigl( \pi T (m-n) \Delta f\bigr) }
+     { \pi (m-n) \Delta f }
 \end{align*}
 \end{split}\]</div>
 <p>Consequently,</p>
 <div class="math notranslate nohighlight">
 \[
 \langle s_{m,lp}(t), s_{n,lp}(t)\rangle
-\;=\;
-\frac{2\mathcal{E}}{T}\,\frac{\sin\bigl(\,\pi\,T\,(m-n)\,\Delta f\bigr)\,\mathcal{E}^{\,j\,\pi\,T\,(m-n)\,\Delta f}}
-          {\pi\,(m-n)\,\Delta f}.
+ = 
+\frac{2\mathcal{E}}{T} \frac{\sin\bigl( \pi T (m-n) \Delta f\bigr) \mathcal{E}^{ j \pi T (m-n) \Delta f}}
+          {\pi (m-n) \Delta f}
 \]</div>
 <p>Thus, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \langle s_{m,lp}(t), s_{n,lp}(t)\rangle
-\;=\;
-\frac{2\mathcal{E}}{T}\,\frac{\sin\bigl(\pi T (m-n)\Delta f\bigr)}{\pi (m-n)\Delta f}\,
-e^{\,j\,\pi\,T\,(m-n)\,\Delta f}.
+ = 
+\frac{2\mathcal{E}}{T} \frac{\sin\bigl(\pi T (m-n)\Delta f\bigr)}{\pi (m-n)\Delta f} 
+e^{ j \pi T (m-n) \Delta f}
 \]</div>
 <p><strong>Real Part of the Correlation</strong></p>
-<p>We now want
-$<span class="math notranslate nohighlight">\(
-\mathrm{Re}\!\Bigl[\langle s_{m,lp}(t),\, s_{n,lp}(t)\rangle\Bigr]
-\;=\;
-\mathrm{Re}\!\biggl[
-  \frac{2\mathcal{E}}{T}\,
-  \frac{\sin\bigl(\,\pi\,T\,(m-n)\,\Delta f\bigr)}
-       {\pi\,(m-n)\,\Delta f}
-  \;e^{\,j\,\pi\,T\,(m-n)\,\Delta f}
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr">
+<h1>We now want
+$$
+\mathrm{Re} \Bigl[\langle s_{m,lp}(t),  s_{n,lp}(t)\rangle\Bigr]<a class="headerlink" href="#we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr" title="Link to this heading">#</a></h1>
+<p>\mathrm{Re} \biggl[
+\frac{2\mathcal{E}}{T}
+\frac{\sin\bigl( \pi T (m-n) \Delta f\bigr)}
+{\pi (m-n) \Delta f}
+e^{ j \pi T (m-n) \Delta f}
 \biggr].
-\)</span>$</p>
-<p>Let <span class="math notranslate nohighlight">\(\theta = \pi\,T\,(m-n)\,\Delta f\)</span>. Then</p>
+$$</p>
+<p>Let <span class="math notranslate nohighlight">\(\theta = \pi T (m-n) \Delta f\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[
-\sin(\theta)\,\mathcal{E}^{\,j\,\theta}
-\;=\;
-\sin(\theta)\,\bigl[\cos(\theta) + j\,\sin(\theta)\bigr]
-\;=\;
-\sin(\theta)\,\cos(\theta) \;+\; j\,\sin^2(\theta).
+\sin(\theta) \mathcal{E}^{ j \theta}
+ = 
+\sin(\theta) \bigl[\cos(\theta) + j \sin(\theta)\bigr]
+ = 
+\sin(\theta) \cos(\theta)  +  j \sin^2(\theta)
 \]</div>
 <p>Hence, the <em>real part</em> is</p>
 <div class="math notranslate nohighlight">
 \[
-\sin(\theta)\,\cos(\theta)
-\;=\;
-\tfrac12\,\sin\bigl(2\theta\bigr)
+\sin(\theta) \cos(\theta)
+ = 
+\tfrac12 \sin\bigl(2\theta\bigr)
 \quad\text{(since }\sin(\theta)\cos(\theta) 
   = \tfrac12[\sin(\theta+\theta) + \sin(\theta-\theta)] 
-  = \tfrac12\,\sin(2\theta)\bigl).
+  = \tfrac12 \sin(2\theta)\bigl)
 \]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{Re}\!\bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
-\;=\;
-\frac{2\mathcal{E}}{T}\,\frac{1}{\pi\,(m-n)\,\Delta f}\,\sin(\theta)\,\cos(\theta)
-\;=\;
-\frac{2\mathcal{E}}{T}\,\frac{1}{\pi\,(m-n)\,\Delta f}\,\frac12\,\sin\bigl(2\theta\bigr).
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{2\mathcal{E}}{T} \frac{1}{\pi (m-n) \Delta f} \sin(\theta) \cos(\theta)
+ = 
+\frac{2\mathcal{E}}{T} \frac{1}{\pi (m-n) \Delta f} \frac12 \sin\bigl(2\theta\bigr)
 \]</div>
 <p>Simplify:</p>
 <div class="math notranslate nohighlight">
 \[
-= \frac{\mathcal{E}}{T}\,\frac{\sin\bigl(2\,\theta\bigr)}{\pi\,(m-n)\,\Delta f}
-\;=\;
-\frac{\mathcal{E}}{T}\,\frac{\sin\Bigl(2\,\pi\,T\,(m-n)\,\Delta f\Bigr)}
-           {\pi\,(m-n)\,\Delta f}.
+= \frac{\mathcal{E}}{T} \frac{\sin\bigl(2 \theta\bigr)}{\pi (m-n) \Delta f}
+ = 
+\frac{\mathcal{E}}{T} \frac{\sin\Bigl(2 \pi T (m-n) \Delta f\Bigr)}
+           {\pi (m-n) \Delta f}
 \]</div>
 <p><strong>Expressing in Terms of <span class="math notranslate nohighlight">\(\mathrm{sinc}(\cdot)\)</span></strong></p>
 <p>Recall the standard definition:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{sinc}(x) \;=\; \frac{\sin(\pi x)}{\pi x}.
+\mathrm{sinc}(x)  =  \frac{\sin(\pi x)}{\pi x}
 \]</div>
 <p>In our case,</p>
 <div class="math notranslate nohighlight">
 \[
 \sin\bigl(2\pi x\bigr) 
-\;=\; 2\pi x \;\mathrm{sinc}(2x)\;\times\text{(up to factors of 2)}.
+ =  2\pi x  \mathrm{sinc}(2x) \times\text{(up to factors of 2)}
 \]</div>
 <p>More precisely,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\sin\bigl(2\pi x\bigr)}{\pi x}
-\;=\;
-2\,\mathrm{sinc}\bigl(2x\bigr).
+ = 
+2 \mathrm{sinc}\bigl(2x\bigr)
 \]</div>
-<p>Hence if we let <span class="math notranslate nohighlight">\(x = T\,(m-n)\,\Delta f\)</span>, then</p>
+<p>Hence if we let <span class="math notranslate nohighlight">\(x = T (m-n) \Delta f\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\sin\bigl(2\pi T\,(m-n)\,\Delta f\bigr)}{\pi\,(m-n)\,\Delta f}
-\;=\;
-2 \,\mathrm{sinc}\bigl(2\,T\,(m-n)\,\Delta f\bigr).
+\frac{\sin\bigl(2\pi T (m-n) \Delta f\bigr)}{\pi (m-n) \Delta f}
+ = 
+2  \mathrm{sinc}\bigl(2 T (m-n) \Delta f\bigr)
 \]</div>
 <p>Therefore,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{Re}\!\bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
-\;=\;
-\frac{\mathcal{E}}{T}\,\times
-2\,\mathrm{sinc}\!\Bigl(2\,T\,(m-n)\,\Delta f\Bigr)
-\;=\;
-\frac{2\mathcal{E}}{T}\,\mathrm{sinc}\!\Bigl(2\,T\,(m-n)\,\Delta f\Bigr).
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{\mathcal{E}}{T} \times
+2 \mathrm{sinc} \Bigl(2 T (m-n) \Delta f\Bigr)
+ = 
+\frac{2\mathcal{E}}{T} \mathrm{sinc} \Bigl(2 T (m-n) \Delta f\Bigr)
 \]</div>
 <p>Thus, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\mathrm{Re}\,\bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle \bigr]
-\;=\;
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle \bigr]
+ = 
 \frac{2\mathcal{E}}{T}
-\,\mathrm{sinc}\!\Bigl(2\,T\,(m-n)\,\Delta f\Bigr).
+ \mathrm{sinc} \Bigl(2 T (m-n) \Delta f\Bigr)
 }
 \]</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1291,6 +1298,7 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Frequency-Shift Keying (FSK)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsk-waveform">FSK Waveform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-fsk-signals">Orthogonality of FSK Signals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-two-signals">Correlation of Two Signals</a></li>
@@ -1317,6 +1325,12 @@ $<span class="math notranslate nohighlight">\(
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-vs-nonlinear-modulation">Linear vs. Nonlinear Modulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-derivation-of-the-correlation-of-two-fsk-signals">Appendix: Derivation of The Correlation of Two FSK Signals</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr">We now want
+$$
+\mathrm{Re} \Bigl[\langle s_{m,lp}(t),  s_{n,lp}(t)\rangle\Bigr]</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

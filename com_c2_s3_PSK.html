@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -456,10 +456,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-keying-psk">Phase-Shift Keying (PSK)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psk-waveform">PSK Waveform</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psk-modulation-schemes">PSK Modulation Schemes</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psk-waveform">PSK Waveform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-phase-modulation-waveforms">Energy of Phase Modulation Waveforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-representation-of-phase-modulation">Signal Space Representation of Phase Modulation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-and-basis-functions">Orthogonality and Basis Functions</a></li>
@@ -503,7 +500,8 @@
 <p>The <span class="math notranslate nohighlight">\( M \)</span> possible <strong>phase-modulated signals</strong> can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = \Re \left\{ g(t)e^{j \frac{2\pi(m-1)}{M}}e^{j2\pi f_c t} \right\}, \quad m = 1, 2, \ldots, M
+\boxed{
+s_m(t) = \Re \left\{ g(t)e^{j \frac{2\pi(m-1)}{M}}e^{j2\pi f_c t} \right\},} \quad m = 1, 2, \ldots, M
 \]</div>
 <p>Expanding the complex exponential:</p>
 <div class="math notranslate nohighlight">
@@ -526,19 +524,10 @@ s_m(t) = g(t) \cos \left( \frac{2\pi(m-1)}{M} \right) \cos(2\pi f_c t) - g(t) \s
 <li><p>Each symbol <span class="math notranslate nohighlight">\( s_m(t) \)</span> corresponds to a <strong>unique phase shift</strong> of the carrier.</p></li>
 <li><p>The phase values <span class="math notranslate nohighlight">\( \theta_m \)</span> are spaced <strong>equally around the unit circle</strong>, ensuring efficient use of the signal space.</p></li>
 </ul>
-<section id="psk-modulation-schemes">
-<h3>PSK Modulation Schemes<a class="headerlink" href="#psk-modulation-schemes" title="Link to this heading">#</a></h3>
-<p>Common forms of PSK include:</p>
-<ul class="simple">
-<li><p><strong>Binary PSK (BPSK)</strong>: <span class="math notranslate nohighlight">\( M = 2 \)</span>, where the phase shifts are <span class="math notranslate nohighlight">\( 0^\circ \)</span> and <span class="math notranslate nohighlight">\( 180^\circ \)</span>.</p></li>
-<li><p><strong>Quadrature PSK (QPSK)</strong>: <span class="math notranslate nohighlight">\( M = 4 \)</span>, where the phase shifts are <span class="math notranslate nohighlight">\( 0^\circ, 90^\circ, 180^\circ, 270^\circ \)</span>.</p></li>
-<li><p><strong>M-ary PSK (M-PSK)</strong>: General case where <span class="math notranslate nohighlight">\( M \)</span> different phase shifts are used.</p></li>
-</ul>
-</section>
 </section>
 <section id="energy-of-phase-modulation-waveforms">
 <h2>Energy of Phase Modulation Waveforms<a class="headerlink" href="#energy-of-phase-modulation-waveforms" title="Link to this heading">#</a></h2>
-<p>One of the fundamental properties of <strong>phase modulation (PSK)</strong> is that all signal waveforms have <strong>equal energy</strong>. This property ensures <strong>constant envelope transmission</strong>, which makes PSK signals robust to channel impairments like amplitude fading.</p>
+<p>One of the fundamental properties of PSK is that all signal waveforms have <strong>equal energy</strong>. This property ensures <strong>constant envelope transmission</strong>, which makes PSK signals robust to channel impairments like amplitude fading.</p>
 <p>The <strong>average symbol energy</strong> for phase-modulated signals is given by:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -548,7 +537,9 @@ s_m(t) = g(t) \cos \left( \frac{2\pi(m-1)}{M} \right) \cos(2\pi f_c t) - g(t) \s
 <p>The <strong>average bit energy</strong> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_g}{2 \log_2 M}
+}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -575,11 +566,15 @@ g(t) \cos(2\pi f_c t) \quad \text{and} \quad g(t) \sin(2\pi f_c t)
 <p>Using these functions, we define the <strong>basis functions</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \phi_1(t) = \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos 2\pi f_c t
+}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 \phi_2(t) = -\sqrt{\frac{2}{\mathcal{E}_g}} g(t) \sin 2\pi f_c t
+}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -613,6 +608,19 @@ s_m(t) = \sqrt{\frac{\mathcal{E}_g}{2}} \cos \left( \frac{2\pi}{M} (m - 1) \righ
 N = 2
 \]</div>
 <p>which confirms that <strong>PSK signals are inherently two-dimensional</strong>. This is because they use both <strong>in-phase (cosine) and quadrature (sine) components</strong> to represent information.</p>
+<p><strong>DISCUSSION: Visualize the Signal Space</strong></p>
+<p>To <strong>visualize the signal space</strong> defined by the given orthonormal basis functions, we can think of it as a <strong>2D Euclidean space</strong> similar to the <strong>Cartesian coordinate plane (<span class="math notranslate nohighlight">\(xy\)</span>-plane)</strong>.</p>
+<p><strong>Signal Space Representation</strong></p>
+<ul class="simple">
+<li><p>The basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> define a <strong>two-dimensional orthonormal coordinate system</strong>.</p></li>
+<li><p>Any signal <span class="math notranslate nohighlight">\( s(t) \)</span> in this space can be represented as a <strong>linear combination</strong> of the basis functions: <span class="math notranslate nohighlight">\(s(t) = s_1 \phi_1(t) + s_2 \phi_2(t)\)</span>, where <span class="math notranslate nohighlight">\( s_1 \)</span> and <span class="math notranslate nohighlight">\( s_2 \)</span> are the <strong>signal coefficients</strong></p></li>
+<li><p>The coefficients <span class="math notranslate nohighlight">\( (s_1, s_2) \)</span> uniquely determine the signal <span class="math notranslate nohighlight">\( s(t) \)</span> within this signal space.</p></li>
+</ul>
+<p><strong>Geometric Interpretation</strong></p>
+<ul class="simple">
+<li><p>The pair <span class="math notranslate nohighlight">\( (s_1, s_2) \)</span> can be visualized as a <strong>point in the 2D plane</strong>, just like a Cartesian coordinate system.</p></li>
+<li><p>The two basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> form an <strong>orthonormal coordinate system</strong> (just like unit vectors <span class="math notranslate nohighlight">\( \vec{e}_x \)</span> and <span class="math notranslate nohighlight">\( \vec{e}_y \)</span> in 2D space).</p></li>
+</ul>
 </section>
 </section>
 <section id="psk-signal-constellations">
@@ -622,11 +630,13 @@ N = 2
 <ul>
 <li><p>BPSK signals are <strong>one-dimensional</strong> and correspond to binary PAM signals.</p></li>
 <li><p>These signals are a special case of binary antipodal signaling.</p></li>
+<li><p>The phase shifts are <span class="math notranslate nohighlight">\( 0^\circ \)</span> and <span class="math notranslate nohighlight">\( 180^\circ \)</span>.</p></li>
 </ul>
 </li>
 <li><p><strong>Quadrature Phase-Shift Keying (QPSK)</strong>: <span class="math notranslate nohighlight">\( M = 4 \)</span></p>
 <ul>
 <li><p>QPSK uses a two-dimensional signal space, with four equally spaced points on a circle in the complex plane.</p></li>
+<li><p>The phase shifts are <span class="math notranslate nohighlight">\( 0^\circ, 90^\circ, 180^\circ, 270^\circ \)</span>.</p></li>
 </ul>
 </li>
 <li><p><strong>8-PSK</strong>: <span class="math notranslate nohighlight">\( M = 8 \)</span></p>
@@ -634,6 +644,7 @@ N = 2
 <li><p>8-PSK extends the QPSK constellation to eight equally spaced points, increasing the number of bits per symbol.</p></li>
 </ul>
 </li>
+<li><p><strong><span class="math notranslate nohighlight">\(M\)</span>-ary PSK (M-PSK)</strong>: General case where <span class="math notranslate nohighlight">\( M \)</span> different phase shifts are used.</p></li>
 </ul>
 <section id="mapping-bits-to-phases">
 <h3>Mapping Bits to Phases<a class="headerlink" href="#mapping-bits-to-phases" title="Link to this heading">#</a></h3>
@@ -676,7 +687,9 @@ d_{\text{min}} = \sqrt{\mathcal{E}_g \left( 1 - \cos \frac{2\pi}{M} \right)}
 <p>Using the trigonometric identity <span class="math notranslate nohighlight">\( 1 - \cos x = 2 \sin^2 \frac{x}{2} \)</span>, this can be rewritten as:</p>
 <div class="math notranslate nohighlight">
 \[
+\boxed{
 d_{\text{min}} = \sqrt{2\mathcal{E}_g \sin^2 \frac{\pi}{M}}
+}
 \]</div>
 <p>This formula highlights how <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> depends on the pulse energy <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> and the number of symbols <span class="math notranslate nohighlight">\( M \)</span>. Larger <span class="math notranslate nohighlight">\( M \)</span> results in smaller angular separation between points, reducing <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>.</p>
 </section>
@@ -798,10 +811,7 @@ While the exact formula for <span class="math notranslate nohighlight">\( d_{\te
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-keying-psk">Phase-Shift Keying (PSK)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psk-waveform">PSK Waveform</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psk-modulation-schemes">PSK Modulation Schemes</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psk-waveform">PSK Waveform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-phase-modulation-waveforms">Energy of Phase Modulation Waveforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-representation-of-phase-modulation">Signal Space Representation of Phase Modulation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-and-basis-functions">Orthogonality and Basis Functions</a></li>

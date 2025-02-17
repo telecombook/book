@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -601,7 +601,9 @@ s_m(t) = r_m \cos \left( 2\pi f_c t + \theta_m \right)
 <li><p>The total number of bits per symbol is:</p>
 <div class="math notranslate nohighlight">
 \[
+     \boxed{
      m + n = \log_2(M_1 M_2)
+     }
      \]</div>
 </li>
 </ul>
@@ -635,8 +637,8 @@ s_m(t) = r_m \cos \left( 2\pi f_c t + \theta_m \right)
 \[\begin{split}
 \boxed{
 \begin{align*}
-\phi_1(t) &amp;= \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos(2\pi f_c t),\\
-\phi_2(t) &amp;= -\sqrt{\frac{2}{\mathcal{E}_g}} g(t) \sin(2\pi f_c t),
+\phi_1(t) &amp;= \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos(2\pi f_c t) \\
+\phi_2(t) &amp;= -\sqrt{\frac{2}{\mathcal{E}_g}} g(t) \sin(2\pi f_c t)
 \end{align*}
 }
 \end{split}\]</div>
@@ -657,7 +659,7 @@ s_m(t) = r_m \cos \left( 2\pi f_c t + \theta_m \right)
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-s_m(t) = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_1(t) + A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_2(t).
+s_m(t) = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_1(t) + A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_2(t)
 }
 \]</div>
 <ul class="simple">
@@ -677,17 +679,17 @@ s_m(t) = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_1(t) + A_{mq} \sqrt{\frac
 <p>We can express the QAM signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> as a linear combination of the basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> using vector notation. Recall that the signal is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = s_{m1}\,\phi_1(t) + s_{m2}\,\phi_2(t),
+s_m(t) = s_{m1}\,\phi_1(t) + s_{m2}\,\phi_2(t)
 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
-s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}.
+s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}
 \]</div>
 <p>This can be compactly written in vector-matrix form as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-s_m(t) = \begin{bmatrix} s_{m1} &amp; s_{m2} \end{bmatrix} \begin{bmatrix} \phi_1(t) \\ \phi_2(t) \end{bmatrix}.
+s_m(t) = \begin{bmatrix} s_{m1} &amp; s_{m2} \end{bmatrix} \begin{bmatrix} \phi_1(t) \\ \phi_2(t) \end{bmatrix}
 \end{split}\]</div>
 <p>Here’s what each component represents:</p>
 <ul class="simple">
@@ -697,13 +699,13 @@ s_m(t) = \begin{bmatrix} s_{m1} &amp; s_{m2} \end{bmatrix} \begin{bmatrix} \phi_
 <p>Thus, by mapping the two components of <span class="math notranslate nohighlight">\( s_m(t) \)</span> onto a two-dimensional plane, we can represent each signal as a vector. The coordinates of the vector are defined as follows:</p>
 <div class="math notranslate nohighlight">
 \[\boxed{
-\vec{s}_m = (s_{m1}, s_{m2}),
+\vec{s}_m = (s_{m1}, s_{m2})
 }
 \]</div>
 <p>with</p>
 <div class="math notranslate nohighlight">
 \[
-s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}.
+s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -726,12 +728,12 @@ s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\fra
 In QAM, we select two orthonormal basis functions:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \phi_1(t) \)</span> is typically a cosine (or another waveform representing the in-phase component).</p></li>
-<li><p><span class="math notranslate nohighlight">\( \phi_2(t) \)</span> is typically a sine (or a waveform that is 90 degrees out of phase with the cosine), representing the quadrature component.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \phi_2(t) \)</span> is typically a sine (or a waveform that is <span class="math notranslate nohighlight">\(\pi/2\)</span> out of phase with the cosine), representing the quadrature component.</p></li>
 </ul>
 <p>Because these functions are orthonormal, any signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> can be uniquely expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = s_{m1}\,\phi_1(t) + s_{m2}\,\phi_2(t),
+s_m(t) = s_{m1}\,\phi_1(t) + s_{m2}\,\phi_2(t)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\( s_{m1} \)</span> and <span class="math notranslate nohighlight">\( s_{m2} \)</span> are the projection coefficients (or amplitudes) onto <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>, respectively.</p>
 <p><strong>Mapping to the I/Q Diagram</strong>:<br />
@@ -802,10 +804,9 @@ When we plot the QAM constellation, we are essentially plotting the vector</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computed Energy of s_m(t): </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  (Expected: </span><span class="si">{</span><span class="n">s_m1</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s_m2</span><span class="o">**</span><span class="mi">2</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
 <span class="c1"># 5. Plot the basis functions and the resulting signal s_m(t)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 <span class="c1"># Plot φ₁(t)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">phi1</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\phi_1(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Basis Function $\phi_1(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
@@ -814,7 +815,7 @@ When we plot the QAM constellation, we are essentially plotting the vector</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="c1"># Plot φ₂(t)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">phi2</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\phi_2(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Basis Function $\phi_2(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
@@ -823,7 +824,7 @@ When we plot the QAM constellation, we are essentially plotting the vector</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="c1"># Plot the QAM signal s_m(t)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s_m_t</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$s_m(t) = s_</span><span class="si">{m1}</span><span class="s1">\phi_1(t) + s_</span><span class="si">{m2}</span><span class="s1">\phi_2(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;QAM Signal $s_m(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
@@ -831,7 +832,7 @@ When we plot the QAM constellation, we are essentially plotting the vector</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_lawet</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -841,7 +842,9 @@ When we plot the QAM constellation, we are essentially plotting the vector</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computed Energy of s_m(t): 10.00  (Expected: 10)
 </pre></div>
 </div>
-<img alt="_images/8fc6c638831f747356f618ba3ec14f0387d3639a09a131491dcb2909ac2eb5ca.png" src="_images/8fc6c638831f747356f618ba3ec14f0387d3639a09a131491dcb2909ac2eb5ca.png" />
+<img alt="_images/f3bd2d402656904afe48e64e29ec1b997d38e554dd345a8285d2224630a55965.png" src="_images/f3bd2d402656904afe48e64e29ec1b997d38e554dd345a8285d2224630a55965.png" />
+<img alt="_images/0984fd327f92dc100c5232b3b2a9155c9a6b904e9b937bd7b677f8689debdd13.png" src="_images/0984fd327f92dc100c5232b3b2a9155c9a6b904e9b937bd7b677f8689debdd13.png" />
+<img alt="_images/99cc893357d044ee29621d655d69b087d0f4f89ef64cd4e40bfdd585b4110997.png" src="_images/99cc893357d044ee29621d655d69b087d0f4f89ef64cd4e40bfdd585b4110997.png" />
 </div>
 </div>
 <section id="energy-of-qam-signals">
@@ -849,22 +852,22 @@ When we plot the QAM constellation, we are essentially plotting the vector</p>
 <p>The energy <span class="math notranslate nohighlight">\( \mathcal{E}_m \)</span> of the signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is defined as the squared norm of its vector representation:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E}_m = \|\vec{s}_m\|^2 = s_{m1}^2 + s_{m2}^2.
+\mathcal{E}_m = \|\vec{s}_m\|^2 = s_{m1}^2 + s_{m2}^2
 \]</div>
 <p>Substitute the expressions for <span class="math notranslate nohighlight">\( s_{m1} \)</span> and <span class="math notranslate nohighlight">\( s_{m2} \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-s_{m1}^2 = \left(A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}\right)^2 = A_{mi}^2 \frac{\mathcal{E}_g}{2},
+s_{m1}^2 = \left(A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}\right)^2 = A_{mi}^2 \frac{\mathcal{E}_g}{2}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-s_{m2}^2 = \left(A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}\right)^2 = A_{mq}^2 \frac{\mathcal{E}_g}{2}.
+s_{m2}^2 = \left(A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}\right)^2 = A_{mq}^2 \frac{\mathcal{E}_g}{2}
 \]</div>
 <p>Therefore, the total energy becomes:</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\mathcal{E}_m = \frac{\mathcal{E}_g}{2} \left( A_{mi}^2 + A_{mq}^2 \right).
+\mathcal{E}_m = \frac{\mathcal{E}_g}{2} \left( A_{mi}^2 + A_{mq}^2 \right)
 }
 \]</div>
 </section>
@@ -888,12 +891,12 @@ d_{mn} = \sqrt{\|\vec{s}_m - \vec{s}_n\|^2}
 <p>In a rectangular QAM constellation, the signal amplitudes take discrete values:</p>
 <div class="math notranslate nohighlight">
 \[
-A_m = \pm1, \pm3, \ldots, \pm(M - 1).
+A_m = \pm1, \pm3, \ldots, \pm(M - 1)
 \]</div>
 <p>The <strong>minimum distance</strong> between adjacent constellation points is:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{2\mathcal{E}_g},
+d_{\text{min}} = \sqrt{2\mathcal{E}_g}
 \]</div>
 <p>which is the same as for PAM. This indicates that the spacing between neighboring points in the constellation determines noise resilience.</p>
 </section>
@@ -902,12 +905,12 @@ d_{\text{min}} = \sqrt{2\mathcal{E}_g},
 <p>For a rectangular QAM constellation with <span class="math notranslate nohighlight">\( M = 2^{2k_1} \)</span> (e.g., <span class="math notranslate nohighlight">\( M = 4, 16, 64, 256, \ldots \)</span>) and amplitudes <span class="math notranslate nohighlight">\( \pm 1, \pm 3, \ldots, \pm (\sqrt{M} - 1) \)</span> in both directions:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E}_{\text{avg}} = \frac{1}{M} \frac{\mathcal{E}_g}{2} \sum_{m=1}^{\sqrt{M}} \sum_{n=1}^{\sqrt{M}} \left(A_m^2 + A_n^2\right).
+\mathcal{E}_{\text{avg}} = \frac{1}{M} \frac{\mathcal{E}_g}{2} \sum_{m=1}^{\sqrt{M}} \sum_{n=1}^{\sqrt{M}} \left(A_m^2 + A_n^2\right)
 \]</div>
 <p>Substituting and simplifying:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E}_{\text{avg}} = \frac{\mathcal{E}_g}{2M} \times 2M \frac{(M - 1)}{3} = \frac{M - 1}{3} \mathcal{E}_g.
+\mathcal{E}_{\text{avg}} = \frac{\mathcal{E}_g}{2M} \times 2M \frac{(M - 1)}{3} = \frac{M - 1}{3} \mathcal{E}_g
 \]</div>
 </section>
 <section id="energy-per-bit-in-qam">
@@ -915,7 +918,9 @@ d_{\text{min}} = \sqrt{2\mathcal{E}_g},
 <p>The average energy per bit in QAM is:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M} = \frac{(M - 1)}{3 \log_2 M} \mathcal{E}_g.
+\boxed{
+\mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M} = \frac{(M - 1)}{3 \log_2 M} \mathcal{E}_g
+}
 \]</div>
 </section>
 </section>
@@ -924,7 +929,7 @@ d_{\text{min}} = \sqrt{2\mathcal{E}_g},
 <p>Using <span class="math notranslate nohighlight">\( d_{\text{min}} = \sqrt{2\mathcal{E}_g} \)</span> and substituting <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span>, the minimum distance can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}}.
+d_{\text{min}} = \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}}
 \]</div>
 </section>
 <section id="unifying-bandpass-pam-psk-and-qam-signaling-schemes">
@@ -934,7 +939,7 @@ d_{\text{min}} = \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}}.
 <p>All bandpass signaling schemes (PAM, PSK, and QAM) can be expressed in the <strong>general form</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M,
+s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M
 \]</div>
 <p>where:</p>
 <ul class="simple">
@@ -952,7 +957,7 @@ s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M,
 <li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>real</strong> and typically takes values:</p>
 <div class="math notranslate nohighlight">
 \[
-     A_m = \pm1, \pm3, \ldots, \pm(M - 1).
+     A_m = \pm1, \pm3, \ldots, \pm(M - 1)
      \]</div>
 </li>
 </ul>
@@ -962,7 +967,7 @@ s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M,
 <li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>complex</strong> and represents a phase shift:</p>
 <div class="math notranslate nohighlight">
 \[
-     A_m = e^{j \frac{2\pi}{M} (m-1)}.
+     A_m = e^{j \frac{2\pi}{M} (m-1)}
      \]</div>
 </li>
 </ul>
@@ -972,7 +977,7 @@ s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M,
 <li><p><span class="math notranslate nohighlight">\( A_m \)</span> is a general <strong>complex number</strong>, representing both amplitude and phase:</p>
 <div class="math notranslate nohighlight">
 \[
-     A_m = A_{mi} + jA_{mq},
+     A_m = A_{mi} + jA_{mq}
      \]</div>
 <p>where <span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span> are the in-phase and quadrature components, respectively.</p>
 </li>

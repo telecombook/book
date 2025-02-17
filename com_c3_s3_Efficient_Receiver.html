@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -487,13 +487,13 @@
 <h1>Efficient Receiver<a class="headerlink" href="#efficient-receiver" title="Link to this heading">#</a></h1>
 <section id="sufficient-statistics">
 <h2>Sufficient Statistics<a class="headerlink" href="#sufficient-statistics" title="Link to this heading">#</a></h2>
-<p>In many signal detection problems, the receiver observes a set of data or measurements that we can group into different components. Suppose that we label these components as <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_2\)</span>, so that the overall received data can be written as <span class="math notranslate nohighlight">\(\vec{r} = (\vec{r}_1, \vec{r}_2)\)</span>.</p>
+<p>In signal detection problems, the receiver observes a set of data or measurements that we can group into different components. Suppose that we label these components as <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_2\)</span>, so that the overall received data can be written as <span class="math notranslate nohighlight">\(\vec{r} = (\vec{r}_1, \vec{r}_2)\)</span>.</p>
 <section id="markov-chain">
 <h3>Markov Chain<a class="headerlink" href="#markov-chain" title="Link to this heading">#</a></h3>
 <p>We consider a communication scenario in which a transmitter sends one of <span class="math notranslate nohighlight">\(M\)</span> possible signals, denoted by <span class="math notranslate nohighlight">\(s_m\)</span>. Our goal at the receiver is to decide which <span class="math notranslate nohighlight">\(s_m\)</span> was sent based on the observed data <span class="math notranslate nohighlight">\(\vec{r}\)</span>. One way to formalize the relationship between <span class="math notranslate nohighlight">\(s_m\)</span> and <span class="math notranslate nohighlight">\((\vec{r}_1, \vec{r}_2)\)</span> is through the assumption that</p>
 <div class="math notranslate nohighlight">
 \[
-p(\vec{r}_1, \vec{r}_2 \mid s_m) \;=\; p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \vec{r}_1).
+p(\vec{r}_1, \vec{r}_2 \mid s_m) \;=\; p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \vec{r}_1)
 \]</div>
 <p>This factorization implies that <span class="math notranslate nohighlight">\(s_m\)</span>, <span class="math notranslate nohighlight">\(\vec{r}_1\)</span>, and <span class="math notranslate nohighlight">\(\vec{r}_2\)</span> form a Markov chain in the order <span class="math notranslate nohighlight">\(s_m \to \vec{r}_1 \to \vec{r}_2\)</span>. Intuitively, once <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> is known, the statistical relationship to <span class="math notranslate nohighlight">\(\vec{r}_2\)</span> no longer depends on the specific signal <span class="math notranslate nohighlight">\(s_m\)</span>.</p>
 </section>
@@ -503,20 +503,20 @@ p(\vec{r}_1, \vec{r}_2 \mid s_m) \;=\; p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \
 <div class="math notranslate nohighlight">
 \[
 \hat{m} 
-= \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r} \mid s_m).
+= \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r} \mid s_m)
 \]</div>
 <p>By substituting <span class="math notranslate nohighlight">\(\vec{r} = (\vec{r}_1, \vec{r}_2)\)</span> and using our Markov chain assumption, this becomes:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{m} 
 = \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r}_1, \vec{r}_2 \mid s_m) 
-= \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \vec{r}_1).
+= \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \vec{r}_1)
 \]</div>
 <p>Notice that <span class="math notranslate nohighlight">\(p(\vec{r}_2 \mid \vec{r}_1)\)</span> does <strong>not</strong> depend on which signal <span class="math notranslate nohighlight">\(s_m\)</span> was sent (once <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> is given). It is thus a common factor for all <span class="math notranslate nohighlight">\(m\)</span> in the maximization and can be <strong>ignored</strong> in the decision rule. Therefore, the decision rule simplifies to:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{m} 
-= \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r}_1 \mid s_m).
+= \arg\max_{1 \le m \le M} \; P_m \, p(\vec{r}_1 \mid s_m)
 \]</div>
 <p>This simplification reveals that <strong>only</strong> <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> influences which <span class="math notranslate nohighlight">\(s_m\)</span> is selected. In other words, <span class="math notranslate nohighlight">\(\vec{r}_2\)</span> is irrelevant for the decision, given <span class="math notranslate nohighlight">\(\vec{r}_1\)</span>.</p>
 </section>
@@ -548,12 +548,12 @@ p(\vec{r}_1, \vec{r}_2 \mid s_m) \;=\; p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \
 <div class="math notranslate nohighlight">
 \[
 \vec{s}_1 = (0, 0), 
-\quad \vec{s}_2 = (1, 1).
+\quad \vec{s}_2 = (1, 1)
 \]</div>
 <p>When message <span class="math notranslate nohighlight">\(m\)</span> is sent, the received signal is:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{r} = \vec{s}_m + \vec{n} = (s_{m1} + n_1,\; s_{m2} + n_2).
+\vec{r} = \vec{s}_m + \vec{n} = (s_{m1} + n_1,\; s_{m2} + n_2)
 \]</div>
 <ul class="simple">
 <li><p>For <span class="math notranslate nohighlight">\(m = 1\)</span>, <span class="math notranslate nohighlight">\(s_{11} = 0\)</span> and <span class="math notranslate nohighlight">\(s_{12} = 0\)</span>.</p></li>
@@ -562,7 +562,7 @@ p(\vec{r}_1, \vec{r}_2 \mid s_m) \;=\; p(\vec{r}_1 \mid s_m)\,p(\vec{r}_2 \mid \
 <p>By observing both <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(n_1\)</span>, the receiver effectively knows:</p>
 <div class="math notranslate nohighlight">
 \[
-r_1 - n_1 \;=\; (s_{m1} + n_1) - n_1 \;=\; s_{m1}.
+r_1 - n_1 \;=\; (s_{m1} + n_1) - n_1 \;=\; s_{m1}
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\(s_{11} = 0\)</span> and <span class="math notranslate nohighlight">\(s_{21} = 1\)</span>, knowledge of <span class="math notranslate nohighlight">\(r_1 - n_1\)</span> directly reveals which message was sent:</p>
 <ul class="simple">
@@ -577,7 +577,7 @@ r_1 - n_1 \;=\; (s_{m1} + n_1) - n_1 \;=\; s_{m1}.
 <div class="math notranslate nohighlight">
 \[
 p(\vec{r}_2 \mid \vec{r}_1, s_m) 
-\;=\; p(\vec{r}_2 \mid \vec{r}_1),
+\;=\; p(\vec{r}_2 \mid \vec{r}_1)
 \]</div>
 <p>so once <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> is known, further knowledge of <span class="math notranslate nohighlight">\(s_m\)</span> does not change the distribution of <span class="math notranslate nohighlight">\(r_2\)</span>. As a result, including <span class="math notranslate nohighlight">\(r_2\)</span> in the detection rule cannot improve performance.</p>
 <p>In this modified scenario, <span class="math notranslate nohighlight">\(\vec{r}_1 = (r_1, n_1)\)</span> is sufficient because it alone reveals which message was sent. Thus, <span class="math notranslate nohighlight">\(\vec{r}_2 = r_2\)</span> can be disregarded.</p>
@@ -589,8 +589,8 @@ p(\vec{r}_2 \mid \vec{r}_1, s_m)
 \[\begin{split}
 \hat{m} \;=\;
 \begin{cases}
-1, &amp; \text{if } r_1 - n_1 = 0,\\
-2, &amp; \text{if } r_1 - n_1 = 1.
+1, &amp; \text{if } r_1 - n_1 = 0 \\
+2, &amp; \text{if } r_1 - n_1 = 1
 \end{cases}
 \end{split}\]</div>
 <p>Under this scheme, there is no overlap between the outcomes corresponding to <span class="math notranslate nohighlight">\(m=1\)</span> and <span class="math notranslate nohighlight">\(m=2\)</span>. Consequently, the <strong>error probability</strong> is zero.</p>
@@ -605,7 +605,7 @@ p(\vec{r}_2 \mid \vec{r}_1, s_m)
 <p>Suppose the receiver applies an invertible function (or transformation) <span class="math notranslate nohighlight">\( G(\cdot) \)</span> to the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>. The output of this transformation is:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{\rho} = G(\vec{r}).
+\vec{\rho} = G(\vec{r})
 \]</div>
 <p>Because <span class="math notranslate nohighlight">\(G(\cdot)\)</span> is invertible, we can recover <span class="math notranslate nohighlight">\(\vec{r}\)</span> exactly from <span class="math notranslate nohighlight">\(\vec{\rho}\)</span> by applying the inverse transformation <span class="math notranslate nohighlight">\(G^{-1}(\cdot)\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
@@ -624,20 +624,20 @@ G^{-1}(\vec{\rho})
 \[
 \hat{m} 
 = \arg\max_{1 \le m \le M} 
-P_m \, p(\vec{r}, \vec{\rho} \mid s_m).
+P_m \, p(\vec{r}, \vec{\rho} \mid s_m)
 \]</div>
 <p>Using the fact that <span class="math notranslate nohighlight">\(\vec{\rho} = G(\vec{r})\)</span> depends solely on <span class="math notranslate nohighlight">\(\vec{r}\)</span> (and not directly on <span class="math notranslate nohighlight">\(s_m\)</span>), we factorize:</p>
 <div class="math notranslate nohighlight">
 \[
 p(\vec{r}, \vec{\rho} \mid s_m) 
-= p(\vec{r} \mid s_m) \, p(\vec{\rho} \mid \vec{r}).
+= p(\vec{r} \mid s_m) \, p(\vec{\rho} \mid \vec{r})
 \]</div>
 <p>But since <span class="math notranslate nohighlight">\(\vec{\rho}\)</span> is uniquely determined by <span class="math notranslate nohighlight">\(\vec{r}\)</span>, the conditional probability <span class="math notranslate nohighlight">\(p(\vec{\rho} \mid \vec{r})\)</span> does <strong>not</strong> depend on which signal <span class="math notranslate nohighlight">\(s_m\)</span> was sent. This term is effectively a constant with respect to <span class="math notranslate nohighlight">\(m\)</span>. Therefore, maximizing over <span class="math notranslate nohighlight">\(m\)</span> is equivalent to:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{m}
 = \arg\max_{1 \le m \le M}
-\; P_m \, p(\vec{r} \mid s_m).
+\; P_m \, p(\vec{r} \mid s_m)
 \]</div>
 <p>Thus, whether the detector works with <span class="math notranslate nohighlight">\(\vec{r}\)</span> directly or first transforms <span class="math notranslate nohighlight">\(\vec{r}\)</span> to <span class="math notranslate nohighlight">\(\vec{\rho} = G(\vec{r})\)</span>, <strong>the same detection rule</strong> applies, yielding <strong>the same decision</strong>. In other words, <strong>an invertible preprocessing does not degrade or change the optimal detection performance</strong>.</p>
 </section>
@@ -646,19 +646,19 @@ p(\vec{r}, \vec{\rho} \mid s_m)
 <p>A common application of invertible preprocessing arises when the noise in the channel is <em>colored</em>, meaning its components are correlated or have frequency-dependent power. Suppose the received vector is</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{r} = s_m + \vec{n},
+\vec{r} = s_m + \vec{n}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\vec{n}\)</span> is a <strong>nonwhite</strong> (colored) noise vector. If there exists an <strong>invertible</strong> operator (matrix) <span class="math notranslate nohighlight">\(W\)</span> that can “whiten” the noise, we define a new variable:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{v} = W \vec{n}.
+\vec{v} = W \vec{n}
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\vec{v}\)</span> is white noise (uncorrelated components with identical variance), then we can rewrite:</p>
 <div class="math notranslate nohighlight">
 \[
 \vec{\rho} = W \vec{r} 
 = W (s_m + \vec{n}) 
-= W s_m + \vec{v}.
+= W s_m + \vec{v}
 \]</div>
 <p>This transformed system looks like a channel with <em>white noise</em>, which is often simpler to analyze. Importantly, because <span class="math notranslate nohighlight">\(W\)</span> is an invertible linear transformation, no information is lost, and the optimal detection performance remains unchanged. In practice, applying <span class="math notranslate nohighlight">\(W\)</span> before detection is called <strong>whitening</strong>, and the matrix <span class="math notranslate nohighlight">\(W\)</span> is referred to as a <strong>whitening filter</strong>.</p>
 </section>

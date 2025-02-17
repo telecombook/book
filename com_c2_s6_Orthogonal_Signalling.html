@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -500,17 +500,17 @@
 <p>Consider a set of signals</p>
 <div class="math notranslate nohighlight">
 \[
-\{ s_1(t), s_2(t), \dots, s_M(t) \},
+\{ s_1(t), s_2(t), \dots, s_M(t) \}
 \]</div>
 <p>each having <strong>equal energy</strong>. These signals are said to be <strong>orthogonal</strong> if their inner products satisfy</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_m(t), s_n(t) \rangle = 0 \quad \text{for } m \neq n,
+\langle s_m(t), s_n(t) \rangle = 0 \quad \text{for } m \neq n
 \]</div>
 <p>where the inner product <span class="math notranslate nohighlight">\( \langle \cdot, \cdot \rangle \)</span> is typically defined as</p>
 <div class="math notranslate nohighlight">
 \[
-\langle s_m(t), s_n(t) \rangle = \int_{-\infty}^{\infty} s_m(t) \, s_n(t) \, dt.
+\langle s_m(t), s_n(t) \rangle = \int_{-\infty}^{\infty} s_m(t) \, s_n(t) \, dt
 \]</div>
 <p>The orthogonality condition means that each pair of distinct signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span> (with <span class="math notranslate nohighlight">\( m \neq n \)</span>) has no overlap in the signal space, thereby reducing interference between them.</p>
 <p>This property is particularly useful in communication systems for separating different transmitted symbols at the receiver.</p>
@@ -520,15 +520,15 @@
 <p>For each signal <span class="math notranslate nohighlight">\( s_m(t) \)</span>, the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E} = \langle s_m(t), s_m(t) \rangle.
+\mathcal{E} = \langle s_m(t), s_m(t) \rangle
 \]</div>
 <p>Since all signals are assumed to have equal energy, we have:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \langle s_m(t), s_n(t) \rangle =
 \begin{cases} 
-\mathcal{E}, &amp; \text{if } m = n, \\
-0, &amp; \text{if } m \neq n.
+\mathcal{E}, &amp; \text{if } m = n \\
+0, &amp; \text{if } m \neq n
 \end{cases}
 \end{split}\]</div>
 <p>When <span class="math notranslate nohighlight">\( m = n \)</span>, the inner product returns the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> of the signal <span class="math notranslate nohighlight">\( s_m(t) \)</span>. For <span class="math notranslate nohighlight">\( m \neq n \)</span>, the inner product is zero, confirming the mutual orthogonality of the signals.</p>
@@ -540,17 +540,17 @@
 <p>It is often useful to normalize the signals to form an <strong>orthonormal basis</strong>. By defining</p>
 <div class="math notranslate nohighlight">
 \[
-\phi_j(t) = \frac{s_j(t)}{\sqrt{\mathcal{E}}}, \quad 1 \leq j \leq M,
+\phi_j(t) = \frac{s_j(t)}{\sqrt{\mathcal{E}}}, \quad 1 \leq j \leq M
 \]</div>
 <p>each basis function <span class="math notranslate nohighlight">\( \phi_j(t) \)</span> has unit energy:</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \phi_j(t), \phi_j(t) \rangle = 1,
+\langle \phi_j(t), \phi_j(t) \rangle = 1
 \]</div>
 <p>and they remain orthogonal:</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \phi_j(t), \phi_k(t) \rangle = 0 \quad \text{for } j \neq k.
+\langle \phi_j(t), \phi_k(t) \rangle = 0 \quad \text{for } j \neq k
 \]</div>
 <p>This orthonormal basis is particularly convenient for analysis and implementation because it simplifies many mathematical expressions and algorithms in communication system design.</p>
 </section>
@@ -560,11 +560,11 @@
 <p>Orthogonal signals can be represented as vectors in an <span class="math notranslate nohighlight">\( M \)</span>-dimensional Euclidean space. A common representation is:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{s}_1 = (\sqrt{\mathcal{E}}, 0, \dots, 0),
+\vec{s}_1 = (\sqrt{\mathcal{E}}, 0, \dots, 0)
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\vec{s}_2 = (0, \sqrt{\mathcal{E}}, \dots, 0),
+\vec{s}_2 = (0, \sqrt{\mathcal{E}}, \dots, 0)
 \]</div>
 <div class="math notranslate nohighlight">
 \[
@@ -572,7 +572,7 @@
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\vec{s}_M = (0, 0, \dots, \sqrt{\mathcal{E}}).
+\vec{s}_M = (0, 0, \dots, \sqrt{\mathcal{E}})
 \]</div>
 <p>In this representation, each signal vector has a single nonzero component equal to <span class="math notranslate nohighlight">\( \sqrt{\mathcal{E}} \)</span>, and the vectors are mutually orthogonal.</p>
 </section>
@@ -584,51 +584,51 @@
 <p>For any two signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span>, the <strong>difference signal</strong> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-\Delta s(t) = s_m(t) - s_n(t).
+\Delta s(t) = s_m(t) - s_n(t)
 \]</div>
 <p>The Euclidean distance between the two signals is defined as the norm (or energy) of this difference signal.</p>
 <p>The squared Euclidean distance is computed using the inner product:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{mn}^2 = \| \Delta s(t) \|^2 = \langle s_m(t) - s_n(t), \; s_m(t) - s_n(t) \rangle.
+d_{mn}^2 = \| \Delta s(t) \|^2 = \langle s_m(t) - s_n(t), \; s_m(t) - s_n(t) \rangle
 \]</div>
 <p>Using the properties of the inner product (linearity and symmetry), we can expand the expression:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
 d_{mn}^2 &amp;= \langle s_m(t), s_m(t) \rangle - \langle s_m(t), s_n(t) \rangle \\
-&amp;\quad - \langle s_n(t), s_m(t) \rangle + \langle s_n(t), s_n(t) \rangle.
+&amp;\quad - \langle s_n(t), s_m(t) \rangle + \langle s_n(t), s_n(t) \rangle
 \end{aligned}
 \end{split}\]</div>
 <p>Since the inner product is symmetric, <span class="math notranslate nohighlight">\(\langle s_m(t), s_n(t) \rangle = \langle s_n(t), s_m(t) \rangle\)</span>. Thus, the expression simplifies to:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{mn}^2 = \langle s_m(t), s_m(t) \rangle - 2 \langle s_m(t), s_n(t) \rangle + \langle s_n(t), s_n(t) \rangle.
+d_{mn}^2 = \langle s_m(t), s_m(t) \rangle - 2 \langle s_m(t), s_n(t) \rangle + \langle s_n(t), s_n(t) \rangle
 \]</div>
 <p>For the signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span>:</p>
 <ul>
 <li><p>The energy of each signal is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-  \langle s_m(t), s_m(t) \rangle = \mathcal{E} \quad \text{and} \quad \langle s_n(t), s_n(t) \rangle = \mathcal{E}.
+  \langle s_m(t), s_m(t) \rangle = \mathcal{E} \quad \text{and} \quad \langle s_n(t), s_n(t) \rangle = \mathcal{E}
   \]</div>
 </li>
 <li><p>Since the signals are orthogonal (for <span class="math notranslate nohighlight">\( m \neq n \)</span>):</p>
 <div class="math notranslate nohighlight">
 \[
-  \langle s_m(t), s_n(t) \rangle = 0.
+  \langle s_m(t), s_n(t) \rangle = 0
   \]</div>
 </li>
 </ul>
 <p>Substitute these into the expanded inner product:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{mn}^2 = \mathcal{E} - 2 \cdot 0 + \mathcal{E} = 2\mathcal{E}.
+d_{mn}^2 = \mathcal{E} - 2 \cdot 0 + \mathcal{E} = 2\mathcal{E}
 \]</div>
 <p>Finally, take the square root of both sides, we have that for any two distinct orthogonal signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span>, the Euclidean distance between them is:</p>
 <div class="math notranslate nohighlight">
 \[
-\boxed{d_{mn} = \sqrt{2\mathcal{E}}.}
+\boxed{d_{mn} = \sqrt{2\mathcal{E}}}
 \]</div>
 </section>
 <section id="id1">
@@ -637,7 +637,7 @@ d_{mn}^2 = \mathcal{E} - 2 \cdot 0 + \mathcal{E} = 2\mathcal{E}.
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-d_{\text{min}} = \sqrt{2\mathcal{E}}.
+d_{\text{min}} = \sqrt{2\mathcal{E}}
 }
 \]</div>
 <p>A larger <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> generally leads to improved performance (i.e., lower probability of error) because the signals are more widely separated in the signal space.</p>
@@ -648,14 +648,14 @@ d_{\text{min}} = \sqrt{2\mathcal{E}}.
 <p>It is often useful to relate the total signal energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> to the energy used to transmit one bit of information, denoted as <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span>. When <span class="math notranslate nohighlight">\( M \)</span> signals are used to represent symbols, each symbol conveys <span class="math notranslate nohighlight">\( \log_2 M \)</span> bits. Therefore, the energy per bit is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{E}_b = \frac{\mathcal{E}}{\log_2 M}.
+\mathcal{E}_b = \frac{\mathcal{E}}{\log_2 M}
 \]</div>
 <section id="minimum-distance-in-terms-of-energy-per-bit">
 <h3>Minimum Distance in Terms of Energy per Bit<a class="headerlink" href="#minimum-distance-in-terms-of-energy-per-bit" title="Link to this heading">#</a></h3>
 <p>By substituting the relationship between <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> and <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> into the expression for the minimum distance, we obtain:</p>
 <div class="math notranslate nohighlight">
 \[
-d_{\text{min}} = \sqrt{2\mathcal{E}} = \sqrt{2 \log_2 M \cdot \mathcal{E}_b}.
+d_{\text{min}} = \sqrt{2\mathcal{E}} = \sqrt{2 \log_2 M \cdot \mathcal{E}_b}
 \]</div>
 <p>This final expression shows that the minimum distance depends on both the modulation order <span class="math notranslate nohighlight">\( M \)</span> (through <span class="math notranslate nohighlight">\( \log_2 M \)</span>) and the energy per bit <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span>.</p>
 <p>Increasing <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> or reducing <span class="math notranslate nohighlight">\( M \)</span> (thus increasing <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> per bit) can lead to a larger <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>, which in turn improves the robustness of the signal against noise and interference.</p>
@@ -678,13 +678,13 @@ d_{\text{min}} = \sqrt{2\mathcal{E}} = \sqrt{2 \log_2 M \cdot \mathcal{E}_b}.
 <li><p>Any signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> that lies entirely along the <span class="math notranslate nohighlight">\(m\)</span>-th basis waveform can be written as</p>
 <div class="math notranslate nohighlight">
 \[
-       s_m(t) \;=\; \sqrt{\mathcal{E}}\,\phi_m(t).
+       s_m(t) \;=\; \sqrt{\mathcal{E}}\,\phi_m(t)
      \]</div>
 </li>
 <li><p>In vector form, that means</p>
 <div class="math notranslate nohighlight">
 \[
-       \vec{s}_m \;=\; (0,\, 0,\, \ldots,\; \underbrace{\sqrt{\mathcal{E}}}_{\text{m-th position}},\; 0, \ldots, 0).
+      \vec{s}_m \;=\; (0,\, 0,\, \ldots,\; \underbrace{\sqrt{\mathcal{E}}}_{\text{m-th position}},\; 0, \ldots, 0)
      \]</div>
 </li>
 <li><p>This is precisely the idea behind writing <span class="math notranslate nohighlight">\(s_1 = \bigl(\sqrt{\mathcal{E}},\, 0,\, \dots,\, 0\bigr)\)</span>, <span class="math notranslate nohighlight">\(s_2 = \bigl(0,\, \sqrt{\mathcal{E}},\, \dots,\, 0\bigr)\)</span>, etc.</p></li>
@@ -706,7 +706,7 @@ When we select a finite number of orthonormal basis functions <span class="math 
 Any signal <span class="math notranslate nohighlight">\(s(t)\)</span> that lies in this subspace can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-  s(t) = \sum_{j=1}^{M} s[j]\, \phi_j(t),
+  s(t) = \sum_{j=1}^{M} s[j]\, \phi_j(t)
   \]</div>
 <p>where <span class="math notranslate nohighlight">\(s[j] = \langle s(t), \phi_j(t) \rangle\)</span> are the <em>coefficients</em>.</p>
 </li>
@@ -719,7 +719,7 @@ Any signal <span class="math notranslate nohighlight">\(s(t)\)</span> that lies 
 The finite-dimensional subspace is equipped with the inner product inherited from <span class="math notranslate nohighlight">\(L^2\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-  \langle s, r \rangle = \sum_{j=1}^{M} s[j] \, r[j].
+  \langle s, r \rangle = \sum_{j=1}^{M} s[j] \, r[j]
   \]</div>
 </li>
 <li><p><strong>Euclidean Space:</strong><br />
@@ -729,7 +729,7 @@ This inner product defines lengths (via the norm) and angles between the coeffic
 <p>When we write:</p>
 <div class="math notranslate nohighlight">
 \[
-\vec{s}_1 = (\sqrt{\mathcal{E}}, 0, \dots, 0),
+\vec{s}_1 = (\sqrt{\mathcal{E}}, 0, \dots, 0)
 \]</div>
 <p>we are representing the signal <span class="math notranslate nohighlight">\(s_1(t)\)</span> by its coordinates relative to the chosen orthonormal basis. Here, <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span> is the coefficient along the first basis function and all other coefficients are zero.</p>
 </section>

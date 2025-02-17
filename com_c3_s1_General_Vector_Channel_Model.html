@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -491,7 +491,7 @@
 <p>Suppose the transmitter has a set of possible <strong>signal vectors</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\{\vec{s}_m, \, 1 \le m \le M\},
+\{\vec{s}_m, \, 1 \le m \le M\}
 \]</div>
 <p>each corresponding to a <strong>message</strong>.</p>
 <p>These vectors are transmitted according to certain <strong>a priori probabilities</strong> <span class="math notranslate nohighlight">\(P_m\)</span> (other notation <span class="math notranslate nohighlight">\(p(\vec{s}_m)\)</span> or <span class="math notranslate nohighlight">\(p(m)\)</span>), which capture the likelihood of each message being sent.</p>
@@ -499,7 +499,7 @@
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\Pr(\vec{r} \mid \vec{s}_m).
+\Pr(\vec{r} \mid \vec{s}_m)
 }
 \]</div>
 <p>Thus, the <strong>overall channel model</strong> is characterized by the statistical relationship between <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> and <span class="math notranslate nohighlight">\(\vec{r}\)</span>. The receiver, upon observing <span class="math notranslate nohighlight">\(\vec{r}\)</span>, must decide which message was most likely transmitted.</p>
@@ -510,8 +510,8 @@
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-g: \mathbb{R}^N &amp;\rightarrow \{1, 2, \ldots, M\}, \\
-\vec{r} &amp;\mapsto \hat{m}.
+g: \mathbb{R}^N &amp;\rightarrow \{1, 2, \ldots, M\} \\
+\vec{r} &amp;\mapsto \hat{m}
 \end{align}
 \end{split}\]</div>
 <p>It indicates that the decision function <span class="math notranslate nohighlight">\(g\)</span> takes an <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector (obtained from the projection of the received waveform <span class="math notranslate nohighlight">\(r(t)\)</span> onto an orthonormal basis) as its input and maps it to a message index <span class="math notranslate nohighlight">\(\hat{m}\)</span> in the set <span class="math notranslate nohighlight">\(\{1, 2, \ldots, M\}\)</span>.</p>
@@ -531,7 +531,7 @@ The notation <span class="math notranslate nohighlight">\( m \)</span> (with <sp
 The receiver observes the vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> and makes a decision by choosing an index <span class="math notranslate nohighlight">\(\hat{m}\)</span> that maximizes the posterior probability (or likelihood) given the observation:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = \arg\max_{1 \le m \le M} \Pr[m|\vec{r}].
+\hat{m} = \arg\max_{1 \le m \le M} \Pr[m|\vec{r}]
 \]</div>
 <p>Here, <span class="math notranslate nohighlight">\(\hat{m}\)</span> is the estimated message index that is declared as the transmitted message.</p>
 <p><strong>Mapping to Bit Sequences:</strong><br />
@@ -543,7 +543,7 @@ Although <span class="math notranslate nohighlight">\( m \)</span> (and thus <sp
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\Pr[\text{correct decision} \mid \vec{r}] = \Pr[\hat{m} \text{ was sent} \mid \vec{r}].
+\Pr[\text{correct decision} \mid \vec{r}] = \Pr[\hat{m} \text{ was sent} \mid \vec{r}]
 }
 \]</div>
 <p>That is, given the observation <span class="math notranslate nohighlight">\(\vec{r}\)</span>, the probability of being correct is the conditional probability that the transmitted message is <span class="math notranslate nohighlight">\(\hat{m}\)</span>.</p>
@@ -551,7 +551,7 @@ Although <span class="math notranslate nohighlight">\( m \)</span> (and thus <sp
 <div class="math notranslate nohighlight">
 \[
 \boxed{
-\Pr[\text{correct decision}] = \int \Pr[\hat{m} \text{ was sent} \mid \vec{r}] \, p(\vec{r}) \, d\vec{r}.
+\Pr[\text{correct decision}] = \int \Pr[\hat{m} \text{ was sent} \mid \vec{r}] \, p(\vec{r}) \, d\vec{r}
 }
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\(p(\vec{r})\)</span> is nonnegative for all <span class="math notranslate nohighlight">\(\vec{r}\)</span>, the overall probability of a correct decision is maximized if, for every received <span class="math notranslate nohighlight">\(\vec{r}\)</span>, the decision rule maximizes <span class="math notranslate nohighlight">\(\Pr[\hat{m} \text{ was sent} \mid \vec{r}]\)</span>.</p>
@@ -562,7 +562,7 @@ Although <span class="math notranslate nohighlight">\( m \)</span> (and thus <sp
 <p>This observation leads directly to the formulation of the <strong>optimal detection rule</strong>. The optimal detector selects the message <span class="math notranslate nohighlight">\(m\)</span> that maximizes the posterior probability <span class="math notranslate nohighlight">\(\Pr[m|\vec{r}]\)</span>. Formally, the decision function <span class="math notranslate nohighlight">\(g_{\text{opt}}(\vec{r})\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr[m|\vec{r}].
+\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr[m|\vec{r}]
 \]</div>
 <p>In practice, this means that upon receiving <span class="math notranslate nohighlight">\(\vec{r}\)</span>, the detector computes <span class="math notranslate nohighlight">\(\Pr[m|\vec{r}]\)</span> for each <span class="math notranslate nohighlight">\(m = 1, 2, \ldots, M\)</span> and then declares the message corresponding to the largest value of this conditional probability.</p>
 <section id="equivalence-in-terms-of-signal-vectors">
@@ -570,7 +570,7 @@ Although <span class="math notranslate nohighlight">\( m \)</span> (and thus <sp
 <p>Since transmitting message (index) <span class="math notranslate nohighlight">\(m\)</span> is equivalent to transmitting the signal vector <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>, the optimal decision rule can equivalently be written in terms of these vectors:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr[\vec{s}_m|\vec{r}].
+\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr[\vec{s}_m|\vec{r}]
 \]</div>
 <p>This formulation emphasizes that the receiver’s decision is based on the likelihood of having received <span class="math notranslate nohighlight">\(\vec{r}\)</span> given that the signal <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> was transmitted.</p>
 </section>
@@ -584,7 +584,7 @@ Although <span class="math notranslate nohighlight">\( m \)</span> (and thus <sp
 The prior probability, denoted by <span class="math notranslate nohighlight">\(P_m\)</span>, is the probability that the transmitter sends the <span class="math notranslate nohighlight">\(m\)</span>-th message before any observation is made at the receiver. In other words,</p>
 <div class="math notranslate nohighlight">
 \[
-  P_m \equiv p(\vec{s}_m) \equiv p(m) = \Pr[m \text{ is selected to send}] = \Pr{\vec{s}_m \text{ is selected to send}},
+  P_m \equiv p(\vec{s}_m) \equiv p(m) = \Pr[m \text{ is selected to send}] = \Pr{\vec{s}_m \text{ is selected to send}}
   \]</div>
 <p>which reflects the statistical likelihood of the <span class="math notranslate nohighlight">\(m\)</span>-th message being transmitted.</p>
 </li>
@@ -592,7 +592,7 @@ The prior probability, denoted by <span class="math notranslate nohighlight">\(P
 The prior probability encapsulates any inherent bias in the message selection process. In many systems, messages are chosen uniformly at random, in which case</p>
 <div class="math notranslate nohighlight">
 \[
-  P_m = \frac{1}{M} \quad \text{for all } m,
+  P_m = \frac{1}{M} \quad \text{for all } m
   \]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is the total number of messages. However, if some messages are more likely to occur than others, <span class="math notranslate nohighlight">\(P_m\)</span> will vary accordingly.</p>
 </li>
@@ -605,7 +605,7 @@ The prior probability encapsulates any inherent bias in the message selection pr
 The likelihood probability represents the probability density (or probability, in the discrete case) of receiving the vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> given that the signal corresponding to the <span class="math notranslate nohighlight">\(m\)</span>-th message (i.e., <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>) was transmitted. It is denoted by:</p>
 <div class="math notranslate nohighlight">
 \[
-  \Pr(\vec{r}|\vec{s}_m) \quad \text{or} \quad \Pr(\vec{r}|m).
+  \Pr(\vec{r}|\vec{s}_m) \quad \text{or} \quad \Pr(\vec{r}|m)
   \]</div>
 </li>
 <li><p><strong>Role in Detection:</strong><br />
@@ -619,14 +619,14 @@ This probability is determined by the channel’s statistical behavior. For exam
 The posterior probability is the probability that the <span class="math notranslate nohighlight">\(m\)</span>-th message (or equivalently, the signal <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>) was transmitted given that the received vector is <span class="math notranslate nohighlight">\(\vec{r}\)</span>. It is denoted by:</p>
 <div class="math notranslate nohighlight">
 \[
-  \Pr(m|\vec{r}) \quad \text{or} \quad \Pr(\vec{s}_m|\vec{r}).
+  \Pr(m|\vec{r}) \quad \text{or} \quad \Pr(\vec{s}_m|\vec{r})
   \]</div>
 </li>
 <li><p><strong>Derivation Using Bayes’ Rule:</strong><br />
 The posterior probability is computed by applying Bayes’ theorem:</p>
 <div class="math notranslate nohighlight">
 \[
-  \Pr(m|\vec{r}) = \frac{\Pr(\vec{r}|m) \, P_m}{p(\vec{r})},
+  \Pr(m|\vec{r}) = \frac{\Pr(\vec{r}|m) \, P_m}{p(\vec{r})}
   \]</div>
 <p>where:</p>
 <ul>
@@ -635,7 +635,7 @@ The posterior probability is computed by applying Bayes’ theorem:</p>
 <li><p><span class="math notranslate nohighlight">\(p(\vec{r})\)</span> is the marginal probability (or evidence), given by</p>
 <div class="math notranslate nohighlight">
 \[
-    p(\vec{r}) = \sum_{m=1}^{M} \Pr(\vec{r}|m) \, P_m.
+    p(\vec{r}) = \sum_{m=1}^{M} \Pr(\vec{r}|m) \, P_m
     \]</div>
 </li>
 </ul>
@@ -653,7 +653,7 @@ The marginal probability <span class="math notranslate nohighlight">\(p(\vec{r})
 </ul>
 <div class="math notranslate nohighlight">
 \[
-p(\vec{r}) = \sum_{m=1}^{M} \Pr(\vec{r}|m) \, P_m.
+p(\vec{r}) = \sum_{m=1}^{M} \Pr(\vec{r}|m) \, P_m
 \]</div>
 <ul class="simple">
 <li><p><strong>Role in Detection:</strong>
@@ -676,7 +676,9 @@ Once the receiver processes <span class="math notranslate nohighlight">\(\vec{r}
 This quantity directly reflects the confidence of the detector in its decision for a given observation <span class="math notranslate nohighlight">\(\vec{r}\)</span>. The overall performance (i.e., the overall probability of a correct decision) is obtained by averaging <span class="math notranslate nohighlight">\(\Pr(\hat{m} \text{ was sent} \,|\, \vec{r})\)</span> over all possible received vectors:</p>
 <div class="math notranslate nohighlight">
 \[
-  \Pr[\text{correct decision}] = \int \Pr(\hat{m} \text{ was sent} \,|\, \vec{r}) \, p(\vec{r}) \, d\vec{r}.
+  \boxed{
+  \Pr[\text{correct decision}] = \int \Pr(\hat{m} \text{ was sent} \,|\, \vec{r}) \, p(\vec{r}) \, d\vec{r}
+  }
   \]</div>
 </li>
 </ul>

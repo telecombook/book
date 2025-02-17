@@ -273,11 +273,11 @@
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Signaling Schemes with Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_a.html">Power Spectral Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD_b.html">Power Spectral Density (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -864,7 +864,9 @@ This means that, in the long run, the system is equally likely to be in either o
 <h3>Generalized Transition Probability Matrix<a class="headerlink" href="#generalized-transition-probability-matrix" title="Link to this heading">#</a></h3>
 <p>If the binary source is not equiprobable, i.e., the probability of generating <strong>1s</strong> is</p>
 <div class="math notranslate nohighlight">
-\[\boxed{P[a_k = 1] = 1 - P[a_k = 0] = p} \]</div>
+\[
+\boxed{P[a_k = 1] = 1 - P[a_k = 0] = p} 
+\]</div>
 <p>The transition probability matrix becomes:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1190,15 +1192,19 @@ A_m\,g(t),
 <li><p><span class="math notranslate nohighlight">\(A_m\)</span> are the <strong>same</strong> amplitude levels.</p></li>
 </ul>
 <p>Recall the presence of the function <span class="math notranslate nohighlight">\( g(t) \)</span> in:</p>
-<ul class="simple">
-<li><p>The <strong>lowpass equivalent PAM signal</strong>:<br />
-$<span class="math notranslate nohighlight">\(
- s_{m,lp}(t) = A_m g(t)
- \)</span>$</p></li>
-<li><p>The <strong>PAM sequence</strong>:<br />
-$<span class="math notranslate nohighlight">\(
- d(t) = \sum_{n} I_n g(t - nT)
- \)</span>$</p></li>
+<ul>
+<li><p>The <strong>lowpass equivalent PAM signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   s_{m,lp}(t) = A_m g(t)
+   \]</div>
+</li>
+<li><p>The <strong>PAM sequence</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   d(t) = \sum_{n} I_n g(t - nT)
+   \]</div>
+</li>
 </ul>
 </section>
 <section id="role-of-g-t-in-s-m-lp-t">
@@ -1283,7 +1289,6 @@ g(t) = \text{rect}(t/T)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
 
 <span class="c1"># Step 1: Define the binary source sequence</span>
 <span class="n">binary_sequence</span> <span class="o">=</span> <span class="s2">&quot;00101101001100101100011110&quot;</span>
